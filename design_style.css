@@ -1,0 +1,225 @@
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a.pink {
+  color: #EC5753;
+  text-decoration: none;
+}
+
+a.name {
+  color: black;
+}
+
+a:hover {
+  color: #EC5753;
+}
+
+.pull-left {
+    float: left;
+}
+.pull-right {
+    float: right;
+}
+
+.navbar-large {
+  display:  block;
+  background:  white;
+  box-shadow: 0px 3px 6px 0px rgb(0 0 0 / 20%);
+}
+
+.navbar-small {
+  background:  white;
+  padding: 50px 0 50px 0;
+  max-width:  700px;
+  margin:  auto;  
+}
+
+/*
+$max-width: 700px;
+$med-width: 600px;
+$small-width: 480px;
+*/
+
+.container {
+  background:  white;
+  padding: 0px 20px;
+  max-width:  700px;
+  margin:  auto; 
+}
+
+/* For mobile */
+@media (max-width: 800px) {
+  .container {
+    background:  white;
+    padding: 0px 20px;
+    max-width:  700px;
+    margin:  auto; 
+  }
+}
+
+
+@media (max-width: 500px) {
+  .navbar-small {
+    text-align: center;
+    padding: 10px 0 1px 0;
+  }
+
+  .pull-left {
+    float: none;
+  }
+  .pull-right {
+    float: none;
+  }
+
+}
+
+
+
+.alignCenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.profileImage {
+  width: 30%;
+  border-radius: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+
+.pub1 {
+  margin:  0px;
+  font-size: 16px;
+}
+
+.pub2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pub3 {
+  margin:  8px 0px ;
+  font-size: 16px;
+}
+
+.pub4 {
+  margin:  8px 0px 30px ;
+}
+
+.pex1 {
+  margin:  8px 0px ;
+}
+
+.pex2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pex3 {
+  margin:  8px 0px 30px ;
+}
+
+
+.award1 {
+  margin:  8px 0px ;
+}
+
+.award2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.award3 {
+  margin:  8px 0px 30px ;
+}
+
+.teach1 {
+  margin:  8px 0px ;
+}
+
+.teach2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.teach3 {
+  margin:  8px 0px 30px ;
+}
+
+.talk1 {
+  margin:  8px 0px ;
+}
+
+.talk2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.talk3 {
+  margin:  8px 0px 30px ;
+}
+
+.proj1 {
+  margin:  8px 8px 0px 0px ;
+}
+.proj2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+
+}
+.proj3 {
+  margin:  8px 0px ;
+}
+.proj4 {
+  margin:  8px 0px 15px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+}
+
+.publication.left {
+  width: 80%;
+}
+
+.publication.right {
+  width: 20%;
+}
+
+ .project.left {
+  width: 82%;
+}
+
+.project.right {
+  width: 18%;
+}
+
+.overviewImg {
+  width:  100%;
+}
+
+.projectImg {
+ width:  100%;
+}
+
+.contact {
+  margin: 20px 0px 0px 0px;
+}
+

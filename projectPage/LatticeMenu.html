@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" sizes="32x32" href="../img/TitleIcon.png">
+	<title>Taejun Kim</title>
+
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="icon_style.css">
+	<link rel="stylesheet" type="text/css" href="../design_style.css">
+	
+
+	<!-- JS -->
+
+	<!-- Google Font -->
+	<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inconsolata:wght@400;500;600&family=Noto+Sans&family=Roboto+Mono&display=swap');
+</style>
+
+</head>
+<body>
+	<div class="navbar-large" style="font-family: 'Inconsolata'; font-weight: 400;"> 
+		<div class="navbar-small">
+			<a class="name pull-left" href="../index.html" style="font-family: 'Dancing Script'; font-size: 35px;">Taejun Kim</a>
+			<ul class="pull-right">
+				<a class="pink" href="../paper/CV.pdf"  style="font-size: 16px;">CV</a>
+				&nbsp / &nbsp
+				<a class="pink" href="../contact.html" style="font-size: 16px;">Contact</a>
+				&nbsp / &nbsp
+				<a class="pink" href="../blog.html" style="font-size: 16px;">Blog</a>
+			</ul>
+		</div>
+	</div>
+	<div class="container" style="font-family: 'Inconsolata';"> 
+		<h2>Lattice Menu: A Low-Error Gaze-Based Marking Menu Utilizing Target-Assisted Gaze Gestures on a Lattice of Visual Anchors (ACM CHI 2022)</h2>
+		<p> <b style="text-decoration: underline;">Taejun Kim</b>, Auejin Ham, Sunggeun Ahn, Geehyuk Lee</p>
+		<iframe class="alignCenter" width="560" height="315" src="https://www.youtube.com/embed/p9zJ8-umYQk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+		<img class="alignCenter" src="img/LatticeMenuParameters.PNG" width="70%"></img>
+		<p style="text-align: center;">(a) Lattice Menu parameters, (b) 4 x 4 x 4 Lattice Menu</p>
+		<img class="alignCenter" src="img/LatticeMenuUsage.png" width="100%"></img>
+		<p style="text-align: center;">Illustration of (a) novice user behavior and (b) expert user behavior of Lattice Menu</p>
+		<h2>ABSTRACT</h2>
+		<p>This work presents Lattice Menu, a gaze-based marking menu utilizing a lattice of visual anchors that helps accurate gaze pointing for menu item selection. It allows expert users to leverage target-assisted gaze gestures for multi-level item selection by looking at visual anchors over gaze trajectories. Our evaluation showed that Lattice Menu had a considerably low error rate (~1%) and quick menu selection time (1.5~1.8 s) for experts across various menu structures (4 × 4 × 4 and 6 × 6 × 6) and sizes (8, 10 and 12°). In a comparative user study, Lattice Menu exhibited remarkably (~5 times) fewer menu selection errors of experts than the traditional gaze-based marking menu that does not utilize visual targets. In a post-interview, all twelve subjects preferred Lattice Menu, and the majority of subjects (8 out of 12) commented that the provision of visual targets facilitated more stable menu selection with reduced eye fatigue</p>
+
+		<h2>LATTICE MENU</h2>
+		<img class="alignCenter" src="img/LatticeMenuTesting.png" width="100%"></img>
+		<p class="projectPageImageCaption" style="text-align: center;">Menu layouts tested in the User Study</p>
+		<p>Lattice Menu is a gaze-based marking menu with a lattice of visual anchors that help precise gaze pointing. Users can select a menu item by looking at the corresponding visual target (i.e., visual anchor) outside the border of the pie slice. When the eye gaze enters the Item Selection Zone (Figure 2a) around the visual anchor, a corresponding menu item is immediately selected. Expert users, who already know the required trajectory to the desired item, can perform target-assisted gaze gestures by looking at the visual anchors on the gaze trajectories as depicted in Figure 3b. We evaluated the Lattice Menu design under a 3-level hierarchical menu structure, covering a sufficient number of commands (64 commands for 4 × 4 × 4, 216 commands for 6 × 6 × 6 menu structure).</p>
+
+		<img class="alignCenter" src="img/LatticeMenuEffect.png" width="85%"></img>
+		<p class="projectPageImageCaption" style="text-align: center;">Distribution of saccade landing position for (a) 4 x 4 x 4 and (b) 6 x 6 x 6 Structures (normalized scale, n ~= 300,000 for each plot) and calculated Measure of Dispersion with the illustration of ideal menu selection paths</p>
+
+		<p>The comparative evaluation showed Lattice Menu’s remarkably (~5 times) lower error rates compared to traditional gaze-based marking menu technique for expert use (i.e., Expert Trials). The scatter plot of the saccade landing position shows the effectiveness of Lattice Menu. The lattice of visual targets made users better follow the ideal paths for selection with low errors.</p>
+
+		<p style="margin: 100px 30px 30px 30px;"> </p>
+
+
+
+	</div>
+</body>
+</html>

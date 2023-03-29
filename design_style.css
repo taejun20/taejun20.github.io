@@ -116,6 +116,10 @@ $small-width: 480px;
 }
 
 .pub4 {
+  margin:  8px 0px 15px ;
+}
+
+.pub5 {
   margin:  8px 0px 30px ;
 }
 
@@ -130,6 +134,9 @@ $small-width: 480px;
 }
 
 .pex3 {
+  margin:  8px 0px 15px ;
+}
+.pex4 {
   margin:  8px 0px 30px ;
 }
 
@@ -145,8 +152,12 @@ $small-width: 480px;
 }
 
 .award3 {
+  margin:  8px 0px 15px ;
+}
+.award4 {
   margin:  8px 0px 30px ;
 }
+
 
 .service1 {
   margin:  8px 0px ;
@@ -181,8 +192,13 @@ $small-width: 480px;
 }
 
 .talk3 {
+  margin:  8px 0px 15px ;
+}
+
+.talk4 {
   margin:  8px 0px 30px ;
 }
+
 
 .proj1 {
   margin:  8px 8px 0px 0px ;

@@ -1,5 +1,7 @@
 h2 {
+  margin:  8px 0px ;
   font-size: 18px;
+  font-weight: 600;
 }
 
 a {
@@ -10,7 +12,7 @@ a {
 a.pink {
   color: #EC5753;
   text-decoration: none;
-}
+}s
 
 a.name {
   color: black;

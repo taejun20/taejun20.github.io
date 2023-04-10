@@ -24,11 +24,17 @@
 }
 
 p {
-  font-size: 14px;"
+  font-size: 14px;
 }
 
 h2 {
-  font-size: 16px;
+  font-size: 20px;
+}
+
+p.section {
+  font-family: Tahoma;
+  font-size: 20px;
+  margin:  50px 0px 10px 0px ;
 }
 
 a {
@@ -126,51 +132,6 @@ $small-width: 480px;
   margin-top: 50px;
 }
 
-
-.pex1 {
-  margin:  8px 0px ;
-}
-
-.pex2 {
-  margin:  8px 0px ;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.pex3 {
-  margin:  8px 0px 25px ;
-}
-.pex4 {
-  margin:  8px 0px 30px ;
-}
-
-
-.award1 {
-  margin:  8px 0px ;
-}
-
-.award2 {
-  margin:  8px 0px ;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.award3 {
-  margin:  8px 0px 15px ;
-}
-.award4 {
-  margin:  8px 0px 30px ;
-}
-
-
-.service1 {
-  margin:  8px 0px ;
-}
-
-.service2 {
-  margin:  8px 0px 0px ;
-}
-
 .teach1 {
   margin:  8px 0px ;
 }
@@ -182,24 +143,6 @@ $small-width: 480px;
 }
 
 .teach3 {
-  margin:  8px 0px 30px ;
-}
-
-.talk1 {
-  margin:  8px 0px ;
-}
-
-.talk2 {
-  margin:  8px 0px ;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.talk3 {
-  margin:  8px 0px 25px ;
-}
-
-.talk4 {
   margin:  8px 0px 30px ;
 }
 
@@ -247,7 +190,8 @@ $small-width: 480px;
 
 .overviewImg {
   width: 100%;
-  border-radius: 10%;
+  border-radius: 10px;
+  margin:  0px 0px 20px 0px;
 }
 
 .column {
@@ -256,30 +200,62 @@ $small-width: 480px;
 
 .left {
   width: 20%;
+  margin:  0px 15px 0px 0px;
 }
 
 .right {
-  width: 80%;
+  width: 77%;
 }
 
 .pub1 {
-  margin:  0px;
-  font-size: 16px;
+  margin:  0px 0px 0px 0px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .pub2 {
-  font-size: 16px;
+  margin:  3px 0px 0px 0px;
+  font-size: 14px;
 }
 
 .pub3 {
-  margin:  8px 0px ;
+  margin:  3px 0px 0px 0px;
   font-size: 14px;
 }
 
 .pub4 {
-  margin:  8px 0px 25px ;
+  margin:  3px 0px 0px 0px;
 }
 
-.pub5 {
-  margin:  8px 0px 30px ;
+
+.pex1 {
+  margin:  0px 0px 0px 0px;
+}
+
+.pex2 {
+  margin:  0px 0px 15px 0px;
+}
+
+.award1 {
+  margin:  0px 0px 0px 0px;
+}
+
+.award2 {
+  margin:  0px 0px 15px 0px;
+}
+
+.talk1 {
+  margin:  0px 0px 0px 0px;
+}
+
+.talk2 {
+  margin:  0px 0px 15px 0px;
+}
+
+.service1 {
+  margin:  0px 0px 10px 0px;
+}
+
+.service2 {
+  margin:  3px 0px 0px 0px;
 }

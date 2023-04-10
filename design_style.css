@@ -1,11 +1,34 @@
+@font-face {
+  font-family: 'Myname';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Segoe UI Bold'), local('SegoeUI-bold'), local('segoeuib');
+}
+@font-face {
+  font-family: 'Myname';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Segoe UI Semibold'), local('SegoeUI-Semibold');
+}
+@font-face {
+  font-family: 'Myname';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Segoe UI'), local('SegoeUI');
+}
+@font-face {
+  font-family: 'Myname';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Segoe UI Light'), local('SegoeUI-Light');
+}
+
 p {
   font-size: 14px;"
 }
 
 h2 {
-  margin:  8px 0px ;
   font-size: 16px;
-  font-weight: 600;
 }
 
 a {
@@ -103,27 +126,6 @@ $small-width: 480px;
   margin-top: 50px;
 }
 
-.pub1 {
-  margin:  0px;
-  font-size: 14px;
-}
-
-.pub2 {
-  font-size: 14px;
-}
-
-.pub3 {
-  margin:  8px 0px ;
-  font-size: 14px;
-}
-
-.pub4 {
-  margin:  8px 0px 25px ;
-}
-
-.pub5 {
-  margin:  8px 0px 30px ;
-}
 
 .pex1 {
   margin:  8px 0px ;
@@ -223,17 +225,6 @@ $small-width: 480px;
   clear: both;
 }
 
-.column {
-  float: left;
-}
-
-.publication.left {
-  width: 80%;
-}
-
-.publication.right {
-  width: 20%;
-}
 
  .project.left {
   width: 82%;
@@ -243,10 +234,6 @@ $small-width: 480px;
   width: 18%;
 }
 
-.overviewImg {
-  width: 100;
-  border-radius: 10%;
-}
 
 .projectImg {
  width:  100%;
@@ -256,3 +243,44 @@ $small-width: 480px;
   margin: 20px 0px 0px 0px;
 }
 
+
+
+.overviewImg {
+  width: 100%;
+  border-radius: 10%;
+}
+
+.column {
+  float: left;
+}
+
+.left {
+  width: 20%;
+}
+
+.right {
+  width: 80%;
+}
+
+.pub1 {
+  margin:  0px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pub2 {
+  font-size: 14px;
+}
+
+.pub3 {
+  margin:  8px 0px ;
+  font-size: 14px;
+}
+
+.pub4 {
+  margin:  8px 0px 25px ;
+}
+
+.pub5 {
+  margin:  8px 0px 30px ;
+}

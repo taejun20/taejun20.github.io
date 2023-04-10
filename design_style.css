@@ -107,52 +107,6 @@ $small-width: 480px;
   margin-top: 50px;
 }
 
-.teach1 {
-  margin:  8px 0px ;
-}
-
-.teach2 {
-  margin:  8px 0px ;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.teach3 {
-  margin:  8px 0px 30px ;
-}
-
-
-.proj1 {
-  margin:  8px 8px 0px 0px ;
-}
-.proj2 {
-  margin:  8px 0px ;
-  font-size: 16px;
-
-}
-.proj3 {
-  margin:  8px 0px ;
-}
-.proj4 {
-  margin:  8px 0px 15px;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-
- .project.left {
-  width: 82%;
-}
-
-.project.right {
-  width: 18%;
-}
-
-
 .projectImg {
  width:  100%;
 }
@@ -161,12 +115,16 @@ $small-width: 480px;
   margin: 20px 0px 0px 0px;
 }
 
-
-
 .overviewImg {
   width: 100%;
   border-radius: 10px;
   margin:  0px 0px 20px 0px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .column {
@@ -175,11 +133,11 @@ $small-width: 480px;
 
 .left {
   width: 20%;
-  margin:  0px 15px 0px 0px;
+  margin:  0px 2.2% 0px 0px;
 }
 
 .right {
-  width: 77%;
+  width: 77.8%;
 }
 
 .pub1 {

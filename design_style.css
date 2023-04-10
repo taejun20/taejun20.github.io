@@ -118,13 +118,14 @@ $small-width: 480px;
 .overviewImg {
   width: 100%;
   border-radius: 10px;
-  margin:  0px 0px 20px 0px;
+  margin:  0px 0px 0px 0px;
 }
 
 .row:after {
   content: "";
   display: table;
   clear: both;
+  margin:  0px 0px 20px 0px;
 }
 
 .column {

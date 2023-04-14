@@ -1,0 +1,7 @@
+*.gem
+.bundle
+.DS_Store
+.sass-cache
+_site
+tale.gemspec
+Gemfile.lock

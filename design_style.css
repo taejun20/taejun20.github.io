@@ -1,33 +1,19 @@
-p {
-  font-size: 14px;
-}
-
-h2 {
-  font-size: 20px;
-}
-
-p.section {
-  font-family: Tahoma;
-  font-size: 20px;
-  margin:  50px 0px 10px 0px ;
-}
-
 a {
   color: black;
   text-decoration: none;
 }
 
 a.pink {
-  color: #348AA9;
+  color: #EC5753;
   text-decoration: none;
-}s
+}
 
 a.name {
   color: black;
 }
 
 a:hover {
-  color: #348AA9;
+  color: #EC5753;
 }
 
 .pull-left {
@@ -85,7 +71,6 @@ $small-width: 480px;
   }
   .pull-right {
     float: none;
-    padding: 0px 0 0px 0px;
   }
 
 }
@@ -108,89 +93,112 @@ $small-width: 480px;
   margin-top: 50px;
 }
 
-.projectImg {
- width:  100%;
+.pub1 {
+  margin:  0px;
+  font-size: 16px;
 }
 
-.contact {
-  margin: 20px 0px 0px 0px;
+.pub2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-.overviewImg {
-  width: 100%;
-  border-radius: 5px;
-  margin:  0px 0px 0px 0px;
+.pub3 {
+  margin:  8px 0px ;
+  font-size: 16px;
+
 }
+
+.pub4 {
+  margin:  8px 0px 30px ;
+}
+
+.award1 {
+  margin:  8px 0px ;
+}
+
+.award2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.award3 {
+  margin:  8px 0px 30px ;
+}
+
+.teach1 {
+  margin:  8px 0px ;
+}
+
+.teach2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.teach3 {
+  margin:  8px 0px 30px ;
+}
+
+.proj1 {
+  margin:  8px 8px 0px 0px ;
+}
+.proj2 {
+  margin:  8px 0px ;
+  font-size: 18px;
+
+}
+.proj3 {
+  margin:  8px 0px ;
+}
+.proj4 {
+  margin:  8px 0px 15px;
+}
+
+
 
 .row:after {
   content: "";
   display: table;
   clear: both;
-  margin:  0px 0px 20px 0px;
 }
 
 .column {
   float: left;
 }
 
-.left {
+.publication.left {
+  width: 80%;
+}
+
+.publication.right {
   width: 20%;
-  margin:  0px 2.2% 0px 0px;
 }
 
-.right {
-  width: 77.8%;
+ .project.left {
+  width: 82%;
 }
 
-.pub1 {
-  margin:  0px 0px 0px 0px;
-  font-size: 14px;
-  font-weight: 600;
+.project.right {
+  width: 18%;
 }
 
-.pub2 {
-  margin:  3px 0px 0px 0px;
-  font-size: 14px;
+.overviewImg {
+  width:  100%;
 }
 
-.pub3 {
-  margin:  3px 0px 0px 0px;
-  font-size: 14px;
-}
-
-.pub4 {
-  margin:  3px 0px 0px 0px;
+.projectImg {
+ width:  100%;
 }
 
 
-.pex1 {
-  margin:  0px 0px 0px 0px;
+.contact {
+  margin: 20px 0px 0px 0px;
 }
 
-.pex2 {
-  margin:  0px 0px 15px 0px;
-}
 
-.award1 {
-  margin:  0px 0px 0px 0px;
-}
 
-.award2 {
-  margin:  0px 0px 15px 0px;
-}
 
-.talk1 {
-  margin:  0px 0px 0px 0px;
-}
 
-.talk2 {
-  margin:  0px 0px 15px 0px;
-}
-
-.service1 {
-  margin:  0px 0px 10px 0px;
-}
-
-.service2 {
-  margin:  3px 0px 0px 0px;
-}

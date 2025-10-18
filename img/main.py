@@ -8,7 +8,7 @@ output_dir = "."
 # Make sure the output directory exists
 os.makedirs(output_dir, exist_ok=True)
 
-filename = "profileImage.png"
+filename = "profile2.png"
 
 # Open the image
 img_path = os.path.join(input_dir, filename)
@@ -16,6 +16,6 @@ img = Image.open(img_path).convert("RGB")  # convert to RGB to save as JPEG
 
 jpg_path = os.path.join(output_dir, f"profileImage2.jpg")
 # Save as JPEG
-img.save(jpg_path, "JPEG", quality=5)
+img.save(jpg_path, "JPEG", quality=80)
 
 print("✅ All PNGs converted to JPGs.")

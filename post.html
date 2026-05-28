@@ -28,7 +28,11 @@
       color: var(--text-main);
       font-size: 1rem;
       line-height: 1.75;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
+    main { flex: 1; width: 100%; }
 
     /* ─── Navbar ─────────────────────────────────────────── */
     .navbar {
@@ -63,7 +67,7 @@
     .page-wrap {
       max-width: 860px;
       margin: 0 auto;
-      padding: 2.5rem 1.25rem 4rem;
+      padding: 2.5rem 1.25rem 0.5rem;
     }
 
     /* ─── Post header ────────────────────────────────────── */
@@ -73,7 +77,7 @@
       border-bottom: 1px solid var(--border);
     }
     .post-header h1 {
-      font-size: 1.75rem;
+      font-size: 2.2rem;
       font-weight: 700;
       line-height: 1.3;
       margin-bottom: 0.5rem;
@@ -95,18 +99,31 @@
     }
 
     /* ─── Markdown content ───────────────────────────────── */
+    .post-body h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-top: 2.2rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-main);
+    }
     .post-body h2 {
-      font-size: 1.2rem;
+      font-size: 1.45rem;
       font-weight: 700;
       margin-top: 2rem;
       margin-bottom: 0.6rem;
       color: var(--text-main);
     }
     .post-body h3 {
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 700;
       margin-top: 1.5rem;
       margin-bottom: 0.4rem;
+    }
+    .post-body h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-top: 1.2rem;
+      margin-bottom: 0.3rem;
     }
     .post-body p { margin-bottom: 0.9rem; }
     .post-body ul, .post-body ol {
@@ -138,6 +155,18 @@
     }
     .post-body pre code { background: none; padding: 0; }
 
+    /* ─── Note box (```note) ─────────────────────────────── */
+    .note-box {
+      background: #f6f8ff;
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
     /* ─── Back link ──────────────────────────────────────── */
     .back-link {
       display: inline-flex;
@@ -156,8 +185,8 @@
       font-size: 0.82rem;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
-      padding: 1.5rem 1rem;
-      margin-top: 2rem;
+      padding: 0.5rem 1rem;
+      margin-top: 0.1rem;
     }
   </style>
 </head>
@@ -200,7 +229,7 @@
     <div class="post-body" id="post-body"></div>
   </main>
 
-  <footer>© 2026 Taejun Kim</footer>
+  <footer>© Taejun Kim</footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -241,6 +270,13 @@
           chip.textContent = fm.tag;
           chip.style.display = 'inline';
         }
+
+        // Custom renderer: ```note blocks → styled note-box div
+        // Pre-process: replace ```note...``` with a placeholder div before parsing
+        body = body.replace(/```note\n([\s\S]*?)```/g, (_, content) => {
+          const inner = content.trim().replace(/\n/g, '<br>');
+          return `<div class="note-box">${inner}</div>\n`;
+        });
 
         // Render markdown body
         document.getElementById('post-body').innerHTML = marked.parse(body);

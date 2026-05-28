@@ -10,7 +10,7 @@ ANOVA 분석에서는 각 factor의 main effect와 함께 factor 사이의 inter
 
 친구가 같이 영화를 보러가자고 했다. 대답은 "누가 같이 오는지, 어떤 영화를 보는지에 따라 참석할지 결정할게."
 
-```
+```note
 Independent Variable: 영화의 종류, 같이 오는 사람의 종류  
 Dependent Variable: 참석 여부
 ```
@@ -26,9 +26,10 @@ Dependent Variable: 참석 여부
 
 가상의 예시를 하나 들어보자. 손목의 두께와 진동 모터의 종류가 촉각 패턴 인지율에 미치는 영향을 확인하는 실험을 진행했다고 하자. 나는 "진동 모터의 종류가 촉각 패턴 인지율에 통계적으로 유의미한 영향을 미친다. 모터 a가 모터 b보다 효과적이다." 라는 주장을 내 논문에 싣고 싶은 상황이다.
 
-**Independent Variable:** 사용자 손목의 두께 (10, 12, 14), 진동 모터의 종류 (모터a, 모터b)  
-**Dependent Variable:** 촉각 패턴 인지율 (%)
-
+```note
+Independent Variable: 사용자 손목의 두께 (10, 12, 14), 진동 모터의 종류 (모터a, 모터b)  
+Dependent Variable: 촉각 패턴 인지율 (%)
+```
 실험을 끝내고 ANOVA 분석을 해보니 진동 모터의 종류라는 factor의 main effect가 확인되었다. 그런데 (진동 모터의 종류 x 손목의 두께)의 Interaction effect도 함께 발견이 되었다. 이런 경우 "진동 모터의 종류가 촉각 패턴 인지율에 유의미한 영향을 미친다" 라고 단순히 주장하면 안된다. 이런 상황에서는 각 factor의 main effect와 interaction effect를 모두 같이 보고한 다음 사후 분석 결과를 보여주며 "손목 두께가 10인 경우에만 모터 a가 모터 b보다 촉각 패턴 인지에 효과적이며, 다른 손목 두께에서는 그렇지 않다" 라고 보고해야 한다.
 
 # 참고

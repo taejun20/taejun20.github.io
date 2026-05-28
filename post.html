@@ -107,14 +107,14 @@
       color: var(--text-main);
     }
     .post-body h2 {
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       font-weight: 700;
       margin-top: 2rem;
       margin-bottom: 0.6rem;
       color: var(--text-main);
     }
     .post-body h3 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
       margin-top: 1.5rem;
       margin-bottom: 0.4rem;
@@ -124,6 +124,35 @@
       font-weight: 700;
       margin-top: 1.2rem;
       margin-bottom: 0.3rem;
+    }
+    .post-body figure {
+      margin: 0.5rem 0 0.5rem;
+    }
+    .post-body li figure {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .post-body figure img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+    .post-body figcaption {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+      line-height: 1.4;
+    }
+    /* fallback for images outside figure */
+    .post-body img {
+      max-width: 100%;
+      height: auto;
+      margin: 0.5rem 0 1rem;
+      display: block;
     }
     .post-body p { margin-bottom: 0.9rem; }
     .post-body ul, .post-body ol {
@@ -154,6 +183,49 @@
       margin-bottom: 1rem;
     }
     .post-body pre code { background: none; padding: 0; }
+
+    /* ─── Tables ────────────────────────────────────────── */
+    .post-body table {
+      border-collapse: collapse;
+      width: auto;
+      margin: 0.5rem 0 1.2rem;
+      font-size: 0.93rem;
+    }
+    .post-body th, .post-body td {
+      border: 1px solid var(--border);
+      padding: 0.45rem 0.85rem;
+      text-align: center;
+    }
+    .post-body th {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .post-body tr:nth-child(even) td {
+      background: #f8f9fa;
+    }
+
+    /* ─── Tables inside note-box ────────────────────────── */
+    .note-box table {
+      border-collapse: collapse;
+      width: auto;
+      margin: 0.25rem 0 0.5rem;
+      font-size: 0.88rem;
+    }
+    .note-box th, .note-box td {
+      border: 1px solid #c5cfe8;
+      padding: 0.35rem 0.75rem;
+      text-align: center;
+    }
+    .note-box th {
+      background: #dce4f8;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .note-box tr:nth-child(even) td {
+      background: #edf0fa;
+    }
+    .note-box p { margin-bottom: 0.25rem; }
 
     /* ─── Note box (```note) ─────────────────────────────── */
     .note-box {
@@ -271,10 +343,40 @@
           chip.style.display = 'inline';
         }
 
+        // Pre-process: **bold** and *italic* → HTML (avoids CommonMark edge case
+        // where closing ** preceded by punctuation like ) must be followed by space)
+        // First, protect fenced code blocks and inline code spans from substitution
+        const codeBlocks = [];
+        body = body.replace(/(```[\s\S]*?```|`[^`\n]+`)/g, match => {
+          codeBlocks.push(match);
+          return `\x00CODE${codeBlocks.length - 1}\x00`;
+        });
+        body = body.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+        body = body.replace(/(?<!\*)\*([^*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+        // Restore code blocks
+        body = body.replace(/\x00CODE(\d+)\x00/g, (_, i) => codeBlocks[+i]);
+
+        // Pre-process: ![alt|50%](url) → <figure><img><figcaption>
+        // Width is optional % suffix after | in alt text
+        body = body.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => {
+          let caption = alt.trim();
+          let widthStyle = 'width:100%';
+          const pipeIdx = caption.lastIndexOf('|');
+          if (pipeIdx !== -1) {
+            const maybeW = caption.slice(pipeIdx + 1).trim();
+            if (/^\d+%$/.test(maybeW)) {
+              widthStyle = `width:${maybeW};margin:0.5rem auto 0.5rem`;
+              caption = caption.slice(0, pipeIdx).trim();
+            }
+          }
+          const figcaption = caption ? `<figcaption>${caption}</figcaption>` : '';
+          return `<figure style="${widthStyle}"><img src="${url}" alt="${caption}" style="width:100%">${figcaption}</figure>`;
+        });
+
         // Custom renderer: ```note blocks → styled note-box div
         // Pre-process: replace ```note...``` with a placeholder div before parsing
         body = body.replace(/```note\n([\s\S]*?)```/g, (_, content) => {
-          const inner = content.trim().replace(/\n/g, '<br>');
+          const inner = marked.parse(content.trim());
           return `<div class="note-box">${inner}</div>\n`;
         });
 

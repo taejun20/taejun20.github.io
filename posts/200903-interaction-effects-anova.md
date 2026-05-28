@@ -22,7 +22,7 @@ Dependent Variable: 참석 여부
 
 특정 factor의 main effect를 통해 내 주장을 뒷받침하고 싶다. ANOVA 분석 결과 factor의 main effect가 확인되었다. 그런데 다른 factor와의 interaction effect 또한 확인되었다면? 이는 달갑지 않은 소식이 될 것이다. Interaction effect가 있다는 말은 factor의 main effect가 다른 factor의 level에 따라 있기도 하고 없기도 하다는 것이니 "이 factor는 main effect가 있다"라고 온전히 주장할 수가 없게되는 것이다. 나아가 내가 설정한 Independent Variable들이 사실은 서로 "Independent"하지 않았다는 것을 보여주므로 실험 디자인을 지적받을 수도 있다. 사후 분석을 통해 두 Factor가 함께 조합된 조건들에 대한 pairwise comparison을 보여주며 결과를 설명하는 수 밖에 없다.
 
-# Elaboration with Example
+## Elaboration with Example
 
 가상의 예시를 하나 들어보자. 손목의 두께와 진동 모터의 종류가 촉각 패턴 인지율에 미치는 영향을 확인하는 실험을 진행했다고 하자. 나는 "진동 모터의 종류가 촉각 패턴 인지율에 통계적으로 유의미한 영향을 미친다. 모터 a가 모터 b보다 효과적이다." 라는 주장을 내 논문에 싣고 싶은 상황이다.
 

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fcfdfe;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    /* ─── Navbar ─────────────────────────────────────────── */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+    }
+    .navbar-brand {
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: var(--text-main) !important;
+      letter-spacing: -0.3px;
+    }
+    .navbar-brand:hover { color: var(--accent) !important; }
+    .nav-link {
+      font-weight: 500;
+      font-size: 0.92rem;
+      color: var(--text-sub) !important;
+      padding: 0.4rem 0.75rem !important;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent) !important;
+      background: var(--accent-soft);
+    }
+    .navbar-toggler { border: 1px solid var(--border); font-size: 0.85rem; }
+    .navbar-toggler:focus { box-shadow: none; }
+
+    /* ─── Page wrapper ────────────────────────────────────── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    /* ─── Post header ────────────────────────────────────── */
+    .post-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .post-header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .tag-chip {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 20px;
+      padding: 0.1rem 0.55rem;
+    }
+
+    /* ─── Markdown content ───────────────────────────────── */
+    .post-body h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-main);
+    }
+    .post-body h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-top: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .post-body p { margin-bottom: 0.9rem; }
+    .post-body ul, .post-body ol {
+      padding-left: 1.5rem;
+      margin-bottom: 0.9rem;
+    }
+    .post-body li { margin-bottom: 0.3rem; }
+    .post-body a { color: var(--accent); }
+    .post-body a:hover { text-decoration: underline; }
+    .post-body hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+    .post-body strong { font-weight: 600; }
+    .post-body em { color: var(--text-sub); }
+    .post-body code {
+      background: #f1f3f5;
+      border-radius: 4px;
+      padding: 0.1em 0.35em;
+      font-size: 0.88em;
+    }
+    .post-body pre {
+      background: #f1f3f5;
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      margin-bottom: 1rem;
+    }
+    .post-body pre code { background: none; padding: 0; }
+
+    /* ─── Back link ──────────────────────────────────────── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    /* ─── Footer ──────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ░░ NAVBAR ░░ -->
+  <nav class="navbar navbar-expand-md sticky-top">
+    <div class="container-fluid" style="max-width:860px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem;">
+      <a class="navbar-brand" href="index.html">Taejun Kim</a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list" style="font-size:1.2rem;"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="assets/CV_Taejun.pdf" target="_blank">CV</a></li>
+          <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
+          <li class="nav-item"><a class="nav-link active" href="posts.html">Posts</a></li>
+          <li class="nav-item"><a class="nav-link" href="vibe.html">Vibes</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ░░ MAIN ░░ -->
+  <main class="page-wrap">
+    <a class="back-link" href="posts.html">
+      <i class="bi bi-arrow-left"></i> Posts
+    </a>
+
+    <div class="post-header">
+      <h1 id="post-title">Loading…</h1>
+      <div class="post-meta">
+        <span id="post-date"></span>
+        <span id="post-tag" class="tag-chip" style="display:none;"></span>
+      </div>
+    </div>
+
+    <div class="post-body" id="post-body"></div>
+  </main>
+
+  <footer>© 2026 Taejun Kim</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    (async () => {
+      const params = new URLSearchParams(window.location.search);
+      const slug   = params.get('post');
+      if (!slug) { document.getElementById('post-title').textContent = 'Post not found.'; return; }
+
+      try {
+        const res  = await fetch(`posts/${slug}.md`);
+        if (!res.ok) throw new Error('Not found');
+        const raw  = await res.text();
+
+        // Parse simple YAML-ish frontmatter between --- delimiters
+        const fm = {};
+        let body = raw;
+        const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+        if (fmMatch) {
+          fmMatch[1].split('\n').forEach(line => {
+            const [k, ...v] = line.split(':');
+            if (k && v.length) fm[k.trim()] = v.join(':').trim();
+          });
+          body = fmMatch[2];
+        }
+
+        // Populate header
+        document.title = (fm.title || slug) + ' – Taejun Kim';
+        document.getElementById('post-title').textContent = fm.title || slug;
+
+        if (fm.date) {
+          const d = new Date(fm.date);
+          document.getElementById('post-date').textContent =
+            d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+        if (fm.tag) {
+          const chip = document.getElementById('post-tag');
+          chip.textContent = fm.tag;
+          chip.style.display = 'inline';
+        }
+
+        // Render markdown body
+        document.getElementById('post-body').innerHTML = marked.parse(body);
+      } catch (e) {
+        document.getElementById('post-title').textContent = 'Post not found.';
+      }
+    })();
+  </script>
+
+</body>
+</html>

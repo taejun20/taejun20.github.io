@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fcfdfe;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    /* ─── Navbar ─────────────────────────────────────────── */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+    }
+    .navbar-brand {
+      font-weight: 500;
+      font-size: 1.05rem;
+      color: var(--text-main) !important;
+      letter-spacing: -0.3px;
+    }
+    .navbar-brand:hover { color: var(--accent) !important; }
+    .nav-link {
+      font-weight: 500;
+      font-size: 0.92rem;
+      color: var(--text-sub) !important;
+      padding: 0.4rem 0.75rem !important;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent) !important;
+      background: var(--accent-soft);
+    }
+    .navbar-toggler { border: 1px solid var(--border); font-size: 0.85rem; }
+    .navbar-toggler:focus { box-shadow: none; }
+
+    /* ─── Page wrapper ────────────────────────────────────── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+    }
+
+    /* ─── Publication entry ───────────────────────────────── */
+    .pub-entry {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+      line-height: 1.54;
+    }
+
+    .pub-img {
+      width: 220px;
+      min-width: 220px;
+      height: auto;
+      border-radius: var(--radius);
+      display: block;
+      background: #ffffff;
+      border: 1px solid var(--border);
+    }
+
+    .pub-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0;
+      line-height: 1.45;
+    }
+    .pub-venue {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      margin-bottom: 0;
+    }
+    .pub-venue strong { color: var(--text-main); }
+    .pub-authors {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 0;
+    }
+    .pub-authors u { color: var(--text-main); }
+    .pub-authors a { color: var(--text-main); text-decoration: none; }
+    .pub-authors a:hover { color: var(--accent); }
+    .pub-links {
+      font-size: 0.95rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .pub-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .pub-links a:hover { text-decoration: underline; }
+    .pub-links span {
+      color: var(--text-muted);
+      margin: 0 0.4rem;
+    }
+
+    /* ─── Footer ──────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+      margin-top: 2rem;
+    }
+
+    /* ─── Mobile ──────────────────────────────────────────── */
+    @media (max-width: 575px) {
+      .pub-entry { flex-direction: column; }
+      .pub-img { width: 100%; min-width: unset; height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ░░ NAVBAR ░░ -->
+  <nav class="navbar navbar-expand-md sticky-top">
+    <div class="container-fluid" style="max-width:860px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem;">
+      <a class="navbar-brand" href="index.html">Taejun Kim</a>
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list" style="font-size:1.2rem;"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="assets/CV_Taejun.pdf" target="_blank">CV</a></li>
+          <li class="nav-item"><a class="nav-link active" href="research.html">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="posts.html">Posts</a></li>
+          <li class="nav-item"><a class="nav-link" href="vibe.html">Vibes</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ░░ MAIN ░░ -->
+  <main class="page-wrap">
+
+    <h1 style="text-align:center;font-weight:700;font-size:2rem;margin-bottom:1.2rem;">Selected Publications</h1>
+    <p style="color:var(--text-main);font-size:1rem;margin-bottom:2rem;">
+      For a full publication list, please refer to my
+      <a href="https://scholar.google.com/citations?user=k8p4WdoAAAAJ" target="_blank" style="color:var(--accent);text-decoration:none;">Google Scholar</a>
+      and <a href="assets/CV_Taejun.pdf" target="_blank" style="color:var(--accent);text-decoration:none;">CV</a>.
+    </p>
+
+    <!-- 1. HiFiGaze -->
+    <div class="pub-entry">
+      <img class="pub-img" src="img/research/hifigaze.png" alt="HiFiGaze" />
+      <div>
+        <p class="pub-title">HiFiGaze: Improving Eye Tracking Accuracy Using Screen Content Knowledge (Honorable Mention Award, Top 5%) 🏆</p>
+        <p class="pub-venue"><strong>CHI 2026</strong>: ACM Conference on Human Factors in Computing Systems</p>
+        <p class="pub-authors"><u>Taejun Kim</u>, Vimal Mollyn, Riku Arakawa, Chris Harrison</p>
+        <p class="pub-links">
+          <a href="https://arxiv.org/pdf/2603.19588" target="_blank">Paper</a><span>|</span>
+          <a href="https://youtu.be/tLFRt1snIhE?si=1_epCWcY9lbBJqMp" target="_blank">Video</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- 2. Tension&Gaze -->
+    <div class="pub-entry">
+      <img class="pub-img" src="img/research/tensionGaze.png" alt="Tension&Gaze" />
+      <div>
+        <p class="pub-title">Tension&amp;Gaze: Gaze-Responsive UI Gated by Finger Tension</p>
+        <p class="pub-venue"><strong>UIST 2025 Demo</strong>: ACM Symposium on User Interface Software and Technology</p>
+        <p class="pub-authors"><u>Taejun Kim</u>, Ludwig Sidenmark, Parastoo Abtahi, Jisu Yim, YoungIn Kim, Geehyuk Lee</p>
+        <p class="pub-links">
+          <a href="paper/tensiongaze_paper.pdf" target="_blank">Paper</a><span>|</span>
+          <a href="https://doi.org/10.1145/3746058.3759018" target="_blank">DOI</a><span>|</span>
+          <a href="https://www.youtube.com/watch?v=PtJy642D3kM" target="_blank">Video</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- 3. QuadStretcher -->
+    <div class="pub-entry">
+      <img class="pub-img" src="img/research/quadStretcher.png" alt="QuadStretcher" />
+      <div>
+        <p class="pub-title">QuadStretcher: A Forearm-Worn Skin Stretch Display for Bare-Hand Interaction in AR/VR</p>
+        <p class="pub-venue"><strong>CHI 2024</strong>: ACM Conference on Human Factors in Computing Systems</p>
+        <p class="pub-authors"><u>Taejun Kim</u>, Youngbo Shim, YoungIn Kim, Sunbum Kim, Jaeyeon Lee, Geehyuk Lee</p>
+        <p class="pub-links">
+          <a href="https://arxiv.org/pdf/2511.21157" target="_blank">Paper</a><span>|</span>
+          <a href="https://youtu.be/0LicmByEknI?si=OyfPEogyuplR_x_U" target="_blank">Video</a><span>|</span>
+          <a href="https://github.com/taejun20/QuadStretcher" target="_blank">Code &amp; Open Hardware</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- 4. STAR -->
+    <div class="pub-entry">
+      <img class="pub-img" src="img/research/star.png" alt="STAR" />
+      <div>
+        <p class="pub-title">STAR: Smartphone-Analogous Typing in Augmented Reality</p>
+        <p class="pub-venue"><strong>UIST 2023</strong>: ACM Symposium on User Interface Software and Technology</p>
+        <p class="pub-authors"><u>Taejun Kim</u>, Amy Karlson, Aakar Gupta, Tovi Grossman, Jason Wu, Parastoo Abtahi, Christopher Collins, Michael Glueck, Hemant Bhaskar Surale</p>
+        <p class="pub-links">
+          <a href="https://arxiv.org/pdf/2511.21143" target="_blank">Paper</a><span>|</span>
+          <a href="https://youtu.be/aB0OnlVDSUE" target="_blank">Video</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- 5. Lattice Menu -->
+    <div class="pub-entry">
+      <img class="pub-img" src="img/research/latticeMenu.png" alt="Lattice Menu" />
+      <div>
+        <p class="pub-title">Lattice Menu: A Low-Error Gaze-Based Marking Menu Utilizing Target-Assisted Gaze Gestures on a Lattice of Visual Anchors</p>
+        <p class="pub-venue"><strong>CHI 2022</strong>: ACM Conference on Human Factors in Computing Systems</p>
+        <p class="pub-authors">
+          <u>Taejun Kim</u>,
+          <a href="https://uxerham.com/" target="_blank">Auejin Ham</a>,
+          <a href="https://sunggeunahn.github.io/" target="_blank">Sunggeun Ahn</a>,
+          <a href="https://hcil.kaist.ac.kr/geehyuk-lee/" target="_blank">Geehyuk Lee</a>
+        </p>
+        <p class="pub-links">
+          <a href="https://arxiv.org/pdf/2511.21131" target="_blank">Paper</a><span>|</span>
+          <a href="https://youtu.be/p9zJ8-umYQk" target="_blank">Video</a><span>|</span>
+          <a href="https://github.com/taejun20/LatticeMenu" target="_blank">Code</a><span>|</span>
+          <a href="https://taejunkim.com/projectPage/LatticeMenu.html" target="_blank">Project</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- 6. Heterogeneous Stroke -->
+    <div class="pub-entry">
+      <img class="pub-img" src="img/research/heteroStroke.png" alt="Heterogeneous Stroke" />
+      <div>
+        <p class="pub-title">Heterogeneous Stroke: Using Unique Vibration Cues to Improve the Wrist-Worn Spatiotemporal Tactile Display</p>
+        <p class="pub-venue"><strong>CHI 2021</strong>: ACM Conference on Human Factors in Computing Systems</p>
+        <p class="pub-authors"><u>Taejun Kim</u>, Youngbo Aram Shim, Geehyuk Lee</p>
+        <p class="pub-links">
+          <a href="https://arxiv.org/pdf/2511.16133" target="_blank">Paper</a><span>|</span>
+          <a href="https://youtu.be/Qc-zFCvWwCI" target="_blank">Video</a><span>|</span>
+          <a href="https://github.com/taejun20/HeterogeneousStroke" target="_blank">Code</a>
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>© 2026 Taejun Kim</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -82,8 +82,8 @@
 
     /* ─── Profile section ────────────────────────────────── */
     .profile-photo {
-      width: 150px;
-      height: 150px;
+      width: 120px;
+      height: 120px;
       border-radius: 14px;
       object-fit: cover;
       background: var(--border);
@@ -93,7 +93,7 @@
     }
 
     .profile-name {
-      font-size: 1.96rem;
+      font-size: 2.2rem;
       font-weight: 700;
       letter-spacing: -0.5px;
       color: var(--text-main);
@@ -255,49 +255,52 @@
   <main class="page-wrap">
 
     <!-- Profile -->
-    <div class="profile-section d-flex align-items-start gap-4 mt-2">
+    <!-- Top row: name/affil + photo -->
+    <div class="profile-section d-flex align-items-center gap-4 mt-2">
       <img src="img/profile.jpg" alt="Taejun Kim" class="profile-photo" />
-
-      <div class="flex-grow-1">
+      <div style="padding-top: 0.6rem;">
         <div class="profile-name mb-1">Taejun Kim</div>
         <div class="profile-affil">Postdoctoral Fellow, KAIST</div>
+      </div>
+    </div>
 
-        <!-- Brief intro -->
-        <div class="mb-3">
-          <p class="mb-2" style="color:var(--text-main);">
-            I am a postdoctoral researcher at KAIST, working at the intersection of
-            Human-Computer Interaction (HCI) and Artificial Intelligence (AI). Previously, I completed
-            my Ph.D., M.S., and B.S. in Computer Science at KAIST, advised by
-            Geehyuk Lee.
-          </p>
-          <p class="mb-2" style="color:var(--text-main);">
-            My research designs, builds, and evaluates novel and practical interactive technologies
-            that leverage machine learning on mobile and wearable devices, grounded in rigorous HCI
-            methodologies and user-centered evaluation. Broadly, my work bridges HCI, machine
-            learning, ubiquitous computing, and extended reality. I publish papers at top-tier
-            venues, always aiming at real-world impacts.
-          </p>
-          <p class="mb-0 px-3 py-2" style="color:var(--accent); background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:6px; font-size:0.93rem;">
-            I'm on the job market for tenure-track faculty positions or full-time industry research
-            and engineering positions. Please feel free to reach out, I would be happy to chat.
-          </p>
-        </div>
+    <!-- Intro + social (full width) -->
+    <div class="mt-3">
+      <!-- Brief intro -->
+      <div class="mb-3">
+        <p class="mb-2" style="color:var(--text-main);">
+          I am a postdoctoral researcher at KAIST, working at the intersection of
+          Human-Computer Interaction (HCI) and Artificial Intelligence (AI). Previously, I completed
+          my Ph.D., M.S., and B.S. in Computer Science at KAIST, advised by
+          Geehyuk Lee.
+        </p>
+        <p class="mb-2" style="color:var(--text-main);">
+          My research designs, builds, and evaluates novel and practical interactive technologies
+          that leverage machine learning on mobile and wearable devices, grounded in rigorous HCI
+          methodologies and user-centered evaluation. Broadly, my work bridges HCI, machine
+          learning, ubiquitous computing, and extended reality. I publish papers at top-tier
+          venues, always aiming at real-world impacts.
+        </p>
+        <p class="mb-0 px-3 py-2" style="color:var(--accent); background:var(--accent-soft); border-left:3px solid var(--accent); border-radius:6px; font-size:0.93rem;">
+          I'm on the job market for tenure-track faculty positions or full-time industry research
+          and engineering positions. Please feel free to reach out, I would be happy to chat.
+        </p>
+      </div>
 
-        <!-- Social links -->
-        <div class="profile-pills d-flex flex-wrap">
-          <a href="mailto:taejunkim.me@gmail.com" class="social-pill" title="Email">
-            <i class="bi bi-envelope-fill"></i>
-          </a>
-          <a href="https://scholar.google.com/citations?user=k8p4WdoAAAAJ" target="_blank" class="social-pill" title="Google Scholar">
-            <i class="bi bi-mortarboard-fill"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/taejun13/" target="_blank" class="social-pill" title="LinkedIn">
-            <i class="bi bi-linkedin"></i>
-          </a>
-          <a href="https://github.com/taejun20" target="_blank" class="social-pill" title="GitHub">
-            <i class="bi bi-github"></i>
-          </a>
-        </div>
+      <!-- Social links -->
+      <div class="profile-pills d-flex flex-wrap">
+        <a href="mailto:taejunkim.me@gmail.com" class="social-pill" title="Email">
+          <i class="bi bi-envelope-fill"></i>
+        </a>
+        <a href="https://scholar.google.com/citations?user=k8p4WdoAAAAJ" target="_blank" class="social-pill" title="Google Scholar">
+          <i class="bi bi-mortarboard-fill"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/taejun13/" target="_blank" class="social-pill" title="LinkedIn">
+          <i class="bi bi-linkedin"></i>
+        </a>
+        <a href="https://github.com/taejun20" target="_blank" class="social-pill" title="GitHub">
+          <i class="bi bi-github"></i>
+        </a>
       </div>
     </div>
 

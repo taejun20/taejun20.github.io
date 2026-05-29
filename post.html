@@ -415,14 +415,22 @@
       // Expose handleLike globally
       window.handleLike = async function() {
         const btn = document.getElementById('like-btn');
-        if (localStorage.getItem(likedKey)) return; // already liked
+        const cur = parseInt(document.getElementById('like-count').textContent) || 0;
+        const liked = !!localStorage.getItem(likedKey);
         try {
-          await updateDoc(ref, { likes: increment(1) });
-          const cur = parseInt(document.getElementById('like-count').textContent) || 0;
-          document.getElementById('like-count').textContent = cur + 1;
-          btn.classList.add('liked');
-          document.getElementById('like-icon').className = 'bi bi-heart-fill';
-          localStorage.setItem(likedKey, '1');
+          if (liked) {
+            await updateDoc(ref, { likes: increment(-1) });
+            document.getElementById('like-count').textContent = Math.max(0, cur - 1);
+            btn.classList.remove('liked');
+            document.getElementById('like-icon').className = 'bi bi-heart';
+            localStorage.removeItem(likedKey);
+          } else {
+            await updateDoc(ref, { likes: increment(1) });
+            document.getElementById('like-count').textContent = cur + 1;
+            btn.classList.add('liked');
+            document.getElementById('like-icon').className = 'bi bi-heart-fill';
+            localStorage.setItem(likedKey, '1');
+          }
         } catch (e) {
           console.warn('Like error:', e);
         }

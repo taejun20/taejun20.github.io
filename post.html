@@ -135,6 +135,16 @@
     .post-body figure {
       margin: 0.5rem 0 0.5rem;
     }
+    .post-figure {
+      width: var(--fig-w, 100%);
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 575px) {
+      .post-figure {
+        width: 100% !important;
+      }
+    }
     .post-body li figure {
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
@@ -477,17 +487,17 @@
         // Width is optional % suffix after | in alt text
         body = body.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => {
           let caption = alt.trim();
-          let widthStyle = 'width:100%';
+          let desktopWidth = '100%';
           const pipeIdx = caption.lastIndexOf('|');
           if (pipeIdx !== -1) {
             const maybeW = caption.slice(pipeIdx + 1).trim();
             if (/^\d+%$/.test(maybeW)) {
-              widthStyle = `width:${maybeW};margin:0.5rem auto 0.5rem`;
+              desktopWidth = maybeW;
               caption = caption.slice(0, pipeIdx).trim();
             }
           }
           const figcaption = caption ? `<figcaption>${caption}</figcaption>` : '';
-          return `<figure style="${widthStyle}"><img src="${url}" alt="${caption}" style="width:100%">${figcaption}</figure>`;
+          return `<figure class="post-figure" style="--fig-w:${desktopWidth}"><img src="${url}" alt="${caption}" style="width:100%">${figcaption}</figure>`;
         });
 
         // Custom renderer: ```note blocks → styled note-box div

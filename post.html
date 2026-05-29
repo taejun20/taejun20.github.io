@@ -88,6 +88,13 @@
       gap: 0.6rem;
       color: var(--text-muted);
       font-size: 0.85rem;
+      flex-wrap: wrap;
+    }
+    .post-meta-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
     .tag-chip {
       font-size: 0.75rem;
@@ -251,6 +258,33 @@
     }
     .back-link:hover { color: var(--accent); }
 
+    /* ─── Like button ───────────────────────────────────── */
+    .like-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.85rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+      line-height: 1;
+    }
+    .like-btn:hover {
+      border-color: #e03131;
+      color: #e03131;
+      background: #fff5f5;
+    }
+    .like-btn.liked {
+      border-color: #e03131;
+      color: #e03131;
+      background: #fff5f5;
+    }
+
     /* ─── Footer ──────────────────────────────────────────── */
     footer {
       text-align: center;
@@ -295,16 +329,99 @@
       <div class="post-meta">
         <span id="post-date"></span>
         <span id="post-tag" class="tag-chip" style="display:none;"></span>
+        <div class="post-meta-right" id="post-meta-stats" style="display:none;">
+          <span class="stat" style="display:flex;align-items:center;gap:0.3rem;">
+            <i class="bi bi-eye"></i>
+            <span id="view-count">–</span>
+          </span>
+          <button class="like-btn" id="like-btn" onclick="handleLike()">
+            <i class="bi bi-heart" id="like-icon"></i>
+            <span id="like-count">–</span>
+          </button>
+        </div>
       </div>
     </div>
 
     <div class="post-body" id="post-body"></div>
+
   </main>
 
   <footer>© Taejun Kim</footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyACYGPt7hnNc9rPImRpzSrXBFCE_lqHCzo",
+      authDomain: "tj-website-ce123.firebaseapp.com",
+      projectId: "tj-website-ce123",
+      storageBucket: "tj-website-ce123.firebasestorage.app",
+      messagingSenderId: "357861156744",
+      appId: "1:357861156744:web:2587a9a6a2ca931e9a7c3d"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db  = getFirestore(app);
+
+    const params = new URLSearchParams(window.location.search);
+    const slug   = params.get('post');
+
+    async function initFirebase() {
+      if (!slug) return;
+      const ref = doc(db, 'posts', slug);
+
+      // Increment view count (create doc if needed)
+      try {
+        const snap = await getDoc(ref);
+        if (snap.exists()) {
+          await updateDoc(ref, { views: increment(1) });
+          document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+          document.getElementById('like-count').textContent = snap.data().likes || 0;
+        } else {
+          await setDoc(ref, { views: 1, likes: 0 });
+          document.getElementById('view-count').textContent = 1;
+          document.getElementById('like-count').textContent = 0;
+        }
+      } catch (e) {
+        console.warn('Firestore error:', e);
+      }
+
+      // Like state from localStorage
+      const likedKey = `liked_${slug}`;
+      if (localStorage.getItem(likedKey)) {
+        const btn = document.getElementById('like-btn');
+        btn.classList.add('liked');
+        document.getElementById('like-icon').className = 'bi bi-heart-fill';
+      }
+
+      document.getElementById('post-meta-stats').style.display = 'flex';
+
+      // Expose handleLike globally
+      window.handleLike = async function() {
+        const btn = document.getElementById('like-btn');
+        if (localStorage.getItem(likedKey)) return; // already liked
+        try {
+          await updateDoc(ref, { likes: increment(1) });
+          const cur = parseInt(document.getElementById('like-count').textContent) || 0;
+          document.getElementById('like-count').textContent = cur + 1;
+          btn.classList.add('liked');
+          document.getElementById('like-icon').className = 'bi bi-heart-fill';
+          localStorage.setItem(likedKey, '1');
+        } catch (e) {
+          console.warn('Like error:', e);
+        }
+      };
+    }
+
+    initFirebase();
+  </script>
+
   <script>
     (async () => {
       const params = new URLSearchParams(window.location.search);

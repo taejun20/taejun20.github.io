@@ -20,167 +20,106 @@
       --border:      #dee2e6;
       --radius:      10px;
     }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                   "Helvetica Neue", Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-size: 1rem;
-      line-height: 1.7;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg); color: var(--text-main);
+      font-size: 1rem; line-height: 1.7;
+      display: flex; flex-direction: column; min-height: 100vh;
     }
     main { flex: 1; width: 100%; }
-
-    /* ─── Navbar ─────────────────────────────────────────── */
     .navbar {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-      padding: 0.6rem 1rem;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border); padding: 0.6rem 1rem;
     }
-    .navbar-brand {
-      font-weight: 500;
-      font-size: 1.05rem;
-      color: var(--text-main) !important;
-      letter-spacing: -0.3px;
-    }
+    .navbar-brand { font-weight: 500; font-size: 1.05rem; color: var(--text-main) !important; letter-spacing: -0.3px; }
     .navbar-brand:hover { color: var(--accent) !important; }
-    .nav-link {
-      font-weight: 500;
-      font-size: 0.92rem;
-      color: var(--text-sub) !important;
-      padding: 0.4rem 0.75rem !important;
-      border-radius: 6px;
-      transition: color 0.15s, background 0.15s;
-    }
-    .nav-link:hover, .nav-link.active {
-      color: var(--accent) !important;
-      background: var(--accent-soft);
-    }
+    .nav-link { font-weight: 500; font-size: 0.92rem; color: var(--text-sub) !important; padding: 0.4rem 0.75rem !important; border-radius: 6px; transition: color 0.15s, background 0.15s; }
+    .nav-link:hover, .nav-link.active { color: var(--accent) !important; background: var(--accent-soft); }
     .navbar-toggler { border: 1px solid var(--border); font-size: 0.85rem; }
     .navbar-toggler:focus { box-shadow: none; }
+    .page-wrap { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    .page-wrap-post { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.25rem 0.5rem; }
 
-    /* ─── Page wrapper ────────────────────────────────────── */
-    .page-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 2.5rem 1.25rem 4rem;
-    }
-
-    /* ─── Tag filter buttons ─────────────────────────────── */
-    .tag-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .tag-btn {
-      padding: 0.3rem 0.85rem;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      background: var(--card-bg);
-      color: var(--text-sub);
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .tag-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-soft);
-    }
-    .tag-btn.active {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-soft);
-    }
-
-    /* ─── Post list ──────────────────────────────────────── */
-    .post-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    .post-entry {
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      display: block;
-      color: inherit;
-    }
+    /* LIST */
+    .tag-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .tag-btn { padding: 0.3rem 0.85rem; border-radius: 20px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-sub); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+    .tag-btn:hover, .tag-btn.active { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+    .post-list { display: flex; flex-direction: column; gap: 0; }
+    .post-entry { padding: 0.9rem 0; border-bottom: 1px solid var(--border); text-decoration: none; display: block; color: inherit; }
     .post-entry:first-child { border-top: 1px solid var(--border); }
     .post-entry:hover .post-title { color: var(--accent); }
+    .post-title-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+    .post-title { font-size: 0.97rem; font-weight: 600; color: var(--text-main); transition: color 0.15s; }
+    .post-date { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.1rem; }
 
-    .post-title-row {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      flex-wrap: wrap;
-    }
-    .post-title {
-      font-size: 0.97rem;
-      font-weight: 600;
-      color: var(--text-main);
-      transition: color 0.15s;
-    }
-    .tag-chip {
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border-radius: 20px;
-      padding: 0.1rem 0.55rem;
-      white-space: nowrap;
-    }
-    .post-date {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 0.1rem;
-    }
-
-    /* ─── Footer ──────────────────────────────────────────── */
-    footer {
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      padding: 0.5rem 1rem;
-      margin-top: 0.1rem;
-    }
+    /* POST */
+    .tag-chip { font-size: 0.75rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); border-radius: 20px; padding: 0.1rem 0.55rem; white-space: nowrap; }
+    .post-header { margin-bottom: 2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
+    .post-header h1 { font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; }
+    .post-meta { display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); font-size: 0.85rem; flex-wrap: wrap; }
+    .post-meta-right { margin-left: auto; display: flex; align-items: center; gap: 0.75rem; }
+    .post-body h1 { font-size: 1.7rem; font-weight: 700; margin-top: 2.2rem; margin-bottom: 0.6rem; color: var(--text-main); }
+    .post-body h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; color: var(--text-main); }
+    .post-body h3 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.4rem; }
+    .post-body h4 { font-size: 0.95rem; font-weight: 700; margin-top: 1.2rem; margin-bottom: 0.3rem; }
+    .post-body figure { margin: 0.5rem 0; }
+    .post-figure { width: var(--fig-w, 100%); margin-left: auto; margin-right: auto; }
+    @media (max-width: 575px) { .post-figure { width: 100% !important; } }
+    .post-body li figure { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+    .post-body figure img { max-width: 100%; height: auto; display: block; margin: 0; padding: 0; }
+    .post-body figcaption { text-align: center; font-size: 0.95rem; color: var(--text-main); margin: 0; padding: 0; line-height: 1.4; }
+    .post-body img { max-width: 100%; height: auto; margin: 0.5rem 0 1rem; display: block; }
+    .post-body p { margin-bottom: 0.9rem; }
+    .post-body ul, .post-body ol { padding-left: 1.5rem; margin-bottom: 0.9rem; }
+    .post-body li { margin-bottom: 0.3rem; }
+    .post-body a { color: var(--accent); }
+    .post-body a:hover { text-decoration: underline; }
+    .post-body hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .post-body strong { font-weight: 600; }
+    .post-body em { color: var(--text-sub); }
+    .post-body code { background: #f1f3f5; border-radius: 4px; padding: 0.1em 0.35em; font-size: 0.88em; }
+    .post-body pre { background: #f1f3f5; border-radius: var(--radius); padding: 1rem 1.25rem; overflow-x: auto; margin-bottom: 1rem; }
+    .post-body pre code { background: none; padding: 0; }
+    .post-body table { border-collapse: collapse; width: auto; margin: 0.5rem 0 1.2rem; font-size: 0.93rem; }
+    .post-body th, .post-body td { border: 1px solid var(--border); padding: 0.45rem 0.85rem; text-align: center; }
+    .post-body th { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+    .post-body tr:nth-child(even) td { background: #f8f9fa; }
+    .note-box { background: #f6f8ff; border-left: 3px solid var(--accent); border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 1rem; color: var(--text-main); font-size: 0.9rem; line-height: 1.65; }
+    .note-box table { border-collapse: collapse; width: auto; margin: 0.25rem 0 0.5rem; font-size: 0.88rem; }
+    .note-box th, .note-box td { border: 1px solid #c5cfe8; padding: 0.35rem 0.75rem; text-align: center; }
+    .note-box th { background: #dce4f8; color: var(--accent); font-weight: 600; }
+    .note-box tr:nth-child(even) td { background: #edf0fa; }
+    .note-box p { margin-bottom: 0.25rem; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.88rem; color: var(--text-muted); text-decoration: none; margin-bottom: 1.5rem; }
+    .back-link:hover { color: var(--accent); }
+    .like-btn { display: flex; align-items: center; gap: 0.35rem; padding: 0.3rem 0.85rem; border-radius: 20px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-sub); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.15s; line-height: 1; }
+    .like-btn:hover, .like-btn.liked { border-color: #e03131; color: #e03131; background: #fff5f5; }
+    footer { text-align: center; font-size: 0.82rem; color: var(--text-muted); border-top: 1px solid var(--border); padding: 0.5rem 1rem; margin-top: 0.1rem; }
   </style>
 </head>
 <body>
 
-  <!-- ░░ NAVBAR ░░ -->
+  <!-- NAVBAR -->
   <nav class="navbar navbar-expand-md sticky-top">
     <div class="container-fluid" style="max-width:860px;margin:0 auto;padding-left:1.25rem;padding-right:1.25rem;">
-      <a class="navbar-brand" href="index.html">Taejun Kim</a>
-      <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navMenu"
-              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="/">Taejun Kim</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
         <i class="bi bi-list" style="font-size:1.2rem;"></i>
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto gap-1">
           <li class="nav-item"><a class="nav-link" href="assets/CV_Taejun.pdf" target="_blank">CV</a></li>
-          <li class="nav-item"><a class="nav-link" href="research.html">Research</a></li>
-          <li class="nav-item"><a class="nav-link active" href="posts.html">Posts</a></li>
-          <li class="nav-item"><a class="nav-link" href="vibe.html">Vibes</a></li>
+          <li class="nav-item"><a class="nav-link" href="/research">Research</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/posts">Posts</a></li>
+          <li class="nav-item"><a class="nav-link" href="/vibes">Vibes</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- ░░ MAIN ░░ -->
-  <main class="page-wrap">
-
+  <!-- LIST VIEW -->
+  <main id="view-list" class="page-wrap" style="display:none;">
     <h1 style="text-align:center;font-weight:700;font-size:2rem;margin-bottom:1.5rem;">Posts</h1>
-
-    <!-- Tag filters -->
     <div class="tag-filters">
       <button class="tag-btn active" data-tag="all" onclick="filterTag(this)">All</button>
       <button class="tag-btn" data-tag="Statistics" onclick="filterTag(this)">Statistics</button>
@@ -188,106 +127,215 @@
       <button class="tag-btn" data-tag="3D Modeling" onclick="filterTag(this)">3D Modeling</button>
       <button class="tag-btn" data-tag="User Study" onclick="filterTag(this)">User Study</button>
     </div>
-
-    <!-- Post list -->
     <div class="post-list" id="post-list">
-
-      <a class="post-entry" href="post.html?post=220309-transistor-arduino" data-tag="Electronics">
-        <div class="post-title-row">
-          <span class="post-title">Transistor (2): Transistor with Arduino</span>
-          <span class="tag-chip">Electronics</span>
-        </div>
+      <a class="post-entry" href="/posts?post=220309-transistor-arduino" data-tag="Electronics">
+        <div class="post-title-row"><span class="post-title">Transistor (2): Transistor with Arduino</span><span class="tag-chip">Electronics</span></div>
         <div class="post-date">Mar 9, 2022</div>
       </a>
-
-      <a class="post-entry" href="post.html?post=210923-anova-ftest" data-tag="Statistics">
-        <div class="post-title-row">
-          <span class="post-title">Understanding F-test (ANOVA): Hands-on Calculation</span>
-          <span class="tag-chip">Statistics</span>
-        </div>
+      <a class="post-entry" href="/posts?post=210923-anova-ftest" data-tag="Statistics">
+        <div class="post-title-row"><span class="post-title">Understanding F-test (ANOVA): Hands-on Calculation</span><span class="tag-chip">Statistics</span></div>
         <div class="post-date">Sep 23, 2021</div>
       </a>
-
-      <a class="post-entry" href="post.html?post=210903-aligned-rank-transform" data-tag="Statistics">
-        <div class="post-title-row">
-          <span class="post-title">Aligned Rank Transform: How to use ARTool in R</span>
-          <span class="tag-chip">Statistics</span>
-        </div>
+      <a class="post-entry" href="/posts?post=210903-aligned-rank-transform" data-tag="Statistics">
+        <div class="post-title-row"><span class="post-title">Aligned Rank Transform: How to use ARTool in R</span><span class="tag-chip">Statistics</span></div>
         <div class="post-date">Sep 3, 2021</div>
       </a>
-
-      <a class="post-entry" href="post.html?post=200903-interaction-effects-anova" data-tag="Statistics">
-        <div class="post-title-row">
-          <span class="post-title">Interaction Effects in ANOVA</span>
-          <span class="tag-chip">Statistics</span>
-        </div>
+      <a class="post-entry" href="/posts?post=200903-interaction-effects-anova" data-tag="Statistics">
+        <div class="post-title-row"><span class="post-title">Interaction Effects in ANOVA</span><span class="tag-chip">Statistics</span></div>
         <div class="post-date">Sep 3, 2020</div>
       </a>
-
-      <a class="post-entry" href="post.html?post=200506-counterbalancing" data-tag="User Study">
-        <div class="post-title-row">
-          <span class="post-title">Balanced Latin Square: Partial Counterbalancing? Complete Counterbalancing?</span>
-          <span class="tag-chip">User Study</span>
-        </div>
+      <a class="post-entry" href="/posts?post=200506-counterbalancing" data-tag="User Study">
+        <div class="post-title-row"><span class="post-title">Balanced Latin Square: Partial Counterbalancing? Complete Counterbalancing?</span><span class="tag-chip">User Study</span></div>
         <div class="post-date">May 6, 2020</div>
       </a>
-
-      <a class="post-entry" href="post.html?post=200420-spss-two-way-anova" data-tag="Statistics">
-        <div class="post-title-row">
-          <span class="post-title">SPSS (2) Two-way Repeated Measure ANOVA</span>
-          <span class="tag-chip">Statistics</span>
-        </div>
+      <a class="post-entry" href="/posts?post=200420-spss-two-way-anova" data-tag="Statistics">
+        <div class="post-title-row"><span class="post-title">SPSS (2) Two-way Repeated Measure ANOVA</span><span class="tag-chip">Statistics</span></div>
         <div class="post-date">Apr 20, 2020</div>
       </a>
-
-      <a class="post-entry" href="post.html?post=200203-spss-repeated-measures" data-tag="Statistics">
-        <div class="post-title-row">
-          <span class="post-title">SPSS (1) One-way Repeated Measure ANOVA & Friedman test</span>
-          <span class="tag-chip">Statistics</span>
-        </div>
+      <a class="post-entry" href="/posts?post=200203-spss-repeated-measures" data-tag="Statistics">
+        <div class="post-title-row"><span class="post-title">SPSS (1) One-way Repeated Measure ANOVA &amp; Friedman test</span><span class="tag-chip">Statistics</span></div>
         <div class="post-date">Feb 3, 2020</div>
       </a>
-
-      <a class="post-entry" href="post.html?post=200131-oscilloscope-fluke-199c" data-tag="Electronics">
-        <div class="post-title-row">
-          <span class="post-title">오실로스코프 (Fluke 199C) 사용법</span>
-          <span class="tag-chip">Electronics</span>
-        </div>
+      <a class="post-entry" href="/posts?post=200131-oscilloscope-fluke-199c" data-tag="Electronics">
+        <div class="post-title-row"><span class="post-title">오실로스코프 (Fluke 199C) 사용법</span><span class="tag-chip">Electronics</span></div>
         <div class="post-date">Jan 31, 2020</div>
       </a>
-
-      <a class="post-entry" href="post.html?post=191112-fusion-360-basics" data-tag="3D Modeling">
-        <div class="post-title-row">
-          <span class="post-title">Fusion 360 기초 사용법</span>
-          <span class="tag-chip">3D Modeling</span>
-        </div>
+      <a class="post-entry" href="/posts?post=191112-fusion-360-basics" data-tag="3D Modeling">
+        <div class="post-title-row"><span class="post-title">Fusion 360 기초 사용법</span><span class="tag-chip">3D Modeling</span></div>
         <div class="post-date">Nov 12, 2019</div>
       </a>
-
-      <a class="post-entry" href="post.html?post=191112-transistor-basics" data-tag="Electronics">
-        <div class="post-title-row">
-          <span class="post-title">Transistor (1): Basics</span>
-          <span class="tag-chip">Electronics</span>
-        </div>
+      <a class="post-entry" href="/posts?post=191112-transistor-basics" data-tag="Electronics">
+        <div class="post-title-row"><span class="post-title">Transistor (1): Basics</span><span class="tag-chip">Electronics</span></div>
         <div class="post-date">Nov 12, 2019</div>
       </a>
-
     </div>
+  </main>
 
+  <!-- POST VIEW -->
+  <main id="view-post" class="page-wrap-post" style="display:none;">
+    <a class="back-link" href="/posts"><i class="bi bi-arrow-left"></i> Posts</a>
+    <div class="post-header">
+      <h1 id="post-title">Loading…</h1>
+      <div class="post-meta">
+        <span id="post-date"></span>
+        <span id="post-tag" class="tag-chip" style="display:none;"></span>
+        <div class="post-meta-right" id="post-meta-stats" style="display:none;">
+          <span style="display:flex;align-items:center;gap:0.3rem;">
+            <i class="bi bi-eye"></i><span id="view-count">–</span>
+          </span>
+          <button class="like-btn" id="like-btn" onclick="handleLike()">
+            <i class="bi bi-heart" id="like-icon"></i><span id="like-count">–</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="post-body" id="post-body"></div>
   </main>
 
   <footer>© Taejun Kim</footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const slug = new URLSearchParams(window.location.search).get('post');
+    if (slug) {
+
+    // Show icons + "–" immediately, before Firebase responds
+    const likedKey = `liked_${slug}`;
+    if (localStorage.getItem(likedKey)) {
+      document.getElementById('like-btn').classList.add('liked');
+      document.getElementById('like-icon').className = 'bi bi-heart-fill';
+    }
+    document.getElementById('post-meta-stats').style.display = 'flex';
+
+    await (async () => {
+
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db  = getFirestore(app);
+    const ref = doc(db, 'posts', slug);
+
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+        document.getElementById('like-count').textContent = snap.data().likes || 0;
+      } else {
+        await setDoc(ref, { views: 1, likes: 0 });
+        document.getElementById('view-count').textContent = 1;
+        document.getElementById('like-count').textContent = 0;
+      }
+    } catch(e) { console.warn('Firestore:', e); }
+
+    window.handleLike = async function() {
+      const btn = document.getElementById('like-btn');
+      const cur = parseInt(document.getElementById('like-count').textContent) || 0;
+      const liked = !!localStorage.getItem(likedKey);
+      try {
+        if (liked) {
+          await updateDoc(ref, { likes: increment(-1) });
+          document.getElementById('like-count').textContent = Math.max(0, cur - 1);
+          btn.classList.remove('liked');
+          document.getElementById('like-icon').className = 'bi bi-heart';
+          localStorage.removeItem(likedKey);
+        } else {
+          await updateDoc(ref, { likes: increment(1) });
+          document.getElementById('like-count').textContent = cur + 1;
+          btn.classList.add('liked');
+          document.getElementById('like-icon').className = 'bi bi-heart-fill';
+          localStorage.setItem(likedKey, '1');
+        }
+      } catch(e) { console.warn('Like:', e); }
+    };
+
+    })(); } // end slug check
+  </script>
+
   <script>
-    function filterTag(btn) {
+    const slug = new URLSearchParams(window.location.search).get('post');
+
+    if (slug) {
+      document.getElementById('view-post').style.display = 'block';
+
+      (async () => {
+        try {
+          const res = await fetch(`posts/${slug}.md`);
+          if (!res.ok) throw new Error();
+          const raw = await res.text();
+
+          const fm = {};
+          let body = raw;
+          const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+          if (fmMatch) {
+            fmMatch[1].split('\n').forEach(line => {
+              const [k, ...v] = line.split(':');
+              if (k && v.length) fm[k.trim()] = v.join(':').trim();
+            });
+            body = fmMatch[2];
+          }
+
+          document.title = (fm.title || slug) + ' – Taejun Kim';
+          document.getElementById('post-title').textContent = fm.title || slug;
+          if (fm.date) {
+            const d = new Date(fm.date);
+            document.getElementById('post-date').textContent =
+              d.toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+          }
+          if (fm.tag) {
+            const chip = document.getElementById('post-tag');
+            chip.textContent = fm.tag;
+            chip.style.display = 'inline';
+          }
+
+          const codeBlocks = [];
+          body = body.replace(/(```[\s\S]*?```|`[^`\n]+`)/g, m => { codeBlocks.push(m); return `\x00CODE${codeBlocks.length-1}\x00`; });
+          body = body.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+          body = body.replace(/(?<!\*)\*([^*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+          body = body.replace(/\x00CODE(\d+)\x00/g, (_, i) => codeBlocks[+i]);
+
+          body = body.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => {
+            let caption = alt.trim(), desktopWidth = '100%';
+            const pi = caption.lastIndexOf('|');
+            if (pi !== -1) {
+              const w = caption.slice(pi+1).trim();
+              if (/^\d+%$/.test(w)) { desktopWidth = w; caption = caption.slice(0, pi).trim(); }
+            }
+            return `<figure class="post-figure" style="--fig-w:${desktopWidth}"><img src="${url}" alt="${caption}" style="width:100%">${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`;
+          });
+
+          body = body.replace(/```note\n([\s\S]*?)```/g, (_, c) =>
+            `<div class="note-box">${marked.parse(c.trim())}</div>\n`);
+
+          document.getElementById('post-body').innerHTML = marked.parse(body);
+        } catch(e) {
+          document.getElementById('post-title').textContent = 'Post not found.';
+        }
+      })();
+
+    } else {
+      document.getElementById('view-list').style.display = 'block';
+    }
+
+    window.filterTag = function(btn) {
       document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const tag = btn.dataset.tag;
-      document.querySelectorAll('.post-entry').forEach(entry => {
-        entry.style.display = (tag === 'all' || entry.dataset.tag === tag) ? 'block' : 'none';
+      document.querySelectorAll('.post-entry').forEach(e => {
+        e.style.display = (tag === 'all' || e.dataset.tag === tag) ? 'block' : 'none';
       });
-    }
+    };
   </script>
 
 </body>

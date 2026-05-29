@@ -38,7 +38,7 @@ Active Region 범위의 Base Current (I_B), Collector-Emitter Voltage (V_CE) 내
 
 위 예시 그림에서 오른쪽의 역방향 전압은 n형→p형 방향이기 때문에 전류가 흐르지 않는다. 왼쪽의 순방향 전압(n형에 (-)가 걸리고 p형에 (+)가 걸림)의 경우 p형의 정공이 (+)에 의해 서로 반발해서 n형으로 이동하게 되고, n형의 전자들은 (-)에 의해 서로 반발해 p형으로 이동하게 되어 전류가 흐르게 된다. 결결국 이미터(N형)에서 출발한 전자들 중 일부만 베이스(P형) 정공과 결합하는데, 이것이 베이스 전류(I_B)가 된다. 나머지 대부분의 전자들은 베이스 층이 매우 얇아서 그냥 통과해 컬렉터로 넘어가는데, 이것이 컬렉터 전류(I_C)가 된다. 베이스로 유입되는 전자 수를 조금 늘리면(I_B 증가) 컬렉터로 넘어가는 전자 수도 그에 비례해 크게 늘어난다. 이 비율이 바로 Current Gain(β = I_C / I_B)이며, 베이스의 작은 전류 변화가 컬렉터의 큰 전류 변화로 재현되는 원리다.
 
-이어지는 글: [Transistor (2): Transistor with Arduino](post.html?post=220309-transistor-arduino)
+이어지는 글: [Transistor (2): Transistor with Arduino](/posts?post=220309-transistor-arduino)
 
 # 참고
 

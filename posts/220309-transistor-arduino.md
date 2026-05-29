@@ -4,7 +4,7 @@ date: 2022-03-09
 tag: Electronics
 ---
 
-[지난 포스트](post.html?post=191112-transistor-basics)에서 Transistor의 역할, 원리 등에 대해 알아보았다. 이어지는 본 글에서는 아두이노와 같은 Microcontroller 회로를 구성할 때 트랜지스터가 필요한 상황이 언제인지에 대해 정리한다.
+[지난 포스트](/posts?post=191112-transistor-basics)에서 Transistor의 역할, 원리 등에 대해 알아보았다. 이어지는 본 글에서는 아두이노와 같은 Microcontroller 회로를 구성할 때 트랜지스터가 필요한 상황이 언제인지에 대해 정리한다.
 
 # Microcontroller에서 트랜지스터를 사용하는 이유
 

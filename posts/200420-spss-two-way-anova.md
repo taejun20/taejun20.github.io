@@ -4,7 +4,7 @@ date: 2020-04-20
 tag: Statistics
 ---
 
-[이전 포스트](post.html?post=200203-spss-repeated-measures)에서는 독립 변수가 하나인 실험에서 One-way RM ANOVA와 Friedman Test를 정리했다. 이번에는 Two-way RM ANOVA 테스트를 돌려보자.
+[이전 포스트](/posts?post=200203-spss-repeated-measures)에서는 독립 변수가 하나인 실험에서 One-way RM ANOVA와 Friedman Test를 정리했다. 이번에는 Two-way RM ANOVA 테스트를 돌려보자.
 
 # 어떤 테스트?
 
@@ -28,7 +28,7 @@ tag: Statistics
   - 방법 간 차이의 significant effect (p-value) 체크
   - post-hoc 분석
 
-정규성이 만족되지 않는 경우에는 [Aligned Rank Transform](post.html?post=210903-aligned-rank-transform) 이후 Two-way RM ANOVA를 사용한다.
+정규성이 만족되지 않는 경우에는 [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform) 이후 Two-way RM ANOVA를 사용한다.
 
 
 
@@ -125,7 +125,7 @@ tag: Statistics
 2. armpose의 main effect
 3. orientation × armpose의 interaction effect
 
-armpose에서만 p < 0.05로 significant effect가 확인됐다. Interaction effect가 유의미하지 않으므로 각 factor의 main effect를 독립적으로 해석할 수 있다. (만약 interaction effect가 유의미했다면 main effect만으로 결론을 내릴 수 없고, 사후 분석에서 조건 조합별 비교가 필요하다. Interaction effect에 관해서는 [이 글](post.html?post=200903-interaction-effects-anova) 참고.)
+armpose에서만 p < 0.05로 significant effect가 확인됐다. Interaction effect가 유의미하지 않으므로 각 factor의 main effect를 독립적으로 해석할 수 있다. (만약 interaction effect가 유의미했다면 main effect만으로 결론을 내릴 수 없고, 사후 분석에서 조건 조합별 비교가 필요하다. Interaction effect에 관해서는 [이 글](/posts?post=200903-interaction-effects-anova) 참고.)
 
 "There was a significant main effect of armpose on accuracy (F(2,22)=20.482, p < .001).
 The main effect of orientation was not significant.

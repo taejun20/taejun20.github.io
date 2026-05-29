@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crossfit Journey – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #c0392b;
+      --accent-soft: #fdecea;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    /* ─── Back link ──────────────────────────────────────── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    /* ─── Page ───────────────────────────────────────────── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .page-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── Timeline ───────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    /* vertical line — starts and ends at dot centers (dot is 12px, so offset by 6px) */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    /* ─── Year section ───────────────────────────────────── */
+    .year-section {
+      margin-bottom: 1rem;
+    }
+
+    .year-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 0;
+      position: relative;
+    }
+    /* dot — 12px wide, left edge at 0, so center at 6px = matches line at left:5px + width:2px */
+    .year-toggle::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--accent);
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .year-label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1;
+    }
+    .year-toggle .chevron {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+    .year-toggle.open .chevron {
+      transform: rotate(180deg);
+    }
+
+    /* ─── Year content ───────────────────────────────────── */
+    .year-content {
+      display: none;
+      padding-top: 1.2rem;
+      padding-bottom: 0.5rem;
+    }
+    .year-content.open {
+      display: block;
+    }
+
+    /* ─── Entry row ──────────────────────────────────────── */
+    .entry {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.8rem;
+      align-items: flex-start;
+    }
+    .entry-date {
+      min-width: 56px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding-top: 0.3rem;
+      white-space: nowrap;
+    }
+    .entry-right {
+      flex: 1;
+    }
+    .entry-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+    .entry-note {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-bottom: 0.6rem;
+    }
+
+    /* ─── Media grid ─────────────────────────────────────── */
+    .media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .thumb {
+      width: 90px;
+      height: 90px;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: #e9ecef;
+      flex-shrink: 0;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .thumb:hover {
+      transform: scale(1.04);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* placeholder pattern */
+    .thumb.placeholder {
+      background: linear-gradient(135deg, #e9ecef 25%, #dee2e6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+    }
+    /* video badge */
+    .thumb .video-badge {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.25);
+      color: #fff;
+      font-size: 1.6rem;
+    }
+    .thumb .video-badge i {
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.5));
+    }
+
+    /* ─── PR table ───────────────────────────────────────── */
+    .pr-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 0.25rem;
+    }
+    .pr-table th {
+      text-align: left;
+      color: var(--accent);
+      font-weight: 600;
+      padding: 0.3rem 0.75rem 0.3rem 0;
+      border-bottom: 2px solid var(--border);
+    }
+    .pr-table td {
+      padding: 0.3rem 0.75rem 0.3rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    /* ─── Lightbox ───────────────────────────────────────── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-inner img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 10px;
+      object-fit: contain;
+      display: block;
+    }
+    .lightbox-inner video {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 10px;
+      display: block;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+      opacity: 0.8;
+      transition: opacity 0.15s;
+      z-index: 10000;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    /* ─── Footer ──────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+
+    @media (max-width: 575px) {
+      .entry { gap: 0.75rem; }
+      .thumb { width: 72px; height: 72px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN -->
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes"><i class="bi bi-arrow-left"></i> Vibes</a>
+      <h1 class="page-title">Crossfit Journey</h1>
+      <p class="page-sub">Training logs, milestones, competition records, and PRs.</p>
+
+      <div class="timeline">
+
+        <!-- ── 2026 ── -->
+        <div class="year-section">
+          <div class="year-toggle open" onclick="toggleYear(this)">
+            <span class="year-label">2026</span>
+            <i class="bi bi-chevron-down chevron"></i>
+          </div>
+          <div class="year-content open">
+
+          </div>
+        </div>
+
+        <!-- ── 2025 ── -->
+        <div class="year-section">
+          <div class="year-toggle" onclick="toggleYear(this)">
+            <span class="year-label">2025</span>
+            <i class="bi bi-chevron-down chevron"></i>
+          </div>
+          <div class="year-content">
+
+            <div class="entry">
+              <div class="entry-date">Jul 20</div>
+              <div class="entry-right">
+                <div class="entry-label">Presque Isle Half Marathon 2025</div>
+                <div class="entry-note">Ran a half marathon with Vimal, Violet, and Andrew. Also with Daehwa and Yeseul. Almost walked. Along the shores of Lake Erie.</div>
+                <div class="media-grid" style="margin-top:0.6rem;">
+                  <div class="thumb" onclick="openPhoto(this)" data-src="/img/vibes/crossfit/2025-0720-half-marathon.jpg">
+                    <img src="/img/vibes/crossfit/2025-0720-half-marathon.jpg" alt="Presque Isle Half Marathon 2025">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="entry">
+              <div class="entry-date">Mar</div>
+              <div class="entry-right">
+                <div class="entry-label">Recovered.</div>
+                <div class="entry-note">Knee is 95% back. Still on light rehab work, but finally back in the gym. No heavy lifting for the foreseeable future. Weights don't matter anymore — what matters is that I can be here again.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── 2024 ── -->
+        <div class="year-section">
+          <div class="year-toggle" onclick="toggleYear(this)">
+            <span class="year-label">2024</span>
+            <i class="bi bi-chevron-down chevron"></i>
+          </div>
+          <div class="year-content">
+
+            <div class="entry">
+              <div class="entry-date">Aug</div>
+              <div class="entry-right">
+                <div class="entry-label">Almost there.</div>
+                <div class="entry-note">Knee is finally 80-90% recovered. It was such a long and painful time, dopamine taken away. Personally felt the PDRN injection really worked out. Back to the gym, very light workout. Keep rehabbing too.</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Mar</div>
+              <div class="entry-right">
+                <div class="entry-label">Still Rehabbing (2)</div>
+                <div class="entry-note">Still rehabbing. Definitely getting better. 원 마취통증의학과 내원 시작. 상담 후 PDRN 주사 치료 시작. 1주 간격으로 총 8회. 체외충격파 (6월까지 총 13회) 병행.</div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- ── 2023 ── -->
+        <div class="year-section">
+          <div class="year-toggle" onclick="toggleYear(this)">
+            <span class="year-label">2023</span>
+            <i class="bi bi-chevron-down chevron"></i>
+          </div>
+          <div class="year-content">
+            <div class="entry">
+              <div class="entry-date">Dec</div>
+              <div class="entry-right">
+                <div class="entry-label">Still Rehabbing</div>
+                <div class="entry-note">Steady knee pain, but definitely getting better. Daily rehab workouts and physical therapy sessions.</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Jun</div>
+              <div class="entry-right">
+                <div class="entry-label">Rehab</div>
+                <div class="entry-note">Not good. Worse than I thought. Investing serious amount of time in rehab. 노은정형외과 (체외충격파 및 도수치료, 회복 운동 조언), 피카토 재활운동센터 다니기 시작.</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Apr</div>
+              <div class="entry-right">
+                <div class="entry-label">Setback.</div>
+                <div class="entry-note">Knee injury. Not crazy bad, but not good either. Recovery.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 2022 ── -->
+        <div class="year-section">
+          <div class="year-toggle" onclick="toggleYear(this)">
+            <span class="year-label">2022</span>
+            <i class="bi bi-chevron-down chevron"></i>
+          </div>
+          <div class="year-content">
+
+            <div class="entry">
+              <div class="entry-date">Dec 20</div>
+              <div class="entry-right">
+                <div class="entry-label">Jerk PR — 155 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Sep 19</div>
+              <div class="entry-right">
+                <div class="entry-label">Drop-in at CrossFit Shadyside, Pittsburgh</div>
+                <div class="entry-note">Dogs in the box.</div>
+                <div class="media-grid" style="margin-top:0.6rem;">
+                  <div class="thumb" onclick="openPhoto(this)" data-src="/img/vibes/crossfit/2022-0919-shadyside.jpg">
+                    <img src="/img/vibes/crossfit/2022-0919-shadyside.jpg" alt="CrossFit Shadyside">
+                  </div>
+                  <div class="thumb" onclick="openVideo(this)" data-src="/img/vibes/crossfit/2022-0919-shadyside.mp4">
+                    <img src="/img/vibes/crossfit/2022-0919-shadyside-thumb.jpg" alt="CrossFit Shadyside video">
+                    <div class="video-badge"><i class="bi bi-play-fill"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Sep 8</div>
+              <div class="entry-right">
+                <div class="entry-label">Got my first weightlifting shoes.</div>
+                <div class="entry-note">Nike Romaleos 4, delivered to Toronto. Again, Yeseul has my back.</div>
+                <div class="media-grid" style="margin-top:0.6rem;">
+                  <div class="thumb" onclick="openPhoto(this)" data-src="/img/vibes/crossfit/2022-0908-romaleos.jpg">
+                    <img src="/img/vibes/crossfit/2022-0908-romaleos.jpg" alt="Nike Romaleos 4">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Jul 28</div>
+              <div class="entry-right">
+                <div class="entry-label">Back Squat PR — 285 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Jul 27</div>
+              <div class="entry-right">
+                <div class="entry-label">Military Press PR — 115 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Jun 9</div>
+              <div class="entry-right">
+                <div class="entry-label">First ring muscle up</div>
+                <div class="media-grid" style="margin-top:0.6rem;">
+                  <div class="thumb" onclick="openVideo(this)" data-src="/img/vibes/crossfit/2022-0609-first-ring-muscle-up.mp4">
+                    <img src="/img/vibes/crossfit/2022-0609-first-ring-muscle-up-thumb.jpg" alt="First ring muscle up">
+                    <div class="video-badge"><i class="bi bi-play-fill"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">May 31</div>
+              <div class="entry-right">
+                <div class="entry-label">Push Press PR — 155 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">May 27</div>
+              <div class="entry-right">
+                <div class="entry-label">Squat Clean PR — 205 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">May 14</div>
+              <div class="entry-right">
+                <div class="entry-label">Deadlift PR — 355 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Apr 19</div>
+              <div class="entry-right">
+                <div class="entry-label">Power Clean PR — 185 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Apr 14</div>
+              <div class="entry-right">
+                <div class="entry-label">Deadlift PR — 345 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Apr 2</div>
+              <div class="entry-right">
+                <div class="entry-label">Squat Clean PR — 185 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Mar 17</div>
+              <div class="entry-right">
+                <div class="entry-label">Power Clean PR — 175 lbs</div>
+                <div class="entry-label">Squat Clean PR — 175 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Mar</div>
+              <div class="entry-right">
+                <div class="entry-label">2022 CrossFit Open Competition</div>
+                <div class="entry-note">
+                  <strong>22.1</strong> — AMRAP 15<br>
+                  3 wall walk · 12 dumbbell snatch (50 lbs) · 15 box jump over<br>
+                  Record: 6 rounds + 7 reps<br>
+                  <br>
+                  <strong>22.2</strong> — For time<br>
+                  1-2-3-4-5-6-7-8-9-10-9-8-7-6-5-4-3-2-1 reps of Deadlifts (225 lbs) &amp; Bar-facing burpees<br>
+                  Record: 110 reps<br>
+                  <br>
+                  <strong>22.3</strong> — For time<br>
+                  21 pull up · 42 double under · 21 thruster (95 lbs)<br>
+                  18 chest-to-bar pull up · 36 double under · 18 thruster (115 lbs)<br>
+                  15 bar muscle up · 30 double under · 15 thrusters (135 lbs)<br>
+                  Record: DNF (167 reps; till 11 bar muscle ups)<br>
+                  <br>
+                  Rank: 1232nd / 2904 (Top 40% in Korea)
+                </div>
+                <div class="media-grid" style="margin-top:0.6rem;">
+                  <div class="thumb" onclick="openVideo(this)" data-src="/img/vibes/crossfit/2022-03-open-competition.mp4">
+                    <img src="/img/vibes/crossfit/2022-03-open-competition-thumb.jpg" alt="video thumbnail">
+                    <div class="video-badge"><i class="bi bi-play-fill"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Feb 11</div>
+              <div class="entry-right">
+                <div class="entry-label">Snatch PR — 105 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Jan 20</div>
+              <div class="entry-right">
+                <div class="entry-label">Front Squat PR — 245 lbs</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── 2021 ── -->
+        <div class="year-section">
+          <div class="year-toggle" onclick="toggleYear(this)">
+            <span class="year-label">2021</span>
+            <i class="bi bi-chevron-down chevron"></i>
+          </div>
+          <div class="year-content">
+            <div class="entry">
+              <div class="entry-date">Nov 25</div>
+              <div class="entry-right">
+                <div class="entry-label">Power Clean PR — 155 lbs</div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">May 22</div>
+              <div class="entry-right">
+                <div class="entry-label">Got my first crossfit shoes.</div>
+                <div class="entry-note">Nike Metcon 6. Yeseul got my back.</div>
+                <div class="media-grid" style="margin-top:0.6rem;">
+                  <div class="thumb" onclick="openPhoto(this)" data-src="/img/vibes/crossfit/2021-0522-metcons.jpg">
+                    <img src="/img/vibes/crossfit/2021-0522-metcons.jpg" alt="Nike Metcons">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Mar 19</div>
+              <div class="entry-right">
+                <div class="entry-label">The beginning</div>
+                <div class="entry-note">
+                  크로스핏 암스트롱 등록.<br>
+                  WOD: <strong>Open 21.2</strong><br>
+                  For time.<br>
+                  10 dumbbell snatch (alt.) · 15 burpee box jump over<br>
+                  20 DS · 15 BBJO · 30 DS · 15 BBJO<br>
+                  40 DS · 15 BBJO · 50 DS · 15 BBJO<br>
+                  <span style="margin-top:0.4rem;display:inline-block;">Record 18:50</span>
+                </div>
+                <div class="media-grid" style="margin-top:0.6rem;">
+                  <div class="thumb" onclick="openPhoto(this)" data-src="/img/vibes/crossfit/2021-0319-open-21-2.jpg">
+                    <img src="/img/vibes/crossfit/2021-0319-open-21-2.jpg" alt="Open 21.2 WOD board">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="entry">
+              <div class="entry-date">Nov 25</div>
+              <div class="entry-right">
+                <div class="entry-label">Power Clean PR — 155 lbs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── 2017 ── -->
+        <div class="year-section">
+          <div class="year-toggle" onclick="toggleYear(this)">
+            <span class="year-label">2017</span>
+            <i class="bi bi-chevron-down chevron"></i>
+          </div>
+          <div class="year-content">
+            <div class="entry">
+              <div class="entry-date">?</div>
+              <div class="entry-right">
+                <div class="entry-label">First drop-in</div>
+                <div class="entry-note">크로스핏 터 & 크로스핏 아지트 with Kyunghoon.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /timeline -->
+    </div>
+  </main>
+
+  <footer>© Taejun Kim</footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-inner" id="lightbox-inner"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function toggleYear(el) {
+      el.classList.toggle('open');
+      el.nextElementSibling.classList.toggle('open');
+    }
+
+    function openPhoto(el) {
+      const src = el.dataset.src;
+      const inner = document.getElementById('lightbox-inner');
+      if (src) {
+        inner.innerHTML = `<img src="${src}" alt="photo">`;
+      } else {
+        // placeholder
+        inner.innerHTML = `<div style="width:300px;height:300px;background:#333;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#666;font-size:3rem;"><i class="bi bi-image"></i></div>`;
+      }
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    function openVideo(el) {
+      const src = el.dataset.src;
+      const inner = document.getElementById('lightbox-inner');
+      if (src) {
+        inner.innerHTML = `<video src="${src}" autoplay loop muted playsinline controls></video>`;
+      } else {
+        // placeholder
+        inner.innerHTML = `<div style="width:360px;height:240px;background:#222;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#555;font-size:3rem;"><i class="bi bi-camera-video"></i></div>`;
+      }
+      document.getElementById('lightbox').classList.add('active');
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+      const lb = document.getElementById('lightbox');
+      lb.classList.remove('active');
+      // stop video
+      const video = lb.querySelector('video');
+      if (video) video.pause();
+      document.getElementById('lightbox-inner').innerHTML = '';
+    }
+
+    // close on Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox({target: document.getElementById('lightbox')});
+    });
+  </script>
+
+</body>
+</html>

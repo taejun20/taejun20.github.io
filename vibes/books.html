@@ -222,49 +222,55 @@
       <h1 class="page-title">Books</h1>
       <div style="margin-bottom:2.5rem;"></div>
 
-      <!-- ── 2025 ── -->
-      <div class="year-section">
-        <div class="year-toggle open" onclick="toggleYear(this)">
-          <span class="year-label">2025</span>
-          <i class="bi bi-chevron-down chevron"></i>
-        </div>
-        <div class="year-content open">
-
-          <div class="book-entry">
-            <div class="book-cover placeholder"><i class="bi bi-book"></i></div>
-            <div class="book-info">
-              <div class="book-title">Book Title Here</div>
-              <div class="book-author">Author Name</div>
-              <div class="book-note">One-line comment goes here.</div>
-            </div>
-          </div>
-
-          <div class="book-entry">
-            <div class="book-cover placeholder"><i class="bi bi-book"></i></div>
-            <div class="book-info">
-              <div class="book-title">Book Title Here</div>
-              <div class="book-author">Author Name</div>
-              <div class="book-note">One-line comment goes here. <a class="book-notes-link" href="/vibes/books/example/">Notes <i class="bi bi-arrow-right"></i></a></div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ── 2024 ── -->
+      <!-- ── 2021 ── -->
       <div class="year-section">
         <div class="year-toggle" onclick="toggleYear(this)">
-          <span class="year-label">2024</span>
+          <span class="year-label">2021</span>
           <i class="bi bi-chevron-down chevron"></i>
         </div>
         <div class="year-content">
 
           <div class="book-entry">
-            <div class="book-cover placeholder"><i class="bi bi-book"></i></div>
+            <div class="book-cover">
+              <img src="/img/vibes/books/sanggwan.jpg" alt="상관없는 거 아닌가?" loading="lazy" onclick="openCover(this)">
+            </div>
             <div class="book-info">
-              <div class="book-title">Book Title Here</div>
-              <div class="book-author">Author Name</div>
-              <div class="book-note">One-line comment goes here.</div>
+              <div class="book-title">상관없는 거 아닌가?</div>
+              <div class="book-author">장기하</div>
+              <div class="book-note"><a class="book-notes-link" href="/vibes/books/sanggwan/">Notes <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+          </div>
+
+          <div class="book-entry">
+            <div class="book-cover">
+              <img src="/img/vibes/books/oksan-geoji.jpg" alt="옥상거지" loading="lazy" onclick="openCover(this)">
+            </div>
+            <div class="book-info">
+              <div class="book-title">옥상거지: 우린 그곳에 없겠지만</div>
+              <div class="book-author">최상언, 김거지, 이옥합</div>
+              <div class="book-note"><a class="book-notes-link" href="/vibes/books/oksan-geoji/">Notes <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+          </div>
+
+          <div class="book-entry">
+            <div class="book-cover">
+              <img src="/img/vibes/books/krafton-way.jpg" alt="크래프톤 웨이" loading="lazy" onclick="openCover(this)">
+            </div>
+            <div class="book-info">
+              <div class="book-title">크래프톤 웨이 Krafton Way</div>
+              <div class="book-author">이기문</div>
+              <div class="book-note"><a class="book-notes-link" href="/vibes/books/krafton-way/">Notes <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+          </div>
+
+          <div class="book-entry">
+            <div class="book-cover">
+              <img src="/img/vibes/books/la-vie-devant-soi.jpg" alt="자기 앞의 생" loading="lazy" onclick="openCover(this)">
+            </div>
+            <div class="book-info">
+              <div class="book-title">자기 앞의 생 La Vie Devant Soi</div>
+              <div class="book-author">로맹 가리 Romain Gary</div>
+              <div class="book-note"><a class="book-notes-link" href="/vibes/books/la-vie-devant-soi/">Notes <i class="bi bi-arrow-right"></i></a></div>
             </div>
           </div>
 
@@ -278,6 +284,17 @@
           <i class="bi bi-chevron-down chevron"></i>
         </div>
         <div class="year-content">
+
+          <div class="book-entry">
+            <div class="book-cover">
+              <img src="/img/vibes/books/demian.jpg" alt="데미안" loading="lazy" onclick="openCover(this)">
+            </div>
+            <div class="book-info">
+              <div class="book-title">데미안 Demian & 수레바퀴 아래서 Beneath the Wheel</div>
+              <div class="book-author">헤르만 헤세 Hermann Hesse</div>
+              <div class="book-note"><a class="book-notes-link" href="/vibes/books/hesse/">Notes <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+          </div>
 
           <div class="book-entry">
             <div class="book-cover">
@@ -339,6 +356,13 @@
       document.getElementById('lightbox').classList.remove('active');
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Auto-open the first year section
+    const firstToggle = document.querySelector('.year-toggle');
+    if (firstToggle) {
+      firstToggle.classList.add('open');
+      firstToggle.nextElementSibling.classList.add('open');
+    }
 
     function toggleYear(el) {
       el.classList.toggle('open');

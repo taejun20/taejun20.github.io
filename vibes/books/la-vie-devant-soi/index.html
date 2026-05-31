@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>자기 앞의 생 – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-meta { padding-top: 0.3rem; }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" onclick="openLightbox()">
+          <img src="/img/vibes/books/la-vie-devant-soi.jpg" alt="자기 앞의 생">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">자기 앞의 생 La Vie Devant Soi</div>
+          <div class="book-author">로맹 가리 Romain Gary</div>
+        </div>
+      </div>
+
+      <div class="quote">"육십 년 전쯤, 내가 젊었던 시절에 말이야, 한 처녀를 만났단다. 우리는 서로 사랑했지. 그런데 그녀가 갑자기 이사를 가버리는 바람에 여덟 달 만에 끝장이 났어. 그런데 육십 년이 지난 지금도 그 일이 생생하게 기억나거든. 그때 나는 그 처녀에게 평생 잊지 않겠다고 약속을 했어. 그래서 오랜 세월이 지났지만 아직도 잊지 않고 있단다. 사실, 가끔씩 걱정이 됐지. 살아가야 할 날이 너무 많았고, 더구나 기억을 지워버리는 지우개는 하느님이 가지고 계시니, 보잘것없는 인간인 내가 어떻게 장담할 수 있었겠니? 그런데 이제 안심이구나. 나는 죽을 때까지 자밀라를 잊지 않을 수 있을 거야. 죽을 날이 얼마 남지 않았으니까."<br><br>
+      나는 로자 아줌마 생각이 나서, 잠시 망설이다가 할아버지에게 물었다.<br>
+      "하밀 할아버지, 사람은 사랑 없이도 살 수 있나요?"</div>
+
+      <div class="quote">"한 가지 말해둘 게 있다. ... 물론 내 생각일 뿐이지만, 나는 정말 이해할 수 없다. 엄마 뱃속에 있는 아기에게는 가능한 안락사가 왜 노인에게는 금지되어 있는지 말이다. 나는 식물인간으로 세계기록을 세운 미국인이 예수그리스도보다도 더 심한 고행을 한 것이라고 생각한다. 그는 십자가에 십칠 년여를 매달려 있었던 셈이니까. 더이상 살아갈 능력도 없고 살고 싶지도 않은 사람의 목구멍에 억지로 생을 처넣는 것보다 더 구역질나는 일은 없다고 생각한다."</div>
+
+      <div class="quote">"나는 조로처럼 그녀에게 무슨 말이든 해주려고 그녀를 향해 돌아섰는데, 운 좋게도 바로 그 순간 그녀는 가사 상태에 빠져들었다. 그러고는 이틀 낮 사흘 밤을 깨어나지 못했다. 그러나 그녀의 심장은 여전히 뛰고 있었다. 말하자면 그녀는 살아 있었다. ... 나는 오줌도 누러 가지 않고 과자 한 조각도 먹지 않은 채 꼼짝 않고 그녀 곁에 앉아 있었다. 그녀가 정신을 차렸을 때 가장 먼저 나를 볼 수 있도록. 나는 그녀의 가슴에 손을 얹었다. 우리를 갈라놓는 그 푸짐한 살 위에서도 심장이 뛰는게 느껴졌다. ..."</div>
+
+      <div class="quote">"다른 사람들에게 아무런 불편도 끼치지 않는데 왜 창녀로 등록된 여자들이 자녀를 키울 수 없는 지 나는 도무지 알 수가 없었다. 로자 아줌마는 그 이유를 프랑스에서 섹스를 매우 중요하게 여기기 때문이라고 했다. 프랑스 사람들은 우리가 상상도 할 수 없을 정도로 그것에 큰 비중을 둔다는 것이다. 아줌마는 또 이런 말도 했다. 섹스는 루이 14세 때부터 이미 프랑스 사람들에게 제일 중요한 것이었고, 따라서 창녀들이 박해를 받았는데, 그건 정숙한 부인들이 섹스를 독점하고 싶어했기 때문이라는 것이다."</div>
+
+      <div class="quote">"사람들은 창녀들이 젊었을 때는 성가시게 쫓아다니지만 일단 늙으면 거들떠보지도 않는다. 젊은 창녀들에게는 포주가 있지만 늙은 창녀들에게는 아무도 없다. 나는 할 수만 있다면 늙은 창녀들만 맡고 싶다. 나는 늙고 못생기고 더이상 쓸모없는 창녀들만 맡아서 포주 노릇을 할 것이다. 그들을 보살피고 평등하게 대해줄 것이다. 나는 세상에서 가장 힘센 경찰과 포주가 되어서 엘리베이터도 없는 칠층 아파트에서 버려진 채 울고 있는 늙은 창녀가 다시는 없도록 하겠다"</div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:pointer;">
+    <span style="position:fixed;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;opacity:0.8;z-index:10000;">×</span>
+    <img src="/img/vibes/books/la-vie-devant-soi.jpg" style="max-width:90vw;max-height:90vh;border-radius:10px;object-fit:contain;">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openLightbox() { document.getElementById('lightbox').style.display='flex'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display='none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-la-vie-devant-soi');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

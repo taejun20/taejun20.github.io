@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상관없는 거 아닌가? – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-meta { padding-top: 0.3rem; }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" onclick="openLightbox()">
+          <img src="/img/vibes/books/sanggwan.jpg" alt="상관없는 거 아닌가?">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">상관없는 거 아닌가?</div>
+          <div class="book-author">장기하</div>
+        </div>
+      </div>
+
+      <div class="quote">“... '하긴 군악대의 살벌한 분위기 속에서 연주하는 게, 내가 멋있는 음악을 하는 데는 오히려 해가 될지도 몰라. 멋있는 음악이라. 그래, 생각해보면 프로 드러머가 되는 것 자체가 멋있는 음악을 하는 것과는 거리가 멀 수도 있겠네. 연주로 먹고 살려면 돈 되는 음악을 해야 하는데, 내가 지금 멋있다고 생각하는 우리나라 음악 중에 돈 되는 게 하나라도 있나? 그리고 나는 우리 밴드 음악이 제일 멋있는데 그걸로 돈을 벌어본 적도 없잖아? 애초에 음악으로 돈을 벌겠다는 생각 자체가 문제였어!' 나는 홀가분한 기분으로 프로 연주자가 아닌, 돈은 안 돼도 '멋있는' 음악을 하는 뮤지션이 되겠다고 마음먹었다. 그리고 일반 부대에 입대했다.”</div>
+
+      <div class="quote">“하루의 어느 순간에는 스스로 퇴근해야 한다. 그런데 이 퇴근이라는 것도 간단하지 않다. 정해진 장소에 갔다가 집에 돌아오는 것이 아니기 때문이다. 내 뇌만을 이용해 내 뇌를 퇴근시켜야 한다. 그것은 대체 어떻게 하는 거냐고? 나 역시 아직 연구하는 중이다.”</div>
+
+      <div class="quote">“꽤 많은 사람이 인정하는 술의 좋은 점들도 있다. 대표적인 것이 취중 진담이다. 술을 마시면 더욱 솔직하고 진실된 대화를 할 수 있다는 얘기인데, 나는 그다지 동의하지 않는다. ... 이게 내가 이십 년 정도 마셔오며 내린 결론이다. 멍청해진 상태에서 하는 이야기가 평소보다 더 진실된 것이라면 좀 이상한 일 아닌가. 물론 멀쩡할 때에는 용기가 나지 않아 하지 못했던 말을 술에 취하면 할 수 있게 되는 일이 종종 있기는 하다. 뇌에서 술의 영향을 가장 크게 받는 곳 중 하나가 자기 억제를 관장하는 부위라고 하니, 자연스러운 일일 테다. 하지만 그런 식으로 밝히는 마음이 더 '진실된' 것인지는 잘 모르겠다. 이야기를 꺼내기 주저하는 마음도 어쨌든 진심이다. 그 마음을 극복할 수 있는 용기도 마찬가지고 말이다. 진실된 대화란 그렇게 상충하는 여러 진심들을 빠짐없이 마주한 후 적절한 방식으로 상대에게 전달하는 것이다. 뇌의 일부를 마비시키고 특정한 진심만을 꺼내놓는 것과는 다르다.”</div>
+
+      <div class="quote">“삶이라는 것은 대체로 어찌어찌 되어갈 뿐이다. 하지만 뭐랄까, 아이가 없는 지금은 그 어찌어찌 흘러가는 물결 속에서 어푸어푸 헤엄이라도 쳐볼 수 있는 반면, 아이를 낳게 되면 집채만한 파도에 가만히 몸을 내맡겨 휩쓸려가는 것 외에는 선택지가 없을 것만 같다. 한마디로, 나는 아버지로서의 의무 때문에 나의 자유를 양보할 생각이 아직은 없는 것이다. 이기적이라는 말을 듣는다 해도 변명의 여지는 없다. 하지만 세상에는 한 인간으로서의 자유와 부모라는 타이틀을 모두 거머쥐려다 주변 사람들에게(특히 자신의 자녀에게) 큰 상처를 주는 이들도 얼마든지 있다. 그 대열에 동참하는 것만은 피하고 싶다. 부모는 자녀에게 헌신해야 한다. 헌신할 생각이 없다면 낳지 않는 것이 낫다. 그리고 나는 아직 헌신할 생각이 없다. 헌신하는 이들에 대한 존경심은 가지고 있다. 내가 못하는 것이니 더더욱 그렇다. 하지만 그와는 별개로, 지금의 내 삶은 헌신과는 잘 맞지 않는다고 생각한다.”</div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:pointer;">
+    <span style="position:fixed;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;opacity:0.8;z-index:10000;">×</span>
+    <img src="/img/vibes/books/sanggwan.jpg" style="max-width:90vw;max-height:90vh;border-radius:10px;object-fit:contain;">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openLightbox() { document.getElementById('lightbox').style.display='flex'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display='none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-sanggwan');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

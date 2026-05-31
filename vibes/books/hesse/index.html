@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demian & Beneath the Wheel – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-meta { padding-top: 0.3rem; }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" onclick="openLightbox()">
+          <img src="/img/vibes/books/demian.jpg" alt="데미안">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">데미안 Demian & 수레바퀴 아래서 Beneath the Wheel</div>
+          <div class="book-author">헤르만 헤세 Hermann Hesse</div>
+        </div>
+      </div>
+
+      <div style="font-size:1rem;font-weight:700;color:var(--text-main);margin-bottom:1rem;">데미안 Demian</div>
+
+      <div class="quote">"... 너는 아직 '허용된 것'과 '금지된 것'이라고 불리는 것이 무엇인지 통찰할 수 있는 곳에 가보지 못했어. ... 예를 들면 넌 1년 전쯤부터 네 속에서 다른 모든 충동보다 강한 충동 하나를 느끼고 있었을거야. 근데 그건 '금지된 것'으로 간주되지. 우리와 다르게 그리스인들이나 다른 많은 민족은 반대로 이 충동을 신성한 것으로 여기고 큰 축제를 벌이며 그것을 기렸어. '금지되었다'는 것은 그러니까 영원한 것이 아니야. 바뀔 수 있는 거야. ... 옛날이 아닌 오늘날도 말야."</div>
+
+      <div class="quote">"그러니까 우리 누구나 자기 스스로 찾아내야 해. 무엇이 허용되고 무엇이 금지되고 있는지 말이야. 금지된 일을 한 번도 안 해도 실제로는 악당이 될 수 있고 그 반대가 될 수도 있어. ... 매일 하는 일이라도 그들한테는 금지되어 있을 수 있고, 다른 사람들한테 금지되어 있는 일이 자신에게는 허용될 수도 있는 거야. 그러니 누구나 독자적으로 판단해야 해"</div>
+
+      <div style="font-size:1rem;font-weight:700;color:var(--text-main);margin-bottom:1rem;margin-top:0.5rem;">수레바퀴 아래서 Beneath the Wheel</div>
+
+      <div class="quote">"... 다른 친구들보다 앞서기 위해서는 야망과 인내심으로 무장해 더 열심히 노력해야 한다는 사실을 잘 알고 있었기 때문이다. 한스는 남보다 앞서고 싶었다. 하지만 왜 그래야 하는지는 자신도 알 수 없었다."</div>
+
+      <div class="quote">"마을 사람들은 관료들에게 굽실거렸으나 돌아서서는 비아냥거리며 흉을 보았다. 그러면서도 자기 아들은 대학 공부를 마치고 관료가 되기를 바랐다."</div>
+
+      <div class="quote">"학교와 아버지, 그리고 몇몇 선생님의 야비한 명예심이 연약한 어린 생명을 무참하게 짓밟았다는 사실을 알아차린 사람은 하나도 없었다. 왜 그는 가장 감수성이 예민하고 상처받기 쉬운 소년 시절에 매일 밤늦게까지 공부를 해야만 했는가?"</div>
+
+      <div class="quote">"아무튼 지치지 않도록 해야 하네. 그렇지 않으면 수레바퀴 아래에 깔리게 될지도 모르니까."</div>
+
+      <div class="quote">"이제 모든 준비가 확실하게 갖추어졌기 때문에 한스에게는 여느 때와는 다른 평안이 깃들기 시작했다. 그 운명적인 나무 아래 앉아 있노라면 여태껏 그를 짓누르던 압박감은 어느새 자취도 없이 사라져버리고 기쁨에 넘치는 환희가 찾아 들었다. ... 왜 나는 진작에 저 나뭇가지에 목을 매달지 않았던가!"</div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:pointer;">
+    <span style="position:fixed;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;opacity:0.8;z-index:10000;">×</span>
+    <img src="/img/vibes/books/demian.jpg" style="max-width:90vw;max-height:90vh;border-radius:10px;object-fit:contain;">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openLightbox() { document.getElementById('lightbox').style.display='flex'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display='none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-hesse');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

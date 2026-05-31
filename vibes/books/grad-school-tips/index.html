@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>대학원생 때 알았더라면 좋았을 것들 – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    /* ─── Book header ──────────────────────────────────── */
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ─── Lightbox ───────────────────────────────────────── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.8;
+      line-height: 1;
+      z-index: 10000;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .book-meta {
+      padding-top: 0.3rem;
+    }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+    .book-note {
+      font-size: 0.9rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    /* ─── Quotes ───────────────────────────────────────── */
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" onclick="openLightbox('/img/vibes/books/grad-school-tips.jpg')">
+          <img src="/img/vibes/books/grad-school-tips.jpg" alt="대학원생 때 알았더라면 좋았을 것들">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">대학원생 때 알았더라면 좋았을 것들</div>
+          <div class="book-author">엄태웅, 최윤섭, 권창현</div>
+        </div>
+      </div>
+
+      <div class="quote">
+        "논문을 읽는다는 것은 당신을 인류 지식의 경계로 데려간다. 당신은 수년 동안 그 경계를 조금이라도 더 밀어내려 한다. 어느 순간 당신은 그 경계를 조금 밖으로 밀어내게 된다. 그 밀어낸 경계를 바로 박사학위라고 부른다."
+        <div style="margin-top:0.75rem;">
+          <div class="book-cover" onclick="openLightbox('/img/vibes/books/grad-school-tips-2.jpg')">
+            <img src="/img/vibes/books/grad-school-tips-2.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="quote">
+        "나 자신만의 굳건한 이유가 필요하다. 그 이유는 결코 거창할 필요도 없고, 굳이 다른 사람을 설득할 수 있어야 하는 것도 아니다. 다만 나 스스로가 굳게 믿고 있으며 스스로 납득할 수 있는 이유이면 된다."
+      </div>
+
+      <div class="quote">
+        "흔히 하는 착각은 아래의 세 가지 시간이 모두 동일하다고 간주하는 것이다.<br>
+        1) 연구실에 앉아 있는 시간<br>
+        2) 연구를 하는 시간<br>
+        3) 생각을 하는 시간<br><br>
+        연구실에 앉아 있다고 연구를 하는 것은 아니다. 연구는 또한 연구실에서만 하는 것도 아니다. 연구실에 앉아서 연구를 진행한다고 해서 꼭 반드시 생각을 하는 것도 아니다. 세 가지는 동일할 수도 있지만, 현실적으로는 많은 경우 서로 일치하지 않는다. 그렇기 때문에 반드시 의식적으로 '생각하는 시간'을 마련해야 한다는 것이다."
+      </div>
+
+      <div class="quote">
+        "특히 연구라고 하는 것은 연속적인 시간의 확보가 아주 중요하다. 지식근로자에게는 30분씩 따로 6번 일하는 것은 소용없고, 3시간 연속으로 일할 수 있는 시간을 확보하는 것이 필요하다. ..."
+      </div>
+
+      <div class="quote">
+        "뒤를 돌아보니 대학원생이라서 했던 것 같은 고민이 사실은 그냥 그때 그 나이 때 해야 하는 고민이라서 했던 것들이 많았다. 모든 사람의 문제가 같은 수는 없겠지만, 내가 겪었던 문제 중에선 내가 '대학원에 왔기 때문에' 생긴 문제들은 별로 없었다. 어떤 선택을 했어도 생기는 문제였을 거다. 연구가 잘 안되는 '사소한' 문제가 있긴 했다."
+      </div>
+
+      <div class="quote">
+        "아직 대학원생 입장에서 교수가 무슨 생각을 하는지, 무엇을 원하는지 알기 어려울 수도 있다. 하지만 교수라고 사실 슈퍼맨도 아니며, 특별한 사람은 결코 아니다. 대학원생이 열심히 연구해서, 한 명의 독립된 연구자가 되고, 교수가 되는 것이다. 결국 교수도 한때 대학원생이었던, 여러 명의 다른 연구자들을 이끄는 또 한 명의 연구자일 따름이다. 고민이 있거나 트러블이 있을 때 교수의 입장에서 한 번쯤 생각해보는 것도 상황을 이해하고 해결하는 데 도움이 될 수 있다."
+      </div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">×</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-grad-school-tips');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+  <script>
+    function openLightbox(src) { document.getElementById('lightbox-img').src = src; document.getElementById('lightbox').classList.add('active'); }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+</body>
+</html>

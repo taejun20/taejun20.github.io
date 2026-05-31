@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Selfish Gene – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #e9ecef 25%, #dee2e6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-meta { padding-top: 0.3rem; }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" style="cursor:pointer;" onclick="openLightbox()">
+          <img src="/img/vibes/books/selfish-gene.jpg" alt="이기적 유전자">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">이기적 유전자 The Selfish Gene</div>
+          <div class="book-author">리처드 도킨스 Richard Dawkins</div>
+        </div>
+      </div>
+
+      <div class="quote">"생명에는 의미가 있는가? 우리는 무엇 때문에 존재하는가? 인간이란 무엇인가? 등과 같은 심오한 질문에 마주쳤을 때 우리는 더 이상 미신에 의지할 필요가 없다."</div>
+
+      <div class="quote">"우주 비행사가 저 멀리 떨어진 행성에 날아가 생명체를 찾는다면 그는 우리가 상상도 못할 기묘하고 희귀한 생명체를 찾아낼지 모른다. 그러나 어디에 살고 있든, 어떤 화학적 기초를 가지고 살고 있든, 모든 생명체에 적용될 수 있는 무엇인가가 있을까? 가령 탄소 대신에 규소를, 물 대신에 암모니아를 이용하는 화학적 구조를 가진 생명체가 존재하거나, -100도가 되어서야 죽는 생물이 발견되거나, 화학 반응에 의존하지 않고 전자 회로를 기초로 한 생물이 발견되었다고 할 때, 이들 모든 생물체에 적용될 수 있는 일반 원리는 없는 것인가? 물론 나는 그 답을 모른다. 그러나 만약 내기를 해야 한다면 나는 하나의 근본 원리에 돈을 걸 것이다. 바로 모든 생명체가 자기 복제를 하는 실체의 생존율 차이에 의해 진화한다는 법칙이다."</div>
+
+      <div class="quote">"지구의 생물체들은 자신들 중의 하나가 진실을 밝혀내기 전까지 30억 년 동안 자기가 왜 존재하는지 모르고 살았다. 진실을 밝힌 그의 이름은 찰스 다윈이었다. 공정하게 말하면 몇몇 다른 사람들도 어렴풋이 알고는 있었지만 우리가 왜 존재하는지에 대하여 일관성있고 조리 있게 설명을 종합한 사람은 다윈이 처음이었다."</div>
+
+      <div class="quote">"각각의 종안에서도 어떤 개체는 다른 개체보다 생존하는 자손을 더 많이 남겨 그들이 갖고 있는 번식에 성공적인 유전 형질(유전자)이 다음 세대에 더욱 많아지게 된다. 이것이 자연 선택이다. 자연 선택은 무작위적이 아닌 차등적인 유전자의 번식을 말한다."</div>
+
+      <div class="quote">"나는 선택의 기본 단위, 즉 이기성의 기본 단위가 종도 집단도 개체도 아닌, 유전의 단위인 유전자라는 것을 주장할 것이다."</div>
+
+      <div class="quote">"진화는 유전자 풀 속에서 어떤 유전자는 그 수가 늘어나고 또 어떤 유전자는 수가 줄어드는 과정이다."</div>
+
+      <div class="quote">"나는 이타적으로 행동하는 사람이 '정말로' 숨겨진 혹은 무의식적인 이기적 동기에 따라 그러한 행동을 하는지 아닌지 논의하려는 것이 아니다. 그들은 그럴 수도 있고 그렇지 않을 수도 있고, 아니면 우리는 영영 알 수 없을지도 모른다. ... 다만 이 행위가 행위자의, 수혜자의 생존 가능성을 높이는 효과를 내는지 아니면 낮추는 효과를 내는지만 중요할 뿐이다."</div>
+
+      <div class="quote">"이타적 행동과 같은 어떤 형질의 진화를 설명할 때는 습관처럼 다음과 같은 질문을 던져 보는 것이 좋다. '이 형질은 유전자 풀 내 유전자의 빈도에 어떤 영향을 주는가?'"</div>
+
+      <div class="quote">"유전자가 남의 몸속에 들어앉아 있는 자신의 복사본을 도울 수 있다. 만약 그렇다면 이것은 개체의 이타주의로 나타나겠지만, 그것은 어디까지나 유전자의 이기주의에서 생겨난 것이다."</div>
+
+      <div class="quote">"최근 인종 차별주의나 애국심에 반대하여 동지 의식의 대상을 인류라는 종 전체로 바꾸려는 움직임이 일고 있다. 보통 종의 윤리를 가장 확신하는 이 정치적 자유주의자들은 이타주의의 대상을 조금 더 확장하여 다른 종까지 포함시키려는 사람을 매우 경멸하는 경우가 종종 있다. 만약 내가 사람들의 주거 문제를 개선하는 것보다 대형 고래의 도살을 막는 것에 더 관심이 있다고 말한다면 몇몇 친구들은 충격을 받을 것이다."</div>
+
+      <div class="quote">"동종의 일원이 다른 종의 일원에 비해 특별한 도의적 배려를 받는 것이 당연하다는 생각은 아주 오래전부터 이어져 온 것이다. 전쟁 이외의 상황에서 살인하는 것은 통상 범죄 중에서 가장 큰 죄로 생각되어 왔다. 우리 문화에서 살인보다 더 강하게 금지되는 유일한 것은 식인 행위다. 그러나 우리는 다른 종의 일원을 먹는 것을 즐긴다. 대부분의 사람들은 잔인무도한 범인에 대해서조차 사형 집행을 꺼려하는 데 반해, 많은 피해를 주지 않는 유해 동물에 대해서는 재판도 없이 쏴 죽이는 데 기꺼이 동의한다."</div>
+
+      <div class="quote">"아메바만큼이나 인간적 감정이 없는 인간 태아는 어른 침팬지보다도 많은 공경과 법적 보호를 받는다. 그러나 최근의 실험적 증거에 따르면 침팬지는 감정이 있고 사고할 뿐만 아니라 인간의 언어를 배울 수도 있다. 태아는 우리 종에 속하므로 그것만으로 특혜와 특권이 부여되는 것이다."</div>
+
+      <div class="quote">"어느 수준의 이타주의가 바람직한가? 가족인가, 국가인가, 인종인가, 종인가, 아니면 전체 생물인가에 대한 인간 윤리의 혼란은 진화론의 입장에서 보면 어느 수준에서 이타주의를 기대할 수 있는가라는 생물학적인 문제와 혼란을 그대로 반영한다."</div>
+
+      <div class="quote">"유전적으로 보았을 때 할아버지, 할머니와 손자가 서로에 대해 이타적으로 행동하는 이유는 같다. 그들은 서로 유전자의 1/4을 공유하기 때문이다. 그러나 손자의 기대 수명이 더 길다면, 할아버지, 할머니가 손자에게 이타적으로 행동하게 하는 유전자 쪽이 손자가 할아버지,할머니에게 이타적으로 행동하게 하는 유전자보다 더 유리하다."</div>
+
+      <div class="quote">"우리의 행성 지구에서 자기 복제를 하는 실체로 가장 그 수가 많은 것은 유전자, 즉 DNA 분자다. 어떤 다른 것이 그 실체가 될 수도 있을지 모른다. 가령 그와 같은 것이 존재하고 다른 여러 조건이 충족된다면, 이것이 진화 과정에 기초가 될 것은 거의 필연적이다."</div>
+
+      <div class="quote">"유전자는 일차적 정책 수립자이며 뇌는 집행자다. 그러나 뇌가 고도로 발달함에 따라 점점 더 많은 정책 결정권을 갖게 되었으며, 결정권 행사에서 학습과 같은 책략을 쓰게 되었다."</div>
+
+      <div class="quote">"사실 유전자가 '결정론'이라고 비난받을 만큼 강한 의미로 그 창조물을 조종하지 않는다는 것은 누구나 이해할 수 있다. 우리는 피임할 때마다 어떤 노력도 하지 않고 (매우 간단하게) 유전자의 조종에 반기를 드는 것이다."</div>
+
+      <div class="quote">"다윈주의로부터 우리의 가치관을 이끌어 내서는 안 된다는 것이다. 우리의 뇌는 이기적 유전자에 배반할 수 있는 능력을 가지는 정도로까지 진화했다. 우리가 그렇게 할 수 있다는 사실은 우리가 피임 도구를 사용한다는 점에서 분명해진다."</div>
+
+      <div class="quote">"우리에게는 우리를 낳아 준 이기적 유전자에 반항하거나, 더 필요하다면 우리를 교화시킨 이기적 밈에게도 반항할 힘이 있다. 순수하고 사욕이 없는 이타주의라는 것은 자연계에는 안주할 여지도 없고 전 세계의 역사를 통틀어 존재한 예도 없다. 그러나 우리는 그것을 의식적으로 육성하고 가르칠 방법도 논할 수 있다."</div>
+
+    </div>
+  </main>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:pointer;">
+    <span style="position:fixed;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;opacity:0.8;z-index:10000;">×</span>
+    <img src="/img/vibes/books/selfish-gene.jpg" style="max-width:90vw;max-height:90vh;border-radius:10px;object-fit:contain;">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openLightbox() { const lb = document.getElementById('lightbox'); lb.style.display='flex'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display='none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-selfish-gene');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

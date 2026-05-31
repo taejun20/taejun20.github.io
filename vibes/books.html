@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Books – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    /* ─── Back link ──────────────────────────────────────── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    /* ─── Page ───────────────────────────────────────────── */
+    .page-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .page-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 3rem;
+    }
+
+    /* ─── Year section ───────────────────────────────────── */
+    .year-section {
+      margin-bottom: 1rem;
+    }
+
+    .year-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+      margin-bottom: 0;
+      padding: 0.2rem 0;
+    }
+    .year-label {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1;
+    }
+    .year-toggle .chevron {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+    .year-toggle.open .chevron {
+      transform: rotate(180deg);
+    }
+
+    /* ─── Year content ───────────────────────────────────── */
+    .year-content {
+      display: none;
+      padding-top: 1rem;
+      padding-bottom: 0.5rem;
+    }
+    .year-content.open {
+      display: block;
+    }
+
+    /* ─── Book entry ─────────────────────────────────────── */
+    .book-entry {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+
+    /* Book cover thumbnail */
+    .book-cover {
+      width: 51px;
+      height: 72px;
+      border-radius: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #e9ecef;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.12);
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-cover.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, #e9ecef 25%, #dee2e6 100%);
+    }
+
+    /* Book info */
+    .book-info {
+      flex: 1;
+      padding-top: 0.15rem;
+    }
+    .book-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.3;
+      margin-bottom: 0.1rem;
+    }
+    .book-author {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .book-note {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+    .book-notes-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 0.3rem;
+    }
+    .book-notes-link:hover { text-decoration: underline; }
+
+    /* ─── Lightbox ───────────────────────────────────────── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.88);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.5rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      opacity: 0.8;
+      line-height: 1;
+      z-index: 10000;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .book-cover { cursor: pointer; }
+
+    /* ─── Footer ──────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+
+    @media (max-width: 575px) {
+      .book-cover { width: 43px; height: 61px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes"><i class="bi bi-arrow-left"></i> Vibes</a>
+      <h1 class="page-title">Books</h1>
+      <div style="margin-bottom:2.5rem;"></div>
+
+      <!-- ── 2025 ── -->
+      <div class="year-section">
+        <div class="year-toggle open" onclick="toggleYear(this)">
+          <span class="year-label">2025</span>
+          <i class="bi bi-chevron-down chevron"></i>
+        </div>
+        <div class="year-content open">
+
+          <div class="book-entry">
+            <div class="book-cover placeholder"><i class="bi bi-book"></i></div>
+            <div class="book-info">
+              <div class="book-title">Book Title Here</div>
+              <div class="book-author">Author Name</div>
+              <div class="book-note">One-line comment goes here.</div>
+            </div>
+          </div>
+
+          <div class="book-entry">
+            <div class="book-cover placeholder"><i class="bi bi-book"></i></div>
+            <div class="book-info">
+              <div class="book-title">Book Title Here</div>
+              <div class="book-author">Author Name</div>
+              <div class="book-note">One-line comment goes here. <a class="book-notes-link" href="/vibes/books/example/">Notes <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── 2024 ── -->
+      <div class="year-section">
+        <div class="year-toggle" onclick="toggleYear(this)">
+          <span class="year-label">2024</span>
+          <i class="bi bi-chevron-down chevron"></i>
+        </div>
+        <div class="year-content">
+
+          <div class="book-entry">
+            <div class="book-cover placeholder"><i class="bi bi-book"></i></div>
+            <div class="book-info">
+              <div class="book-title">Book Title Here</div>
+              <div class="book-author">Author Name</div>
+              <div class="book-note">One-line comment goes here.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── 2020 ── -->
+      <div class="year-section">
+        <div class="year-toggle" onclick="toggleYear(this)">
+          <span class="year-label">2020</span>
+          <i class="bi bi-chevron-down chevron"></i>
+        </div>
+        <div class="year-content">
+
+          <div class="book-entry">
+            <div class="book-cover">
+              <img src="/img/vibes/books/selfish-gene.jpg" alt="이기적 유전자" loading="lazy" onclick="openCover(this)">
+            </div>
+            <div class="book-info">
+              <div class="book-title">이기적 유전자 The Selfish Gene</div>
+              <div class="book-author">리처드 도킨스 Richard Dawkins</div>
+              <div class="book-note">내용 정말 중요한데 번역이 너무 아쉽다. 읽으면서 너무 스트레스 받았다. 원문으로 다시 읽자. <a class="book-notes-link" href="/vibes/books/selfish-gene/">Notes <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+          </div>
+
+          <div class="book-entry">
+            <div class="book-cover">
+              <img src="/img/vibes/books/rebecca.jpg" alt="레베카" loading="lazy" onclick="openCover(this)">
+            </div>
+            <div class="book-info">
+              <div class="book-title">레베카 Rebecca</div>
+              <div class="book-author">Daphne du Maurier</div>
+            </div>
+          </div>
+
+          <div class="book-entry">
+            <div class="book-cover">
+              <img src="/img/vibes/books/grad-school-tips.jpg" alt="대학원생 때 알았더라면 좋았을 것들" loading="lazy" onclick="openCover(this)">
+            </div>
+            <div class="book-info">
+              <div class="book-title">대학원생 때 알았더라면 좋았을 것들</div>
+              <div class="book-author">엄태웅, 최윤섭, 권창현</div>
+              <div class="book-note">선배들이 해주는 귀한 이야기들. <a class="book-notes-link" href="/vibes/books/grad-school-tips/">Notes <i class="bi bi-arrow-right"></i></a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openCover(img) {
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    function toggleYear(el) {
+      el.classList.toggle('open');
+      const content = el.nextElementSibling;
+      content.classList.toggle('open');
+    }
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Selfish Gene – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-meta { padding-top: 0.3rem; }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" onclick="openLightbox()">
+          <img src="/img/vibes/books/selfish-gene-en.jpg" alt="The Selfish Gene">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">The Selfish Gene (1976) ⭐</div>
+          <div class="book-author">Richard Dawkins</div>
+        </div>
+      </div>
+
+      <div class="quote">"Is there a meaning to life? What are we for? What is man?: We no longer have to resort to superstition when faced with the deep problems"</div>
+
+      <div class="quote">"Living organisms had existed on earth, without every knowing why, for over three thousand million years before the truth finally dawned on one of them. His name was Charles Darwin. To be fair, others had had inklings of the truth, but it was Darwin who first put together a coherent and tenable account of why we exist."</div>
+
+      <div class="quote">"When astronauts voyage to distant planets and look for life, they can expect to find creatures too strange and unearthly for us to imagine. But is there anything that must be true of all life, wherever it is found, and whatever the basis of its chemistry? If forms of life exist whose chemistry is based on silicon rather than carbons, or ammonia rather than water, if creatures are discovered that boil to death at -100 degrees centigrade, if a form of life is found that is not based on chemistry at all but on electronic reverberating circuits, will there still be any general principle that is true of all life? Obviously I do not know but, if I had to bet, I would put my money on one fundamental principle. This is the law that all life evolves by the differential survival of replicating entities."</div>
+
+      <div class="quote">"Within each species some individuals leave more surviving offspring than others, so that the inheritable traits (genes) of the reproductively successful become more numerous in the next generation. This is natural selection: the non-random differential reproduction of genes."</div>
+
+      <div class="quote">"I shall argue that the fundamental unit of selection, and therefore of self-interest, is not the species, nor the group, nor even, strictly, the individual. It is the gene, the unit of heredity."</div>
+
+      <div class="quote">"I am not going to argue about whether people who behave altruistically are 'really' doing it for secret or subconscious selfish motives. Maybe they are and maybe they aren't, and maybe we can never know, but in any case that is not what this book is about. My definition is concerned only with whether the effect of an act is to lower or raise the survival prospects of the presumed altruist and the survival prospects of the presumed beneficiary."</div>
+
+      <div class="quote">"It is good to get into the habit, whenever we are trying to explain the evolution of some characteristic, such as altruistic behavior, of asking ourselves simply: What effect will this characteristic have on frequencies of genes in the gene pool?"</div>
+
+      <div class="quote">"We should not be surprised to find individual organisms behaving altruistically 'for the good of the genes' for example by feeding and protecting kin who are likely to share copies of the same genes. Such kin altruism is only one way in which gene selfishness can translate itself into individual altruism."</div>
+
+      <div class="quote">"Recently there has been a reaction against racialism and patriotism, and a tendency to substitute the whole human species as the object of our fellow feeling. This humanist broadening of the target of our altruism has an interesting corollary, which again seems to buttress the 'good of the species' idea in evolution. The politically liberal, who are normally the most convinced spokesman of the species ethic, now often have the greatest scorn for those who have gone a little further in widening their altruism, so that it includes other species. If I say that I am more interested in preventing the slaughter of large whales than I am in improving housing conditions for people, I am likely to shock some of my friends"</div>
+
+      <div class="quote">"The feeling that members of one's own species deserve special moral consideration as compared with members of other species is old and deep. Killing people outside war is the most seriously-regarded crime ordinarily committed. The only thing more strongly forbidden by our culture is eating people (even if they are already dead). We enjoy eating members of other species, however. Many of us shrink from judicial execution of even the most horrible human criminals, while we cheerfully countenance the shooting without trial of fairly mild animal pests. Indeed we kill members of other harmless species as a means of recreation and amusement."</div>
+
+      <div class="quote">"A human foetus, with no more human feeling than an amoeba, enjoys a reverence and legal protection far in excess of those granted to an adult chimpanzee. Yet the chimp feels and thinks and --- according to recent experimental evidence --- may even be capable of learning a form of human language. The foetus belongs to our own species, and is instantly accorded special privileges and rights because of it."</div>
+
+      <div class="quote">"The muddle in human ethics over the level at which altruism is desirable --- family, nation, race, species, or all living things --- is mirrored by a parallel muddle in biology over the level at which altruism is to be expected according to the theory of evolution."</div>
+
+      <div class="quote">"Grandparents and grandchildren have, genetically speaking, equal reason to behave altruistically to each other, since they share 1/4 of each other's genes. But if the grandchildren have the greater expectation of life, genes for grandparent to grandchild altruism have a higher selective advantage than genes for grandchild to grandparent altruism."</div>
+
+      <div class="quote">"The gene, the DNA molecule, happens to be the replicating entity that prevails on our own planet. There may be others. If there are, provided certain other conditions are met, they will almost inevitably tend to become the basis for an evolutionary process"</div>
+
+      <div class="quote">"Genes are the primary policy-makers; brains are the executives. But as brains became more highly developed, they took over more and more of the actual policy decisions, using tricks like learning and simulation in doing so."</div>
+
+      <div class="quote">"Anybody can see that, as a matter of fact, genes do not control their creations in the strong sense criticized as 'determinism'. We effortlessly (well, fairly effortlessly) defy them every time we use contraception"</div>
+
+      <div class="quote">"One of the dominant messages of The Selfish Gene is that we should not derive our values from Darwinism, unless it is with a negative sign. Our brains have evolved to the point where we are capable of rebelling against our selfish genes. The fact that we can do so is made obvious by our use of contraceptives. The same principle can and should work on a wider scale."</div>
+
+      <div class="quote">"We have the power to defy the selfish genes of our birth and, if necessary, the selfish memes of our indoctrination. We can even discuss ways of deliberately cultivating and nurturing pure, disinterested altruism --- something that has no place in nature, something that has never existed before in the whole history of the world. We are built as gene machines and cultured as meme machines, but we have the power to turn against our creators. We, alone on earth, can rebel against the tyranny of the selfish replicators."</div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:pointer;">
+    <span style="position:fixed;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;opacity:0.8;z-index:10000;">×</span>
+    <img src="/img/vibes/books/selfish-gene-en.jpg" style="max-width:90vw;max-height:90vh;border-radius:10px;object-fit:contain;">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openLightbox() { document.getElementById('lightbox').style.display='flex'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display='none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-selfish-gene-en');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

@@ -720,6 +720,12 @@
       el.nextElementSibling.classList.toggle('open');
     }
 
+    // Auto-open all year sections
+    document.querySelectorAll('.year-toggle').forEach(toggle => {
+      toggle.classList.add('open');
+      toggle.nextElementSibling.classList.add('open');
+    });
+
     function openPhoto(el) {
       const src = el.dataset.src;
       const inner = document.getElementById('lightbox-inner');

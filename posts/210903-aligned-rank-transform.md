@@ -33,7 +33,7 @@ library(ARTool)
 
 ## (3) ART 및 ANOVA 메소드 수행
 
-Repeated measures의 경우 아래와 같이 `Error(SubjectName/(MenuType*itemNum))`, Repeated measures가 아닌 경우는 `(1|SubjectName)`으로 입력하면 된다 [7].
+Repeated measures의 경우 아래와 같이 `Error(SubjectName/(MenuType*itemNum))`으로 입력하고, Repeated measures가 아닌 경우는 Error term 없이 입력하면 된다 [7].
 
 ```
 # Repeated measures
@@ -41,7 +41,7 @@ m <- art(Response ~ FactorA * FactorB + Error(Subject/(FactorA*FactorB)), data =
 anova(m)
 
 # Between-subjects (not repeated measures)
-m <- art(Response ~ FactorA * FactorB + (1|Subject), data = df)
+m <- art(Response ~ FactorA * FactorB, data = df)
 anova(m)
 ```
 ![Results of ART & ANOVA](img/posts/210903-aligned-rank-transform/art-results.png)

@@ -1,5 +1,5 @@
 ---
-title: Fusion 360 기초 사용법
+title: Fusion 360: Basics
 date: 2019-11-12
 tag: 3D Modeling
 ---
@@ -13,7 +13,7 @@ tag: 3D Modeling
 ![](img/posts/191112-fusion-360-basics/solid-tab.png)
 
 
-Default로 설정되어 있는 탭. 기본 워크플로우는 다음과 같다. 1) Create Sketch 클릭 → SKETCH 탭 진입. 2) 2차원 도형을 그린 후 Finish Sketch로 복귀. 3) Extrude 등을 이용해 3차원 구조 생성. 대부분의 모델링 작업은 이 사이클을 반복하는 것이다.
+Default로 설정되어 있는 탭. 기본 워크플로우는 다음과 같다. 1) Create Sketch (가장 왼쪽에 있는 플러스 모양 있는 아이콘) 클릭 → SKETCH 탭 진입. 2) 2차원 도형을 그린 후 Finish Sketch로 복귀. 3) Extrude 등을 이용해 3차원 구조 생성. 대부분의 모델링 작업은 이 사이클을 반복하는 것이다.
 
 ## CREATE
 

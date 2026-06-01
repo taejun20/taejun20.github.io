@@ -62,13 +62,13 @@
     .post-body h2 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.6rem; color: var(--text-main); }
     .post-body h3 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.4rem; }
     .post-body h4 { font-size: 0.95rem; font-weight: 700; margin-top: 1.2rem; margin-bottom: 0.3rem; }
-    .post-body figure { margin: 0.5rem 0; }
-    .post-figure { width: var(--fig-w, 100%); margin-left: auto; margin-right: auto; }
+    .post-body figure { margin: 0.5rem auto; }
+    .post-figure { width: var(--fig-w, 100%); margin-left: auto; margin-right: auto; display: block; text-align: center; }
     @media (max-width: 575px) { .post-figure { width: 100% !important; } }
     .post-body li figure { margin-top: 0.5rem; margin-bottom: 0.5rem; }
     .post-body figure img { max-width: 100%; height: auto; display: block; margin: 0; padding: 0; }
     .post-body figcaption { text-align: center; font-size: 0.95rem; color: var(--text-main); margin: 0; padding: 0; line-height: 1.4; }
-    .post-body img { max-width: 100%; height: auto; margin: 0.5rem 0 1rem; display: block; }
+    .post-body img { max-width: 100%; height: auto; margin: 0.5rem auto 1rem; display: block; }
     .post-body p { margin-bottom: 0.9rem; }
     .post-body ul, .post-body ol { padding-left: 1.5rem; margin-bottom: 0.9rem; }
     .post-body li { margin-bottom: 0.3rem; }
@@ -92,6 +92,10 @@
     .note-box p { margin-bottom: 0.25rem; }
     .back-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.88rem; color: var(--text-muted); text-decoration: none; margin-bottom: 1.5rem; }
     .back-link:hover { color: var(--accent); }
+    .lang-toggle { display: none; align-items: center; margin-right: 0.25rem; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.03em; }
+    .lang-toggle button { padding: 0.25rem 0.75rem; border: none; background: var(--card-bg); color: var(--text-muted); cursor: pointer; transition: all 0.15s; line-height: 1.5; }
+    .lang-toggle button.active { background: var(--accent); color: #fff; }
+    .lang-toggle button:not(:last-child) { border-right: 1px solid var(--border); }
     .like-btn { display: flex; align-items: center; gap: 0.35rem; padding: 0.3rem 0.85rem; border-radius: 20px; border: 1px solid var(--border); background: var(--card-bg); color: var(--text-sub); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.15s; line-height: 1; }
     .like-btn:hover, .like-btn.liked { border-color: #e03131; color: #e03131; background: #fff5f5; }
     footer { text-align: center; font-size: 0.82rem; color: var(--text-muted); border-top: 1px solid var(--border); padding: 0.5rem 1rem; margin-top: 0.1rem; }
@@ -157,11 +161,11 @@
         <div class="post-date">Feb 3, 2020</div>
       </a>
       <a class="post-entry" href="/posts?post=200131-oscilloscope-fluke-199c" data-tag="Electronics">
-        <div class="post-title-row"><span class="post-title">오실로스코프 (Fluke 199C) 사용법</span><span class="tag-chip">Electronics</span></div>
+        <div class="post-title-row"><span class="post-title">Oscilloscope (Fluke 199C): How to Use</span><span class="tag-chip">Electronics</span></div>
         <div class="post-date">Jan 31, 2020</div>
       </a>
       <a class="post-entry" href="/posts?post=191112-fusion-360-basics" data-tag="3D Modeling">
-        <div class="post-title-row"><span class="post-title">Fusion 360 기초 사용법</span><span class="tag-chip">3D Modeling</span></div>
+        <div class="post-title-row"><span class="post-title">Fusion 360: Basics</span><span class="tag-chip">3D Modeling</span></div>
         <div class="post-date">Nov 12, 2019</div>
       </a>
       <a class="post-entry" href="/posts?post=191112-transistor-basics" data-tag="Electronics">
@@ -180,6 +184,10 @@
         <span id="post-date"></span>
         <span id="post-tag" class="tag-chip" style="display:none;"></span>
         <div class="post-meta-right" id="post-meta-stats" style="display:none;">
+          <div class="lang-toggle" id="lang-toggle">
+            <button id="btn-ko" class="active" onclick="setLang('ko')">KOREAN</button>
+            <button id="btn-en" onclick="setLang('en')">ENGLISH</button>
+          </div>
           <span style="display:flex;align-items:center;gap:0.3rem;">
             <i class="bi bi-eye"></i><span id="view-count">–</span>
           </span>
@@ -266,27 +274,86 @@
 
   <script>
     const slug = new URLSearchParams(window.location.search).get('post');
+    let currentLang = 'ko';
+
+    async function renderPost(lang) {
+      const file = lang === 'en' ? `posts/${slug}-en.md` : `posts/${slug}.md`;
+      try {
+        const res = await fetch(file);
+        if (!res.ok) throw new Error();
+        const raw = await res.text();
+
+        const fm = {};
+        let body = raw;
+        const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+        if (fmMatch) {
+          fmMatch[1].split('\n').forEach(line => {
+            const [k, ...v] = line.split(':');
+            if (k && v.length) fm[k.trim()] = v.join(':').trim();
+          });
+          body = fmMatch[2];
+        }
+
+        if (lang === 'ko') {
+          document.title = (fm.title || slug) + ' – Taejun Kim';
+          document.getElementById('post-title').textContent = fm.title || slug;
+        }
+
+        const codeBlocks = [];
+        body = body.replace(/(```[\s\S]*?```|`[^`\n]+`)/g, m => { codeBlocks.push(m); return `\x00CODE${codeBlocks.length-1}\x00`; });
+        body = body.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
+        body = body.replace(/(?<!\*)\*([^*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+        body = body.replace(/\x00CODE(\d+)\x00/g, (_, i) => codeBlocks[+i]);
+        body = body.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => {
+          let caption = alt.trim(), desktopWidth = '100%';
+          const pi = caption.lastIndexOf('|');
+          if (pi !== -1) {
+            const w = caption.slice(pi+1).trim();
+            if (/^\d+%$/.test(w)) { desktopWidth = w; caption = caption.slice(0, pi).trim(); }
+          }
+          return `<figure class="post-figure" style="--fig-w:${desktopWidth}"><img src="${url}" alt="${caption}" style="width:100%">${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`;
+        });
+        body = body.replace(/```note\n([\s\S]*?)```/g, (_, c) =>
+          `<div class="note-box">${marked.parse(c.trim())}</div>\n`);
+
+        document.getElementById('post-body').innerHTML = marked.parse(body);
+      } catch(e) {
+        if (lang === 'en') {
+          document.getElementById('post-body').innerHTML = '<p style="color:var(--text-muted)">English version not available yet.</p>';
+        } else {
+          document.getElementById('post-title').textContent = 'Post not found.';
+        }
+      }
+    }
+
+    window.setLang = function(lang) {
+      currentLang = lang;
+      document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      renderPost(lang);
+    };
 
     if (slug) {
       document.getElementById('view-post').style.display = 'block';
+
+      // Check if English version exists and show toggle
+      fetch(`posts/${slug}-en.md`, { method: 'HEAD' }).then(r => {
+        if (r.ok) document.getElementById('lang-toggle').style.display = 'flex';
+      }).catch(() => {});
 
       (async () => {
         try {
           const res = await fetch(`posts/${slug}.md`);
           if (!res.ok) throw new Error();
           const raw = await res.text();
-
           const fm = {};
-          let body = raw;
-          const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+          const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n/);
           if (fmMatch) {
             fmMatch[1].split('\n').forEach(line => {
               const [k, ...v] = line.split(':');
               if (k && v.length) fm[k.trim()] = v.join(':').trim();
             });
-            body = fmMatch[2];
           }
-
           document.title = (fm.title || slug) + ' – Taejun Kim';
           document.getElementById('post-title').textContent = fm.title || slug;
           if (fm.date) {
@@ -299,31 +366,12 @@
             chip.textContent = fm.tag;
             chip.style.display = 'inline';
           }
-
-          const codeBlocks = [];
-          body = body.replace(/(```[\s\S]*?```|`[^`\n]+`)/g, m => { codeBlocks.push(m); return `\x00CODE${codeBlocks.length-1}\x00`; });
-          body = body.replace(/\*\*([^*\n]+?)\*\*/g, '<strong>$1</strong>');
-          body = body.replace(/(?<!\*)\*([^*\n]+?)\*(?!\*)/g, '<em>$1</em>');
-          body = body.replace(/\x00CODE(\d+)\x00/g, (_, i) => codeBlocks[+i]);
-
-          body = body.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => {
-            let caption = alt.trim(), desktopWidth = '100%';
-            const pi = caption.lastIndexOf('|');
-            if (pi !== -1) {
-              const w = caption.slice(pi+1).trim();
-              if (/^\d+%$/.test(w)) { desktopWidth = w; caption = caption.slice(0, pi).trim(); }
-            }
-            return `<figure class="post-figure" style="--fig-w:${desktopWidth}"><img src="${url}" alt="${caption}" style="width:100%">${caption ? `<figcaption>${caption}</figcaption>` : ''}</figure>`;
-          });
-
-          body = body.replace(/```note\n([\s\S]*?)```/g, (_, c) =>
-            `<div class="note-box">${marked.parse(c.trim())}</div>\n`);
-
-          document.getElementById('post-body').innerHTML = marked.parse(body);
         } catch(e) {
           document.getElementById('post-title').textContent = 'Post not found.';
         }
       })();
+
+      renderPost('ko');
 
     } else {
       document.getElementById('view-list').style.display = 'block';

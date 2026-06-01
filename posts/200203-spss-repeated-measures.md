@@ -157,7 +157,7 @@ Friedman's test의 사후분석은 비모수검정(non-parametric test)의 post-
 
 ```note
 검정 통계량의 근사 유의확률이 0.05보다 작으므로 significant effect가 있다.  
-"A Friedman test revealed a significant effect of type of device on accuracy (χ²(2) = 9.667, p = .008)"
+"A Friedman test revealed a significant effect of type of device on accuracy (χ²(2) = 12.182, p < .005)"
 ```
 
 ## 프로그램 사용 (2) — 사후 분석 (Wilcoxon signed-rank test)

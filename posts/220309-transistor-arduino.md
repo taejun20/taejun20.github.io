@@ -14,7 +14,7 @@ Arduino I/O Digital Pin 혹은 Analogue Pin의 Current Limit는 40 mA 이다. 40
 
 ![Digital pin을 트랜지스터와 연결. 실제 모터의 전압은 5V pin에서 공급 (VCC pin, GND pin의 Current Limit은 200 mA)|60%](img/posts/220309-transistor-arduino/circuit.png)
 
-회로도에서 Arduino Pin과 Base 사이에 저항(R1)이 연결되어 있다. 이는 Base에 흐르는 전류를 제한하기 위함이다. Arduino Pin은 5V를 출력하는데, 저항 없이 Base에 직접 연결하면 과전류가 흘러 트랜지스터나 Arduino Pin이 손상될 수 있다. R_B의 값은 트랜지스터를 Saturation Region(완전히 켜진 상태)으로 만들기에 충분한 전류가 흐르도록 계산한다. 예를 들어 5V에서 1kΩ 저항을 사용하면 약 5mA가 흐르고, β = 100인 트랜지스터라면 I_C = 500mA까지 제어할 수 있다.
+회로도에서 Arduino Pin과 Base 사이에 저항(R1)이 연결되어 있다. 이는 Base에 흐르는 전류를 제한하기 위함이다. Arduino Pin은 5V를 출력하는데, 저항 없이 Base에 직접 연결하면 과전류가 흘러 트랜지스터나 Arduino Pin이 손상될 수 있다. R1의 값은 트랜지스터를 Saturation Region(완전히 켜진 상태)으로 만들기에 충분한 전류가 흐르도록 계산한다. 예를 들어 5V에서 1kΩ 저항을 사용하면 약 5mA가 흐르고, β = 100인 트랜지스터라면 I_C = 500mA까지 제어할 수 있다.
 
 
 

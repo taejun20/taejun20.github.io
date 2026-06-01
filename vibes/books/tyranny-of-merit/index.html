@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>공정하다는 착각 – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-meta { padding-top: 0.3rem; }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" onclick="openLightbox()">
+          <img src="/img/vibes/books/tyranny-of-merit.jpg" alt="공정하다는 착각">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">공정하다는 착각 The Tyranny of Merit (2020)</div>
+          <div class="book-author">마이클 샌델 Michael J. Sandel</div>
+        </div>
+      </div>
+
+      <div class="quote">"SAT처럼 표준화된 시험은 ... 경제적으로 가장 어려운 배경을 가진 학생이라 할지라도 지적인 장래성을 보일 수 있는 시스템이라고 여겨진다. 그러나 실제로는 SAT 점수와 수험생 집안의 소득이 비례관계를 나타낸다. 더 부유한 집 학생일수록 더 높은 점수를 얻을 가능성이 크다. ... 프린스턴과 예일에는 미국의 소득 하위 60퍼센트 출신 학생보다 상위 1퍼센트 출신 학생이 더 많다 ... 노력과 재능 만으로 누구나 상류층으로 올라갈 수 있다는 미국인의 믿음은 더 이상 사실과 맞지 않는다. ... 사다리 자체가 점점 오르지 못할 나무가 되어가고 있기 때문이다."</div>
+
+      <div class="quote">"1980년부터 하버드에서 정치철학을 가르쳐온 나는 ... 능력주의 정서가 점점 짙어지고 있음을 나의 학생들에게서 느낄 수 있었다. ... 학생들은 '나는 죽어라 노력해서 하버드에 왔으며 따라서 나의 지위는 능력으로 정당화된다'고 여기고 있었다. 그들이 운이나 기타의 통제 불가능 요인으로 입학한 게 아니냐는 말에는 거센 반발이 일었다."</div>
+
+      <div class="quote">"과도한 스트레스와 힘겨운 노력을 겪은 뒤에 얻은 것이 '스스로의 힘으로 쟁취한 것이며 성공은 오로지 자신의 몫'이라고 여겨지기 않기란 힘든 일이다. ... 그런 경험은 그들을 철저한 능력주의자로 만들었다."</div>
+
+      <div class="quote">"우리 자신을 자수성가하고 자기충족적인 존재로 여길수록, 우리보다 운이 덜 좋았던 사람들에 대한 배려가 힘들어진다. 내 성공이 순진한 내 덕이라면 그들의 실패도 순전히 그들 탓이 아니겠는가. 이 논리는 능력주의가 공동체 의식을 약화시키는 논리로 기능한다. 우리 운명이 개인 책임이라는 생각이 강할수록 우리가 다른 사람까지 챙길 필요는 느끼기 힘들다."</div>
+
+      <div class="quote">"사실 다른 많은 나라들보다 미국에서 사회적 이동성이 떨어지고 있다. 부나 가난의 대물림 현상은 독일, 스페인, 일본, 오스트레일리아, 스웨덴, 캐나다, 핀란드, 노르웨이, 덴마크보다 미국에서 더 자주 일어난다. 미국과 영국에서는 부모의 부가 자녀에게 고스란히 이어지는 일이 거의 절반에 이르지만, 캐나다, 핀란드, 노르웨이, 덴마크에서는 그 절반 정도일 뿐이다."</div>
+
+      <div class="quote">"밝혀진 대로라면 덴마크와 캐나다의 청소년은 미국 청소년에 비해 가난한 집에 태어났다가 부자가 될 가능성이 훨씬 크다. 이런 기준에서 아메리칸 드림은 미국이 아니라 코펜하겐에서 살아 숨쉬고 있다고 볼 일이다. ... 기회의 땅이라는 미국이 중국보다 밑바닥에서 위로 올라 성공할 가능성이 낮다."</div>
+
+      <div class="quote">"내 학생들이 그 사실을 접했을 때 그들은 웅성거렸다. 대부분은 미국 예외주의를 마음 속 깊이 믿고 있었으며, 미국이야말로 열심히 일한 사람이 앞서갈 수 있는 땅이라고 생각하고 있었다. ... 그러나 미국이 다른 많은 나라보다 더 불평등할 뿐 아니라 이동성도 덜하다는 사실을 알면 충격과 당황에 빠지게 된다. 어떤 사람은 사회적 이동성 지표를 애써 부정하며 '나 때는 말이야. 힘써 노력만 하면...' 이라는 식으로 개인 경험에 집착한다."</div>
+
+      <div class="quote">"완벽한 능력주의는 정의로운가?<br><br>
+      어느 순간, 성공에 대한 모든 불공정한 장애물을 제거했다고 상상해보자. 그래서 별 볼일 없는 배경을 가진 사람까지 포함해 모두가 특권층 자녀와 공평하게 겨룰 수 있게 되었다고 해보자. 물론 그런 사회는 이룩하기 어렵다. ... 하지만 그런 일이 가능해졌다고 치자. 그러면 정의로운 사회가 이루어진 셈일까?<br><br>
+      완벽하게 실현된 능력주의라 해도 정의로운 사회일 수 없는 이유가 있다. 먼저 능력주의의 이상은 이동성에 있지 평등에 있지 않음을 주의해야 한다. 능력주의는 부자와 빈자의 차이가 벌어진다고 해서 문제가 있다고 여기지 않는다. ... 능력주의에서 중요한 건 '모두가 성공의 사다리를 오를 평등한 기회를 가져야 한다'는 것이다. 그 사다리의 단과 단이 얼마나 떨어져 있는지는 문제가 안된다. 능력주의의 이상은 불평등을 치유하려 하지 않는다. 불평등을 정당화하려 한다."</div>
+
+      <div class="quote">"복지국가 자유주의 (Welfare state liberalism)<br><br>
+      '재능의 차이는 계층의 차이 만큼이나 도덕적으로 정당화될 수 없는 우연적 요소다' ... 자연적 재능에 따른 소득 불평등은 계층 차이에 따른 불평등보다 전혀 더 정의롭지 않다. ... 롤스는 승자가 남들보다 불운한 사람들과 승리의 과실을 나누는 방법을 제시했다. 가장 잘 달리는 주자. ... 마음껏 전속력으로 달리게 하라. 다만 그의 승리가 전적으로 그에게 속한 것이 아님은 분명히 해야 한다. 재능 있는 이들이 그 재능을 한껏 갈고 닦도록 하라. 그러나 그들이 받는 보상이 시장에서 부풀려지면, 그것은 공동체 전체와 나눠가져야 한다. ... 피땀 흘려 얻은 개인 소득을 국가가 세금으로 거둬갈 권리는 없다는 사람들에게, 그리고 개인은 자신의 소득을 온전히 향유할 자격이 있다는 사람들에게 롤스는 '우리가 얼마나 많은 돈을 버느냐는 ... 우연의 산물일 뿐'이라고 대답한다. 시장이 내가 가진 재능을 높이 평가하거나 애초에 내가 그런 재능을 가지게 된 것에 내 노력이 들어간 부분은 하나도 없다. 따라서 나는 세법이 나의 소득 일부를 가져가 가난한 이들을 위한 학비로 쓰거나 길을 닦는 데 쓰더라도 불평할 권리가 없다는 것이다."</div>
+
+      <div class="quote">"능력주의적 신념은, 연대를 거의 불가능한 프로젝트로 만든다. 대체 왜 성공한 사람들이 보다 덜 성공한 사회구성원들에게 뭔가를 해줘야 하는가? 이 질문에 대한 해답은, 우리가 설령 죽도록 노력한다고 해도 우리는 결코 자수성가적 존재나 자기충족적 존재가 아님을 깨닫느냐에 달려있다. 사회 속의 우리 자신을, 그리고 사회가 우리 재능에 준 보상은 우리의 행운 덕이지 우리 업적 덕이 아님을 찾아내는 것이 필요하다. '신의 은총인지, 어쩌다 이렇게 태어난 때문인지, 운명의 장난인지 몰라도 덕분에 나는 지금 여기 서 있다."' 그런 겸손함은 우리를 갈라놓고 있는 가혹한 성공 윤리에서 돌아설 수 있게 해준다. 그것은 능력주의의 폭정을 넘어, 보다 덜 악의적이고 보다 더 관대한 공적 삶으로 우리를 이끌어간다."</div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:pointer;">
+    <span style="position:fixed;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;opacity:0.8;z-index:10000;">×</span>
+    <img src="/img/vibes/books/tyranny-of-merit.jpg" style="max-width:90vw;max-height:90vh;border-radius:10px;object-fit:contain;">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openLightbox() { document.getElementById('lightbox').style.display='flex'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display='none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-tyranny-of-merit');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

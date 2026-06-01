@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이토록 뜻밖의 뇌과학 – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-meta { padding-top: 0.3rem; }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" onclick="openLightbox()">
+          <img src="/img/vibes/books/seven-lessons-brain.jpg" alt="이토록 뜻밖의 뇌과학">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">이토록 뜻밖의 뇌과학 Seven and a Half Lessons About the Brain (2020)</div>
+          <div class="book-author">리사 펠드먼 배럿 Lisa Feldman Barrett</div>
+        </div>
+      </div>
+
+      <div class="quote">"군중 속에서 친구의 얼굴을 보았는데 다시 보니 다른 사람이라는 것을 알아차린 적이 있는가? 핸드폰이 울리지도 않는데 주머니에서 진동을 느낀 적이 있지는 않을까? 어떤 노래가 머릿 속에서 떠나지 않아 계속 흥얼거린 적은 없는가? 신경과학자들은 이렇게 말하고 싶어한다. 당신의 일상적 경험이란 외부 세계와 당신의 신체가 주는 제약을 받지만, 궁극적으로는 당신의 뇌가 구성하는 '주의 깊게 제어된 환각hallucination'이라고 말이다."</div>
+
+      <div class="quote">"당신의 뇌는 활발하게 경험들을 구성해간다. 우리는 매일 아침 일어나면서 감각들로 가득 찬 세상을 경험한다. ... 하지만 당신은 감각기관들이 아니라 당신의 뇌로 이것들을 감지한다. 우리가 보는 것은 세상에 있는 것과 우리 뇌가 구성한 것의 조합이다. 당신이 듣는 것 역시 세상에 있는 소리와 뇌 안에 있는 것의 조합이며, 다른 감각들도 마찬가지다. 이와 거의 같은 방식으로 뇌는 신체 내부에서 느끼는 것 또한 구성한다. 통증이나 불안감처럼 내부에서 느껴지는 감각들은 뇌에서 일어나는 일과 폐, 심장, 내장, 근육 등에서 실제로 일어나는 일의 조합이다."</div>
+
+      <div class="quote">"공통된 뇌 제조계획brain-manufacturing plan은 난자가 수정된 직후, 배아가 신경세포를 만들어내기 시작할 때부터 돌아간다. 포유류의 뇌를 형성하는 신경세포들은 놀라울 정도로 예측 가능한 순서대로 만들어진다. 이 순서는 생쥐, 쥐, 개, 고양이, 말, 개미핥기, 인간, 그리고 지금까지 연구한 모든 종류의 포유류 동물에게서 똑같이 발견된다. 그리고 유전학적 증거들은 이러한 순서가 파충류와 조류, 그리고 일부 어류에게도 나타남을 강력히 시사한다. 그렇다. 과학적 지식에 따르는 한 당신은 다른 물고기의 피를 빨아먹으며 살아가는 칠성장어와 똑같은 뇌 제조계획을 갖고 있다. 그토록 많은 척추동물의 뇌가 같은 순서로 발달한다면 왜 이 뇌들은 제각각 달라 보이는 것일까? 그 이유는 만들어지는 프로세스가 단계적으로 이루어지며, 종별로 각 단계를 지속하는 기간이 짧거나 길기 때문이다. 생물학적 구성요소들은 똑같다. 차이가 나는 것은 오직 시간이다. 예를 들어 대뇌 피질을 구성하는 신경세포들이 만들어지는 단계는 인간보다 설치류가 짧고, 도마뱀은 이보다 훨씬 더 짧다. 그래서 우리의 대뇌피질은 크고 생쥐의 것은 작으며, 이구아나의 것은 훨씬 더 작거나 없는 것이다."</div>
+
+      <div class="quote">"자연선택은 우리를 향해 진행되지 않았다. 우리는 그저 특정 환경에서 생존하고 번식할 수 있도록 돕는 특정 적응력을 갖춘 흥미로운 동물 한 종에 지나지 않는다. 다른 동물들이 인간보다 열등한 것이 아니다. 동물들은 각자 독특하고 효과적인 방식으로 주변 환경에 적응한다. 당신의 뇌는 쥐나 도마뱀의 뇌보다 더 진화한 것이 아니라 그저 다르게 진화한 것이다."</div>
+
+      <div class="quote">"다른 동물들도 의미 있는 방식으로 인간을 능가하는 능력들을 진화시켜왔다. 우리는 날 수 있는 날개가 없다. 우리는 자기 체중보다 50배 무거운 것을 들어올리지 못한다. 우리는 절단된 신체 부위를 재생시킬 수 없다. 이러한 능력들은 우리에게 초인적인 힘으로 여겨지지만, 작은 생물들은 늘 해오던 일들이다. 박테리아조차 당신의 장속이나 우주공간과 같이 혹독하고 낯선 환경에서 살아남는 것 같은 특정 과업들을 우리보다 훨씬 뛰어나게 해낸다."</div>
+
+      <div class="quote">"당신은 ... 시행착오에서 비롯되는 혁신과 어마어마하게 많은 동물의 죽음으로 점철된 진화적 시간을 거쳐 마침내 인간의 뇌를 갖게 되었다. 많은 놀라운 일을 해낼 수 있지만 동시에 이토록 자신을 심각하게 오해하는 그런 뇌 말이다.<br><br>
+      1. 우리 안에서 마치 감정과 이성이 맞붙어 싸우는 것처럼 느껴지는 다양한 정신적 경험을 만들어내는 뇌<br>
+      2. 너무 복잡해서 비유로 설명하면 그것을 지식으로 착각하게 만드는 뇌<br>
+      3. 스스로 재배선하는 것에 너무나 능숙해서 실제로는 우리가 배운 모든 것을 선천적으로 타고난 것처럼 생각하게 하는 뇌<br>
+      4. 환각을 매우 잘 일으켜서 우리가 세상을 객관적으로 보고 있다고 믿게 하고, 예측과 반응으로 착각할 정도로 정말 빨리 예측하는 뇌<br>
+      5. 전혀 눈에 띄지 않게 다른 뇌를 조절하여 우리가 서로 별개인 것처럼 여기게 하는 뇌<br>
+      6. 너무 많은 종류의 마음을 만들어내어 그것들을 모두 설명할 수 있는 단 하나의 인간 본성이 있을 거라고 추정하게 만드는 뇌<br>
+      7. 사회적 현실을 자연계로 착각할 정도로 자신이 발명해낸 것들을 너무 잘 믿어버리는 뇌"</div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:pointer;">
+    <span style="position:fixed;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;opacity:0.8;z-index:10000;">×</span>
+    <img src="/img/vibes/books/seven-lessons-brain.jpg" style="max-width:90vw;max-height:90vh;border-radius:10px;object-fit:contain;">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openLightbox() { document.getElementById('lightbox').style.display='flex'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display='none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-seven-lessons-brain');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

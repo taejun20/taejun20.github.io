@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>단 하나의 방정식 – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-meta { padding-top: 0.3rem; }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" onclick="openLightbox()">
+          <img src="/img/vibes/books/god-equation.jpg" alt="단 하나의 방정식">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">단 하나의 방정식 The God Equation (2021)</div>
+          <div class="book-author">미치오 카쿠 Michio Kaku</div>
+        </div>
+      </div>
+
+      <div class="quote">"아인슈타인의 목표는 '신의 마음이 담겨 있는' 단 한 줄짜리 방정식으로 우주의 삼라만상을 설명하는 것이었으나, 끝내 신의 마음을 읽지 못하고 세상을 떠났다."</div>
+
+      <div class="quote">"가장 그럴듯한 (내가 보기에는 유일한) 후보로는 끈이론string theory을 들 수 있다. 이 이론에 의하면 우주의 최소 단위는 점입자point particle가 아니라 진동하는 끈이며, 이들은 진동패턴에 따라 다양한 소립자의 모습으로 관측된다.<br><br>만일 우리에게 초강력 현미경이 주어진다면, 전자electron와 쿼크quark, 뉴르티노neutrino 등은 고무줄을 닮은 초미세 고리형 끈이 각기 다른 패턴으로 진동하면서 나타난 결과임을 눈으로 확인할 수 있을 것이다. 이 고리형 끈을 다양한 방식으로 여러번 퉁기면 우주에 존재하는 모든 입자를 만들어낼 수 있다. 다시 말해서, 모든 물리법칙이 '끈으로 만들어낸 화음'으로 요약된다는 뜻이다."</div>
+
+      <div class="quote">"스티븐 호킹은 그의 저서 &lt;시간의 역사&gt;에 다음과 같이 적어놓았다.<br><br>'완벽한 이론이 발견되면 처음에는 일부 과학자들만 이해하겠지만, 시간이 흐르면 결국 모든 사람들이 이해하게 될 것이다. 그러면 「우주와 우리는 왜 존재하는가?」라는 심오한 토론에 철학자와 과학자뿐만 아니라 일반 대중들도 참여할 수 있다. 그리고 이 질문의 해답을 찾는다면 인류 역사상 가장 위대한 승리로 기록될 것이다. 오랜 세월 동안 무지한 상태로 살아왔던 인간이 드디어 신의 마음을 알아냈기 때문이다.'"</div>
+
+      <div class="quote">"'우리는 한번 지나간 과거가 바뀐 사례를 한 번도 본 적이 없으므로, 자연에는 시간여행을 방지하는 법칙이 반드시 존재해야한다.'라는 논리 자체는 매우 그럴듯하지만, 호킹은 자신의 가설을 증명하지 못했다. 그러므로 시간여행은 (적어도 지금까지는) 물리법칙에 위배되지 않으며, 미래에 타임머신이 만들어진 가능성도 여전히 열려 있다."</div>
+
+      <div class="quote">"물론 시간여행은 심각한 문제를 야기한다. 말이 나온 김에, 시간여행과 관련된 역설을 정리해보자.<br><br>- '현재'가 존재할 수 없게 된다. 당신이 과거로 돌아가 할아버지를 죽인다면 당신은 태어날 수 없고, 따라서 할아버지를 죽일 수도 없다.<br>- 타임머신의 출처를 알 수 없다. 미래에서 온 누군가가 당신에게 타임머신을 만드는 법을 은밀하게 알려주었다. 그래서 몇 년 후 당신은 타임머신을 만들었고, 내친 김에 과거로 가서 아직 어린 당신에게 타임머신의 비밀을 전수해주었다. 그렇다면 타임머신을 만든 사람은 대체 누구인가?<br><br>...이 모든 역설이 해결되려면, 무엇보다 양자중력이론이 완성되어야 한다. 예를 들어 타임머신을 탈 때마다 시간이 가지를 쳐서 평행우주가 생성될 수도 있다. 만일 당신이 타임머신을 타고 1865년 포드 극장으로 날아가 에이브러햄 링컨을 암살 직전에 구해낸다면 링컨의 재임 기간이 길어질 수도 있지만, 이것은 어디까지나 지금의 우주가 아닌 평행우주에서 생기는 일이다. 즉, 링컨의 수명이 길어져도 우리의 우주에는 아무런 변화가 없다. 우주가 두 개로 갈라졌으므로, 목숨을 건진 링컨은 두 번째 우주에서 대통령 직무를 수행하면 된다."</div>
+
+      <div class="quote">"뉴턴의 법칙은 세상에 알려진 후 수백 년 동안 다양한 분야에 걸쳐 사실로 확인되면서 과학과 사회에 지대한 영향을 미쳤다. 19세기에 천문학자들은 천왕성의 궤도가 완벽한 타원에서 조금 벗어나 있음을 발견하고 한동안 고민에 빠졌다. 뉴턴의 법칙이 틀린 것일까? 아니면 아직 발견되지 않은 다른 행성의 중력 때문에 정상적인 궤도에서 벗어난 것일까? 프랑스의 천문학자 위르뱅 르베리에는 뉴턴의 운동법칙이 옳다는 가정하에 새로운 행성의 위치를 계산했고, 이 행성은 1846년 르베리에가 계산했던 위치로부터 1도 이내의 거리에서 발견되어 '해왕성'으로 명명되었다. 이것은 뉴턴의 운동법칙은 입증한 강력한 증거이자 '오직 수학 계산만으로 천체의 위치를 예측한' 최초의 사례이다."</div>
+
+      <div class="quote">"아인슈타인은 누군가가 삶의 의미를 물을 때마다 궁색한 표정을 짓곤 했지만, 신에 관해서는 확고한 신념을 갖고 있었다. 그는 이 세상에 두 종류의 신이 존재하며, 둘을 확실하게 구별해야 한다고 강조했다. 첫 번째는 사람들이 기도할 떄 찾는 인격적인 신으로, 성경에 적힌 대로 블레셋(팔레스타인)을 벌하고 믿음에 보답하는 신이다. 아인슈타인은 이런 신을 믿지 않았다. 그는 우주를 창조한 신이 인간사에 일일이 간섭할 리가 없다고 생각했다.<br><br>아인슈타인이 믿은 것은 스피노자의 신이었다. 즉, 우주에 아름다움과 단순함, 우아함을 부여하고 지금과 같은 질서를 창조한 신을 믿은 것이다. 우주는 추하고, 무작위적이고, 혼란스러운 곳이 될 수도 있었지만, 신은 보이지 않는 곳에 심오한 질서를 숨겨놓았다."</div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:pointer;">
+    <span style="position:fixed;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;opacity:0.8;z-index:10000;">×</span>
+    <img src="/img/vibes/books/god-equation.jpg" style="max-width:90vw;max-height:90vh;border-radius:10px;object-fit:contain;">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openLightbox() { document.getElementById('lightbox').style.display='flex'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display='none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-god-equation');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

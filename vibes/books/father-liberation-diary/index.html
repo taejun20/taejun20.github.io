@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>아버지의 해방일지 – Taejun Kim</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --accent:      #3b5bdb;
+      --accent-soft: #e7ecff;
+      --text-main:   #212529;
+      --text-sub:    #495057;
+      --text-muted:  #868e96;
+      --bg:          #fffdf8;
+      --card-bg:     #ffffff;
+      --border:      #dee2e6;
+      --radius:      10px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    .page-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--accent); }
+
+    .book-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    .book-cover {
+      width: 65px;
+      height: 91px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .book-meta { padding-top: 0.3rem; }
+    .book-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.2rem;
+      color: var(--text-main);
+    }
+    .book-author {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .quote {
+      border-left: 3px solid var(--border);
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-sub);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="page-wrap">
+      <a class="back-link" href="/vibes/books"><i class="bi bi-arrow-left"></i> Books</a>
+
+      <div class="book-header">
+        <div class="book-cover" onclick="openLightbox()">
+          <img src="/img/vibes/books/father-liberation-diary.jpg" alt="아버지의 해방일지">
+        </div>
+        <div class="book-meta">
+          <div class="book-title">아버지의 해방일지 (2022)</div>
+          <div class="book-author">정지아</div>
+        </div>
+      </div>
+
+      <div class="quote">"어머니는 몇시간 전 세상 떠난 아버지가 북한을 비판하면 파르르 날을 세우던, 누가 보면 천생 사회주의자였다. 그런데 기실 어머니의 사회주의란 첫사랑, 좀 더 풀어쓰자면 여자도 공부를 할 수 있는 세상, 가난한 자도 인간 대접받는 세상에 불과했다. 신자유주의 대한민국도 그 정도는 해준다. 그러니까 어머니에게 사회주의란 그저 지나간 첫 남자가, 지나갔음으로 가장 그리운, 뭐 그런 것이라고 봐도 무방하다. 섦게 울던 어머니는 눈 촉촉이 젖은 황사장을 그 이상의 촉촉한 눈빛으로 응시했다. 아직은 약간의 경계를 품고.<br><br>"우리 바깥 양반을 워치케 아까요? 영감 아는 사람은 나도 다 아는디…"<br><br>…민중이었던 방물장수와의 하룻밤 동침도 내켜하지 않았던 어머니가 낯선 사내의 손을 덥석 잡고는 한없이 다정하게 토닥였다. 어렸던 그때도 지금도 나는 저러한 급작스러운 전이가 도무지 이해되질 않는다. 사상이란 저렇듯 느닷없이 타인을 포용하게 만드는 대단한 것일까. 내 부모에게는 그랬을지 모른다. 그러나 나는 저 느닷없는 친밀감과 포용이 퍼스트 클래스에 탄 돈 많은 자들끼리의 유대감과 별반 다르게 느껴지지 않았다."</div>
+
+      <div class="quote">"사회주의자라면서 남의 일은 대충대충 하는 게 사람 본성이라 확신하는 어머니가 아버지 앞을 가로막고 나섰다.<br><br>"오죽흐먼 나헌티 전화를 했겄어, 이 밤중에!" 또 그놈의 오죽하면 타령이었다. 사람이 오죽하면 그러겠느냐,는 아버지의 십팔번이었다. 나는 아버지와 달리 오죽해서 아버지를 찾는 마음을 믿지 않았다. 사람은 힘들 때 가장 믿거나 가장 만만한 사람을 찾는다. 어느 쪽이든 결과는 마찬가지다. 힘들 때 도움받은 그 마음을 평생 간직하는 사람은 열에 하나도 되지 않는다. 대개는 도움을 준 사람보다 도움을 받은 사람이 그 은혜를 먼저 잊어버린다. 굳이 뭘 바라고 도운 것은 아니나 잊어버린 그 마음이 서운해서 도움 준 사람들은 상처를 받는다. 대다수의 사람은 그렇다. 그러나 사화주의자 아버지는 그렇다 한들 상처받지 않았다. 그들이 그럴 수밖에 없는 것은 사회의 구조적 모순 탓이고, 그래서 더더욱 혁명이 필요하다고 믿기 때문이었다. … 아버지는 동분서주하다가 밤늦게야 돌아왔다. 그때까지 어머니는 논에서 돌아오지 못했다.<br><br>어머니 예상대로 동네 사람들은 네모반듯하지 않아 비뚤비뚤한 다락논의 네 귀퉁이에는 아예 모를 심지 않고 대충 일을 마무리했다. 어머니 혼자 별을 보며 스무마지기 귀퉁이마다 모를 심었다. 아버지가 곯아떨어진 뒤에야 네발로 기어 집에 돌아온 어머니는 까진 무릎에 이까징끼를 바르며 숨죽여 울었다. 누굴 닮았는지 모진 나는 어머니의 숨죽인 울음소리를 들으며 생각했다. 만에 하나 어머니가 월북했다면 자기 농사에 심혈을 기울이다 진작에 숙청당했을 거라고. 그것이 당신들이 믿는 사회주의의 실체라고."</div>
+
+      <div class="quote">"고씨 집안사람 하나가 친일파였다. 친일로 제법 돈을 모았고 일본에 헌납도 한 모양이었다. 해방 직후 면의 젊은이들이 그를 당산나무 아래로 끌고 왔다. 쳐 죽이라는 고함이 터져 나왔다. 혈기왕성한 젊은이 하나가 낫을 들고 다가가자 누군가 빽 소리를 쳤다. 젊은이의 어머니였다.<br><br>"그 어른 아니었으면 니가 시방 산 목심이 아니어야!" 젊은이가 어린 시절 이질로 죽어갈 때 고시까 병원비를 댄 것이다. 사람들이 한마디씩 보태기 시작했다. "우리 애기 학벵 끌레가게 생겼는디 고씨 어른이 손을 써줬그마요." 고씨 성토장이 이내 미담장으로 변했다. 쳐 죽이자고 했던 젊은이들도 그만 머쓱해져서 흐지부지 흩어지고 말았다.<br><br>"민족이고 사상이고, 인심만 안 잃으면 난세에도 목심은 부지허는 것이여." 자신도 고씨처럼 인심을 잃지 않았으니 빨갱이라도 고향서 살 수 있다는 의미인 듯했다. 한때 적이었던 사람들과 아무렇지 않게 어울려 살아가는 아버지도 구례 사람들도 나는 늘 신기했다.<br><br>시속 180킬로로 고속도로를 달려 병원에 도착했을 때 아버지는 시체처럼 창백했다. 몇시간 전 의식을 잃은 아버지는 얼굴의 근육이 완전히 이완되어 편안하디 편안한 모습이었다. 살아 있는 사람의 얼굴은 어느 근육이든 긴장한 상태인 모양이었다. 세상사의 고통이 근육의 긴장으로 드러나는 것은 아닐까 싶었다. 죽음이란 고통으로부터 해방되는 것, 아버지는 보통 사람보다 더 고통스러운 삶을 살았으니 해방의 기쁨 또한 그만큼 크지 않을까, 다시는 눈 뜰 수 없는 아버지의 얼굴을 보면서 나는 그런 생각을 했다."</div>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:9999;align-items:center;justify-content:center;cursor:pointer;">
+    <span style="position:fixed;top:1.2rem;right:1.5rem;color:#fff;font-size:2rem;opacity:0.8;z-index:10000;">×</span>
+    <img src="/img/vibes/books/father-liberation-diary.jpg" style="max-width:90vw;max-height:90vh;border-radius:10px;object-fit:contain;">
+  </div>
+
+  <footer>
+    <span style="display:inline-flex;align-items:center;gap:0.3rem;">
+      <i class="bi bi-eye"></i>
+      <span id="view-count">–</span>
+    </span>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function openLightbox() { document.getElementById('lightbox').style.display='flex'; }
+    function closeLightbox() { document.getElementById('lightbox').style.display='none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
+      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+    const app = initializeApp({
+      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+      authDomain: "tj-website-seoul.firebaseapp.com",
+      projectId: "tj-website-seoul",
+      storageBucket: "tj-website-seoul.firebasestorage.app",
+      messagingSenderId: "783490756168",
+      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+    });
+    const db = getFirestore(app);
+    const ref = doc(db, 'pages', 'books-father-liberation-diary');
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { views: increment(1) });
+        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+      } else {
+        await setDoc(ref, { views: 1 });
+        document.getElementById('view-count').textContent = 1;
+      }
+    } catch(e) { console.warn('Firestore error:', e); }
+  </script>
+
+</body>
+</html>

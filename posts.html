@@ -75,6 +75,8 @@
     .post-body a { color: var(--accent); }
     .post-body a:hover { text-decoration: underline; }
     .post-body hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .post-body blockquote { border-left: 3px solid var(--border); padding: 0.5rem 0 0.5rem 1.2rem; margin: 0 0 1.5rem 0; color: var(--text-sub); font-size: 0.92rem; line-height: 1.75; }
+    .post-body blockquote p { margin-bottom: 0; }
     .post-body strong { font-weight: 600; }
     .post-body em { color: var(--text-sub); }
     .post-body code { background: #f1f3f5; border-radius: 4px; padding: 0.1em 0.35em; font-size: 0.88em; }
@@ -128,10 +130,15 @@
       <button class="tag-btn active" data-tag="all" onclick="filterTag(this)">All</button>
       <button class="tag-btn" data-tag="Statistics" onclick="filterTag(this)">Statistics</button>
       <button class="tag-btn" data-tag="Electronics" onclick="filterTag(this)">Electronics</button>
+      <button class="tag-btn" data-tag="Reading" onclick="filterTag(this)">Reading</button>
       <button class="tag-btn" data-tag="3D Modeling" onclick="filterTag(this)">3D Modeling</button>
       <button class="tag-btn" data-tag="User Study" onclick="filterTag(this)">User Study</button>
     </div>
     <div class="post-list" id="post-list">
+      <a class="post-entry" href="/posts?post=260611-man-computer-symbiosis" data-tag="Reading">
+        <div class="post-title-row"><span class="post-title">"Man-Computer Symbiosis" (1960) by Licklider</span><span class="tag-chip">Reading</span></div>
+        <div class="post-date">Jun 11, 2026</div>
+      </a>
       <a class="post-entry" href="/posts?post=220309-transistor-arduino" data-tag="Electronics">
         <div class="post-title-row"><span class="post-title">Transistor (2): Transistor with Arduino</span><span class="tag-chip">Electronics</span></div>
         <div class="post-date">Mar 9, 2022</div>
@@ -327,19 +334,28 @@
     }
 
     window.setLang = function(lang) {
-      currentLang = lang;
-      document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      renderPost(lang);
+      const baseSlug = slug.endsWith('-en') ? slug.slice(0, -3) : slug;
+      if (lang === 'en') {
+        window.location.href = `?post=${baseSlug}-en`;
+      } else {
+        window.location.href = `?post=${baseSlug}`;
+      }
     };
 
     if (slug) {
       document.getElementById('view-post').style.display = 'block';
 
-      // Check if English version exists and show toggle
-      fetch(`posts/${slug}-en.md`, { method: 'HEAD' }).then(r => {
-        if (r.ok) document.getElementById('lang-toggle').style.display = 'flex';
-      }).catch(() => {});
+      // If on an -en slug, show toggle with EN active
+      if (slug.endsWith('-en')) {
+        document.getElementById('lang-toggle').style.display = 'flex';
+        document.getElementById('btn-en').classList.add('active');
+        document.getElementById('btn-ko').classList.remove('active');
+      } else {
+        // Check if English version exists and show toggle
+        fetch(`posts/${slug}-en.md`, { method: 'HEAD' }).then(r => {
+          if (r.ok) document.getElementById('lang-toggle').style.display = 'flex';
+        }).catch(() => {});
+      }
 
       (async () => {
         try {

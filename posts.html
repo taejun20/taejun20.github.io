@@ -285,6 +285,7 @@
 
   <script>
     const slug = new URLSearchParams(window.location.search).get('post');
+    if (slug) history.replaceState({}, '', '/p/' + slug);
     let currentLang = 'ko';
 
     async function renderPost(lang) {

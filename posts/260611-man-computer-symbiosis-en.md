@@ -48,5 +48,7 @@ I am not really sure what will happen in the future. Licklider didn't know eithe
 
 - Licklider, J. C. R. (1960). Man-computer symbiosis. *IRE Transactions on Human Factors in Electronics*, HFE-1(1), 4–11.
 
+*The original paper uses gendered language throughout. Quotes are left unmodified.*
+
 # Changelog
 - Jun 11, 2026: Post published

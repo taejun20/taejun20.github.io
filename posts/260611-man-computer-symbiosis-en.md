@@ -47,6 +47,8 @@ I am not really sure what will happen in the future. Licklider didn't know eithe
 # References
 
 - Licklider, J. C. R. (1960). Man-computer symbiosis. *IRE Transactions on Human Factors in Electronics*, HFE-1(1), 4–11.
+- [History of the graphical user interface - Wikipedia](https://en.wikipedia.org/wiki/History_of_the_graphical_user_interface)
+- [J. C. R. Licklider - Wikipedia](https://en.wikipedia.org/wiki/J._C._R._Licklider)
 
 *The original paper uses gendered language throughout. Quotes are left unmodified.*
 

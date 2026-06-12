@@ -285,11 +285,10 @@
 
   <script>
     const slug = new URLSearchParams(window.location.search).get('post');
-    if (slug) history.replaceState({}, '', '/p/' + slug);
     let currentLang = 'ko';
 
     async function renderPost(lang) {
-      const file = lang === 'en' ? `posts/${slug}-en.md` : `posts/${slug}.md`;
+      const file = lang === 'en' ? `/posts/${slug}-en.md` : `/posts/${slug}.md`;
       try {
         const res = await fetch(file);
         if (!res.ok) throw new Error();
@@ -313,6 +312,7 @@
           document.querySelector('meta[property="og:url"]').setAttribute('content', location.href);
           document.getElementById('post-title').textContent = fm.title || slug;
         }
+        history.replaceState({}, '', '/p/' + slug);
 
         const codeBlocks = [];
         body = body.replace(/(```[\s\S]*?```|`[^`\n]+`)/g, m => { codeBlocks.push(m); return `\x00CODE${codeBlocks.length-1}\x00`; });

@@ -9,8 +9,10 @@
   <meta property="og:url" content="" />
   <meta property="og:site_name" content="Taejun Kim" />
 
+  <link rel="icon" href="data:,">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/xcode.min.css" />
 
   <style>
     :root {
@@ -68,6 +70,12 @@
     .post-body h4 { font-size: 0.95rem; font-weight: 700; margin-top: 1.2rem; margin-bottom: 0.3rem; }
     .post-body figure { margin: 0.5rem auto; }
     .post-figure { width: var(--fig-w, 100%); margin-left: auto; margin-right: auto; display: block; text-align: center; }
+    #post-body pre { position: relative; }
+    .copy-btn { position: absolute; top: 0.5rem; right: 0.5rem; background: transparent; border: none; cursor: pointer; color: #aaa; font-size: 0.9rem; padding: 0.2rem 0.35rem; border-radius: 4px; opacity: 0; transition: opacity 0.15s; }
+    #post-body pre:hover .copy-btn { opacity: 1; }
+    .copy-btn:hover { color: #555; background: rgba(0,0,0,0.06); }
+    .btn-download { display: inline-block; margin: 0.5rem 0 0.5rem; padding: 0.35rem 0.9rem; font-size: 0.85rem; font-family: monospace; border: 1px solid var(--accent); border-radius: 6px; color: var(--accent); text-decoration: none; }
+    .btn-download:hover { background: var(--accent); color: #fff; }
     @media (max-width: 575px) { .post-figure { width: 100% !important; } }
     .post-body li figure { margin-top: 0.5rem; margin-bottom: 0.5rem; }
     .post-body figure img { max-width: 100%; height: auto; display: block; margin: 0; padding: 0; }
@@ -90,12 +98,13 @@
     .post-body th, .post-body td { border: 1px solid var(--border); padding: 0.45rem 0.85rem; text-align: center; }
     .post-body th { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
     .post-body tr:nth-child(even) td { background: #f8f9fa; }
-    .note-box { background: #f6f8ff; border-left: 3px solid var(--accent); border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 1rem; color: var(--text-main); font-size: 0.9rem; line-height: 1.65; }
+    .note-box { background: #f6f8ff; border-left: 3px solid var(--accent); border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 0.75rem; color: var(--text-main); font-size: 0.9rem; line-height: 1.65; }
     .note-box table { border-collapse: collapse; width: auto; margin: 0.25rem 0 0.5rem; font-size: 0.88rem; }
     .note-box th, .note-box td { border: 1px solid #c5cfe8; padding: 0.35rem 0.75rem; text-align: center; }
     .note-box th { background: #dce4f8; color: var(--accent); font-weight: 600; }
     .note-box tr:nth-child(even) td { background: #edf0fa; }
     .note-box p { margin-bottom: 0.25rem; }
+    .note-box p:last-child { margin-bottom: 0; }
     .back-link { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.88rem; color: var(--text-muted); text-decoration: none; margin-bottom: 1.5rem; }
     .back-link:hover { color: var(--accent); }
     .lang-toggle { display: none; align-items: center; margin-right: 0.25rem; border: 1px solid var(--border); border-radius: 20px; overflow: hidden; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.03em; }
@@ -139,6 +148,10 @@
       <button class="tag-btn" data-tag="User Study" onclick="filterTag(this)">User Study</button>
     </div>
     <div class="post-list" id="post-list">
+      <a class="post-entry" href="/posts?post=260615-one-way-rm-anova-python" data-tag="Statistics">
+        <div class="post-title-row"><span class="post-title">Tutorial: One-way Repeated-Measures ANOVA with Python</span><span class="tag-chip">Statistics</span></div>
+        <div class="post-date">Jun 15, 2026</div>
+      </a>
       <a class="post-entry" href="/posts?post=260611-man-computer-symbiosis" data-tag="Reading">
         <div class="post-title-row"><span class="post-title">"Man-Computer Symbiosis" (1960) by Licklider</span><span class="tag-chip">Reading</span></div>
         <div class="post-date">Jun 11, 2026</div>
@@ -216,6 +229,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -284,6 +298,22 @@
   </script>
 
   <script>
+    marked.use({
+      renderer: {
+        code(token) {
+          const code = typeof token === 'object' ? token.text : token;
+          const lang = typeof token === 'object' ? (token.lang || '') : (arguments[1] || '');
+          try {
+            const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext';
+            const highlighted = hljs.highlight(code, { language }).value;
+            return `<pre><code class="hljs language-${language}">${highlighted}</code></pre>\n`;
+          } catch(e) {
+            return `<pre><code>${marked.parseInline ? marked.parseInline(code) : code}</code></pre>\n`;
+          }
+        }
+      }
+    });
+
     const slug = new URLSearchParams(window.location.search).get('post');
     let currentLang = 'ko';
 
@@ -331,6 +361,19 @@
           `<div class="note-box">${marked.parse(c.trim())}</div>\n`);
 
         document.getElementById('post-body').innerHTML = marked.parse(body);
+        document.querySelectorAll('#post-body pre').forEach(pre => {
+          const btn = document.createElement('button');
+          btn.className = 'copy-btn';
+          btn.innerHTML = '<i class="bi bi-copy"></i>';
+          btn.addEventListener('click', () => {
+            const code = pre.querySelector('code');
+            navigator.clipboard.writeText(code.innerText).then(() => {
+              btn.innerHTML = '<i class="bi bi-check-lg"></i>';
+              setTimeout(() => btn.innerHTML = '<i class="bi bi-clipboard"></i>', 2000);
+            });
+          });
+          pre.appendChild(btn);
+        });
       } catch(e) {
         if (lang === 'en') {
           document.getElementById('post-body').innerHTML = '<p style="color:var(--text-muted)">English version not available yet.</p>';

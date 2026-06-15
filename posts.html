@@ -57,7 +57,7 @@
     .post-date { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.1rem; }
 
     /* POST */
-    .tag-chip { font-size: 0.75rem; font-weight: 500; color: var(--accent); background: var(--accent-soft); border-radius: 20px; padding: 0.1rem 0.55rem; white-space: nowrap; }
+    .tag-chip { font-size: 0.75rem; font-weight: 500; border-radius: 20px; padding: 0.1rem 0.55rem; white-space: nowrap; }
     .post-header { margin-bottom: 2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
     .post-header h1 { font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin-bottom: 0.5rem; }
     .post-meta { display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); font-size: 0.85rem; flex-wrap: wrap; }
@@ -391,6 +391,9 @@
             const chip = document.getElementById('post-tag');
             chip.textContent = fm.tag;
             chip.style.display = 'inline';
+            const c = getTagColor(fm.tag);
+            chip.style.color = c.color;
+            chip.style.background = c.bg;
           }
         } catch(e) {
           document.getElementById('post-title').textContent = 'Post not found.';
@@ -402,6 +405,33 @@
     } else {
       document.getElementById('view-list').style.display = 'block';
     }
+
+    const TAG_COLORS = [
+      { color: '#1971c2', bg: '#dbe4ff' },
+      { color: '#2f9e44', bg: '#d3f9d8' },
+      { color: '#e67700', bg: '#fff3bf' },
+      { color: '#c2255c', bg: '#ffd6e7' },
+      { color: '#7048e8', bg: '#e5dbff' },
+      { color: '#0c8599', bg: '#c5f6fa' },
+      { color: '#d9480f', bg: '#ffe8cc' },
+      { color: '#5c940d', bg: '#e9fac8' },
+      { color: '#862e9c', bg: '#f3d9fa' },
+      { color: '#087f5b', bg: '#c3fae8' },
+    ];
+    const tagColorMap = {};
+    let tagColorIndex = 0;
+    function getTagColor(tag) {
+      if (!tagColorMap[tag]) {
+        tagColorMap[tag] = TAG_COLORS[tagColorIndex % TAG_COLORS.length];
+        tagColorIndex++;
+      }
+      return tagColorMap[tag];
+    }
+    document.querySelectorAll('.tag-chip').forEach(chip => {
+      const c = getTagColor(chip.textContent.trim());
+      chip.style.color = c.color;
+      chip.style.background = c.bg;
+    });
 
     window.filterTag = function(btn) {
       document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));

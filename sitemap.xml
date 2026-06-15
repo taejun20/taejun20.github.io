@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Main pages -->
+  <url><loc>https://taejunkim.com/</loc></url>
+  <url><loc>https://taejunkim.com/posts</loc></url>
+  <url><loc>https://taejunkim.com/research</loc></url>
+  <url><loc>https://taejunkim.com/vibes</loc></url>
+
+  <!-- Vibes -->
+  <url><loc>https://taejunkim.com/vibes/crossfit</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/brain-science</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/distant-drums</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/father-liberation-diary</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/god-equation</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/grad-school-tips</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/hesse</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/kafka-on-the-shore</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/krafton-way</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/la-vie-devant-soi</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/last-lecture</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/norwegian-wood</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/oksan-geoji</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/origin-of-species</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/sanggwan</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/selfish-gene</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/selfish-gene-en</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/seven-lessons-brain</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/talk-about-running</loc></url>
+  <url><loc>https://taejunkim.com/vibes/books/tyranny-of-merit</loc></url>
+
+  <!-- Posts -->
+  <url><loc>https://taejunkim.com/posts?post=260615-one-way-rm-anova-python</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=260615-one-way-rm-anova-python-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=260611-man-computer-symbiosis</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=260611-man-computer-symbiosis-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=220309-transistor-arduino</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=220309-transistor-arduino-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=210923-anova-ftest</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=210923-anova-ftest-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=210903-aligned-rank-transform</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=210903-aligned-rank-transform-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200903-interaction-effects-anova</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200903-interaction-effects-anova-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200506-counterbalancing</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200506-counterbalancing-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200420-spss-two-way-anova</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200420-spss-two-way-anova-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200203-spss-repeated-measures</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200203-spss-repeated-measures-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200131-oscilloscope-fluke-199c</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=200131-oscilloscope-fluke-199c-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=191112-fusion-360-basics</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=191112-fusion-360-basics-en</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=191112-transistor-basics</loc></url>
+  <url><loc>https://taejunkim.com/posts?post=191112-transistor-basics-en</loc></url>
+
+</urlset>

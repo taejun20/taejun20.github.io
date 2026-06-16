@@ -4,13 +4,13 @@ date: 2026-06-16
 tag: Statistics
 ---
 
-This is a tutorial to run a Two-way Repeated-Measures (Within-Subject) ANOVA with Python. Use this when you have two within-subject factors (= two independent variables).
+This is a tutorial to run a Two-way Repeated-Measures (Within-Subject) ANOVA with Python. Use this when you have two within-subject factors (= two independent variables). If the normality assumption is not satisfied, use [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform-en) followed by Two-way RM ANOVA.
 
 # 1. Organize Data
 
 Use Google Spreadsheet to organize your data table (Before running any test, first look at the mean and SD for each condition to get an overall sense of the data).
 
-![|70%](img/posts/260616-two-way-rm-anova-python/data-table.jpg)
+![|80%](img/posts/260616-two-way-rm-anova-python/data-table.jpg)
 
 There are two independent variables A and B. A has two levels (A1, A2) and B has three levels (B1, B2, B3), in total consisting of six experimental conditions (A1B1, A1B2, A1B3, A2B1, A2B2, A2B3). In real use, update the column name as it suits more on your data.
 

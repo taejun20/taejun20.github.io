@@ -4,7 +4,7 @@ date: 2026-06-15
 tag: Statistics
 ---
 
-파이썬으로 One-way Repeated-Measures (Within-Subject) ANOVA를 돌려보는 튜토리얼을 공유한다. Within-subject 실험은 Between-subject 실험보다 훨씬 적은 피험자 수로 독립 변수의 통계적 유의성을 확인할 수 있다는 장점이 있다.
+파이썬으로 One-way Repeated-Measures (Within-Subject) ANOVA를 돌려보는 튜토리얼을 공유한다. 실험 조건 중 하나라도 정규성 가정 (normality assumption)이 만족되지 않으면 [Friedman Test](/posts?post=260616-friedman-test-python)를 사용한다 (아래 2-2 참고).
 
 # 1. 데이터 정리
 

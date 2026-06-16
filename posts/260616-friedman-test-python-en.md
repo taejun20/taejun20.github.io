@@ -4,7 +4,7 @@ date: 2026-06-16
 tag: Statistics
 ---
 
-This is a tutorial to run a Friedman test with Python. The Friedman test is a non-parametric alternative to one-way repeated-measures ANOVA, used when the normality assumption is violated in at least one condition. If your data passes the normality test in all conditions, use [RM ANOVA](/posts?post=260615-one-way-rm-anova-python-en) instead.
+This is a tutorial to run a Friedman test with Python. The Friedman test is used when the normality assumption is violated in at least one condition. If your data passes the normality test in all conditions, use [RM ANOVA](/posts?post=260615-one-way-rm-anova-python-en) instead (see 2-2 for normality check).
 
 # 1. Organize Data
 

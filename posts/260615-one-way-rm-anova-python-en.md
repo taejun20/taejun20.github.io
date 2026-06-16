@@ -4,7 +4,7 @@ date: 2026-06-15
 tag: Statistics
 ---
 
-This is a tutorial to run a Repeated Measure (Within-Subject) ANOVA with Python. Within-subject experiments require far fewer participants than between-subject ones when testing the statistical significance of independent variables, a practical reason it shows up more often in HCI evaluation.
+This is a tutorial to run a Repeated Measure (Within-Subject) ANOVA with Python. If normality assumption is not satisfied in at least one condition, use [Friedman Test](/posts?post=260616-friedman-test-python-en) instead (see 2-2 for normality check).
 
 # 1. Organize Data
 

@@ -33,6 +33,7 @@ df = pd.read_csv("data.csv")
 conditions = df.columns[1:].tolist()
 
 # Perform normality test for each condition
+print("=== Normality Test ===")
 for cond in conditions:
     stat, p_value = shapiro(df[cond].values)
     print(f"ExpCond: {cond} \nStatistic: {stat:.4f}, P-value: {p_value:.4f}")
@@ -41,6 +42,7 @@ for cond in conditions:
     else:
         print("Data is not normally distributed (reject H0).\n")
 
+print("=== Friedman Test ===")
 # perform Friedman test
 stat, p_value = friedmanchisquare(*[df[cond].values for cond in conditions])
 df_val = len(conditions) - 1
@@ -50,6 +52,7 @@ if p_value < 0.05:
 else:
     print("No statistically significant difference between conditions.")
 
+print("\n=== Post-hoc Analysis (Wilcoxon signed-rank test with Bonferroni correction) ===")
 # post-hoc: Wilcoxon signed-rank test with Bonferroni correction
 pairwise_p = []
 pairwise_z = []
@@ -62,7 +65,6 @@ for i, j in comparisons:
 
 corrected_pvals = multipletests(pairwise_p, method='bonferroni')[1]
 
-print("\nPost-hoc: Wilcoxon signed-rank test with Bonferroni correction:")
 for (i, j), z, p_val in zip(comparisons, pairwise_z, corrected_pvals):
     print(f"{conditions[i]} vs {conditions[j]}: Z = {z:.4f}, Adjusted P-value = {p_val:.6f}")
 ```
@@ -94,6 +96,7 @@ for cond in conditions:
 Output:
 
 ```
+=== Normality Test ===
 ExpCond: Condition A 
 Statistic: 0.5588, P-value: 0.0000
 Data is not normally distributed (reject H0).
@@ -126,6 +129,7 @@ else:
 Output:
 
 ```
+=== Friedman Test ===
 Friedman Test 
 df: 2, Statistic (chi-square): 18.1667, P-value: 0.000114
 There is a statistically significant difference between conditions.
@@ -147,7 +151,6 @@ for i, j in comparisons:
 
 corrected_pvals = multipletests(pairwise_p, method='bonferroni')[1]
 
-print("\nPost-hoc: Wilcoxon signed-rank test with Bonferroni correction:")
 for (i, j), z, p_val in zip(comparisons, pairwise_z, corrected_pvals):
     print(f"{conditions[i]} vs {conditions[j]}: Z = {z:.4f}, Adjusted P-value = {p_val:.6f}")
 ```
@@ -157,7 +160,7 @@ for (i, j), z, p_val in zip(comparisons, pairwise_z, corrected_pvals):
 Output:
 
 ```
-Post-hoc: Wilcoxon signed-rank test with Bonferroni correction:
+=== Post-hoc Analysis (Wilcoxon signed-rank test with Bonferroni correction) ===
 Condition A vs Condition B: Z = -3.0594, Adjusted P-value = 0.006653
 Condition A vs Condition C: Z = -3.0594, Adjusted P-value = 0.006653
 Condition B vs Condition C: Z = -1.1767, Adjusted P-value = 0.717950

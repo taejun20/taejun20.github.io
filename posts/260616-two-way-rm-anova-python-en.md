@@ -4,7 +4,7 @@ date: 2026-06-16
 tag: Statistics
 ---
 
-This is a tutorial to run a Two-way Repeated-Measures (Within-Subject) ANOVA with Python. Use this when you have two within-subject factors (= two independent variables). If the normality assumption is not satisfied, use [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform-en) followed by Two-way RM ANOVA.
+This is a tutorial to run a Two-way Repeated-Measures (Within-Subject) ANOVA with Python. Use this when you have two within-subject factors (= two independent variables). If the normality assumption is not satisfied, use [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform-en) (see 2-2 for normality check).
 
 # 1. Organize Data
 
@@ -52,13 +52,38 @@ aov = pg.rm_anova(data=df_long, dv='value', within=['FactorA', 'FactorB'], subje
 print(aov[['Source', 'ddof1', 'ddof2', 'F', 'p_unc']].to_string(index=False))
 
 # post-hoc: pairwise t-test with Bonferroni correction
+
+# 1) when interaction effect is NOT significant:
+#    average over the other factor and compare main effects (1+3=4 comparisons)
+print("\n=== Case 1: Interaction NOT significant — main effects post-hoc ===")
 print("\nPost-hoc FactorA:")
 ph_a = pg.pairwise_tests(data=df_long, dv='value', within='FactorA', subject=subject_col, padjust='bonferroni')
-pg.print_table(ph_a[['A', 'B', 'T', 'dof', 'p_unc']])
+print(ph_a[['A', 'B', 'T', 'dof', 'p_unc']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format}))
 
 print("\nPost-hoc FactorB (Bonferroni):")
 ph_b = pg.pairwise_tests(data=df_long, dv='value', within='FactorB', subject=subject_col, padjust='bonferroni')
-pg.print_table(ph_b[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']])
+print(ph_b[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format, 'p_corr': '{:.6f}'.format}))
+
+# 2) when interaction effect IS significant:
+#    can't average out — one factor's effect depends on the level of the other.
+#    fix one factor's level and compare the other (simple effects, 3+6=9 comparisons)
+print("\n=== Case 2: Interaction IS significant — simple effects ===")
+
+# FactorA within each FactorB level (1 comparison each, Bonferroni not needed per group)
+print("\nSimple effects: FactorA within each FactorB level:")
+for b in sorted(df_long['FactorB'].unique()):
+    subset = df_long[df_long['FactorB'] == b]
+    ph = pg.pairwise_tests(data=subset, dv='value', within='FactorA', subject=subject_col, padjust='bonferroni')
+    print(f"  FactorB = {b}:")
+    print(ph[['A', 'B', 'T', 'dof', 'p_unc']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format}))
+
+# FactorB within each FactorA level (3 comparisons each, Bonferroni x3 per group)
+print("\nSimple effects: FactorB within each FactorA level (Bonferroni):")
+for a in sorted(df_long['FactorA'].unique()):
+    subset = df_long[df_long['FactorA'] == a]
+    ph = pg.pairwise_tests(data=subset, dv='value', within='FactorB', subject=subject_col, padjust='bonferroni')
+    print(f"  FactorA = {a}:")
+    print(ph[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format, 'p_corr': '{:.6f}'.format}))
 ```
 
 ### 1) Data Preparation
@@ -138,14 +163,23 @@ Both main effects are significant. The interaction effect (FactorA * FactorB) is
 
 ### 4) Post-hoc Analysis
 
-Since the interaction is not significant, we interpret the main effects separately and run pairwise comparisons for each factor.
+**Case 1: interaction effect is NOT significant** — average over the other factor and compare main effects (1+3=4 comparisons).
+
+Since the interaction is not significant (p = .069), we interpret the main effects separately and run pairwise comparisons for each factor.
 
 Factor A has only two levels, so no correction is needed:
 
 ```python
+# 1) when interaction effect is NOT significant:
+#    average over the other factor and compare main effects (1+3=4 comparisons)
+print("\n=== Case 1: Interaction NOT significant — main effects post-hoc ===")
 print("\nPost-hoc FactorA:")
 ph_a = pg.pairwise_tests(data=df_long, dv='value', within='FactorA', subject=subject_col, padjust='bonferroni')
-pg.print_table(ph_a[['A', 'B', 'T', 'dof', 'p_unc']])
+print(ph_a[['A', 'B', 'T', 'dof', 'p_unc']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format}))
+
+print("\nPost-hoc FactorB (Bonferroni):")
+ph_b = pg.pairwise_tests(data=df_long, dv='value', within='FactorB', subject=subject_col, padjust='bonferroni')
+print(ph_b[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format, 'p_corr': '{:.6f}'.format}))
 ```
 
 Output:
@@ -155,19 +189,7 @@ Post-hoc FactorA:
 A     B     T          dof    p_unc
 ----  ----  ---------  -----  -----------
 A1    A2    9.14662    11     1.78911e-06
-```
 
-Factor B has three levels, so Bonferroni correction is applied:
-
-```python
-print("\nPost-hoc FactorB (Bonferroni):")
-ph_b = pg.pairwise_tests(data=df_long, dv='value', within='FactorB', subject=subject_col, padjust='bonferroni')
-pg.print_table(ph_b[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']])
-```
-
-Output:
-
-```
 Post-hoc FactorB (Bonferroni):
 A     B     T           dof    p_unc         p_corr
 ----  ----  ----------  -----  ------------  ------------
@@ -177,6 +199,57 @@ B2    B3    -14.0944    11     2.1911e-08    6.57329e-08
 ```
 
 All pairwise comparisons for Factor B are significant after Bonferroni correction.
+
+**Case 2: interaction effect IS significant** — can't average out, because one factor's effect depends on the level of the other. Fix one factor's level and compare the other (simple effects, 3+6=9 comparisons).
+
+```python
+# 2) when interaction effect IS significant:
+#    can't average out — one factor's effect depends on the level of the other.
+#    fix one factor's level and compare the other (simple effects, 3+6=9 comparisons)
+print("\n=== Case 2: Interaction IS significant — simple effects ===")
+
+# FactorA within each FactorB level (1 comparison each, Bonferroni not needed per group)
+print("\nSimple effects: FactorA within each FactorB level:")
+for b in sorted(df_long['FactorB'].unique()):
+    subset = df_long[df_long['FactorB'] == b]
+    ph = pg.pairwise_tests(data=subset, dv='value', within='FactorA', subject=subject_col, padjust='bonferroni')
+    print(f"  FactorB = {b}:")
+    print(ph[['A', 'B', 'T', 'dof', 'p_unc']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format}))
+
+# FactorB within each FactorA level (3 comparisons each, Bonferroni x3 per group)
+print("\nSimple effects: FactorB within each FactorA level (Bonferroni):")
+for a in sorted(df_long['FactorA'].unique()):
+    subset = df_long[df_long['FactorA'] == a]
+    ph = pg.pairwise_tests(data=subset, dv='value', within='FactorB', subject=subject_col, padjust='bonferroni')
+    print(f"  FactorA = {a}:")
+    print(ph[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format, 'p_corr': '{:.6f}'.format}))
+```
+
+Output:
+
+```
+Simple effects: FactorA within each FactorB level:
+  FactorB = B1:
+A1   A2   3.058  11.000    0.011
+  FactorB = B2:
+A1   A2   3.927  11.000    0.002
+  FactorB = B3:
+A1   A2   6.810  11.000    0.000
+
+Simple effects: FactorB within each FactorA level (Bonferroni):
+  FactorA = A1:
+B1   B2    -7.589  11.000    0.000     0.000
+B1   B3   -17.228  11.000    0.000     0.000
+B2   B3    -7.652  11.000    0.000     0.000
+  FactorA = A2:
+B1   B2   -6.221  11.000    0.000     0.000
+B1   B3   -9.372  11.000    0.000     0.000
+B2   B3   -7.931  11.000    0.000     0.000
+```
+
+```note
+**Note on Bonferroni Correction:** Whether to apply Bonferroni correction to p-values is ultimately a judgment call. This is kind of a tricky point. Applying Bonferroni is the conservative choice and safe from reviewer pushback. Theoretically, if each comparison were a genuinely independent question, e.g., comparisons planned before data collection rather than exploratory post-hoc, correction would not be needed. A separate question that supports one separate claim does not technically require Bonferroni correction, but if the comparisons are presented together and the reader interprets them as a whole, applying correction is still the safer choice. The ANOVA itself tests one question, "do any conditions differ?", and the post-hoc comparisons are follow-ups to that single question. This is a strong counter-logic against skipping the correction. Let's make safer move.
+```
 
 # 3. Report Results
 

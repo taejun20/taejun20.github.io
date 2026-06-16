@@ -8,6 +8,7 @@ df = pd.read_csv("data.csv")
 conditions = df.columns[1:].tolist()
 
 # Perform normality test for each condition
+print("=== Normality Test ===")
 for cond in conditions:
     stat, p_value = shapiro(df[cond].values)
     print(f"ExpCond: {cond} \nStatistic: {stat:.4f}, P-value: {p_value:.4f}")
@@ -16,6 +17,7 @@ for cond in conditions:
     else:
         print("Data is not normally distributed (reject H0).\n")
 
+print("=== Friedman Test ===")
 # perform Friedman test
 stat, p_value = friedmanchisquare(*[df[cond].values for cond in conditions])
 df_val = len(conditions) - 1
@@ -25,6 +27,7 @@ if p_value < 0.05:
 else:
     print("No statistically significant difference between conditions.")
 
+print("\n=== Post-hoc Analysis (Wilcoxon signed-rank test with Bonferroni correction) ===")
 # post-hoc: Wilcoxon signed-rank test with Bonferroni correction
 pairwise_p = []
 pairwise_z = []
@@ -37,6 +40,5 @@ for i, j in comparisons:
 
 corrected_pvals = multipletests(pairwise_p, method='bonferroni')[1]
 
-print("\nPost-hoc: Wilcoxon signed-rank test with Bonferroni correction:")
 for (i, j), z, p_val in zip(comparisons, pairwise_z, corrected_pvals):
     print(f"{conditions[i]} vs {conditions[j]}: Z = {z:.4f}, Adjusted P-value = {p_val:.6f}")

@@ -9,6 +9,7 @@ conditions = df.columns[1:].tolist()
 df = df.melt(id_vars=[df.columns[0]], var_name='ExpCond', value_name='value')
 
 # Perform normality test for each condition
+print("=== Normality Test ===")
 for cond in conditions:
     samples = df[df['ExpCond'] == cond]['value']
     stat, p_value = stats.shapiro(samples)
@@ -18,12 +19,14 @@ for cond in conditions:
     else:
         print("Data is not normally distributed (reject H0).\n")
 
+print("=== One-way RM ANOVA ===")
 # perform RM-ANOVA: statsmodels AnovaRM
 testingMeasure = 'value'
 anovaRM = AnovaRM(data=df, depvar=testingMeasure, subject='Participant', within=['ExpCond'])
 res = anovaRM.fit()
-print(res)
+print(res.anova_table.to_string(formatters={'Pr > F': '{:.6f}'.format}))
 
+print("\n=== Post-hoc Analysis (paired t-test with Bonferroni correction) ===")
 # post-hoc: pairwise t-test with Bonferroni correction
-pairwise_results = pg.pairwise_ttests(dv=testingMeasure, within='ExpCond', subject='Participant', data=df, padjust='bonferroni')
-pg.print_table(pairwise_results)
+pairwise_results = pg.pairwise_tests(dv=testingMeasure, within='ExpCond', subject='Participant', data=df, padjust='bonferroni')
+print(pairwise_results[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format, 'p_corr': '{:.6f}'.format}))

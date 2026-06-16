@@ -31,9 +31,7 @@ from statsmodels.stats.multitest import multipletests
 
 # read csv (wide format)
 df = pd.read_csv("data.csv")
-
-# define conditions
-conditions = ["Condition A", "Condition B", "Condition C"]
+conditions = df.columns[1:].tolist()
 
 # Perform normality test for each condition
 for cond in conditions:
@@ -75,11 +73,10 @@ for (i, j), z, p_val in zip(comparisons, pairwise_z, corrected_pvals):
 ```python
 # read csv (wide format)
 df = pd.read_csv("data.csv")
-
-conditions = ["Condition A", "Condition B", "Condition C"]
+conditions = df.columns[1:].tolist()
 ```
 
-`pd.read_csv` reads the CSV we prepared as wide format. The `conditions` list defines which columns to use. Update these names to match your own condition names in the CSV.
+`pd.read_csv` reads the CSV as wide format.
 
 ### 2) Normality Test
 

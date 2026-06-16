@@ -30,10 +30,8 @@ from scipy import stats
 
 # read csv (wide format) and reshape to long format
 df = pd.read_csv("data.csv")
-df = df.melt(id_vars=['Participant'], var_name='ExpCond', value_name='value')
-
-# define conditions
-conditions = ["Condition A", "Condition B", "Condition C"]
+conditions = df.columns[1:].tolist()
+df = df.melt(id_vars=[df.columns[0]], var_name='ExpCond', value_name='value')
 
 # Perform normality test for each condition
 for cond in conditions:
@@ -60,7 +58,8 @@ pg.print_table(pairwise_results)
 
 ```python
 df = pd.read_csv("data.csv")
-df = df.melt(id_vars=['Participant'], var_name='ExpCond', value_name='value')
+conditions = df.columns[1:].tolist()
+df = df.melt(id_vars=[df.columns[0]], var_name='ExpCond', value_name='value')
 ```
 
 `pd.read_csv`로 wide format의 CSV를 불러온 뒤, `melt`로 ANOVA 함수가 요구하는 long format으로 변환한다.
@@ -147,7 +146,7 @@ Bonferroni correction을 적용한 pairwise 비교 결과, Condition A와 Condit
 **Writing for report:** A one-way repeated-measures ANOVA revealed a significant main effect of condition (F(2, 22) = 4.66, p < .05). Post-hoc pairwise comparisons with Bonferroni correction showed a significant difference between Condition A and Condition C (t = -2.88, p < .05).
 ```
 
-*Side Note: 몇 년전까지는 SPSS로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*
+*Side Note: 몇 년전까지는 [SPSS](/posts?post=200203-spss-repeated-measures)로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*
 
 # 참고
 

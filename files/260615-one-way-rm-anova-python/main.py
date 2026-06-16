@@ -5,10 +5,8 @@ from scipy import stats
 
 # read csv (wide format) and reshape to long format
 df = pd.read_csv("data.csv")
-df = df.melt(id_vars=['Participant'], var_name='ExpCond', value_name='value')
-
-# define conditions
-conditions = ["Condition A", "Condition B", "Condition C"]
+conditions = df.columns[1:].tolist()
+df = df.melt(id_vars=[df.columns[0]], var_name='ExpCond', value_name='value')
 
 # Perform normality test for each condition
 for cond in conditions:

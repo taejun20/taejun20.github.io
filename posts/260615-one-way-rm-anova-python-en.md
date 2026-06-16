@@ -31,10 +31,8 @@ from scipy import stats
 
 # read csv (wide format) and reshape to long format
 df = pd.read_csv("data.csv")
-df = df.melt(id_vars=['Participant'], var_name='ExpCond', value_name='value')
-
-# define conditions
-conditions = ["Condition A", "Condition B", "Condition C"]
+conditions = df.columns[1:].tolist()
+df = df.melt(id_vars=[df.columns[0]], var_name='ExpCond', value_name='value')
 
 # Perform normality test for each condition
 for cond in conditions:
@@ -61,10 +59,11 @@ pg.print_table(pairwise_results)
 
 ```python
 df = pd.read_csv("data.csv")
-df = df.melt(id_vars=['Participant'], var_name='ExpCond', value_name='value')
+conditions = df.columns[1:].tolist()
+df = df.melt(id_vars=[df.columns[0]], var_name='ExpCond', value_name='value')
 ```
 
-`pd.read_csv` reads the CSV we prepared as wide format and `melt` reshapes it to long format, which is required by the ANOVA functions.
+`pd.read_csv` reads the CSV as wide format and `melt` reshapes it to long format, which is required by the ANOVA functions.
 
 ### 2) Normality Test
 

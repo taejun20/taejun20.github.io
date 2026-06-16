@@ -5,9 +5,7 @@ from statsmodels.stats.multitest import multipletests
 
 # read csv (wide format)
 df = pd.read_csv("data.csv")
-
-# define conditions
-conditions = ["Condition A", "Condition B", "Condition C"]
+conditions = df.columns[1:].tolist()
 
 # Perform normality test for each condition
 for cond in conditions:

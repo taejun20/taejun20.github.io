@@ -4,7 +4,7 @@ date: 2026-06-16
 tag: Statistics
 ---
 
-파이썬으로 Friedman test를 돌려보는 튜토리얼을 공유한다. Friedman test는 하나 이상의 실험 조건의 데이터가 정규성 가정을 만족하지 못할 때 사용한다. 모든 실험 조건에서 정규성을 만족한다면 [RM ANOVA](/posts?post=260615-one-way-rm-anova-python)를 사용한다 (아래 2-2 참고).
+파이썬으로 Friedman test를 돌리는 방법을 공유한다. Friedman test는 하나 이상의 실험 조건의 데이터가 정규성 가정을 만족하지 못할 때 사용한다. 모든 실험 조건에서 정규성을 만족한다면 [RM ANOVA](/posts?post=260615-one-way-rm-anova-python)를 사용한다 (아래 2-2 참고).
 
 # 1. 데이터 정리
 
@@ -135,7 +135,7 @@ df: 2, Statistic (chi-square): 18.1667, P-value: 0.000114
 There is a statistically significant difference between conditions.
 ```
 
-조건의 주효과가 유의한 것으로 확인됐다, χ²(2) = 18.17, p < .0005.
+조건의 주효과가 유의한 것으로 확인됐다, χ²(2) = 18.17, p < .001.
 
 ### 4) 사후 분석
 

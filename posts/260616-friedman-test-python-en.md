@@ -136,7 +136,7 @@ df: 2, Statistic (chi-square): 18.1667, P-value: 0.000114
 There is a statistically significant difference between conditions.
 ```
 
-The Friedman test revealed a significant effect of condition, χ²(2) = 18.17, p < .0005.
+The Friedman test revealed a significant effect of condition, χ²(2) = 18.17, p < .001.
 
 ### 4) Post-hoc Analysis
 

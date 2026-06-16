@@ -98,7 +98,7 @@ Data is normally distributed (fail to reject H0).
 
 세 조건 모두 정규성이 만족됐으므로 RM ANOVA로 넘어간다. 조건 중 하나라도 정규성이 만족되지 않으면, 전체 데이터에 비모수 검정 (Friedman's test)을 사용하는 것이 보수적인 선택이다.
 
-### 3) 일원 반복측정 분산분석
+### 3) One-way Repeated Measures ANOVA
 
 ```python
 testingMeasure = 'value'

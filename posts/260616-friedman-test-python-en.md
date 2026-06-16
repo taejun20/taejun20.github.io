@@ -166,6 +166,10 @@ Condition B vs Condition C: Z = -1.1767, Adjusted P-value = 0.717950
 
 Post-hoc pairwise comparisons with Bonferroni correction showed significant differences between Condition A and Condition B (Z = -3.06, p < .01), and between Condition A and Condition C (Z = -3.06, p < .01).
 
+```note
+**Note on Bonferroni Correction:** Whether to apply Bonferroni correction to p-values is ultimately a judgment call. This is kind of a tricky point. Applying Bonferroni is the conservative choice and safe from reviewer pushback. Theoretically, if each comparison were a genuinely independent question, e.g., comparisons planned before data collection rather than exploratory post-hoc, correction would not be needed. A separate question that supports one separate claim does not technically require Bonferroni correction, but if the comparisons are presented together and the reader interprets them as a whole, applying correction is still the safer choice. The Friedman test itself tests one question, "do any conditions differ?", and the post-hoc comparisons are follow-ups to that single question. This is a strong counter-logic against skipping the correction. Let's make safer move.
+```
+
 # 3. Report Results
 
 ```note

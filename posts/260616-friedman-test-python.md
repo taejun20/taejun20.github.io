@@ -165,6 +165,10 @@ Condition B vs Condition C: Z = -1.1767, Adjusted P-value = 0.717950
 
 Bonferroni correction을 적용한 pairwise 비교 결과, Condition A와 Condition B (Z = -3.06, p < .01), Condition A와 Condition C (Z = -3.06, p < .01) 사이에 유의미한 차이가 확인됐다.
 
+```note
+**Bonferroni Correction에 관해:** p-value에 Bonferroni correction을 적용을 해야하는가 안해도 되는가는 꽤나 까다로운 문제이고, 결국 연구자 판단의 문제로 귀결된다 (책임도 연구자가 진다). Bonferroni를 적용하는 것은 가장 안전하고 보수적인 선택이며, 리뷰어가 지적할 가능성을 차단한다. 이론적으로 각 비교가 완전히 독립적인 질문이라면, 예를 들어 데이터 수집 이전 단계부터 미리 계획된 비교라면 correction이 필요하지 않다. 즉, 하나의 독립적인 주장을 뒷받침하기 위한 비교는 Bonferroni correction이 필요하지 않지만, 여러 비교가 함께 제시되고 독자가 이를 전체로 해석한다면 correction을 적용하는 것이 더 안전한 선택이다. 지금 상황처럼 "어떤 조건 간에 차이가 있는가?"라는 하나의 질문을 검정하기 위해 Friedman test 수행을 하고, 그 단일 질문에 이어지는 형태로 exploratory post hoc 후속 분석을 위해 3개 쌍에 대한 비교를 하고 있기에, 여기서 만약 correction을 하지 않는다면 지적받을 가능성이 높다. 다른 논리로 설득하려 해볼 수도 있겠지만 애초에 더 안전한 선택을 하는 게 좋다.
+```
+
 # 3. 결과 보고
 
 ```note

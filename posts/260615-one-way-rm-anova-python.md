@@ -247,4 +247,3 @@ Bonferroni correction을 적용한 pairwise 비교 결과, Condition A와 Condit
 
 # 변경 이력
 - 2026년 6월 15일: 글 등록
-- 2026년 6월 17일: 구형성 검정 추가; statsmodels에서 pingouin으로 전환

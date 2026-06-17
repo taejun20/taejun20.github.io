@@ -247,4 +247,3 @@ Post-hoc pairwise comparisons with Bonferroni correction showed a significant di
 
 # Changelog
 - Jun 15, 2026: Post published
-- Jun 17, 2026: Added sphericity check; switched from statsmodels to pingouin for RM ANOVA

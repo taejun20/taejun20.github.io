@@ -48,7 +48,7 @@ factor_cols = [f'Factor{chr(65+i)}' for i in range(len(conditions[0].split('_'))
 for i, col in enumerate(factor_cols):
     df_long[col] = df_long['Condition'].str.split('_').str[i]
 
-# Perform normality test for each condition
+# Normality Test Start
 print("=== Normality Test ===")
 for cond in conditions:
     stat, p_value = stats.shapiro(df[cond])
@@ -58,13 +58,57 @@ for cond in conditions:
     else:
         print("Data is not normally distributed (reject H0).\n")
 
-print("=== Two-way RM ANOVA ===")
-# perform two-way RM ANOVA
+# Sphericity Check Start
+print("=== Sphericity Check ===")
 aov = pg.rm_anova(data=df_long, dv='value', within=factor_cols, subject=subject_col, detailed=True)
-print(aov[['Source', 'ddof1', 'ddof2', 'F', 'p_unc']].to_string(index=False))
+n_subjects = df_long[subject_col].nunique()
 
+use_cols = {}
+p_reports = {}
+
+for idx, row in aov.iterrows():
+    source = row['Source']
+    F_val = row['F']
+    df_num = int(row['ddof1'])
+    df_denom = int(row['ddof2'])
+    eps = row['eps']
+    p_unc_val = row['p_unc']
+    p_GG_val = row['p_GG_corr']
+    eps_HF = min((n_subjects * df_num * eps - 2) / (df_num * (n_subjects - 1 - df_num * eps)), 1.0)
+    p_HF_val = stats.f.sf(F_val, df_num * eps_HF, df_denom * eps_HF)
+    aov.at[idx, 'p_HF_corr'] = p_HF_val
+
+    if df_num == 1:
+        print(f"[{source}] sphericity automatically satisfied (df = 1) -> use p_unc")
+        use_cols[source] = 'p_unc'
+        p_reports[source] = p_unc_val
+    else:
+        within = factor_cols if '*' in source else source
+        spher_result = pg.sphericity(data=df_long, dv='value', within=within, subject=subject_col)
+        W, p_spher = spher_result.W, spher_result.pval
+        if p_spher > 0.05:
+            use_cols[source] = 'p_unc'
+            p_reports[source] = p_unc_val
+        elif eps < 0.75:
+            use_cols[source] = 'p_GG_corr'
+            p_reports[source] = p_GG_val
+        else:
+            use_cols[source] = 'p_HF_corr'
+            p_reports[source] = p_HF_val
+        p_cond = 'p-sphericity > 0.05' if p_spher > 0.05 else 'p-sphericity ≤ 0.05'
+        eps_cond = 'ε ≥ 0.75' if eps >= 0.75 else 'ε < 0.75'
+        print(f"[{source}] Sphericity (Mauchly's): W = {W:.2f}, p-sphericity = {p_spher:.3f}, ε = {eps:.3f}")
+        print(f"{p_cond} & {eps_cond} -> use {use_cols[source]}")
+
+# Two-way RM ANOVA Start
+print("\n=== Two-way RM ANOVA ===")
+print(aov[['Source', 'ddof1', 'ddof2', 'F', 'p_unc', 'p_GG_corr', 'p_HF_corr']].to_string(index=False))
+print("\n→ p-value to report:")
+for source, col in use_cols.items():
+    print(f"  [{source}] {p_reports[source]:.6f} ({col})")
+
+# Post-hoc Analysis Start
 print("\n=== Post-hoc Analysis (paired t-test with Bonferroni correction) ===")
-# post-hoc: pairwise t-test with Bonferroni correction
 
 # 1) when interaction effect is NOT significant:
 #    average over the other factor and compare main effects (1+3=4 comparisons)
@@ -111,7 +155,7 @@ for i, col in enumerate(factor_cols):
     df_long[col] = df_long['Condition'].str.split('_').str[i]
 ```
 
-`pd.read_csv`로 wide format의 CSV를 불러오고, `melt`로 long format으로 변환한다. 이후 각 조건 이름을 `_` 기준으로 분리해 요인을 자동으로 추출한다. 예를 들어 `Controller_Easy`는 FactorA=`Controller`, FactorB=`Easy`가 된다.
+`pd.read_csv`로 wide format의 CSV를 불러오고, `melt`로 long format으로 변환한다.
 
 ### 2) 정규성 검정
 
@@ -125,7 +169,7 @@ for cond in conditions:
         print("Data is not normally distributed (reject H0).\n")
 ```
 
-모수 검정을 진행하기 전에 Shapiro-Wilk 검정으로 각 조건의 정규성을 확인한다. 귀무가설은 정규분포를 따른다는 것이므로, p > 0.05이면 정규성이 만족된다고 본다.
+모수 검정 (parametric test)을 진행하기 전에 Shapiro-Wilk 검정으로 각 조건의 정규성을 확인한다. 귀무가설 (null hypothesis)은 정규분포를 따른다는 것이므로, p > 0.05이면 정규성이 만족된다고 본다.
 
 Output:
 
@@ -156,28 +200,96 @@ Statistic: 0.9347, P-value: 0.4327
 Data is normally distributed (fail to reject H0).
 ```
 
-모든 조건이 정규성 가정을 만족하므로 Two-way RM ANOVA를 진행한다.
+모든 조건이 정규성 가정을 만족하므로 Two-way RM ANOVA를 진행한다. 조건 중 하나라도 정규성이 만족되지 않으면 [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform)을 사용하는 것이 보수적인 선택이다.
 
-### 3) Two-way Repeated-Measures ANOVA
+### 3) 구형성 검정 (Sphericity Check)
 
 ```python
 aov = pg.rm_anova(data=df_long, dv='value', within=factor_cols, subject=subject_col, detailed=True)
-print(aov[['Source', 'ddof1', 'ddof2', 'F', 'p_unc']].to_string(index=False))
+n_subjects = df_long[subject_col].nunique()
+
+use_cols = {}
+p_reports = {}
+
+for idx, row in aov.iterrows():
+    source = row['Source']
+    F_val = row['F']
+    df_num = int(row['ddof1'])
+    df_denom = int(row['ddof2'])
+    eps = row['eps']
+    p_unc_val = row['p_unc']
+    p_GG_val = row['p_GG_corr']
+    eps_HF = min((n_subjects * df_num * eps - 2) / (df_num * (n_subjects - 1 - df_num * eps)), 1.0)
+    p_HF_val = stats.f.sf(F_val, df_num * eps_HF, df_denom * eps_HF)
+    aov.at[idx, 'p_HF_corr'] = p_HF_val
+
+    if df_num == 1:
+        print(f"[{source}] sphericity automatically satisfied (df = 1) -> use p_unc")
+        use_cols[source] = 'p_unc'
+        p_reports[source] = p_unc_val
+    else:
+        within = factor_cols if '*' in source else source
+        spher_result = pg.sphericity(data=df_long, dv='value', within=within, subject=subject_col)
+        W, p_spher = spher_result.W, spher_result.pval
+        if p_spher > 0.05:
+            use_cols[source] = 'p_unc'
+            p_reports[source] = p_unc_val
+        elif eps < 0.75:
+            use_cols[source] = 'p_GG_corr'
+            p_reports[source] = p_GG_val
+        else:
+            use_cols[source] = 'p_HF_corr'
+            p_reports[source] = p_HF_val
+        p_cond = 'p-sphericity > 0.05' if p_spher > 0.05 else 'p-sphericity ≤ 0.05'
+        eps_cond = 'ε ≥ 0.75' if eps >= 0.75 else 'ε < 0.75'
+        print(f"[{source}] Sphericity (Mauchly's): W = {W:.2f}, p-sphericity = {p_spher:.3f}, ε = {eps:.3f}")
+        print(f"{p_cond} & {eps_cond} -> use {use_cols[source]}")
+```
+
+Output:
+
+```
+=== Sphericity Check ===
+[FactorA] sphericity automatically satisfied (df = 1) -> use p_unc
+[FactorB] Sphericity (Mauchly's): W = 0.80, p-sphericity = 0.338, ε = 0.837
+p-sphericity > 0.05 & ε ≥ 0.75 -> use p_unc
+[FactorA * FactorB] Sphericity (Mauchly's): W = 0.99, p-sphericity = 0.937, ε = 0.987
+p-sphericity > 0.05 & ε ≥ 0.75 -> use p_unc
+```
+
+각 효과 (effect)에 대해 구형성을 별도로 검정한다.
+
+- `p_unc`: 구형성이 만족될 때 (p-sphericity > 0.05), 또는 해당 factor가 2개 수준뿐일 때 자동 만족
+- `p_GG_corr`: Greenhouse-Geisser 보정, 구형성이 위반됐을 때 (p-sphericity ≤ 0.05) & ε < 0.75
+- `p_HF_corr`: Huynh-Feldt 보정, 구형성이 위반됐을 때 (p-sphericity ≤ 0.05) & ε ≥ 0.75
+
+### 4) Two-way Repeated-Measures ANOVA
+
+```python
+print(aov[['Source', 'ddof1', 'ddof2', 'F', 'p_unc', 'p_GG_corr', 'p_HF_corr']].to_string(index=False))
+print("\n→ p-value to report:")
+for source, col in use_cols.items():
+    print(f"  [{source}] {p_reports[source]:.6f} ({col})")
 ```
 
 Output:
 
 ```
 === Two-way RM ANOVA ===
-          Source  ddof1  ddof2           F         p_unc
-         FactorA      1     11   83.660621  1.789109e-06
-         FactorB      2     22  285.201389  1.852941e-16
- FactorA * FactorB      2     22    3.019793  6.936843e-02
+           Source  ddof1  ddof2          F        p_unc    p_GG_corr    p_HF_corr
+          FactorA      1     11  83.660621 1.789109e-06 1.789109e-06 1.789109e-06
+          FactorB      2     22 285.201389 1.852941e-16 4.233350e-14 5.126377e-16
+FactorA * FactorB      2     22   3.019793 6.936843e-02 7.019957e-02 6.936843e-02
+
+→ p-value to report:
+  [FactorA] 0.000002 (p_unc)
+  [FactorB] 0.000000 (p_unc)
+  [FactorA * FactorB] 0.069368 (p_unc)
 ```
 
-두 factor의 main effect 모두 유의하다. 인터랙션 효과 (FactorA * FactorB)는 유의하지 않다 (p = .069). 인터랙션 효과 (interaction effects)에 대해서는 [이 포스트](/posts?post=200903-interaction-effects-anova) 참고.
+두 factor의 main effect 모두 유의하다. 인터랙션 효과 (FactorA * FactorB)는 유의하지 않다 (p = .069). 인터랙션 효과에 대해서는 [이 포스트](/posts?post=200903-interaction-effects-anova) 참고.
 
-### 4) 사후 분석
+### 5) 사후 분석
 
 **Case 1: 인터랙션 효과가 유의하지 않은 경우.** 인터랙션 효과가 유의하지 않으므로 각 factor의 main effect를 독립적으로 해석할 수 있다. 다른 factor에 대해 평균을 내고 원하는 factor의 주 효과를 비교하는 main effects 분석을 수행한다.
 
@@ -199,8 +311,6 @@ print(ph_b[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']].to_string(index=False, for
 Output:
 
 ```
-=== Post-hoc Analysis (paired t-test with Bonferroni correction) ===
-
 === Case 1: Interaction NOT significant: main effects post-hoc ===
 
 Post-hoc FactorA:
@@ -288,6 +398,7 @@ Case 1과 Case 2를 모두 보여주었지만, 본 예제에서 사용된 데이
 
 - [scipy.stats.shapiro](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html)
 - [pingouin rm_anova](https://pingouin-stats.org/generated/pingouin.rm_anova.html)
+- [pingouin sphericity](https://pingouin-stats.org/generated/pingouin.sphericity.html)
 - [pingouin pairwise_tests](https://pingouin-stats.org/generated/pingouin.pairwise_tests.html)
 
 # 변경 이력

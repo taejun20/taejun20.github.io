@@ -11,7 +11,7 @@ factor_cols = [f'Factor{chr(65+i)}' for i in range(len(conditions[0].split('_'))
 for i, col in enumerate(factor_cols):
     df_long[col] = df_long['Condition'].str.split('_').str[i]
 
-# Perform normality test for each condition
+# Normality Test Start
 print("=== Normality Test ===")
 for cond in conditions:
     stat, p_value = stats.shapiro(df[cond])
@@ -21,13 +21,57 @@ for cond in conditions:
     else:
         print("Data is not normally distributed (reject H0).\n")
 
-print("=== Two-way RM ANOVA ===")
-# perform two-way RM ANOVA
+# Sphericity Check Start
+print("=== Sphericity Check ===")
 aov = pg.rm_anova(data=df_long, dv='value', within=factor_cols, subject=subject_col, detailed=True)
-print(aov[['Source', 'ddof1', 'ddof2', 'F', 'p_unc']].to_string(index=False))
+n_subjects = df_long[subject_col].nunique()
 
+use_cols = {}
+p_reports = {}
+
+for idx, row in aov.iterrows():
+    source = row['Source']
+    F_val = row['F']
+    df_num = int(row['ddof1'])
+    df_denom = int(row['ddof2'])
+    eps = row['eps']
+    p_unc_val = row['p_unc']
+    p_GG_val = row['p_GG_corr']
+    eps_HF = min((n_subjects * df_num * eps - 2) / (df_num * (n_subjects - 1 - df_num * eps)), 1.0)
+    p_HF_val = stats.f.sf(F_val, df_num * eps_HF, df_denom * eps_HF)
+    aov.at[idx, 'p_HF_corr'] = p_HF_val
+
+    if df_num == 1:
+        print(f"[{source}] sphericity automatically satisfied (df = 1) -> use p_unc")
+        use_cols[source] = 'p_unc'
+        p_reports[source] = p_unc_val
+    else:
+        within = factor_cols if '*' in source else source
+        spher_result = pg.sphericity(data=df_long, dv='value', within=within, subject=subject_col)
+        W, p_spher = spher_result.W, spher_result.pval
+        if p_spher > 0.05:
+            use_cols[source] = 'p_unc'
+            p_reports[source] = p_unc_val
+        elif eps < 0.75:
+            use_cols[source] = 'p_GG_corr'
+            p_reports[source] = p_GG_val
+        else:
+            use_cols[source] = 'p_HF_corr'
+            p_reports[source] = p_HF_val
+        p_cond = 'p-sphericity > 0.05' if p_spher > 0.05 else 'p-sphericity ≤ 0.05'
+        eps_cond = 'ε ≥ 0.75' if eps >= 0.75 else 'ε < 0.75'
+        print(f"[{source}] Sphericity (Mauchly's): W = {W:.2f}, p-sphericity = {p_spher:.3f}, ε = {eps:.3f}")
+        print(f"{p_cond} & {eps_cond} -> use {use_cols[source]}")
+
+# Two-way RM ANOVA Start
+print("\n=== Two-way RM ANOVA ===")
+print(aov[['Source', 'ddof1', 'ddof2', 'F', 'p_unc', 'p_GG_corr', 'p_HF_corr']].to_string(index=False))
+print("\n→ p-value to report:")
+for source, col in use_cols.items():
+    print(f"  [{source}] {p_reports[source]:.6f} ({col})")
+
+# Post-hoc Analysis Start
 print("\n=== Post-hoc Analysis (paired t-test with Bonferroni correction) ===")
-# post-hoc: pairwise t-test with Bonferroni correction
 
 # 1) when interaction effect is NOT significant:
 #    average over the other factor and compare main effects (1+3=4 comparisons)

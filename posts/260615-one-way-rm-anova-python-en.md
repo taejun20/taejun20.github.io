@@ -25,16 +25,16 @@ Let me first attach the full Python script here, and then explain each part step
 
 ```python
 import pandas as pd
-from statsmodels.stats.anova import AnovaRM
 import pingouin as pg
 from scipy import stats
 
 # read csv (wide format) and reshape to long format
 df = pd.read_csv("data.csv")
 conditions = df.columns[1:].tolist()
-df = df.melt(id_vars=[df.columns[0]], var_name='ExpCond', value_name='value')
+subject_col = df.columns[0]
+df = df.melt(id_vars=[subject_col], var_name='ExpCond', value_name='value')
 
-# Perform normality test for each condition
+# Normality Test Start
 print("=== Normality Test ===")
 for cond in conditions:
     samples = df[df['ExpCond'] == cond]['value']
@@ -45,16 +45,48 @@ for cond in conditions:
     else:
         print("Data is not normally distributed (reject H0).\n")
 
-print("=== One-way RM ANOVA ===")
-# perform RM-ANOVA: statsmodels AnovaRM
-testingMeasure = 'value'
-anovaRM = AnovaRM(data=df, depvar=testingMeasure, subject='Participant', within=['ExpCond'])
-res = anovaRM.fit()
-print(res.anova_table.to_string(formatters={'Pr > F': '{:.6f}'.format}))
+# Sphericity Check Start
+print("=== Sphericity Check ===")
+aov = pg.rm_anova(data=df, dv='value', within='ExpCond', subject=subject_col, detailed=True)
+F_val = aov['F'].values[0]
+df_num = int(aov['DF'].values[0])
+n_subjects = df[subject_col].nunique()
+df_denom = (n_subjects - 1) * df_num
+eps = aov['eps'].values[0]
+p_unc = aov['p_unc'].values[0]
+p_GG = stats.f.sf(F_val, df_num * eps, df_denom * eps)
+eps_HF = min((n_subjects * df_num * eps - 2) / (df_num * (n_subjects - 1 - df_num * eps)), 1.0)
+p_HF = stats.f.sf(F_val, df_num * eps_HF, df_denom * eps_HF)
 
+if len(conditions) <= 2:
+    print("Sphericity: automatically satisfied (only 2 levels)")
+    p_report, use_col = p_unc, 'p-unc'
+else:
+    spher_result = pg.sphericity(data=df, dv='value', within='ExpCond', subject=subject_col)
+    W, p_spher = spher_result.W, spher_result.pval
+    if p_spher > 0.05:
+        p_report, use_col = p_unc, 'p-unc'
+    elif eps < 0.75:
+        p_report, use_col = p_GG, 'p-GG-corr'
+    else:
+        p_report, use_col = p_HF, 'p-HF-corr'
+    p_cond = 'p-sphericity > 0.05' if p_spher > 0.05 else 'p-sphericity ≤ 0.05'
+    eps_cond = 'ε ≥ 0.75' if eps >= 0.75 else 'ε < 0.75'
+    print(f"Sphericity (Mauchly's): W = {W:.2f}, p-sphericity = {p_spher:.3f}, ε = {eps:.3f}\n{p_cond} & {eps_cond} -> use {use_col}")
+
+# One-way RM ANOVA Start
+print("\n=== One-way RM ANOVA ===")
+aov_effect = aov.iloc[[0]].copy()
+aov_effect['df_denom'] = df_denom
+aov_effect['p-GG-corr'] = p_GG
+aov_effect['p-HF-corr'] = p_HF
+p_col = 'p_unc' if use_col == 'p-unc' else use_col
+print(aov_effect[['Source', 'DF', 'df_denom', 'F', p_col]].to_string(index=False, formatters={'F': '{:.6f}'.format, p_col: '{:.6f}'.format}))
+print(f"\n→ p-value to report: {p_report:.6f} ({use_col})")
+
+# Post-hoc Analysis Start
 print("\n=== Post-hoc Analysis (paired t-test with Bonferroni correction) ===")
-# post-hoc: pairwise t-test with Bonferroni correction
-pairwise_results = pg.pairwise_tests(dv=testingMeasure, within='ExpCond', subject='Participant', data=df, padjust='bonferroni')
+pairwise_results = pg.pairwise_tests(dv='value', within='ExpCond', subject=subject_col, data=df, padjust='bonferroni')
 print(pairwise_results[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format, 'p_corr': '{:.6f}'.format}))
 ```
 
@@ -63,7 +95,8 @@ print(pairwise_results[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']].to_string(inde
 ```python
 df = pd.read_csv("data.csv")
 conditions = df.columns[1:].tolist()
-df = df.melt(id_vars=[df.columns[0]], var_name='ExpCond', value_name='value')
+subject_col = df.columns[0]
+df = df.melt(id_vars=[subject_col], var_name='ExpCond', value_name='value')
 ```
 
 `pd.read_csv` reads the CSV as wide format and `melt` reshapes it to long format, which is required by the ANOVA functions.
@@ -100,32 +133,83 @@ Statistic: 0.9427, P-value: 0.5339
 Data is normally distributed (fail to reject H0).
 ```
 
-All three conditions pass the normality assumption, so we proceed with RM ANOVA. If even one condition fails, the conservative choice is to use a non-parametric alternative (Friedman's test) for the entire dataset.
+All three conditions pass the normality assumption, so we proceed with RM ANOVA. If even one condition fails, the conservative choice is to use a non-parametric alternative ([Friedman's test](/posts?post=260616-friedman-test-python-en)) for the entire dataset.
 
-### 3) One-way Repeated-Measures ANOVA
+### 3) Sphericity Check
 
 ```python
-testingMeasure = 'value'
-anovaRM = AnovaRM(data=df, depvar=testingMeasure, subject='Participant', within=['ExpCond'])
-res = anovaRM.fit()
-print(res.anova_table.to_string(formatters={'Pr > F': '{:.6f}'.format}))
+# run rm_anova first to extract eps needed for GG/HF correction calculations
+aov = pg.rm_anova(data=df, dv='value', within='ExpCond', subject=subject_col, detailed=True)
+F_val = aov['F'].values[0]
+df_num = int(aov['DF'].values[0])
+n_subjects = df[subject_col].nunique()
+df_denom = (n_subjects - 1) * df_num
+eps = aov['eps'].values[0]
+p_unc = aov['p_unc'].values[0]
+p_GG = stats.f.sf(F_val, df_num * eps, df_denom * eps)
+eps_HF = min((n_subjects * df_num * eps - 2) / (df_num * (n_subjects - 1 - df_num * eps)), 1.0)
+p_HF = stats.f.sf(F_val, df_num * eps_HF, df_denom * eps_HF)
+
+if len(conditions) <= 2:
+    print("Sphericity: automatically satisfied (only 2 levels)")
+    p_report, use_col = p_unc, 'p-unc'
+else:
+    spher_result = pg.sphericity(data=df, dv='value', within='ExpCond', subject=subject_col)
+    W, p_spher = spher_result.W, spher_result.pval
+    if p_spher > 0.05:
+        p_report, use_col = p_unc, 'p-unc'
+    elif eps < 0.75:
+        p_report, use_col = p_GG, 'p-GG-corr'
+    else:
+        p_report, use_col = p_HF, 'p-HF-corr'
+    p_cond = 'p-sphericity > 0.05' if p_spher > 0.05 else 'p-sphericity ≤ 0.05'
+    eps_cond = 'ε ≥ 0.75' if eps >= 0.75 else 'ε < 0.75'
+    print(f"Sphericity (Mauchly's): W = {W:.2f}, p-sphericity = {p_spher:.3f}, ε = {eps:.3f}\n{p_cond} & {eps_cond} -> use {use_col}")
+```
+
+Output:
+
+```
+=== Sphericity Check ===
+Sphericity (Mauchly's): W = 0.99, p-sphericity = 0.971, ε = 0.994
+p-sphericity > 0.05 & ε ≥ 0.75 -> use p-unc
+```
+
+We run `pg.rm_anova()` first to extract `eps` (Greenhouse-Geisser epsilon), checking sphericity and the right p-value to proceed.
+
+- `p-unc`: use when sphericity is satisfied (p-sphericity > 0.05), or when there are only 2 levels (sphericity is automatically satisfied)
+- `p-GG-corr`: Greenhouse-Geisser correction, use when sphericity is violated (p-sphericity ≤ 0.05) and ε < 0.75
+- `p-HF-corr`: Huynh-Feldt correction, use when sphericity is violated (p-sphericity ≤ 0.05) and ε ≥ 0.75
+
+### 4) One-way Repeated-Measures ANOVA
+
+```python
+aov_effect = aov.iloc[[0]].copy()
+aov_effect['df_denom'] = df_denom
+aov_effect['p-GG-corr'] = p_GG
+aov_effect['p-HF-corr'] = p_HF
+p_col = 'p_unc' if use_col == 'p-unc' else use_col
+print(aov_effect[['Source', 'DF', 'df_denom', 'F', p_col]].to_string(index=False, formatters={'F': '{:.6f}'.format, p_col: '{:.6f}'.format}))
+print(f"\n→ p-value to report: {p_report:.6f} ({use_col})")
 ```
 
 Output:
 
 ```
 === One-way RM ANOVA ===
-          F Value  Num DF  Den DF   Pr > F
-ExpCond  4.662527     2.0    22.0 0.020504
+ Source  DF  df_denom        F    p_unc
+ExpCond   2        22 4.662527 0.020504
+
+→ p-value to report: 0.020504 (p-unc)
 ```
 
 A one-way repeated-measures ANOVA revealed a significant main effect of condition, F(2, 22) = 4.66, p < .05.
 
-### 4) Post-hoc Analysis
+### 5) Post-hoc Analysis
 
 ```python
-pairwise_results = pg.pairwise_ttests(dv=testingMeasure, within='ExpCond', subject='Participant', data=df, padjust='bonferroni')
-pg.print_table(pairwise_results)
+pairwise_results = pg.pairwise_tests(dv='value', within='ExpCond', subject=subject_col, data=df, padjust='bonferroni')
+print(pairwise_results[['A', 'B', 'T', 'dof', 'p_unc', 'p_corr']].to_string(index=False, formatters={'T': '{:.4f}'.format, 'dof': '{:.0f}'.format, 'p_unc': '{:.6f}'.format, 'p_corr': '{:.6f}'.format}))
 ```
 
 Since the ANOVA is significant, run pairwise comparisons with Bonferroni correction to identify which pairs differ.
@@ -134,10 +218,10 @@ Output:
 
 ```
 === Post-hoc Analysis (paired t-test with Bonferroni correction) ===
-          A           B        T  dof    p_unc    p_corr
-Condition A Condition B  -2.0841   11 0.061266 0.183797
-Condition A Condition C  -2.8835   11 0.014877 0.044632
-Condition B Condition C  -0.9698   11 0.352979 1.000000
+          A           B       T dof    p_unc   p_corr
+Condition A Condition B -2.0841  11 0.061266 0.183797
+Condition A Condition C -2.8835  11 0.014877 0.044632
+Condition B Condition C -0.9698  11 0.352979 1.000000
 ```
 
 Post-hoc pairwise comparisons with Bonferroni correction showed a significant difference between Condition A and Condition C (t = -2.88, p < .05).
@@ -157,9 +241,10 @@ Post-hoc pairwise comparisons with Bonferroni correction showed a significant di
 # References
 
 - [scipy.stats.shapiro](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.shapiro.html)
-- [statsmodels AnovaRM](https://www.statsmodels.org/stable/generated/statsmodels.stats.anova.AnovaRM.html)
+- [pingouin rm_anova](https://pingouin-stats.org/generated/pingouin.rm_anova.html)
 - [pingouin pairwise_tests](https://pingouin-stats.org/generated/pingouin.pairwise_tests.html)
 
 
 # Changelog
 - Jun 15, 2026: Post published
+- Jun 17, 2026: Added sphericity check; switched from statsmodels to pingouin for RM ANOVA

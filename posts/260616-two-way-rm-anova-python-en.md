@@ -7,7 +7,7 @@ tag: Statistics
 This is a tutorial to run a Two-way Repeated-Measures (Within-Subject) ANOVA with Python. Use this when you have two within-subject factors (= two independent variables). If the normality assumption is not satisfied, use [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform-en) (see 2-2 for normality check).
 
 ```note
-**Library limitation:** The `pingouin` library used in this tutorial only supports up to two within-subject factors. For three-way or four-way RM ANOVA, use R (`afex` or `ez` package) instead.
+**Library limitation:** The `pingouin` library used in this tutorial only supports up to two within-subject factors. For three or more factors, use R (`afex` or `ez` package), or consider using a [Linear Mixed Model](https://taejunkim.com/posts?post=260618-lmm-lrt-python-en) instead.
 ```
 
 # 1. Organize Data

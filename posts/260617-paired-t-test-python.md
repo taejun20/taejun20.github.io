@@ -75,11 +75,11 @@ Output:
 ```
 === Normality Test ===
 ExpCond: Condition A 
-Statistic: 0.9762, P-value: 0.9637
+Statistic: 0.9532, P-value: 0.6846
 Data is normally distributed (fail to reject H0).
 
 ExpCond: Condition B 
-Statistic: 0.9561, P-value: 0.7264
+Statistic: 0.9177, P-value: 0.2676
 Data is normally distributed (fail to reject H0).
 ```
 
@@ -99,15 +99,15 @@ Output:
 ```
 === Paired T-Test ===
       T dof    p_val cohen_d
--6.9663  11 0.000024  0.9860
+-2.0841  11 0.061266  0.8283
 ```
 
-두 조건 사이에 유의미한 차이가 확인됐다, t(11) = -6.97, p < .001, d = 0.99.
+두 조건 사이에 유의미한 차이가 확인되지 않았다, t(11) = -2.08, p = .061.
 
 # 3. 결과 보고
 
 ```note
-**Writing for report:** A paired t-test revealed a significant difference between Condition A and Condition B (t(11) = -6.97, p < .001).
+**Writing for report:** A paired t-test revealed no significant difference between Condition A and Condition B (t(11) = -2.08, p = .061).
 ```
 
 *Side Note: 몇 년전까지는 [SPSS](/posts?post=200203-spss-repeated-measures)로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*

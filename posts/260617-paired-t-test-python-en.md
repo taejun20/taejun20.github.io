@@ -75,11 +75,11 @@ Output:
 ```
 === Normality Test ===
 ExpCond: Condition A 
-Statistic: 0.9762, P-value: 0.9637
+Statistic: 0.9532, P-value: 0.6846
 Data is normally distributed (fail to reject H0).
 
 ExpCond: Condition B 
-Statistic: 0.9561, P-value: 0.7264
+Statistic: 0.9177, P-value: 0.2676
 Data is normally distributed (fail to reject H0).
 ```
 
@@ -99,15 +99,15 @@ Output:
 ```
 === Paired T-Test ===
       T dof    p_val cohen_d
--6.9663  11 0.000024  0.9860
+-2.0841  11 0.061266  0.8283
 ```
 
-The paired t-test revealed a significant difference between conditions, t(11) = -6.97, p < .001, d = 0.99.
+The paired t-test revealed no significant difference between conditions, t(11) = -2.08, p = .061.
 
 # 3. Report Results
 
 ```note
-**Writing for report:** A paired t-test revealed a significant difference between Condition A and Condition B (t(11) = -6.97, p < .001).
+**Writing for report:** A paired t-test revealed no significant difference between Condition A and Condition B (t(11) = -2.08, p = .061).
 ```
 
 *Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*

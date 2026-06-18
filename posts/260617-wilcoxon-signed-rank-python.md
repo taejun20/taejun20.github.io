@@ -74,11 +74,11 @@ Output:
 ```
 === Normality Test ===
 ExpCond: Condition A 
-Statistic: 0.5341, P-value: 0.0000
+Statistic: 0.5588, P-value: 0.0000
 Data is not normally distributed (reject H0).
 
 ExpCond: Condition B 
-Statistic: 0.8995, P-value: 0.1564
+Statistic: 0.9177, P-value: 0.2676
 Data is normally distributed (fail to reject H0).
 ```
 
@@ -97,15 +97,15 @@ Output:
 
 ```
 === Wilcoxon Signed-Rank Test ===
-Z = -2.3238, P-value = 0.020137
+Z = -3.0594, P-value = 0.002218
 ```
 
-두 조건 사이에 유의미한 차이가 확인됐다 (Z = -2.32, p < .05).
+두 조건 사이에 유의미한 차이가 확인됐다 (Z = -3.06, p < .01).
 
 # 3. 결과 보고
 
 ```note
-**Writing for report:** A Wilcoxon signed-rank test revealed a significant difference between Condition A and Condition B (Z = -2.32, p < .05).
+**Writing for report:** A Wilcoxon signed-rank test revealed a significant difference between Condition A and Condition B (Z = -3.06, p < .01).
 ```
 
 *Side Note: 몇 년전까지는 [SPSS](/posts?post=200203-spss-repeated-measures)로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*

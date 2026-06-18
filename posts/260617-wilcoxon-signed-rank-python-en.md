@@ -74,11 +74,11 @@ Output:
 ```
 === Normality Test ===
 ExpCond: Condition A 
-Statistic: 0.5341, P-value: 0.0000
+Statistic: 0.5588, P-value: 0.0000
 Data is not normally distributed (reject H0).
 
 ExpCond: Condition B 
-Statistic: 0.8995, P-value: 0.1564
+Statistic: 0.9177, P-value: 0.2676
 Data is normally distributed (fail to reject H0).
 ```
 
@@ -97,15 +97,15 @@ Output:
 
 ```
 === Wilcoxon Signed-Rank Test ===
-Z = -2.3238, P-value = 0.020137
+Z = -3.0594, P-value = 0.002218
 ```
 
-The Wilcoxon signed-rank test revealed a significant difference between conditions (Z = -2.32, p < .05).
+The Wilcoxon signed-rank test revealed a significant difference between conditions (Z = -3.06, p < .01).
 
 # 3. Report Results
 
 ```note
-**Writing for report:** A Wilcoxon signed-rank test revealed a significant difference between Condition A and Condition B (Z = -2.32, p < .05).
+**Writing for report:** A Wilcoxon signed-rank test revealed a significant difference between Condition A and Condition B (Z = -3.06, p < .01).
 ```
 
 *Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*

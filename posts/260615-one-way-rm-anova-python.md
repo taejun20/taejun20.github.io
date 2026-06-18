@@ -4,7 +4,7 @@ date: 2026-06-15
 tag: Statistics
 ---
 
-파이썬으로 One-way Repeated-Measures (Within-Subject) ANOVA를 돌리는 방법을 공유한다. 실험 조건 중 하나라도 정규성 가정 (normality assumption)이 만족되지 않으면 [Friedman Test](/posts?post=260616-friedman-test-python)를 사용한다 (아래 2-2 참고).
+One-way Repeated-Measures (Within-Subject) ANOVA를 돌리는 파이썬 코드를 공유한다. 실험 조건 중 하나라도 정규성 가정 (normality assumption)이 만족되지 않으면 [Friedman Test](/posts?post=260616-friedman-test-python)를 사용한다 (아래 2-2 참고).
 
 # 1. 데이터 정리
 

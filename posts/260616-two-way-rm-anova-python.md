@@ -4,7 +4,7 @@ date: 2026-06-16
 tag: Statistics
 ---
 
-파이썬으로 Two-way Repeated-Measures (Within-Subject) ANOVA를 돌리는 방법을 공유한다. 두 개의 within-subject factor (= 2개의 독립 변수)이 있을 때 사용한다. 정규성 가정이 만족되지 않는 경우 [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform)을 사용한다 (정규성 검정은 아래 2-2 참고).
+Two-way Repeated-Measures (Within-Subject) ANOVA를 돌리는 파이썬 코드를 공유한다. 두 개의 within-subject factor (= 2개의 독립 변수)이 있을 때 사용한다. 정규성 가정이 만족되지 않는 경우 [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform)을 사용한다 (정규성 검정은 아래 2-2 참고).
 
 ```note
 **라이브러리 한계점:** 이 튜토리얼에서 사용하는 `pingouin` 라이브러리는 within-subject factor를 최대 두 개까지만 지원한다. Three-way 또는 Four-way RM ANOVA가 필요한 경우 R (`afex` 또는 `ez` 패키지)을 사용하자.

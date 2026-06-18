@@ -4,7 +4,7 @@ date: 2026-06-17
 tag: Statistics
 ---
 
-파이썬으로 Wilcoxon signed-rank test를 돌리는 방법을 공유한다. Wilcoxon signed-rank test는 하나 이상의 조건에서 정규성 가정이 만족되지 않을 때 사용한다. 모든 조건에서 정규성이 만족된다면 [대응 표본 t검정 (paired t-test)](/posts?post=260617-paired-t-test-python)을 사용한다 (아래 2-2 참고).
+Wilcoxon signed-rank test를 돌리는 파이썬 코드를 공유한다. Wilcoxon signed-rank test는 하나 이상의 조건에서 정규성 가정이 만족되지 않을 때 사용한다. 모든 조건에서 정규성이 만족된다면 [대응 표본 t검정 (paired t-test)](/posts?post=260617-paired-t-test-python)을 사용한다 (아래 2-2 참고).
 
 # 1. 데이터 정리
 

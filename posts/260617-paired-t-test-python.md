@@ -4,7 +4,7 @@ date: 2026-06-17
 tag: Statistics
 ---
 
-파이썬으로 대응 표본 t검정 (Paired T-Test)을 돌리는 방법을 공유한다. 같은 피험자로부터 두 조건을 측정하는 경우 (within-subject 디자인, 2개 조건)에 사용한다. 하나라도 정규성 가정이 만족되지 않으면 [Wilcoxon signed-rank test](/posts?post=260617-wilcoxon-signed-rank-python)를 사용한다 (아래 2-2 참고).
+대응 표본 t검정 (Paired T-Test)을 돌리는 파이썬 코드를 공유한다. 같은 피험자로부터 두 조건을 측정하는 경우 (within-subject 디자인, 2개 조건)에 사용한다. 하나라도 정규성 가정이 만족되지 않으면 [Wilcoxon signed-rank test](/posts?post=260617-wilcoxon-signed-rank-python)를 사용한다 (아래 2-2 참고).
 
 # 1. 데이터 정리
 

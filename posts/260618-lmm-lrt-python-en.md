@@ -133,7 +133,7 @@ While this post used LMM for component ablation, LMM + LRT can also replace pair
 
 Two situations that LMM can cover but paired t-test and RM-ANOVA cannot. **(1) LMM handles missing/unbalanced data** (i.e., when some participants are missing data for certain conditions), while paired t-test and RM-ANOVA can't handle. **(2) LMM supports continuous covariates such as age as control variables** (e.g., if older participants tend to score higher regardless of condition, including age lets the model account for that, giving a cleaner estimate of the condition effect). This also means you can examine whether age itself has a significant effect on the outcome.
 
-That said, for the repeated-measures user studies that are most common in HCI research, data is almost certainly balanced, so [paired t-test](/posts?post=260617-paired-t-test-python-en) or [one-way RM-ANOVA](/posts?post=260615-one-way-rm-anova-python-en) works fine most of the time. If you need to handle unbalanced data or control for a continuous covariate like age, use LMM + LRT instead.
+That said, for the repeated-measures user studies that are most common in HCI research, data is almost certainly complete and balanced, so [paired t-test](https://taejunkim.com/posts?post=260617-paired-t-test-python-en) or [one-way RM-ANOVA](https://taejunkim.com/posts?post=260615-one-way-rm-anova-python-en) works fine most of the time. If you need to handle unbalanced data or control for a continuous covariate like age, use LMM + LRT instead.
 
 # References
 

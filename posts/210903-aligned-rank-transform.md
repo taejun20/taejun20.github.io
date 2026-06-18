@@ -29,7 +29,7 @@ library(ARTool)
 
 아래와 같은 규격이 되어야 한다. 1번째 column은 subject (실제 계산에 사용되지는 않는다), 가장 오른쪽 column은 response, 그 사이는 independent variable이 factor 자료형으로 준비되어야 한다. `dplyr` 패키지의 `group_by()` 메소드를 사용하면 아래 규격을 만들기 쉽다.
 
-![data.frame contents for ART process|50%](img/posts/210903-aligned-rank-transform/dataframe.png)
+![data.frame contents for ART process|50%](img/posts/210903-aligned-rank-transform/dataframe.jpg)
 
 ## (3) ART 및 ANOVA 메소드 수행
 
@@ -44,7 +44,7 @@ anova(m)
 m <- art(Response ~ FactorA * FactorB, data = df)
 anova(m)
 ```
-![Results of ART & ANOVA](img/posts/210903-aligned-rank-transform/art-results.png)
+![Results of ART & ANOVA](img/posts/210903-aligned-rank-transform/art-results.jpg)
 
 # 통계 분석 결과 리포트
 

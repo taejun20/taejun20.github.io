@@ -6,7 +6,7 @@ tag: Electronics
 
 Working on the [Heterogeneous Stroke](https://github.com/taejun20/HeterogeneousStroke) project, I had to supply stable voltage to four ERM vibration motors while controlling them independently. For that, I added a [2N2369 transistor](https://www.elektronik-kompendium.de/public/schaerer/FILES/2n2369.pdf) to the circuit. Let me document the role and operating principles of transistors.
 
-![2N2369 Transistor (NPN)|40%](img/posts/191112-transistor-basics/transistor-2n2369.png)
+![2N2369 Transistor (NPN)|40%](img/posts/191112-transistor-basics/transistor-2n2369.jpg)
 
 There are two main types of transistors: BJT (Bipolar Junction Transistor) and FET (Field Effect Transistor). The role is essentially the same. Amplification and Switching. The key difference is that a BJT is controlled by a current input, while a FET is controlled by voltage. The rest of this post goes with the BJT transistor.
 
@@ -16,11 +16,11 @@ A transistor serves two main purposes: 1) amplification and 2) switching. How do
 
 For an NPN transistor: the Collector is the inlet, the Emitter is the outlet, and the Base is the faucet handle. Opening the faucet more increases the current flowing from Base to Emitter.
 
-![PNP/NPN transistor circuit symbols and faucet analogy](img/posts/191112-transistor-basics/pnp-npn-valve.png)
+![PNP/NPN transistor circuit symbols and faucet analogy](img/posts/191112-transistor-basics/pnp-npn-valve.jpg)
 
 Depending on the Base current (I_B), the transistor operates in one of three regions described by the Collector-Emitter Voltage (V_CE) vs. Collector Current (I_C) curve:
 
-![Practical Electronics For Inventors (2nd Edition), Figure 4.47, p.442](img/posts/191112-transistor-basics/iv-curve.png)
+![Practical Electronics For Inventors (2nd Edition), Figure 4.47, p.442](img/posts/191112-transistor-basics/iv-curve.jpg)
 
 1. **Cut-off Region**: When Base current (I_B) = 0: the faucet is fully closed. The transistor acts like an open switch between Collector and Emitter. No matter how large V_CE is, essentially no current flows through the Collector. (A negligible leakage current does exist in practice.)
 
@@ -34,7 +34,7 @@ Using the transistor within the Active Region enables it as an amplifier. Rapidl
 
 Pure silicon (Si) is an insulator. Adding boron (B) creates P-type semiconductor (electron-deficient, dominated by holes); adding phosphorus (P) creates N-type semiconductor (electron-rich). When P-type and N-type are joined, current flows from P to N but not from N to P: this is **rectification**, also the basis for P-N junction diodes. Stacking P-N-P gives a PNP transistor; N-P-N gives an NPN transistor.
 
-![Example circuit to illustrate NPN transistor operation|70%](img/posts/191112-transistor-basics/npn-circuit.png)
+![Example circuit to illustrate NPN transistor operation|70%](img/posts/191112-transistor-basics/npn-circuit.jpg)
 
 In the diagram, the right-side reverse bias (N→P) blocks current. The left-side forward bias (N connected to (−), P to (+)) pushes holes in the P-type toward the junction and electrons in the N-type toward the junction: current flows. Most electrons from the Emitter (N) pass straight through the thin Base layer (P) into the Collector: that's I_C. A small fraction recombine with holes in the Base: that's I_B. Slightly increasing I_B proportionally increases I_C. This ratio is the Current Gain (β = I_C / I_B), and it's how a small change at the Base produces a large change at the Collector.
 

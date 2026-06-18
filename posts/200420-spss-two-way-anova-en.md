@@ -18,7 +18,7 @@ My dataset had:
 
 If normality is satisfied, use Factorial Repeated Measure ANOVA. If not, use Robust Factorial Repeated Measure ANOVA.
 
-![Toetskeuzeschema Field](img/posts/200420-spss-two-way-anova/decision-tree.png)
+![Toetskeuzeschema Field](img/posts/200420-spss-two-way-anova/decision-tree.jpg)
 
 What we'll do:
 
@@ -36,31 +36,31 @@ If normality is not satisfied, use [Aligned Rank Transform](/posts?post=210903-a
 
 1. Analyze → Descriptive Statistics → Explore
 
-![|70%](img/posts/200420-spss-two-way-anova/normality-step1.png)
+![|70%](img/posts/200420-spss-two-way-anova/normality-step1.jpg)
 
 2. Add variables to the Dependent Variable List, then click Statistics
 
-![|50%](img/posts/200420-spss-two-way-anova/normality-step2.png)
+![|50%](img/posts/200420-spss-two-way-anova/normality-step2.jpg)
 
 3. Set options as shown, click Continue
 
-![|30%](img/posts/200420-spss-two-way-anova/normality-step3.png)
+![|30%](img/posts/200420-spss-two-way-anova/normality-step3.jpg)
 
 4. Click Plots
 
-![|50%](img/posts/200420-spss-two-way-anova/normality-step4.png)
+![|50%](img/posts/200420-spss-two-way-anova/normality-step4.jpg)
 
 5. Set options as shown, click Continue
 
-![|40%](img/posts/200420-spss-two-way-anova/normality-step5.png)
+![|40%](img/posts/200420-spss-two-way-anova/normality-step5.jpg)
 
 6. Click OK
 
-![|50%](img/posts/200420-spss-two-way-anova/normality-step6.png)
+![|50%](img/posts/200420-spss-two-way-anova/normality-step6.jpg)
 
 ## Reading the Output
 
-![|70%](img/posts/200420-spss-two-way-anova/normality-result.png)
+![|70%](img/posts/200420-spss-two-way-anova/normality-result.jpg)
 
 ```note
 Check the normality test table:
@@ -76,23 +76,23 @@ This same procedure handles 2-way, 3-way, 4-way, and beyond.
 
 1. Analyze → General Linear Model → Repeated Measures
 
-![|70%](img/posts/200420-spss-two-way-anova/anova-step1.png)
+![|70%](img/posts/200420-spss-two-way-anova/anova-step1.jpg)
 
 2. Add two within-subject factors (for two-way), add a measure name, click Define
 
-![|30%](img/posts/200420-spss-two-way-anova/anova-step2.png)
+![|30%](img/posts/200420-spss-two-way-anova/anova-step2.jpg)
 
 3. Move all variables from the left into the Within-Subjects Variables box
 
-![|50%](img/posts/200420-spss-two-way-anova/anova-step3.png)
+![|50%](img/posts/200420-spss-two-way-anova/anova-step3.jpg)
 
 4. Click EM Means. Move all three variables to the right, check Compare main effects, select Bonferroni, click Continue
 
-![|40%](img/posts/200420-spss-two-way-anova/anova-step4.png)
+![|40%](img/posts/200420-spss-two-way-anova/anova-step4.jpg)
 
 5. Click Options, check Descriptive statistics, click Continue
 
-![|40%](img/posts/200420-spss-two-way-anova/anova-step5.png)
+![|40%](img/posts/200420-spss-two-way-anova/anova-step5.jpg)
 
 6. Click OK
 
@@ -100,7 +100,7 @@ This same procedure handles 2-way, 3-way, 4-way, and beyond.
 
 **Sphericity**
 
-![|90%](img/posts/200420-spss-two-way-anova/anova-result-sphericity.png)
+![|90%](img/posts/200420-spss-two-way-anova/anova-result-sphericity.jpg)
 
 ```note
 - Mauchly's Test: if p > 0.05, sphericity is satisfied
@@ -113,7 +113,7 @@ This same procedure handles 2-way, 3-way, 4-way, and beyond.
 
 **Significant effect between conditions**
 
-![|80%](img/posts/200420-spss-two-way-anova/anova-result-effect.png)
+![|80%](img/posts/200420-spss-two-way-anova/anova-result-effect.jpg)
 
 ```note
 Since sphericity is satisfied, read the top p-value in each row.
@@ -134,11 +134,11 @@ The interaction between orientation and armpose was not significant."
 
 Post-hoc for orientation: no significant differences found.
 
-![|70%](img/posts/200420-spss-two-way-anova/anova-result-posthoc-orientation.png)
+![|70%](img/posts/200420-spss-two-way-anova/anova-result-posthoc-orientation.jpg)
 
 Post-hoc for armpose: significant differences between (armpose 2 vs. armpose 1) and (armpose 2 vs. armpose 3), but not between (armpose 1 vs. armpose 3).
 
-![|70%](img/posts/200420-spss-two-way-anova/anova-result-posthoc-armpose.png)
+![|70%](img/posts/200420-spss-two-way-anova/anova-result-posthoc-armpose.jpg)
 
 The post-hoc above applies when main effects are significant. If the interaction effect were significant, main effect post-hoc alone would not be enough; simple effects analysis across condition combinations (e.g., orientation 1 & armpose 1 vs. orientation 1 & armpose 2) would also be needed.
 

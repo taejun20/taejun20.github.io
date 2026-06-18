@@ -29,7 +29,7 @@ library(ARTool)
 
 The format should look like below. The first column is the subject (not used directly in the calculation), the rightmost column is the response, and the columns in between are independent variables stored as factor type. The `group_by()` method from the `dplyr` package makes it easy to build this format.
 
-![data.frame contents for ART process|50%](img/posts/210903-aligned-rank-transform/dataframe.png)
+![data.frame contents for ART process|50%](img/posts/210903-aligned-rank-transform/dataframe.jpg)
 
 ## (3) Run ART and ANOVA
 
@@ -45,7 +45,7 @@ m <- art(Response ~ FactorA * FactorB, data = df)
 anova(m)
 ```
 
-![Results of ART & ANOVA](img/posts/210903-aligned-rank-transform/art-results.png)
+![Results of ART & ANOVA](img/posts/210903-aligned-rank-transform/art-results.jpg)
 
 # Reporting Results
 

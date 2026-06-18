@@ -11,7 +11,7 @@ ML 모델 component ablation을 위해 Linear Mixed Model (LMM)을 fitting하는
 
 Google Spreadsheet로 데이터를 정리한다 (통계 테스트를 돌리기 전에 각 조건의 평균과 표준편차를 먼저 확인하면서 데이터에 대한 전반적인 감을 잡는다).
 
-![|100%](img/posts/260618-lmm-lrt-python/data-table.png)
+![|100%](img/posts/260618-lmm-lrt-python/data-table.jpg)
 
 각 행은 피험자이고 각 열은 조건이다. 각 조건 이름 (csv 파일 상 column의 이름)은 `+`로 구분하여 입력해야 한다.
 

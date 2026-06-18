@@ -6,19 +6,19 @@ tag: Statistics
 
 Analysis of Variance (ANOVA)는 F-test를 통해 세 집단 이상의 평균이 서로 유의미하게 다른지 확인한다 (두 집단 비교에는 t-test). 본 글에서는 F-value를 직접 손으로 계산해보며 그 의미를 이해해본다.
 
-![Right-tail F-distribution|90%](img/posts/210923-anova-ftest/f-distribution.png)
+![Right-tail F-distribution|90%](img/posts/210923-anova-ftest/f-distribution.jpg)
 
 # One way ANOVA (F-test) Hands on Calculation
 
 F-value formula는 아래와 같다.
 
-![|60%](img/posts/210923-anova-ftest/f-value-formula.png)
+![|60%](img/posts/210923-anova-ftest/f-value-formula.jpg)
 
 아래는 내가 임의로 만든 One way between-subjects 디자인 (Factor Levels: A, B, C) 실험의 데이터에서 F-value를 계산해본 결과이다.
 
-![](img/posts/210923-anova-ftest/f-value-calculation.png)
+![](img/posts/210923-anova-ftest/f-value-calculation.jpg)
 
-![F(2,9)-distribution from StatDistributions.com](img/posts/210923-anova-ftest/f-distribution-29.png)
+![F(2,9)-distribution from StatDistributions.com](img/posts/210923-anova-ftest/f-distribution-29.jpg)
 
 # Interpretation
 

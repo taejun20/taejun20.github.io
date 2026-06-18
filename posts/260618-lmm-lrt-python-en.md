@@ -11,7 +11,7 @@ Specifically, we do this by fitting a linear mixed model and running a Likelihoo
 
 Use Google Spreadsheet to organize your data table (Before running any test, first look at the mean and SD for each condition to get an overall sense of the data).
 
-![|100%](img/posts/260618-lmm-lrt-python/data-table.png)
+![|100%](img/posts/260618-lmm-lrt-python/data-table.jpg)
 
 Each row is a participant and each column is a condition. Each condition name represents a combination of modules separated by `+`. In real use, replace the module names to match your own components.
 

@@ -6,13 +6,13 @@ tag: Electronics
 
 An oscilloscope displays voltage signals as a graph over time. While a multimeter gives you a single number for voltage, current, or resistance, an oscilloscope lets you see the waveform itself: its shape, period, and amplitude. Here's a quick guide to the Fluke 199C ScopeMeter that our lab has.
 
-![Fluke 199C ScopeMeter|60%](img/posts/200131-oscilloscope-fluke-199c/overview.png)
+![Fluke 199C ScopeMeter|60%](img/posts/200131-oscilloscope-fluke-199c/overview.jpg)
 
 The Fluke 199C works as both a scope and a multimeter. Press the yellow Scope button for scope mode, or the Meter button below it for multimeter mode.
 
 # Scope Mode
 
-![|60%](img/posts/200131-oscilloscope-fluke-199c/scope-screen.png)
+![|60%](img/posts/200131-oscilloscope-fluke-199c/scope-screen.jpg)
 
 - Vertical grid: 1 div = 20V / Horizontal grid: 1 div = 2ms (the example above shows ~60V AC)
 - Trig (bottom center): triggering info. Shown dimmed when no trigger is detected.
@@ -24,7 +24,7 @@ The Fluke 199C works as both a scope and a multimeter. Press the yellow Scope bu
 
 ## Scope Mode Key Label Menu
 
-![|70%](img/posts/200131-oscilloscope-fluke-199c/scope-menu.png)
+![|70%](img/posts/200131-oscilloscope-fluke-199c/scope-menu.jpg)
 
 Press the Scope button again to hide the labels. Or press the rightmost Clear menu button.
 
@@ -36,13 +36,13 @@ Press the Scope button again to hide the labels. Or press the rightmost Clear me
 
 # Meter Mode
 
-![|60%](img/posts/200131-oscilloscope-fluke-199c/meter-screen.png)
+![|60%](img/posts/200131-oscilloscope-fluke-199c/meter-screen.jpg)
 
 The meter mode screen is relatively simple: a main measurement reading and a bar graph below. Manual means the range is set manually (0 to 50kΩ).
 
 ## Meter Mode Key Label Menu
 
-![|70%](img/posts/200131-oscilloscope-fluke-199c/meter-menu.png)
+![|70%](img/posts/200131-oscilloscope-fluke-199c/meter-menu.jpg)
 
 Press the Meter button again to hide the labels.
 

@@ -12,7 +12,7 @@ The current limit on Arduino digital and analog I/O pins is 40 mA. Exceeding thi
 
 That's where a motor driver or, more simply, a transistor comes in. The small current from the Arduino pin acts as a control signal, while an external power supply delivers sufficient and stable voltage/current to the motor. The circuit below shows an example of connecting an Arduino pin to the Base of a transistor.
 
-![Digital pin connected to a transistor. The motor is powered from the 5V pin (VCC and GND pin current limit: 200 mA)|60%](img/posts/220309-transistor-arduino/circuit.png)
+![Digital pin connected to a transistor. The motor is powered from the 5V pin (VCC and GND pin current limit: 200 mA)|60%](img/posts/220309-transistor-arduino/circuit.jpg)
 
 Note the resistor (R1) between the Arduino pin and the Base. This limits the current flowing into the Base. The Arduino outputs 5V, and connecting directly to the Base without a resistor would let too much current flow, potentially damaging the transistor or the pin. The value of R1 is chosen to push the transistor into the Saturation Region (fully on). For example, with 5V and a 1kΩ resistor, about 5 mA flows into the Base; with β = 100, that controls up to 500 mA at the Collector.
 

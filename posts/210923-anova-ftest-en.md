@@ -6,19 +6,19 @@ tag: Statistics
 
 Analysis of Variance (ANOVA) uses the F-test to determine whether the means of three or more groups differ significantly from each other (for two groups, use a t-test). In this post, I'll calculate the F-value by hand to build an intuition for what it means.
 
-![Right-tail F-distribution|90%](img/posts/210923-anova-ftest/f-distribution.png)
+![Right-tail F-distribution|90%](img/posts/210923-anova-ftest/f-distribution.jpg)
 
 # One-way ANOVA (F-test): Hands-on Calculation
 
 The F-value formula is:
 
-![|60%](img/posts/210923-anova-ftest/f-value-formula.png)
+![|60%](img/posts/210923-anova-ftest/f-value-formula.jpg)
 
 Below is the F-value calculation on a dataset I made up for a one-way between-subjects design with three factor levels (A, B, C).
 
-![](img/posts/210923-anova-ftest/f-value-calculation.png)
+![](img/posts/210923-anova-ftest/f-value-calculation.jpg)
 
-![F(2,9)-distribution from StatDistributions.com](img/posts/210923-anova-ftest/f-distribution-29.png)
+![F(2,9)-distribution from StatDistributions.com](img/posts/210923-anova-ftest/f-distribution-29.jpg)
 
 # Interpretation
 

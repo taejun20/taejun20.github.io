@@ -6,7 +6,7 @@ tag: Statistics
 
 A within-subject design lets you detect the statistical significance of an independent variable with a relatively small number of participants. Here's how to run a Repeated Measure (Within-Subject) ANOVA in SPSS. (Sorry, all screenshots are based on the Korean language settings)
 
-![IBM SPSS Statistics version 25|100%](img/posts/200203-spss-repeated-measures/overview.png)
+![IBM SPSS Statistics version 25|100%](img/posts/200203-spss-repeated-measures/overview.jpg)
 
 # Which Statistical Test?
 
@@ -21,7 +21,7 @@ Before opening SPSS, let's use a decision tree. My recent dataset had:
 
 If the data passes a normality test, use One-way Repeated Measures ANOVA. If not, use Bootstrapped ANOVA or Friedman's ANOVA.
 
-![Toetskeuzeschema Field](img/posts/200203-spss-repeated-measures/decision-tree.png)
+![Toetskeuzeschema Field](img/posts/200203-spss-repeated-measures/decision-tree.jpg)
 
 Here's what we'll do in SPSS:
 
@@ -37,31 +37,31 @@ Here's what we'll do in SPSS:
 
 1. Analyze → Descriptive Statistics → Explore
 
-![|70%](img/posts/200203-spss-repeated-measures/normality-step1.png)
+![|70%](img/posts/200203-spss-repeated-measures/normality-step1.jpg)
 
 2. Add variables to the Dependent Variable List, then click Statistics
 
-![|60%](img/posts/200203-spss-repeated-measures/normality-step2.png)
+![|60%](img/posts/200203-spss-repeated-measures/normality-step2.jpg)
 
 3. Set options as shown, click Continue
 
-![|30%](img/posts/200203-spss-repeated-measures/normality-step3.png)
+![|30%](img/posts/200203-spss-repeated-measures/normality-step3.jpg)
 
 4. Click Plots
 
-![|60%](img/posts/200203-spss-repeated-measures/normality-step4.png)
+![|60%](img/posts/200203-spss-repeated-measures/normality-step4.jpg)
 
 5. Set options as shown, click Continue
 
-![|40%](img/posts/200203-spss-repeated-measures/normality-step5.png)
+![|40%](img/posts/200203-spss-repeated-measures/normality-step5.jpg)
 
 6. Click OK
 
-![|60%](img/posts/200203-spss-repeated-measures/normality-step6.png)
+![|60%](img/posts/200203-spss-repeated-measures/normality-step6.jpg)
 
 ## Reading the Output
 
-![|70%](img/posts/200203-spss-repeated-measures/normality-result.png)
+![|70%](img/posts/200203-spss-repeated-measures/normality-result.jpg)
 
 ```note
 Check the normality test table:
@@ -78,23 +78,23 @@ The most important part of this post, and the test I'll use most going forward.
 
 1. Analyze → General Linear Model → Repeated Measures
 
-![|80%](img/posts/200203-spss-repeated-measures/anova-step1.png)
+![|80%](img/posts/200203-spss-repeated-measures/anova-step1.jpg)
 
 2. Name the within-subject factor and measure. Enter the number of levels (conditions), click Add, then Define
 
-![|40%](img/posts/200203-spss-repeated-measures/anova-step2.png)
+![|40%](img/posts/200203-spss-repeated-measures/anova-step2.jpg)
 
 3. Move the columns from the left into the Within-Subjects Variables box
 
-![|50%](img/posts/200203-spss-repeated-measures/anova-step3.png)
+![|50%](img/posts/200203-spss-repeated-measures/anova-step3.jpg)
 
 4. Click EM Means. Move the independent variable to the right, check Compare main effects, select Bonferroni below
 
-![|50%](img/posts/200203-spss-repeated-measures/anova-step4.png)
+![|50%](img/posts/200203-spss-repeated-measures/anova-step4.jpg)
 
 5. Click Options, check Descriptive statistics
 
-![|40%](img/posts/200203-spss-repeated-measures/anova-step5.png)
+![|40%](img/posts/200203-spss-repeated-measures/anova-step5.jpg)
 
 6. Click OK
 
@@ -102,7 +102,7 @@ The most important part of this post, and the test I'll use most going forward.
 
 **Sphericity**
 
-![|80%](img/posts/200203-spss-repeated-measures/anova-result-sphericity.png)
+![|80%](img/posts/200203-spss-repeated-measures/anova-result-sphericity.jpg)
 
 ```note
 - Mauchly's Test: if p > 0.05, sphericity is satisfied
@@ -115,7 +115,7 @@ The most important part of this post, and the test I'll use most going forward.
 
 **Significant effect between conditions**
 
-![|80%](img/posts/200203-spss-repeated-measures/anova-result-effect.png)
+![|80%](img/posts/200203-spss-repeated-measures/anova-result-effect.jpg)
 
 ```note
 Since sphericity is satisfied, read the top row p-value. p < 0.05 confirms a significant effect.
@@ -125,7 +125,7 @@ Since sphericity is satisfied, read the top row p-value. p < 0.05 confirms a sig
 
 **Post-hoc analysis (Bonferroni correction)**
 
-![|80%](img/posts/200203-spss-repeated-measures/anova-result-posthoc.png)
+![|80%](img/posts/200203-spss-repeated-measures/anova-result-posthoc.jpg)
 
 ```note
 The table shows a significant difference between (device 1 vs. device 2) and (device 3 vs. device 2), but not between (device 1 vs. device 3).
@@ -139,21 +139,21 @@ Friedman's test requires a separate post-hoc step using the Wilcoxon Signed-Rank
 
 1. Analyze → Nonparametric Tests → Legacy Dialogs → K Related Samples
 
-![|90%](img/posts/200203-spss-repeated-measures/friedman-step1.png)
+![|90%](img/posts/200203-spss-repeated-measures/friedman-step1.jpg)
 
 2. Move the columns into the Test Variables box. Confirm Friedman is checked below
 
-![|50%](img/posts/200203-spss-repeated-measures/friedman-step2.png)
+![|50%](img/posts/200203-spss-repeated-measures/friedman-step2.jpg)
 
 3. Click Statistics, check Quartiles, click Continue
 
-![|30%](img/posts/200203-spss-repeated-measures/friedman-step3.png)
+![|30%](img/posts/200203-spss-repeated-measures/friedman-step3.jpg)
 
 4. Click OK
 
 ## Reading the Output (1)
 
-![|30%](img/posts/200203-spss-repeated-measures/friedman-result.png)
+![|30%](img/posts/200203-spss-repeated-measures/friedman-result.jpg)
 
 ```note
 The asymptotic significance is less than 0.05, so there is a significant effect.
@@ -164,21 +164,21 @@ The asymptotic significance is less than 0.05, so there is a significant effect.
 
 1. Analyze → Nonparametric Tests → Legacy Dialogs → 2 Related Samples
 
-![|80%](img/posts/200203-spss-repeated-measures/wilcoxon-step1.png)
+![|80%](img/posts/200203-spss-repeated-measures/wilcoxon-step1.jpg)
 
 2. Move all pairs you want to compare to the right
 
-![|60%](img/posts/200203-spss-repeated-measures/wilcoxon-step2.png)
+![|60%](img/posts/200203-spss-repeated-measures/wilcoxon-step2.jpg)
 
 3. Click Options, check Descriptive and Quartiles, click Continue
 
-![|30%](img/posts/200203-spss-repeated-measures/wilcoxon-step3.png)
+![|30%](img/posts/200203-spss-repeated-measures/wilcoxon-step3.jpg)
 
 4. Click OK
 
 ## Reading the Output (2): Post-hoc (Wilcoxon Signed-Rank Test)
 
-![|50%](img/posts/200203-spss-repeated-measures/wilcoxon-result.png)
+![|50%](img/posts/200203-spss-repeated-measures/wilcoxon-result.jpg)
 
 ```note
 If the significance value for a pair is less than 0.05, there is a significant difference between them. However, testing multiple pairs simultaneously inflates the Type I error rate (false positives), so apply Bonferroni correction: multiply each p-value by the number of pairs. With 3 conditions there are 3 pairs, so multiply p by 3 (equivalent to using a threshold of α / 3 = 0.05 / 3 ≈ 0.017).

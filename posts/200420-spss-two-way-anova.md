@@ -18,7 +18,7 @@ tag: Statistics
 
 마지막으로 정규성 검정을 통과하면 Factorial Repeated Measure ANOVA, 통과하지 못하면 Robust Factorial Repeated Measure ANOVA를 한다.
 
-![Toetskeuzeschema Field](img/posts/200420-spss-two-way-anova/decision-tree.png)
+![Toetskeuzeschema Field](img/posts/200420-spss-two-way-anova/decision-tree.jpg)
 
 지금부터의 목차는 다음과 같다:
 
@@ -38,31 +38,31 @@ tag: Statistics
 
 1. 분석 → 기술통계량 → 데이터 탐색 클릭
 
-![|70%](img/posts/200420-spss-two-way-anova/normality-step1.png)
+![|70%](img/posts/200420-spss-two-way-anova/normality-step1.jpg)
 
 2. 검사하려는 변수를 종속변수에 추가한 후 '통계량' 클릭
 
-![|50%](img/posts/200420-spss-two-way-anova/normality-step2.png)
+![|50%](img/posts/200420-spss-two-way-anova/normality-step2.jpg)
 
 3. 아래 옵션으로 설정 후 '계속' 클릭
 
-![|30%](img/posts/200420-spss-two-way-anova/normality-step3.png)
+![|30%](img/posts/200420-spss-two-way-anova/normality-step3.jpg)
 
 4. 도표 클릭
 
-![|50%](img/posts/200420-spss-two-way-anova/normality-step4.png)
+![|50%](img/posts/200420-spss-two-way-anova/normality-step4.jpg)
 
 5. 아래 옵션으로 설정 후 '계속' 클릭
 
-![|40%](img/posts/200420-spss-two-way-anova/normality-step5.png)
+![|40%](img/posts/200420-spss-two-way-anova/normality-step5.jpg)
 
 6. '확인' 클릭
 
-![|50%](img/posts/200420-spss-two-way-anova/normality-step6.png)
+![|50%](img/posts/200420-spss-two-way-anova/normality-step6.jpg)
 
 ## 결과 분석
 
-![|70%](img/posts/200420-spss-two-way-anova/normality-result.png)
+![|70%](img/posts/200420-spss-two-way-anova/normality-result.jpg)
 
 ```note
 정규성 검정 표 확인
@@ -78,23 +78,23 @@ tag: Statistics
 
 1. 분석 → 일반선형모델 → 반복측도 클릭
 
-![|70%](img/posts/200420-spss-two-way-anova/anova-step1.png)
+![|70%](img/posts/200420-spss-two-way-anova/anova-step1.jpg)
 
 2. 요인 2개(two-way)를 추가, 측도도 추가한 뒤 '정의' 클릭
 
-![|30%](img/posts/200420-spss-two-way-anova/anova-step2.png)
+![|30%](img/posts/200420-spss-two-way-anova/anova-step2.jpg)
 
 3. 왼쪽의 모든 변수를 개체-내 변수 박스로 이동
 
-![|50%](img/posts/200420-spss-two-way-anova/anova-step3.png)
+![|50%](img/posts/200420-spss-two-way-anova/anova-step3.jpg)
 
 4. 'EM 평균' 클릭. 변수 3개를 모두 오른쪽으로 옮기고 '주효과 비교' 체크, 아래는 Bonferroni 선택. '계속' 클릭
 
-![|40%](img/posts/200420-spss-two-way-anova/anova-step4.png)
+![|40%](img/posts/200420-spss-two-way-anova/anova-step4.jpg)
 
 5. '옵션' 클릭. 기술통계량 체크. '계속' 클릭.
 
-![|40%](img/posts/200420-spss-two-way-anova/anova-step5.png)
+![|40%](img/posts/200420-spss-two-way-anova/anova-step5.jpg)
 
 6. '확인' 클릭
 
@@ -102,7 +102,7 @@ tag: Statistics
 
 **구형성 검정**
 
-![|90%](img/posts/200420-spss-two-way-anova/anova-result-sphericity.png)
+![|90%](img/posts/200420-spss-two-way-anova/anova-result-sphericity.jpg)
 
 ```note
 - Mauchly's Test에서 유의 확률(p-value)이 0.05보다 크면 구형성 만족
@@ -115,7 +115,7 @@ tag: Statistics
 
 **방법 간 차이의 significant effect 체크**
 
-![|80%](img/posts/200420-spss-two-way-anova/anova-result-effect.png)
+![|80%](img/posts/200420-spss-two-way-anova/anova-result-effect.jpg)
 
 ```note
 구형성 가정이 만족됐기 때문에 각 행의 가장 위 유의확률(p-value)를 보면 된다.
@@ -136,11 +136,11 @@ The interaction between orientation and armpose was not significant."
 
 orientation에 대한 사후 분석. 유의미한 차이가 없음을 알 수 있다.
 
-![|70%](img/posts/200420-spss-two-way-anova/anova-result-posthoc-orientation.png)
+![|70%](img/posts/200420-spss-two-way-anova/anova-result-posthoc-orientation.jpg)
 
 armpose에 대한 사후 분석. (armpose 2 − armpose 1), (armpose 2 − armpose 3) 사이에 유의미한 차이가 있고, (armpose 1 − armpose 3) 사이에는 유의미한 차이가 없음을 알 수 있다.
 
-![|70%](img/posts/200420-spss-two-way-anova/anova-result-posthoc-armpose.png)
+![|70%](img/posts/200420-spss-two-way-anova/anova-result-posthoc-armpose.jpg)
 
 위 사후 분석은 main effect가 유의미한 경우에 해당한다. 만약 interaction effect가 유의미하게 나왔다면 main effect post-hoc만으로는 부족하고, 각 조건 조합(예: orientation 1 & armpose 1 vs orientation 1 & armpose 2 등)에 대한 simple effects 분석이 추가로 필요하다.
 

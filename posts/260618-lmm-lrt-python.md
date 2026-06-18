@@ -4,7 +4,7 @@ date: 2026-06-18
 tag: Statistics
 ---
 
-ML 모델 component ablation을 위해 Linear Mixed Model (LMM)을 fitting하는 파이썬 코드를 공유한다. 예를 들어, ML 모델 아키텍처에서 컴포넌트 A가 있고, 이 A에 조합해서 추가할 수 있는 컴포넌트 B, C, D가 있다고 하자 (A+B, A+C, A+C+D 등). 이처럼 A, B, C, D 모듈로 구성할 수 있는 ML 모델 아키텍처의 조합이 여러 가지 존재할 때, 각 부분의 추가가 통계적으로 유의미한 효과를 갖는지 검정하고 싶은 경우에 사용하는 통계 테스트이다. 한 가지 유의할 점은, 이렇게 조합을 통해 만들어진 final condition들 간의 비교는 이 포스트에서 다루는 케이스가 아니며, 해당 경우에는 [대응 표본 t검정 (paired t-test)](http://localhost:3000/posts?post=260617-paired-t-test-python) 또는 [Wilcoxon signed-rank test](http://localhost:3000/posts?post=260617-wilcoxon-signed-rank-python)를 사용한다.
+ML 모델 component ablation을 위해 Linear Mixed Model (LMM)을 fitting하는 파이썬 코드를 공유한다. 예를 들어, ML 모델 아키텍처에서 컴포넌트 A가 있고, 이 A에 조합해서 추가할 수 있는 컴포넌트 B, C, D가 있다고 하자 (A+B, A+C, A+C+D 등). 이처럼 A, B, C, D 모듈로 구성할 수 있는 ML 모델 아키텍처의 조합이 여러 가지 존재할 때, 각 부분의 추가가 통계적으로 유의미한 효과를 갖는지 검정하고 싶은 경우에 사용하는 통계 테스트이다. 주의: 조합을 통해 최종적으로 만들어진 final condition들간의 비교는 이 포스트에서 다루는 케이스가 아니며, 해당 경우에는 [대응 표본 t검정 (paired t-test)](http://localhost:3000/posts?post=260617-paired-t-test-python) 또는 [Wilcoxon signed-rank test](http://localhost:3000/posts?post=260617-wilcoxon-signed-rank-python)를 사용한다.
 
 먼저 linear mixed model을 fitting하고 Likelihood Ratio Test (LRT)를 실행해 이를 검정한다.
 # 1. 데이터 정리
@@ -118,7 +118,7 @@ Component C: χ²(1) = 0.01, p = 0.9319
 Component D: χ²(1) = 8.79, p = 0.0030
 ```
 
-컴포넌트 A와 D가 significant effect on outcome이 있다 (A: p < .01; D: p < .005). 컴포넌트 B와 C는 significant한 영향이 없다.
+컴포넌트 A와 D가 significant effect가 있다 (A: p < .01; D: p < .005). 컴포넌트 B와 C는 significant한 영향이 없다.
 
 # 3. 결과 보고
 
@@ -131,9 +131,9 @@ Component D: χ²(1) = 8.79, p = 0.0030
 
 이 포스트에서는 LMM을 component ablation에 사용했지만, 사실 LMM + LRT를 paired t-test와 RM-ANOVA 대신 사용하는 것도 가능하다. 실제로 paired t-test와 RM-ANOVA는 LMM의 special case이다.
 
-LMM은 paired t-test와 RM-ANOVA가 처리하지 못하는 두 가지 상황을 커버한다. **(1) LMM은 missing/unbalanced data를 처리할 수 있다** (즉, 특정 참가자에서 특정 조건의 데이터가 없는 경우). paired t-test와 RM-ANOVA는 이 경우를 처리할 수 없다. **(2) LMM은 나이와 같은 continuous covariates을 control variable로 설정할 수 있다** (예: 나이가 많은 참가자가 조건과 무관하게 더 높은 점수를 내는 경향이 있다면, 나이를 포함시켜 모델이 이를 보정하게 함으로써 조건 효과를 더 정확하게 추정할 수 있다). 이는 main effect / pairwise comparison을 확인하면서 동시에 나이라는 factor가 결과에 significant effect를 미치는지도 함께 확인할 수 있다는 의미로, 상당히 유용한 분석이 가능하다.
+LMM은 paired t-test와 RM-ANOVA가 처리하지 못하는 두 가지 상황을 커버한다. **(1) LMM은 missing/unbalanced data를 처리할 수 있다** (즉, 특정 참가자에서 특정 조건의 데이터가 없는 경우). paired t-test와 RM-ANOVA는 이 경우를 처리할 수 없다. **(2) LMM은 나이와 같은 continuous covariates을 control variable로 설정할 수 있다** (예: 나이가 많은 참가자가 조건과 무관하게 더 높은 점수를 내는 경향이 있다면, 나이를 포함시켜 모델이 이를 보정하게 함으로써 조건 효과를 더 정확하게 추정할 수 있다). 반대로 말하면, 원래 보고자 했던 main effect / pairwise comparison을 체크하면서 동시에 나이라는 factor의 significant effect까지도 함께 확인할 수 있다는 뜻이 된다. 즉, 상당히 유용한 분석을 가능하게 해준다는 점.
 
-다만, HCI 연구에서 repeated-measures 유저 스터디로 데이터를 수집하게 되면 대부분 데이터 누락이 없는 balanced data를 확보하는 경우가 대부분이기 때문에, [paired t-test](/posts?post=260617-paired-t-test-python)나 [one-way RM-ANOVA](/posts?post=260615-one-way-rm-anova-python)로도 충분하다. Unbalanced data를 처리하거나 나이와 같은 continuous covariate를 통제해야 한다면 LMM + LRT를 사용해야 한다.
+다만, HCI 연구에서 repeated-measures 유저 스터디로 데이터를 수집하게 되면 데이터 누락이 없는 balanced data를 확보하는 경우가 대부분이기 때문에, [paired t-test](https://taejunkim.com/posts?post=260617-paired-t-test-python)나 [one-way RM-ANOVA](https://taejunkim.com/posts?post=260615-one-way-rm-anova-python)로도 충분하다. Unbalanced data를 처리하거나 나이와 같은 continuous covariate를 통제해야 한다면 LMM + LRT를 사용해야 한다.
 
 # 참고
 

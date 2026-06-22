@@ -1,5 +1,5 @@
 ---
-title: Tutorial: Mixed Model with Python - Component Contribution Analysis
+title: Tutorial: Linear Mixed Model with Python - Component Contribution Analysis
 date: 2026-06-18
 tag: Statistics
 ---

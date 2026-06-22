@@ -1,12 +1,18 @@
 ---
-title: Tutorial: Linear Mixed Model with Python (Ablation for ML models)
+title: Tutorial: Mixed Model with Python - Component Contribution Analysis
 date: 2026-06-18
 tag: Statistics
 ---
 
-ML 모델 component ablation을 위해 Linear Mixed Model (LMM)을 fitting하는 파이썬 코드를 공유한다. 예를 들어, ML 모델 아키텍처에서 컴포넌트 A가 있고, 이 A에 조합해서 추가할 수 있는 컴포넌트 B, C, D가 있다고 하자 (A+B, A+C, A+C+D 등). 이처럼 A, B, C, D 모듈로 구성할 수 있는 ML 모델 아키텍처의 조합이 여러 가지 존재할 때, 각 부분의 추가가 통계적으로 유의미한 효과를 갖는지 검정하고 싶은 경우에 사용하는 통계 테스트이다. 주의: 조합을 통해 최종적으로 만들어진 final condition들간의 비교는 이 포스트에서 다루는 케이스가 아니며, 해당 경우에는 [대응 표본 t검정 (paired t-test)](http://localhost:3000/posts?post=260617-paired-t-test-python) 또는 [Wilcoxon signed-rank test](http://localhost:3000/posts?post=260617-wilcoxon-signed-rank-python)를 사용한다.
+Component Contribution Analysis를 위해 Linear Mixed Model (LMM)을 fitting하는 파이썬 코드를 공유한다. 이는 특정 modular system이 있을 때, 그리고 각 피험자로부터 여러 모듈의 조합에 대해 repeated observations을 수집한 경우에 각 modular component가 결과 퍼포먼스에 significant한 기여를 했는가를 통계적으로 확인할 때 사용된다. 말이 너무 복잡한데, 아래 예시를 보면 좀 더 쉽게 이해할 수 있다. 
 
-먼저 linear mixed model을 fitting하고 Likelihood Ratio Test (LRT)를 실행해 이를 검정한다.
+예를 들어, modular system의 가장 기본 modular component A가 있고, 이 A와 조합해서 추가할 수 있는 컴포넌트 B, C, D가 있다고 하자 (가능한 최종 시스템 경우의 수: A+B, A+C, A+C+D 등). 이처럼 A, B, C, D 모듈로 구성할 수 있는 시스템의 조합이 여러 가지 존재할 때, 각 컴포넌트의 추가가 결과 퍼포먼스에 통계적으로 유의미한 효과를 갖는지 알고 싶은 것이다. 조합의 경우가 많아서 직관적으로 생각하기 어려울 때, B라는 컴포넌트를 추가한 것은  의미있는 개선을 불러왔는가? 아니면 사실상 영향을 주지 못했나?에 대한 답을 내릴 수 있다.
+
+구체적으로, linear mixed model을 fitting하고 Likelihood Ratio Test (LRT)를 실행해 이 질문들을 검정한다.
+
+```note
+**Note:** modular component들의 조합을 통해 최종적으로 만들어진 final system들 간의 paired 비교는 이 포스트에서 다루는 케이스가 아니며, 해당 경우에는 [대응 표본 t검정 (paired t-test)](http://localhost:3000/posts?post=260617-paired-t-test-python) 또는 [Wilcoxon signed-rank test](http://localhost:3000/posts?post=260617-wilcoxon-signed-rank-python)를 통해 쉽게 대답할 수 있다.
+```
 # 1. 데이터 정리
 
 Google Spreadsheet로 데이터를 정리한다 (통계 테스트를 돌리기 전에 각 조건의 평균과 표준편차를 먼저 확인하면서 데이터에 대한 전반적인 감을 잡는다).
@@ -129,7 +135,7 @@ Component D: χ²(1) = 8.79, p = 0.0030
 
 # Note: Linear Mixed Model의 다른 활용
 
-이 포스트에서는 LMM을 component ablation에 사용했지만, 사실 LMM + LRT를 paired t-test와 RM-ANOVA 대신 사용하는 것도 가능하다. 실제로 paired t-test와 RM-ANOVA는 LMM의 special case이다.
+이 포스트에서는 LMM을 component contribution analysis에 사용했지만, 사실 LMM + LRT를 paired t-test와 RM-ANOVA 대신 사용하는 것도 가능하다. 실제로 paired t-test와 RM-ANOVA는 LMM의 special case이다.
 
 LMM은 paired t-test와 RM-ANOVA가 처리하지 못하는 두 가지 상황을 커버한다. **(1) LMM은 missing/unbalanced data를 처리할 수 있다** (즉, 특정 참가자에서 특정 조건의 데이터가 없는 경우). paired t-test와 RM-ANOVA는 이 경우를 처리할 수 없다. **(2) LMM은 나이와 같은 continuous covariates을 control variable로 설정할 수 있다** (예: 나이가 많은 참가자가 조건과 무관하게 더 높은 점수를 내는 경향이 있다면, 나이를 포함시켜 모델이 이를 보정하게 함으로써 조건 효과를 더 정확하게 추정할 수 있다). 반대로 말하면, 원래 보고자 했던 main effect / pairwise comparison을 체크하면서 동시에 나이라는 factor의 significant effect까지도 함께 확인할 수 있다는 뜻이 된다. 즉, 상당히 유용한 분석을 가능하게 해준다는 점.
 

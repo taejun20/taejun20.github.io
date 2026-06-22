@@ -1,12 +1,16 @@
 ---
-title: Tutorial: Linear Mixed Model with Python (Ablation for ML models)
+title: Tutorial: Mixed Model with Python - Component Contribution Analysis
 date: 2026-06-18
 tag: Statistics
 ---
 
-This is a tutorial to fit a Linear Mixed Model (LMM) for ML model component ablation. For example, say there is a ML model component A. There are also component B, C, and D that can be combined with the A model architecture (A+B, A+C, A+C+D, and so on), so there can be many combinations of final model architecture with modules of A, B, C, and D. We want to know whether each component has a statistically significant effect. Note that this post is not about pairwise comparison of final conditions, which can be done with a [paired t-test](http://localhost:3000/posts?post=260617-paired-t-test-python-en) or [Wilcoxon signed-rank test](http://localhost:3000/posts?post=260617-wilcoxon-signed-rank-python-en).
+This is a tutorial to fit a Linear Mixed Model (LMM) for evaluating modular systems with repeated observations from the same participant (or other grouping factor). The mixed model estimates the contribution of each modular component while accounting for variability across participants. 
 
-Specifically, we do this by fitting a linear mixed model and running a Likelihood Ratio Test (LRT).
+Let say there is a modular system with component A. There are also components B, C, and D that can be combined with A (A+B, A+C, A+C+D, ...), so there can be many combinations of the final system. We want to know whether each component contributes a statistically significant effect on the performance. Specifically, we do this by fitting a linear mixed model and running a Likelihood Ratio Test (LRT).
+
+```note
+**Note:** This post is not about pairwise comparison of final conditions, which can be done with a [paired t-test](http://localhost:3000/posts?post=260617-paired-t-test-python-en) or [Wilcoxon signed-rank test](http://localhost:3000/posts?post=260617-wilcoxon-signed-rank-python-en).
+```
 # 1. Organize Data
 
 Use Google Spreadsheet to organize your data table (Before running any test, first look at the mean and SD for each condition to get an overall sense of the data).
@@ -129,7 +133,7 @@ Components A and D contribute significantly to the outcome (A: p < .01; D: p < .
 
 # Note: Linear Mixed Model for Other Use
 
-While this post used LMM for component ablation, LMM + LRT can also replace paired t-test and RM-ANOVA for standard comparisons. In fact, paired t-test and RM-ANOVA are special cases of LMM.
+While this post used LMM for component contribution analysis, LMM + LRT can also replace paired t-test and RM-ANOVA for standard comparisons. In fact, paired t-test and RM-ANOVA are special cases of LMM.
 
 Two situations that LMM can cover but paired t-test and RM-ANOVA cannot. **(1) LMM handles missing/unbalanced data** (i.e., when some participants are missing data for certain conditions), while paired t-test and RM-ANOVA can't handle. **(2) LMM supports continuous covariates such as age as control variables** (e.g., if older participants tend to score higher regardless of condition, including age lets the model account for that, giving a cleaner estimate of the condition effect). This also means you can examine whether age itself has a significant effect on the outcome.
 

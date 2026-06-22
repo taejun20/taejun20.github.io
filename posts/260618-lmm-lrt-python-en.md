@@ -109,7 +109,7 @@ for comp in varying_components:
     print(f"Component {comp}: χ²(1) = {chi2:.2f}, p = {p:.4f}")
 ```
 
-For each varying component, we fit a reduced model that excludes it and compute: χ²(1) = 2 × (full log-likelihood − reduced log-likelihood). A large chi-square means the component improves model fit significantly, which means the component has a significant effect on the outcome.
+For each varying component, we fit a reduced model that excludes it and compute: χ²(1) = 2 × (full log-likelihood - reduced log-likelihood). A large chi-square means the component improves model fit significantly, which means the component has a significant effect on the outcome.
 
 
 Output:

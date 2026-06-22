@@ -148,6 +148,10 @@
       <button class="tag-btn" data-tag="User Study" onclick="filterTag(this)">User Study</button>
     </div>
     <div class="post-list" id="post-list">
+      <a class="post-entry" href="/posts?post=260622-wizard-of-oz-study" data-tag="Reading">
+        <div class="post-title-row"><span class="post-title">Wizard of Oz Study: The Spirit of HCI Research</span><span class="tag-chip">Reading</span></div>
+        <div class="post-date">Jun 22, 2026</div>
+      </a>
       <a class="post-entry" href="/posts?post=260619-power-analysis" data-tag="Statistics">
         <div class="post-title-row"><span class="post-title">Understanding Power Analysis: Sample Size and Effect Size</span><span class="tag-chip">Statistics</span></div>
         <div class="post-date">Jun 19, 2026</div>
@@ -473,26 +477,28 @@
       document.getElementById('view-list').style.display = 'block';
     }
 
-    const TAG_COLORS = [
-      { color: '#1971c2', bg: '#dbe4ff' },
-      { color: '#2f9e44', bg: '#d3f9d8' },
-      { color: '#e67700', bg: '#fff3bf' },
-      { color: '#c2255c', bg: '#ffd6e7' },
-      { color: '#7048e8', bg: '#e5dbff' },
+    const TAG_COLOR_MAP = {
+      'Statistics': { color: '#1971c2', bg: '#dbe4ff' },
+      'Electronics': { color: '#2f9e44', bg: '#d3f9d8' },
+      'Reading': { color: '#e67700', bg: '#fff3bf' },
+      '3D Modeling': { color: '#c2255c', bg: '#ffd6e7' },
+      'User Study': { color: '#7048e8', bg: '#e5dbff' }
+    };
+    const fallbackColors = [
       { color: '#0c8599', bg: '#c5f6fa' },
       { color: '#d9480f', bg: '#ffe8cc' },
       { color: '#5c940d', bg: '#e9fac8' },
       { color: '#862e9c', bg: '#f3d9fa' },
       { color: '#087f5b', bg: '#c3fae8' },
     ];
-    const tagColorMap = {};
-    let tagColorIndex = 0;
+    let fallbackIndex = 0;
     function getTagColor(tag) {
-      if (!tagColorMap[tag]) {
-        tagColorMap[tag] = TAG_COLORS[tagColorIndex % TAG_COLORS.length];
-        tagColorIndex++;
+      if (TAG_COLOR_MAP[tag]) {
+        return TAG_COLOR_MAP[tag];
       }
-      return tagColorMap[tag];
+      const color = fallbackColors[fallbackIndex % fallbackColors.length];
+      fallbackIndex++;
+      return color;
     }
     document.querySelectorAll('.tag-chip').forEach(chip => {
       const c = getTagColor(chip.textContent.trim());

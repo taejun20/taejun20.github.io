@@ -111,7 +111,7 @@ for comp in varying_components:
     print(f"Component {comp}: χ²(1) = {chi2:.2f}, p = {p:.4f}")
 ```
 
-각 varying component에 대해 해당 컴포넌트를 제외한 reduced model을 fitting하고 다음을 계산한다: χ²(1) = 2 × (full log-likelihood − reduced log-likelihood). 이 chi-square 값이 클수록 해당 컴포넌트가 model fit을 유의미하게 향상시킨다는 의미이며, 이는 해당 컴포넌트가 결과에 significant effect를 미친다는 것을 의미한다.
+각 varying component에 대해 해당 컴포넌트를 제외한 reduced model을 fitting하고 다음을 계산한다: χ²(1) = 2 × (full log-likelihood - reduced log-likelihood). 이 chi-square 값이 클수록 해당 컴포넌트가 model fit을 유의미하게 향상시킨다는 의미이며, 이는 해당 컴포넌트가 결과에 significant effect를 미친다는 것을 의미한다.
 
 
 Output:

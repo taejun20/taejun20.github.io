@@ -4,52 +4,48 @@ date: 2026-06-22
 tag: Reading
 ---
 
-Wizard of Oz (WoZ) study is a research method that makes users believe they're interacting with an autonomous system, but actually a hidden human operator (the "wizard") is partially or fully controlling it. This approach gracefully reflects the spirit of HCI research, which prioritizes understanding human experience before investing in the full system.
+A Wizard of Oz (WoZ) study is an experimental method where researchers observe users while deceiving them into believing an incomplete system is fully functional. Users think they're interacting with an autonomous computing system, but in reality, a hidden human operator (the "wizard") is controlling the system behind the scenes. The name comes from the classic metaphor: in the Wizard of Oz, people believed in a powerful wizard, but behind the curtain was just an ordinary person pulling levers.
 
-In this post, we'll look at the historical background of WoZ, why this approach has unique benefits, and the broader spirit it shares.
+WoZ studies gracefully reflects the culture of HCI research, showing the attitude that we can study future interactions even without fully realized technology today. In this article, we look at the brief historical background of WoZ, the unique benefits this approach brings, and the broader concept of Proof-of-Concept simulation that HCI researchers value.
 
 # History of Wizard of Oz Study
 
-The term comes from the classic metaphor: the Wizard of Oz appeared as a powerful magical figure, but behind the curtain was just a person pulling levers.
-
-First instances of hidden-human simulation appeared in HCI in the early 1980s, including [Gould et al.'s "Simulated Listening Typewriter"](http://doi.org/10.1145/2163.358100) and [John F. Kelley's 1983 CHI paper](http://doi.org/10.1145/800045.801609), which introduced the "OZ paradigm." They wanted to study how users would interact with a natural language interface, but building a complete natural language processing system would take years. Instead, they had a human operator listen to user queries and respond as if the system understood them naturally. This let them observe authentic user behavior without waiting for the technology to mature.
+The first instances appeared in early 1980s HCI research that hid human operators to simulate non-existent technology ([Gould et al.'s "Simulated Listening Typewriter"](http://doi.org/10.1145/2163.358100) and [John F. Kelley's 1983 CHI paper](http://doi.org/10.1145/800045.801609)). They wanted to understand how users would actually interact with a natural language interface. But building a complete natural language processing system would take decades. Instead, human operators (behind the curtain) simulated the system by listening to user questions and responding as if the computer understood naturally. This allowed them to observe authentic user experience and interaction decades before the technology could be realized.
 
 ![|90%](img/posts/260622-wizard-of-oz-study/wizard-of-oz-example.jpg)
 
-The insight was simple but powerful: the interaction pattern, not the implementation, is what you need to understand first. "Time-travel" the user experience first before the technology exists. Since then, WoZ studies have become a standard tool in HCI research.
+This was very interesting approach. "Time-travel" the user experience before the technology even exists. Since then, the Wizard of Oz method has become one of the standard tools in HCI research.
 
 # Why Simulate Before Building?
 
-Here's the key research question that separates HCI from pure engineering: **Before asking "Can we build this?", ask "How will people interact with this?"** In most engineering, the typical path is: build system → optimize performance → run evaluation → hope users want it. By then, months are invested. If the interaction model is fundamentally wrong, it's too late.
+There's a key question that distinguishes HCI from pure engineering: before asking "Can we build this?", we first ask "How will people interact with this once it's built?" In most engineering disciplines, the typical sequence is: build the system → optimize performance → conduct internal evaluation → deploy to real users. By then, months are invested. What if there were fundamental problems in the interaction model and initial design?
 
-WoZ inverts this order. It observes user behavior first by carefully simulating a future system before committing to full implementation. This lets researchers understand how users will behave when such a system actually exists, what they expect, and where they encounter obstacles. In other words, the WoZ study asks "Does this interaction make sense?" before asking "Is this technology possible?" This ordering has defined HCI research from the start. It's why HCI researchers often work with prototypes, simulations, and approximations that would make traditional engineers uncomfortable. The goal isn't to ship a finished product today. It's to understand and envision the future. The true direction where "research" should go.
+WoZ inverts this order. It carefully observes first how users would behave, what they expect, and where they encounter obstacles when confronted with such a system. **This attitude of asking "Does this interaction make sense?" before "Is this technology feasible?" reflects the academic spirit that has defined HCI research from its beginning.** It's precisely why HCI research often involves prototypes, simulations, and approximations. And perhaps this is a point that might make those from traditional engineering backgrounds uncomfortable. The goal is not to ship a finished product today. It's to understand and envision the future. I believe this is the direction that research, in general (not just our field), should pursue.
 
 # The Broader Spirit of HCI: Proof-of-Concept Simulation
 
-I view WoZ study as part of the broader spirit of HCI research: **Proof-of-Concept (PoC) simulation**. Traditionally WoZ study refers to methods involving a human operator who simulates an autonomous system (such as conversational agents, speech interfaces). But modern HCI research uses simulation in general far more broadly. Beyond WoZ, researchers now simulate future systems using whatever approximations are available. The goal is to answer critical questions earlier, such as:
+I view WoZ study as a case of a more general concept: Proof-of-Concept (PoC) simulation. WoZ studies refer only to methods where human operators simulate autonomous system (like conversational agents or voice interfaces), but modern HCI research actively employs simulation across a much broader spectrum. Researchers go beyond WoZ, using various  approximations methods to simulate future systems, and through this, we can answer questions like:
 
-* **What performance levels and real-world task loads will the system deliver?**
+* **What level of performance and task load will future systems deliver?**
 * **Do users actually want this capability?**
-* **How do users respond when the system fails?**
-* **Do users interact with it as intended, or do they find unexpected uses?**
-
-By observing real behavior in a simulated environment, researchers can answer these questions before investing in full implementation. This is where PoC simulation shines. And I think this is the strong spirit that HCI researchers share, one that descended from the field pioneers. Let me illustrate this with some examples from papers of my team:
+* **How do users respond when the system malfunctions or fails?**
+* **Do users interact as designers intended, or do they find unexpected uses?**
 
 ## Example 1: [STAR Project](https://arxiv.org/pdf/2511.21143) (Kim et al. UIST 2023)
 
 ![|60%](img/posts/260622-wizard-of-oz-study/star-example.jpg)
 
-We wanted to explore: can we transfer smartphone two-thumb typing skills to bare-hand AR? The vision was overlaying a virtual QWERTY keyboard on users' bare hands via AR glasses, responding to thumb taps on skin. But this required expensive, imperfect technologies of integrated hand-tracking, robust tap detection, AR displays.
+The research question is: "Can we transfer the familiar skill of two-thumb typing on smartphones to a freehand AR environment?" And we proposed STAR, an idea where AR glasses display project a virtual QWERTY keyboard above the user's hands, with the skin surface serving as the typing surface instead of a touchscreen (using thumb taps for input). However, fully realizing this with technology at the time (2022) was a challenging problem.
 
-We used HoloLens's default AR rendering and hand tracking, but **simulated future on-skin tap detection using a capacitive tape strip (unavailable in contemporary AR glasses)**, letting users two-thumb type on this setup. The interaction was real; the sensing was simulated. We could then ask: **Will users transfer their smartphone typing skills to AR? How much typing speed do they reach compared to actual smartphones?** We learned this before investing in production-grade sensing. Not technically WoZ (no human operator). But same spirit: approximate future conditions and observe behavior and experience.
+While we used the hand tracking and display capability provided by Hololens 2 (to ground our work in realistic technology), reliably detecting the subtle contact between thumb and skin was infeasible. **Thus we simulated perfect touch detection using a capacitive tape strip (technology unavailable at the time, but we anticipated it would become feasible with more sophisticated vision-based hand tracking or integration with wearables like smart rings and watches. Indeed, in 2025, Meta Neural Band appeared and demonstrated very stable thumb tap detection).** Eventually, rather than waiting for high-performance vision and sensing technology to arrive on the market, we built a PoC prototype to explore questions like: (1) Can people transfer their decades-trained smartphone typing skill to an AR freehand environment? (2) How close can STAR technique's typing performance get to actual smartphone typing? While this is not a Wizard of Oz study, it is a PoC simulation performed with precisely the same purpose.
 
 ## Example 2: [HiFiGaze Project](https://arxiv.org/pdf/2603.19588) (Kim et al. CHI 2026)
 
 ![|70%](img/posts/260622-wizard-of-oz-study/hifigaze-example.jpg)
 
-We presented a novel deep learning model for eye tracking on smartphones (using the built-in front camera). In our evaluation, we discovered that upper eyelids and lashes occlude eye features our approach relies on, especially when users fixate near the bottom of the screen.
+This work presented a deep learning-based eye tracking model for smartphones. However, we discovered that when users gaze at the lower portion of the screen (from the front camera perspective), eyelids and eyelashes often occlude the eye features our model relies on.
 
-We hypothesized a bottom-positioned camera could sidestep this occlusion. But no such smartphone exists, and building a custom prototype is expensive. Instead, we flipped the iPhone 180 degrees to position the camera at the bottom, inverted the display, and ran the same algorithm. **We could then test: Does moving the camera to the bottom reduce occlusion errors? Without manufacturing a new device.** The results informed future smartphone design. Again not traditional WoZ, but same spirit: simulate future hardware conditions using available approximations, measure outcomes, then distill understanding for future systems.
+**As a supplementary study, we posed a pinpointed question: "If the camera were positioned at the bottom instead of the top, could this problem be resolved and performance improved?"** But no such smartphone exists, and disassembling an iPhone to add another camera of equal capability at the bottom would be practically hard. Instead of overcomplicating things, we simply rotated the phone 180 degrees to position the camera at the bottom, and inverted the display so that users saw no difference when viewing the screen. Eventually we could immediately explore our research question without waiting for a completely new device to be manufactured (the study results are detailed in the paper). Like the STAR case, this is not a Wizard of Oz study, but it was conducted with the same purpose: simulating conditions we anticipate will be feasible in the future using current approximations, measuring outcomes, and expanding our understanding.
 
 # References
 

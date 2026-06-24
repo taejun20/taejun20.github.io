@@ -4,7 +4,7 @@ date: 2026-06-19
 tag: Statistics
 ---
 
-파워 분석 (power analysis)는 표본 크기 분석 (sample size analysis; "실험에 참가자가 몇 명 필요한가?")와 민감도 분석 (sensitivity analysis; "참가자 수가 이미 결정됐을 때, 안정적으로 감지할 수 있는 최소의 effect size는 어느 정도인가?")를 위한 통계적 프레임워크다.
+파워 분석 (power analysis)은 두 가지 질문에 대답하기 위해 사용할 수 있는 통계 framework이다: "실험에 참가자가 몇 명 필요한가?" (표본 크기 분석 sample size analysis)와 "참가자 수가 이미 픽스됐을 때, 안정적으로 detect할 수 있는 effect size는 어느 정도인가?" (민감도 분석 sensitivity analysis)
 
 HCI 연구자에게 파워 분석은 유저 스터디 설계 단계에서도 도움이 되고, 또 이미 수집된 데이터에 대한 리뷰어의 sample size 지적에 대응할 때 필수적으로 알아야 한다.
 

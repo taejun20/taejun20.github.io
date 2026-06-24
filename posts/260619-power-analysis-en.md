@@ -4,9 +4,7 @@ date: 2026-06-19
 tag: Statistics
 ---
 
-Power analysis is a statistical framework for two questions: sample size analysis ("how many participants are needed?") and sensitivity analysis ("given a fixed sample size, what is the minimum effect size that can be reliably detected?").
-
-For HCI researchers, power analysis is useful both at the study design stage and when responding to reviewer concerns about sample size after data has already been collected.
+Power analysis is the statistical framework behind two questions: "How many participants are needed?" (sample size analysis) and  "Given a fixed sample size, what is the smallest effect size that can be reliably detected?" (sensitivity analysis).
 
 # 1. The Four Parameters
 
@@ -106,7 +104,7 @@ Minimum Detectable Effect Size (MDES) for sample sizes (number of participants):
 | 20 | 0.66 |
 | 34 | 0.50 |
 
-It is common that HCI papers use 10-20 participants for quick proof-of-concept testing of novel ideas. But this comes with a statistical cost. For example, n = 12 can only, statistically speaking, detect very large differences (d = 0.89). Moderate effects that many PoC systems may produce can be undetected at this sample size.
+It is common that HCI papers use 10-20 participants for quick proof-of-concept testing of novel ideas. But this comes with a statistical cost. For example, n = 12 can only, statistically speaking, detect very large differences (d = 0.89). Moderate effects that many PoC systems may produce might not be detected at this sample size.
 ```
 
 # 4. Responding to a Reviewer

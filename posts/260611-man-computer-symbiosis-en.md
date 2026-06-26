@@ -8,6 +8,8 @@ After finishing my PhD, I've recently been spending time thinking about longer-t
 
 # Licklider (1915-1990)
 
+![|30%](img/posts/260611-man-computer-symbiosis/licklider.jpg)
+
 J. C. R. Licklider was an American psychologist and computer scientist. He was a professor at MIT from 1950 and later funded research that led to the development of graphical user interfaces and the ARPANET, the direct predecessor of the Internet.
 
 # What Licklider Imagined

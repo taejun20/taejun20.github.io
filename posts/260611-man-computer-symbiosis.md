@@ -8,6 +8,8 @@ tag: Reading
 
 # Licklider (1915-1990)
 
+![|30%](img/posts/260611-man-computer-symbiosis/licklider.jpg)
+
 J. C. R. Licklider는 미국의 심리학자이며 컴퓨터 과학자다. 1950년부터 MIT 교수로 재직했으며, 이후 Graphical User Interface (GUI)와 인터넷의 전신인 ARPANET 개발로 이어지는 연구의 펀딩을 주도했다고 한다.
 
 # Licklider가 상상했던 것

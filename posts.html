@@ -261,9 +261,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
     import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
-      from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+      from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
     const slug = new URLSearchParams(window.location.search).get('post');
     if (slug) {
@@ -274,28 +274,45 @@
       }
       document.getElementById('post-meta-stats').style.display = 'flex';
 
+      // Exact configuration matching your Firebase console snippet
       const app = initializeApp({
         apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
         authDomain: "tj-website-seoul.firebaseapp.com",
         projectId: "tj-website-seoul",
         storageBucket: "tj-website-seoul.firebasestorage.app",
         messagingSenderId: "783490756168",
-        appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+        appId: "1:783490756168:web:b6562e7b41593c07c9327d",
+        measurementId: "G-ZTK5RKNB59" // Restored, though optional for Firestore
       });
 
       const db = getFirestore(app);
+      console.log("Connected to Firestore Instance:", db.type || "Default Instance");
+      
       const ref = doc(db, 'posts', slug);
 
       try {
+        console.log('1. Initiating getDoc() for slug:', slug);
         const snap = await getDoc(ref);
+        console.log('2. getDoc() completed. snap.exists() =', snap.exists());
         if (snap.exists()) {
+          console.log('3a. Document exists. Data fetched:', snap.data());
+    
+          console.log('4a. Initiating updateDoc() to increment views...');
           await updateDoc(ref, { views: increment(1) });
+          console.log('5a. updateDoc() completed successfully!');
           document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
           document.getElementById('like-count').textContent = snap.data().likes || 0;
+          console.log('6a. UI elements successfully updated.');
         } else {
+          console.log('3b. Document does not exist.');
+
+          console.log('4b. Initiating setDoc() to initialize fields...');
           await setDoc(ref, { views: 1, likes: 0 });
+          console.log('5b. setDoc() completed successfully!');
+
           document.getElementById('view-count').textContent = 1;
           document.getElementById('like-count').textContent = 0;
+          console.log('6b. UI elements successfully updated.');
         }
       } catch(e) { console.warn('Firestore:', e); }
 

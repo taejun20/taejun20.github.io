@@ -265,7 +265,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    iimport { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { initializeAppCheck, ReCaptchaV3Provider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app-check.js";
     import { getFirestore, doc, getDoc, updateDoc, increment, setDoc }
       from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
@@ -286,6 +287,13 @@
         messagingSenderId: "783490756168",
         appId: "1:783490756168:web:b6562e7b41593c07c9327d"
       });
+
+      // INSERT THIS INITIALIZATION BLOCK RIGHT HERE
+      initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider('6LeHODstAAAAAErmWkABtHcU8Y-bHCcWisSFLhFm'),
+        isTokenAutoRefreshEnabled: true
+      });
+
       const db = getFirestore(app);
       const ref = doc(db, 'posts', slug);
 

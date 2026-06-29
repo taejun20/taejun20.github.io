@@ -146,8 +146,13 @@
       <button class="tag-btn" data-tag="Reading" onclick="filterTag(this)">Reading</button>
       <button class="tag-btn" data-tag="3D Modeling" onclick="filterTag(this)">3D Modeling</button>
       <button class="tag-btn" data-tag="User Study" onclick="filterTag(this)">User Study</button>
+      <button class="tag-btn" data-tag="Eye Tracking" onclick="filterTag(this)">Eye Tracking</button>
     </div>
     <div class="post-list" id="post-list">
+      <a class="post-entry" href="/posts?post=260625-fove-vr-eye-tracker" data-tag="Eye Tracking">
+        <div class="post-title-row"><span class="post-title">Eye Tracker: FOVE VR (How To Use)</span><span class="tag-chip">Eye Tracking</span></div>
+        <div class="post-date">Jun 25, 2026</div>
+      </a>
       <a class="post-entry" href="/posts?post=260622-wizard-of-oz-study" data-tag="Reading">
         <div class="post-title-row"><span class="post-title">Wizard of Oz Study: The Spirit of HCI Research</span><span class="tag-chip">Reading</span></div>
         <div class="post-date">Jun 22, 2026</div>
@@ -266,63 +271,58 @@
 
     const slug = new URLSearchParams(window.location.search).get('post');
     if (slug) {
-
-    // Show icons + "–" immediately, before Firebase responds
-    const likedKey = `liked_${slug}`;
-    if (localStorage.getItem(likedKey)) {
-      document.getElementById('like-btn').classList.add('liked');
-      document.getElementById('like-icon').className = 'bi bi-heart-fill';
-    }
-    document.getElementById('post-meta-stats').style.display = 'flex';
-
-    await (async () => {
-
-    const app = initializeApp({
-      apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
-      authDomain: "tj-website-seoul.firebaseapp.com",
-      projectId: "tj-website-seoul",
-      storageBucket: "tj-website-seoul.firebasestorage.app",
-      messagingSenderId: "783490756168",
-      appId: "1:783490756168:web:b6562e7b41593c07c9327d"
-    });
-    const db  = getFirestore(app);
-    const ref = doc(db, 'posts', slug);
-
-    try {
-      const snap = await getDoc(ref);
-      if (snap.exists()) {
-        await updateDoc(ref, { views: increment(1) });
-        document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
-        document.getElementById('like-count').textContent = snap.data().likes || 0;
-      } else {
-        await setDoc(ref, { views: 1, likes: 0 });
-        document.getElementById('view-count').textContent = 1;
-        document.getElementById('like-count').textContent = 0;
+      const likedKey = `liked_${slug}`;
+      if (localStorage.getItem(likedKey)) {
+        document.getElementById('like-btn').classList.add('liked');
+        document.getElementById('like-icon').className = 'bi bi-heart-fill';
       }
-    } catch(e) { console.warn('Firestore:', e); }
+      document.getElementById('post-meta-stats').style.display = 'flex';
 
-    window.handleLike = async function() {
-      const btn = document.getElementById('like-btn');
-      const cur = parseInt(document.getElementById('like-count').textContent) || 0;
-      const liked = !!localStorage.getItem(likedKey);
+      const app = initializeApp({
+        apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+        authDomain: "tj-website-seoul.firebaseapp.com",
+        projectId: "tj-website-seoul",
+        storageBucket: "tj-website-seoul.firebasestorage.app",
+        messagingSenderId: "783490756168",
+        appId: "1:783490756168:web:b6562e7b41593c07c9327d"
+      });
+      const db = getFirestore(app);
+      const ref = doc(db, 'posts', slug);
+
       try {
-        if (liked) {
-          await updateDoc(ref, { likes: increment(-1) });
-          document.getElementById('like-count').textContent = Math.max(0, cur - 1);
-          btn.classList.remove('liked');
-          document.getElementById('like-icon').className = 'bi bi-heart';
-          localStorage.removeItem(likedKey);
+        const snap = await getDoc(ref);
+        if (snap.exists()) {
+          await updateDoc(ref, { views: increment(1) });
+          document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+          document.getElementById('like-count').textContent = snap.data().likes || 0;
         } else {
-          await updateDoc(ref, { likes: increment(1) });
-          document.getElementById('like-count').textContent = cur + 1;
-          btn.classList.add('liked');
-          document.getElementById('like-icon').className = 'bi bi-heart-fill';
-          localStorage.setItem(likedKey, '1');
+          await setDoc(ref, { views: 1, likes: 0 });
+          document.getElementById('view-count').textContent = 1;
+          document.getElementById('like-count').textContent = 0;
         }
-      } catch(e) { console.warn('Like:', e); }
-    };
+      } catch(e) { console.warn('Firestore:', e); }
 
-    })(); } // end slug check
+      window.handleLike = async function() {
+        const btn = document.getElementById('like-btn');
+        const cur = parseInt(document.getElementById('like-count').textContent) || 0;
+        const liked = !!localStorage.getItem(likedKey);
+        try {
+          if (liked) {
+            await updateDoc(ref, { likes: increment(-1) });
+            document.getElementById('like-count').textContent = Math.max(0, cur - 1);
+            btn.classList.remove('liked');
+            document.getElementById('like-icon').className = 'bi bi-heart';
+            localStorage.removeItem(likedKey);
+          } else {
+            await updateDoc(ref, { likes: increment(1) });
+            document.getElementById('like-count').textContent = cur + 1;
+            btn.classList.add('liked');
+            document.getElementById('like-icon').className = 'bi bi-heart-fill';
+            localStorage.setItem(likedKey, '1');
+          }
+        } catch(e) { console.warn('Like:', e); }
+      };
+    }
   </script>
 
   <script>
@@ -482,7 +482,8 @@
       'Electronics': { color: '#2f9e44', bg: '#d3f9d8' },
       'Reading': { color: '#e67700', bg: '#fff3bf' },
       '3D Modeling': { color: '#c2255c', bg: '#ffd6e7' },
-      'User Study': { color: '#7048e8', bg: '#e5dbff' }
+      'User Study': { color: '#7048e8', bg: '#e5dbff' },
+      'Eye Tracking': { color: '#0c8599', bg: '#c5f6fa' }
     };
     const fallbackColors = [
       { color: '#0c8599', bg: '#c5f6fa' },

@@ -289,34 +289,19 @@
         measurementId: "G-ZTK5RKNB59" // Restored, though optional for Firestore
       });
 
-      const db = getFirestore(app);
-      console.log("Connected to Firestore Instance:", db.type || "Default Instance");
-      
+      const db = getFirestore(app);      
       const ref = doc(db, 'posts', slug);
 
       try {
-        console.log('1. Initiating getDoc() for slug:', slug);
         const snap = await getDoc(ref);
-        console.log('2. getDoc() completed. snap.exists() =', snap.exists());
-        if (snap.exists()) {
-          console.log('3a. Document exists. Data fetched:', snap.data());
-    
-          console.log('4a. Initiating updateDoc() to increment views...');
+        if (snap.exists()) {    
           await updateDoc(ref, { views: increment(1) });
-          console.log('5a. updateDoc() completed successfully!');
           document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
           document.getElementById('like-count').textContent = snap.data().likes || 0;
-          console.log('6a. UI elements successfully updated.');
         } else {
-          console.log('3b. Document does not exist.');
-
-          console.log('4b. Initiating setDoc() to initialize fields...');
           await setDoc(ref, { views: 1, likes: 0 });
-          console.log('5b. setDoc() completed successfully!');
-
           document.getElementById('view-count').textContent = 1;
           document.getElementById('like-count').textContent = 0;
-          console.log('6b. UI elements successfully updated.');
         }
       } catch(e) { console.warn('Firestore:', e); }
 

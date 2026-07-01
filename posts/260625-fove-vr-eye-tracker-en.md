@@ -50,7 +50,7 @@ I made a [simple Unity demo](https://github.com/taejun20/EyeTrackerDemo-Blog/tre
 
 ## Tips
 
-First and foremost, refer to the FOVE official guides: [Unity Plugin Guide](https://github.com/FoveHMD/UnityPlugin/blob/master/PluginGuide.md) and [Quick Start Guide](https://github.com/FoveHMD/UnityPlugin/blob/master/QuickStart.md).
+First and foremost, read the FOVE official guides: [Unity Plugin Guide](https://github.com/FoveHMD/UnityPlugin/blob/master/PluginGuide.md) and [Quick Start Guide](https://github.com/FoveHMD/UnityPlugin/blob/master/QuickStart.md).
 
 Let me briefly describe the [FoveGazeDemoController.cs](https://github.com/taejun20/EyeTrackerDemo-Blog/blob/main/FOVE/Assets/Scripts/FoveGazeDemoController.cs) in my demo Unity project.
 

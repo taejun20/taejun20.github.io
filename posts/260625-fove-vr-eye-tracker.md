@@ -50,7 +50,7 @@ tag: Eye Tracking
 
 ## Tips
 
-우선 먼저 FOVE 공식 가이드를 참고하자: [Unity Plugin Guide](https://github.com/FoveHMD/UnityPlugin/blob/master/PluginGuide.md), [Quick Start Guide](https://github.com/FoveHMD/UnityPlugin/blob/master/QuickStart.md).
+우선 먼저 FOVE 공식 가이드를 읽자: [Unity Plugin Guide](https://github.com/FoveHMD/UnityPlugin/blob/master/PluginGuide.md), [Quick Start Guide](https://github.com/FoveHMD/UnityPlugin/blob/master/QuickStart.md).
 
 아래에는 내가 제작한 Unity Demo 프로젝트의 [FoveGazeDemoController.cs](https://github.com/taejun20/EyeTrackerDemo-Blog/blob/main/FOVE/Assets/Scripts/FoveGazeDemoController.cs)를 간단히 설명한다.
 

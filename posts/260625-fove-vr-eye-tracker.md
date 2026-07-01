@@ -6,10 +6,13 @@ tag: Eye Tracking
 
 [FOVE](https://fove-inc.com/product/fove0/)는 시선 트래킹 (eye tracking) 기능이 탑재된 VR 헤드셋이다. 가장 처음으로 일반 소비자들이 구매할 수 있게 commercialize한 eye tracking VR 헤드셋으로 알려져 있으며, 무려 **2016년**부터 판매되었다. 오늘날 Meta와 HTC가 Quest Pro, Vive Pro Eye를, 또 Apple이 Vision Pro 같은 고성능 제품들로 시장을 리드하고 있지만, 나는 여전히 FOVE 헤드셋이 가진 유니크한 장점이 있다고 생각한다. 시스템이 전반적으로 훨씬 lightweight하다는 점이다.
 
-하드웨어 구조가 매우 단순하고 [시스템 소스 코드](https://github.com/FoveHMD)가 공개되어 있다. 반면에 Apple Vision Pro나 Meta Quest Pro 등에는 핸드 트래킹, 3차원 주변 공간 스캐닝 등의 여러 복잡한 기술이 합쳐져 있어 매우 무겁다. FOVE는 그런 것들을 모두 들어내고 그래픽 렌더링과 시선 트래킹 두 가지에만 집중한다. 가볍게 돌아가면서 실시간 눈 영상, 시선 벡터, 눈 깜빡임 여부, 동공 간 거리 등을 간단히 접근할 수 있게 해준다. 이러한 데이터를 제공하는 다른 연구용 장비들 중에는 천만원을 넘기는 제품들도 많다. FOVE는 $1,500이다.
+하드웨어 구조가 매우 단순하고 [시스템 소스 코드](https://github.com/FoveHMD)가 공개되어 있다. 반면에 Apple Vision Pro나 Meta Quest Pro 등에는 핸드 트래킹, 3차원 주변 공간 스캐닝 등의 여러 복잡한 기술이 합쳐져 있어 매우 무겁다. FOVE는 그런 것들을 모두 들어내고 그래픽 렌더링과 시선 트래킹 두 가지에만 집중한다. 가볍게 돌아가면서 실시간 눈 영상, 시선 벡터, 눈 깜빡임 여부, 동공 간 거리 등을 간단히 접근할 수 있게 해준다.
 
 ![FOVE 0 headset|80%](img/posts/260625-fove-vr-eye-tracker/fove1.jpg)
 
+```note
+디바이스를 구매하면 combined gaze vector와 eye open/closed state는 무료로 접근할 수 있다. 하지만 stereo gaze vector, inter-pupillary distance, pupil & iris radius, eye torsion, eyelid shape 등은 유료 라이선스를 추가로 구매해야 접근이 되도록 FOVE에서 셋팅해 두었다 ([$150/월, 최소 6개월 계약](https://fove-inc.com/product/fove-vr-platform/)).
+```
 
 # 1. FOVE VR Platform (Desktop App) 설치
 

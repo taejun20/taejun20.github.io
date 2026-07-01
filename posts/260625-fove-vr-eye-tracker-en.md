@@ -6,10 +6,13 @@ tag: Eye Tracking
 
 [FOVE](https://fove-inc.com/product/fove0/) is a VR headset with built-in eye tracking. It is regarded as the world's first commercially available eye tracking VR headset, which was released in **2016**. Even today, with Meta and Apple manufacturing leading products like the Quest Pro and Vision Pro, I feel FOVE has its uniqueness: it is far more lightweight.
 
-The hardware is simple and [system source codes](https://github.com/FoveHMD) are open. Apple Vision Pro or Meta Quest Pro is considerably heavier as it bundles other capabilities like hand tracking and 3D space scanning. FOVE only cares about VR graphic rendering and eye tracking, and provide real-time eye camera feeds, gaze vectors, blink status, and inter-pupillary distance in a straightforward way. Note that other research-grade devices that open such signals easily cost above $10,000. FOVE is $1,500.
+The hardware is simple and [system source codes](https://github.com/FoveHMD) are open. Apple Vision Pro or Meta Quest Pro is considerably heavier as it bundles other capabilities like hand tracking and 3D space scanning. FOVE only cares about VR graphic rendering and eye tracking, and provide real-time eye camera feeds, gaze vectors, blink status, and inter-pupillary distance in a straightforward way.
 
 ![FOVE 0 headset|80%](img/posts/260625-fove-vr-eye-tracker/fove1.jpg)
 
+```note
+Access to the combined gaze vector and eye open/closed state features are available for free once you buy the device. But advanced features like stereo gaze vector, inter-pupillary distance, pupil & iris radius, eye torsion, and eyelid shape require a paid license. FOVE puts a [$150/month full-license plan](https://fove-inc.com/product/fove-vr-platform/) (minimum 6-month contract).
+```
 
 # 1. Install FOVE VR Platform (Desktop App)
 

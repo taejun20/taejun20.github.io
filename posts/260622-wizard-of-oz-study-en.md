@@ -22,7 +22,7 @@ I think there's a key question that distinguishes HCI from pure engineering: bef
 
 WoZ inverts this order. It carefully observes first how users would behave, what they expect, and where they encounter obstacles when confronted with such a system. **This attitude of asking "Does this interaction make sense?" before "Is this technology feasible?" reflects the academic spirit that has defined HCI research from its beginning, I guess.** It's precisely why HCI research often involves prototypes, simulations, and approximations. And perhaps this is a point that might make those from traditional engineering backgrounds uncomfortable. The goal is not to ship a finished product today. It's to understand and envision the future. I believe this is the direction that research, in general (not just our field), should pursue.
 
-# The Broader Spirit of HCI: Proof-of-Concept Simulation
+# The Broader Viewpoint: Proof-of-Concept Simulation
 
 I view WoZ study as a case of a more general concept: Proof-of-Concept (PoC) simulation. WoZ studies refer only to methods where human operators simulate autonomous system (like conversational agents or voice interfaces), but modern HCI research actively employs simulation across a much broader spectrum. Researchers go beyond WoZ, using various  approximations methods to simulate future systems, and through this, we can answer questions like:
 

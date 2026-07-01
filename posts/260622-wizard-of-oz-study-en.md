@@ -6,7 +6,7 @@ tag: Reading
 
 A Wizard of Oz (WoZ) study is an experimental method where researchers observe users while deceiving them into believing an incomplete system is fully functional. Users think they're interacting with an autonomous computing system, but in reality, a hidden human operator (the "wizard") is controlling the system behind the scenes. The name comes from the classic metaphor: in the Wizard of Oz, people believed in a powerful wizard, but behind the curtain was just an ordinary person pulling levers.
 
-WoZ studies gracefully reflects the culture of HCI research, showing the attitude that we can study future interactions even without fully realized technology today. In this article, we look at the brief historical background of WoZ, the unique benefits this approach brings, and the broader concept of Proof-of-Concept simulation that HCI researchers value.
+WoZ studies beautifully reflects the culture of HCI research, showing the attitude that we can study future interactions even without fully realized technology today. In this article, we look at the brief historical background of WoZ, the unique benefits this approach brings, and the broader concept of Proof-of-Concept simulation that HCI researchers value.
 
 # History of Wizard of Oz Study
 

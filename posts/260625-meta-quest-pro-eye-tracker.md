@@ -55,7 +55,7 @@ PC와 헤드셋 양쪽 모두 셋팅이 되면 Meta Quest Pro가 Link를 통해 
 
 아래에는 내가 제작한 Unity Demo 프로젝트의 [MetaQuestProEyeDemoController.cs](https://github.com/taejun20/EyeTrackerDemo-Blog/blob/main/MetaQuestPro/Assets/Scripts/MetaQuestProEyeDemoController.cs)를 간단히 설명한다.
 
-**(1) 눈 오브젝트에 `OVREyeGaze` 부착하기:** OVRCameraRig/TrackingSpace 아래에 empty GameObject를 생성한다. 이것이 눈알이 된다. `OVREyeGaze` component script를 이 오브젝트에 추가한다.
+**(1) eyeball 오브젝트에 `OVREyeGaze` 스크립트 attach:** OVRCameraRig/TrackingSpace 아래에 empty GameObject를 생성한다. 이것이 눈알이 된다. `OVREyeGaze` component script를 이 오브젝트에 추가한다.
 
 ![|80%](img/posts/260625-meta-quest-pro-eye-tracker/ovreyegaze-attach.jpg)
 

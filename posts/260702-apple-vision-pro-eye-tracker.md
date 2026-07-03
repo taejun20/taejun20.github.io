@@ -36,7 +36,7 @@ Settings → Accessibility → Eye Tracking에서 켜기.
 
 # 2. Xcode로 프로그래밍하기
 
-다운로드해서 바로 실행해볼 수 있는 [간단한 데모](https://github.com/taejun20/EyeTrackerDemo-Blog/tree/main/AppleVisionPro)를 만들어 두었다. 테스트된 셋팅 환경은 다음과 같다:
+다운로드해서 바로 실행해볼 수 있는 [간단한 데모](https://github.com/taejun20/EyeTrackerDemo-Blog/tree/main/AppleVisionPro)를 만들어 두었다. 셋팅 환경은 다음과 같다:
 
 - Mac Air (M3)
 - macOS 26.5.2

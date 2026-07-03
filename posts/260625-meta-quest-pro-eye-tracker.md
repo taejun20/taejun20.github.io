@@ -84,7 +84,7 @@ if (leftEyeGaze.enabled && leftEyeGaze.EyeTrackingEnabled && leftEyeGaze.Confide
 }
 ```
 
-# References
+# 참고
 
 - [Eye Tracking for Movement SDK for Unity](https://developers.meta.com/horizon/documentation/unity/move-eye-tracking/)
 - [Getting Started with Meta XR](https://developers.meta.com/horizon/documentation/unity/move-unity-getting-started/)

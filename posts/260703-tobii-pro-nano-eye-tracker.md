@@ -89,11 +89,11 @@ def hit_target(self, gaze_pixel: tuple[int, int] | None):
     return "", False
 ```
 
-# 참고자료
+# 참고
 
 - [Tobii Pro](https://www.tobii.com/products/eye-trackers/screen-based)
 - [Tobii Pro SDK](https://developer.tobiipro.com/index.html)
 
-# 변경사항
+# 변경 이력
 
 - Jul 3, 2026: 게시물 작성

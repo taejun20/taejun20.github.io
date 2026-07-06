@@ -4,7 +4,7 @@ date: 2021-09-23
 tag: Statistics
 ---
 
-Analysis of Variance (ANOVA)는 F-test를 통해 세 집단 이상의 평균이 서로 유의미하게 다른지 확인한다 (두 집단 비교에는 t-test). 본 글에서는 F-value를 직접 손으로 계산해보며 그 의미를 이해해본다.
+Analysis of Variance (ANOVA)는 F-test를 통해 세 집단 이상의 평균이 서로 유의미하게 다른지 확인한다 (두 집단 비교에는 [t-test](/posts?post=260617-paired-t-test-python-kr)). 본 글에서는 F-value를 직접 손으로 계산해보며 그 의미를 이해해본다.
 
 ![Right-tail F-distribution|90%](img/posts/210923-anova-ftest/f-distribution.jpg)
 
@@ -32,7 +32,7 @@ F-value > Critical F-value (p < .05). Reject the null hypothesis.
 F-test를 통해 세 집단의 평균 사이에 통계적으로 유의미한 차이가 있음을 확인했다.
 ```
 
-단, F-test는 "적어도 하나의 집단 평균이 다르다"는 것만 알려줄 뿐, 어느 집단 사이에 차이가 있는지는 알려주지 않는다. 구체적으로 어떤 쌍(pair)이 유의미하게 다른지 확인하려면 Paired t-test with Bonferroni correction 등의 사후 검정(Post-hoc test)이 필요하다.
+단, F-test는 "적어도 하나의 집단 평균이 다르다"는 것만 알려줄 뿐, 어느 집단 사이에 차이가 있는지는 알려주지 않는다. 구체적으로 어떤 쌍(pair)이 유의미하게 다른지 확인하려면 [Paired t-test with Bonferroni correction](/posts?post=260617-paired-t-test-python-kr) 등의 사후 검정(Post-hoc test)이 필요하다.
 
 
 # 참고
@@ -47,3 +47,4 @@ F-test를 통해 세 집단의 평균 사이에 통계적으로 유의미한 차
 - 2021년 12월 1일: Velog로 이전
 - 2026년 2월 26일: Notion으로 이전
 - 2026년 5월 28일: 개인 웹사이트로 이전
+- 2026년 7월 6일: F 수식 이미지의 오타 수정 (발견 및 제보 by [Zheming Yin](https://scholar.google.com/citations?user=sM512LgAAAAJ&hl=ko&oi=ao). Thanks!).

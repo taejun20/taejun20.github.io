@@ -4,7 +4,7 @@ date: 2021-09-23
 tag: Statistics
 ---
 
-Analysis of Variance (ANOVA) uses the F-test to determine whether the means of three or more groups differ significantly from each other (for two groups, use a t-test). In this post, I'll calculate the F-value by hand to build an intuition for what it means.
+Analysis of Variance (ANOVA) uses the F-test to determine whether the means of three or more groups differ significantly from each other (for two groups, use a [t-test](/posts?post=260617-paired-t-test-python-en)). In this post, I'll calculate the F-value by hand to build an intuition for what it means.
 
 ![Right-tail F-distribution|90%](img/posts/210923-anova-ftest/f-distribution.jpg)
 
@@ -32,7 +32,7 @@ F-value > Critical F-value (p < .05). Reject the null hypothesis.
 The F-test confirms a statistically significant difference among the means of the three groups.
 ```
 
-Note that the F-test only tells you that "at least one group mean is different." It does not tell you which specific pairs differ. To find out which pairs are significantly different, a post-hoc test is needed, such as pairwise t-tests with Bonferroni correction.
+Note that the F-test only tells you that "at least one group mean is different." It does not tell you which specific pairs differ. To find out which pairs are significantly different, a post-hoc test is needed, such as [pairwise t-tests with Bonferroni correction](/posts?post=260617-paired-t-test-python-en).
 
 # References
 
@@ -46,3 +46,4 @@ Note that the F-test only tells you that "at least one group mean is different."
 - Dec 1, 2021: Migrated to Velog
 - Feb 26, 2026: Migrated to Notion
 - May 28, 2026: Migrated to personal website
+- Jul 6, 2026: Fixed a typo in the F formula in the image, found and kindly reported by [Zheming Yin](https://scholar.google.com/citations?user=sM512LgAAAAJ&hl=ko&oi=ao)

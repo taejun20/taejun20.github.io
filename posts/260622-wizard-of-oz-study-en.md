@@ -4,9 +4,9 @@ date: 2026-06-22
 tag: Reading
 ---
 
-A Wizard of Oz (WoZ) study is an experiment where researchers observe users while deceiving them into believing an incomplete system is fully functional. Users think they're interacting with an autonomous computing system, but in reality, a hidden human operator (the "wizard") is controlling the system behind the scenes. Much like in the classic story.
+A Wizard of Oz (WoZ) study is an experiment method where researchers observe users while deceiving them into believing an incomplete system is fully functional. Users think they're interacting with an autonomous system, but in reality, a hidden human operator (the "wizard") is controlling the system behind the scenes. Much like in the classic story.
 
-WoZ studies beautifully reflects the culture of HCI research, showing the attitude that we can study future interactions even without fully realized technology today. In this article, we look at the brief historical background of WoZ, the unique benefits this approach brings, and the broader concept of Proof-of-Concept simulation that HCI researchers value.
+WoZ studies beautifully reflect the culture of HCI research, showing the attitude that we can study future interactions even without fully realized technology today. In this article, we look at the brief historical background of WoZ, the unique benefits this approach brings, and the broader concept of Proof-of-Concept simulation that HCI researchers value.
 
 # History of Wizard of Oz Study
 
@@ -20,7 +20,7 @@ This was very interesting approach. "Time-travel" the user experience before the
 
 I think there's a key question that distinguishes HCI from pure engineering: before asking "Can we build this?", we first ask "How will people interact with this once it's built?" In most engineering disciplines, the typical sequence is: define requirements → build the system → optimize performance → conduct internal evaluation → deploy to real users. By then, months are invested. What if there were fundamental problems in the initial interaction model and design?
 
-WoZ inverts this order. It carefully observes first how users would behave, what they expect, and where they encounter obstacles when confronted with such a system. **This attitude of asking "Does this interaction make sense?" before "Is this technology feasible?" reflects the academic spirit that has defined HCI research from its beginning, I guess.** It's precisely why HCI research often involves prototypes, simulations, and approximations. And perhaps this is a point that might make those from traditional engineering backgrounds uncomfortable. The goal is not to ship a finished product today. It's to understand and envision the future. I believe this is the direction that research, in general (not just our field), should pursue.
+WoZ inverts this order. It carefully observes first how users would behave, what they expect, and where they encounter obstacles when confronted with such a system. **This attitude of asking "Does this interaction make sense?" before "Is this technology feasible?" reflects the academic spirit that has defined HCI research from its beginning, I guess.** It's precisely why HCI research often involves prototypes, simulations, and approximations. And perhaps this is a point that might make those from traditional engineering backgrounds uncomfortable. The goal is not to ship a finished product today. It's to understand and envision the future. I believe this is the direction that research, in general, should pursue.
 
 # The Broader Viewpoint: Proof-of-Concept Simulation
 

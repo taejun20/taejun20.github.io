@@ -7,7 +7,7 @@ tag: Eye Tracking
 [Apple Vision Pro](https://www.apple.com/apple-vision-pro/)는 Apple의 XR 헤드셋으로 시선 트래킹 (eye tracking) 기능을 탑재하고 있다. 2024년 출시되었으며, 꽤나 정확한 eye tracking을 제공하며 이를 상호작용 모델에 적극적으로 활용하고 있다.
 
 ```note
-**Key Limitation:** 아쉽지만 Apple Vision Pro에서 eye tracking signal에 대한 접근은 상당히 제한되어 있다. 원본 gaze ray 데이터를 제약없이 제공하는 [Meta Quest Pro](/p/260625-meta-quest-pro-eye-tracker)와 [FOVE VR](/p/260625-fove-vr-eye-tracker)와 달리, Apple은 개발자가 사용자의 시선 정보에 접근하는 것을 엄격하게 차단해두었다. 앱은 raw gaze ray에 접근할 수 없으며, 사용자가 어느 오브젝트를 보고 있는지도 사용자가 핀치 제스처를 수행하기 전까지는 알 수 없다.
+**Key Limitation:** 아쉽지만 Apple Vision Pro에서 eye tracking signal에 대한 접근은 상당히 제한되어 있다. Raw gaze ray 데이터를 제약없이 제공하는 [Meta Quest Pro](/p/260625-meta-quest-pro-eye-tracker)와 [FOVE VR](/p/260625-fove-vr-eye-tracker)와 달리, Apple은 개발자가 사용자의 시선 정보에 접근하는 것을 엄격하게 차단해두었다. 대신 object 단위로 gaze focus, hover, selection 여부에 접근할 수 있는 방식으로만 가능하다.
 ```
 
 ![|80%](img/posts/260702-apple-vision-pro-eye-tracker/vision-pro-demo.jpg)

@@ -7,7 +7,7 @@ tag: Eye Tracking
 [Apple Vision Pro](https://www.apple.com/apple-vision-pro/) XR headset has eye tracking capabilities. Released in 2024, it provides quite accurate eye tracking and uses it as a core feature for interaction and gaze-aware experiences.
 
 ```note
-**Key Limitation:** Unfortunately, access to eye tracking signals on Apple Vision Pro is very restricted. Unlike [Meta Quest Pro](/p/260625-meta-quest-pro-eye-tracker-en) and [FOVE VR](/p/260625-fove-vr-eye-tracker-en) (which provide raw gaze ray data), Apple explicitly blocks developers from accessing raw eye tracking information. The app cannot access the gaze ray, nor detect which object the user is gazing at until the user performs a pinch gesture. This is an intentional strict privacy policy by Apple.
+**Key Limitation:** Unfortunately, access to eye tracking signals on Apple Vision Pro is very restricted. Unlike [Meta Quest Pro](/p/260625-meta-quest-pro-eye-tracker-en) and [FOVE VR](/p/260625-fove-vr-eye-tracker-en) (which provide raw gaze ray data), Apple explicitly blocks developers from accessing raw eye tracking information. Instead, applications interact with gaze through high-level system APIs (focus, hover, and selection) on target object-basis. This is an intentional privacy-focused design by Apple.
 ```
 
 ![|80%](img/posts/260702-apple-vision-pro-eye-tracker/vision-pro-demo.jpg)

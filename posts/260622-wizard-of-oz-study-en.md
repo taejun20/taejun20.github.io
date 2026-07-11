@@ -24,7 +24,7 @@ WoZ inverts this order. It carefully observes first how users would behave, what
 
 # The Broader Viewpoint: Proof-of-Concept Simulation
 
-I view WoZ study as a case of a more general concept: Proof-of-Concept (PoC) simulation. WoZ studies refer only to methods where human operators simulate autonomous system (like conversational agents or voice interfaces), but modern HCI research actively employs simulation across a much broader spectrum. Researchers go beyond WoZ, using various  approximations methods to simulate future systems, and through this, we can answer questions like:
+I view WoZ study as a case of a more general concept: Proof-of-Concept (PoC) simulation. WoZ studies refer only to methods where human operators simulate autonomous system (like conversational agents or voice interfaces), but modern HCI research actively employs simulation across a much broader spectrum. Through various approximation methods to simulate future systems, we can answer questions like:
 
 * **What level of performance and task load will future systems deliver?**
 * **Do users actually want this capability?**
@@ -35,7 +35,7 @@ I view WoZ study as a case of a more general concept: Proof-of-Concept (PoC) sim
 
 ![|60%](img/posts/260622-wizard-of-oz-study/star-example.jpg)
 
-The research question is: "Can we transfer the familiar skill of two-thumb typing on smartphones to a freehand AR environment?" And we proposed STAR, an idea where AR glasses display project a virtual QWERTY keyboard above the user's hands, with the skin surface serving as the typing surface instead of a touchscreen (using thumb taps for input). However, fully realizing this with technology at the time (2022) was a challenging problem.
+The research question is: "Can we transfer the familiar skill of two-thumb typing on smartphones to a freehand AR environment?" And we proposed STAR, an idea where AR glasses display project a virtual QWERTY keyboard on the user's hands, with the skin surface serving as the typing surface instead of a touchscreen (using thumb taps for input). However, fully realizing it with technology at the time (2022) was a challenge.
 
 While we used the hand tracking and display capability provided by Hololens 2 (to ground our work in realistic technology), reliably detecting the subtle contact between thumb and skin was infeasible. **Thus we simulated perfect touch detection using a capacitive tape strip (technology unavailable at the time, but we anticipated it would become feasible with more sophisticated vision-based hand tracking or integration with wearables like smart rings and watches. Indeed, in 2025, Meta Neural Band appeared and demonstrated very stable thumb tap detection).** Eventually, rather than waiting for high-performance vision and sensing technology to arrive on the market, we built a PoC prototype to explore questions like: (1) Can people transfer their decades-trained smartphone typing skill to an AR freehand environment? (2) How close can STAR technique's typing performance get to actual smartphone typing? While this is not a Wizard of Oz study, it is a PoC simulation performed with precisely the same purpose.
 
@@ -43,7 +43,7 @@ While we used the hand tracking and display capability provided by Hololens 2 (t
 
 ![|70%](img/posts/260622-wizard-of-oz-study/hifigaze-example.jpg)
 
-This work presented a deep learning-based eye tracking model for smartphones. However, we discovered that when users gaze at the lower portion of the screen (from the front camera perspective), eyelids and eyelashes often occlude the eye features our model relies on.
+This work presented a deep learning-based eye tracking model for smartphones. However, we discovered that when users gaze at the lower portion of the screen, (from the front camera perspective) eyelids and eyelashes often occlude the eye features our model relies on.
 
 **As a supplementary study, we posed a pinpointed question: "If the camera were positioned at the bottom instead of the top, could this problem be resolved and performance improved?"** But no such smartphone exists, and disassembling an iPhone to add another camera of equal capability at the bottom would be practically hard. Instead of overcomplicating things, we simply rotated the phone 180 degrees to position the camera at the bottom, and inverted the display so that users saw no difference when viewing the screen. Eventually we could immediately explore our research question without waiting for a completely new device to be manufactured (the study results are detailed in the paper). Like the STAR case, this is not a Wizard of Oz study, but it was conducted with the same purpose: simulating conditions we anticipate will be feasible in the future using current approximations, measuring outcomes, and expanding our understanding.
 

@@ -12,8 +12,6 @@ Tobii Pro 디바이스 (Nano, Spark, Fusion, Spectrum)는 **기기 자체에 lic
 
 ![Tobii Pro Nano (now discontinued, replaced by Tobii Pro Spark)|100%](img/posts/260703-tobii-pro-nano-eye-tracker/tobii-nano-etm.jpg)
 
-![|80%](img/posts/260703-tobii-pro-nano-eye-tracker/tobii-nano-setup.jpg)
-
 # 1. Install, Mount, and Configure
 
 먼저 Tobii 공식 문서를 읽자: [Tobii Pro Eye Tracker Manager 프로그램 설치](https://connect.tobii.com/s/article/Install-Tobii-Pro-Fusion-on-your-computer-Step-1?language=en_US) & [기기 마운트](https://connect.tobii.com/s/article/Install-Tobii-Pro-Fusion-on-your-computer-Step-1?language=en_US) & [프로그램 내 기기 설정.](https://connect.tobii.com/s/article/Install-Tobii-Pro-Fusion-on-your-computer-Step-1?language=en_US)

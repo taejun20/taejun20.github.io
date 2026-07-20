@@ -12,8 +12,6 @@ tag: Eye Tracking
 
 ![Tobii Pro Nano (now discontinued, replaced by Tobii Pro Spark)|100%](img/posts/260703-tobii-pro-nano-eye-tracker/tobii-nano-etm.jpg)
 
-![|80%](img/posts/260703-tobii-pro-nano-eye-tracker/tobii-nano-setup.jpg)
-
 # 1. Install, Mount, and Configure
 
 First, read the official Tobii documentation: [Install Manager Software](https://connect.tobii.com/s/article/Install-Tobii-Pro-Fusion-on-your-computer-Step-1?language=en_US) & [Mount the Device](https://connect.tobii.com/s/article/Install-Tobii-Pro-Fusion-on-your-computer-Step-1?language=en_US) & [Configure.](https://connect.tobii.com/s/article/Install-Tobii-Pro-Fusion-on-your-computer-Step-1?language=en_US)

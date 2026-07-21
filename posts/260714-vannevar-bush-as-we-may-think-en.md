@@ -4,7 +4,7 @@ date: 2026-07-14
 tag: Reading
 ---
 
-Today I read an old essay, "As We May Think" (1945) and share what I felt with some direct quotes.
+Today I read an essay, "As We May Think" (1945) and share what I felt with some direct quotes.
 
 # Vannevar Bush (1890-1974)
 

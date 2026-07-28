@@ -292,55 +292,69 @@
         document.getElementById('like-btn').classList.add('liked');
         document.getElementById('like-icon').className = 'bi bi-heart-fill';
       }
-      document.getElementById('post-meta-stats').style.display = 'flex';
 
-      // Exact configuration matching your Firebase console snippet
-      const app = initializeApp({
-        apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
-        authDomain: "tj-website-seoul.firebaseapp.com",
-        projectId: "tj-website-seoul",
-        storageBucket: "tj-website-seoul.firebasestorage.app",
-        messagingSenderId: "783490756168",
-        appId: "1:783490756168:web:b6562e7b41593c07c9327d",
-        measurementId: "G-ZTK5RKNB59" // Restored, though optional for Firestore
-      });
+      // Verify post exists before showing stats and tracking views
+      let postExists = false;
 
-      const db = getFirestore(app);      
-      const ref = doc(db, 'posts', slug);
+      if (slug.endsWith('-en')) {
+        const res = await fetch(`posts/${slug}.md`);
+        postExists = res.ok;
+      } else if (slug.endsWith('-kr')) {
+        const res = await fetch(`posts/${slug}.md`);
+        postExists = res.ok;
+      }
 
-      try {
-        const snap = await getDoc(ref);
-        if (snap.exists()) {    
-          await updateDoc(ref, { views: increment(1) });
-          document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
-          document.getElementById('like-count').textContent = snap.data().likes || 0;
-        } else {
-          await setDoc(ref, { views: 1, likes: 0 });
-          document.getElementById('view-count').textContent = 1;
-          document.getElementById('like-count').textContent = 0;
-        }
-      } catch(e) { console.warn('Firestore:', e); }
+      if (postExists) {
+        document.getElementById('post-meta-stats').style.display = 'flex';
 
-      window.handleLike = async function() {
-        const btn = document.getElementById('like-btn');
-        const cur = parseInt(document.getElementById('like-count').textContent) || 0;
-        const liked = !!localStorage.getItem(likedKey);
+        // Only track views if post exists
+        const app = initializeApp({
+          apiKey: "AIzaSyB1maszVhThilw_EF_WUeQ1laeduJaMKdg",
+          authDomain: "tj-website-seoul.firebaseapp.com",
+          projectId: "tj-website-seoul",
+          storageBucket: "tj-website-seoul.firebasestorage.app",
+          messagingSenderId: "783490756168",
+          appId: "1:783490756168:web:b6562e7b41593c07c9327d",
+          measurementId: "G-ZTK5RKNB59"
+        });
+
+        const db = getFirestore(app);
+        const ref = doc(db, 'posts', slug);
+
         try {
-          if (liked) {
-            await updateDoc(ref, { likes: increment(-1) });
-            document.getElementById('like-count').textContent = Math.max(0, cur - 1);
-            btn.classList.remove('liked');
-            document.getElementById('like-icon').className = 'bi bi-heart';
-            localStorage.removeItem(likedKey);
+          const snap = await getDoc(ref);
+          if (snap.exists()) {
+            await updateDoc(ref, { views: increment(1) });
+            document.getElementById('view-count').textContent = (snap.data().views || 0) + 1;
+            document.getElementById('like-count').textContent = snap.data().likes || 0;
           } else {
-            await updateDoc(ref, { likes: increment(1) });
-            document.getElementById('like-count').textContent = cur + 1;
-            btn.classList.add('liked');
-            document.getElementById('like-icon').className = 'bi bi-heart-fill';
-            localStorage.setItem(likedKey, '1');
+            await setDoc(ref, { views: 1, likes: 0 });
+            document.getElementById('view-count').textContent = 1;
+            document.getElementById('like-count').textContent = 0;
           }
-        } catch(e) { console.warn('Like:', e); }
-      };
+        } catch(e) { console.warn('Firestore:', e); }
+
+        window.handleLike = async function() {
+          const btn = document.getElementById('like-btn');
+          const cur = parseInt(document.getElementById('like-count').textContent) || 0;
+          const liked = !!localStorage.getItem(likedKey);
+          try {
+            if (liked) {
+              await updateDoc(ref, { likes: increment(-1) });
+              document.getElementById('like-count').textContent = Math.max(0, cur - 1);
+              btn.classList.remove('liked');
+              document.getElementById('like-icon').className = 'bi bi-heart';
+              localStorage.removeItem(likedKey);
+            } else {
+              await updateDoc(ref, { likes: increment(1) });
+              document.getElementById('like-count').textContent = cur + 1;
+              btn.classList.add('liked');
+              document.getElementById('like-icon').className = 'bi bi-heart-fill';
+              localStorage.setItem(likedKey, '1');
+            }
+          } catch(e) { console.warn('Like:', e); }
+        };
+      }
     }
   </script>
 

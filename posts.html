@@ -466,16 +466,6 @@
             document.getElementById('btn-ko').classList.add('active');
           }
         }).catch(() => {});
-      } else {
-        // Base slug without -en or -kr (coming from posts list, default to EN)
-        // Check if Korean version exists
-        fetch(`posts/${slug}-kr.md`, { method: 'HEAD' }).then(r => {
-          if (r.ok) {
-            document.getElementById('lang-toggle').style.display = 'flex';
-            document.getElementById('btn-en').classList.add('active');
-            document.getElementById('btn-ko').classList.remove('active');
-          }
-        }).catch(() => {});
       }
 
       (async () => {
@@ -483,23 +473,9 @@
           let fileToLoad = `posts/${slug}.md`;
           let langToLoad = 'ko';
 
-          // If slug doesn't end with -en or -kr, determine which to load
-          if (!slug.endsWith('-en') && !slug.endsWith('-kr')) {
-            // Try to load EN version first (default)
-            const enRes = await fetch(`posts/${slug}-en.md`);
-            if (enRes.ok) {
-              fileToLoad = `posts/${slug}-en.md`;
-              langToLoad = 'en';
-            } else {
-              // Fall back to KR version
-              fileToLoad = `posts/${slug}-kr.md`;
-              langToLoad = 'ko';
-            }
-          } else if (slug.endsWith('-en')) {
-            fileToLoad = `posts/${slug}.md`;
+          if (slug.endsWith('-en')) {
             langToLoad = 'en';
           } else if (slug.endsWith('-kr')) {
-            fileToLoad = `posts/${slug}.md`;
             langToLoad = 'ko';
           }
 

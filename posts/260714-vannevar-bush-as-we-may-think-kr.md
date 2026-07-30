@@ -44,7 +44,7 @@ Bush는 먼저 다가오는 정보 폭발 (Information Explosion)에 대해 이�
 
 > "The owner of the memex, let us say, is interested in the origin and properties of the bow and arrow. Specifically he is studying why the short Turkish bow was apparently superior to the English long bow in the skirmishes of the Crusades. He has dozens of possibly pertinent books and articles in his memex. First he runs through an encyclopedia, finds an interesting but sketchy article, leaves it projected. Next, in a history, he finds another pertinent item, and ties the two together. Thus he goes, building a trail of many items. Occasionally he inserts a comment of his own, either linking it into the main trail of joining it by a side trail to a particular item. When it becomes evident that the elastic properties of available materials had a great deal to do with the bow, he branches off on a side trail which takes him through textbooks on elasticity and tables of physical constants. He inserts a page of longhand analysis of his own. **Thus he builds a trail of his interest through the maze of materials available to him.**" *[7]*
 
-Bush는 구체적인 예시 상황을 들어 사람들이 memex라는 기계를 어떻게 사용할 수 있는지를 설명했다. 이를 읽다 보면, 그의 아이디어 가운데 상당수가 오늘날의 hyperlink 기반 인터넷, 개인 지식 관리 (personal knowledge management) 시스템, 그리고 인터랙티브 사용자 인터페이스 (interactive user interface)들에 닿아 있음을 알 수 있다. 아마 Bush는 "컴퓨터는 어떻게 인간이 더 잘 생각하도록 도울 수 있는가?"라는 간단하지만 깊은 질문으로부터 이러한 구체적인 비전에 도달했던 것 같다.
+Bush는 구체적인 예시 상황을 들어 사람들이 memex라는 기계를 어떻게 사용할 수 있는지를 설명했다. 이를 읽다 보면, 그의 아이디어 가운데 상당수가 오늘날의 hyperlink 기반 인터넷, 개인 지식 관리 (personal knowledge management) 시스템,  인터랙티브 사용자 인터페이스 (interactive user interface)들에 닿아 있음을 알 수 있다. 아마 Bush는 "컴퓨터는 어떻게 인간이 더 잘 생각하도록 도울 수 있는가?"라는 간단하지만 깊은 질문으로부터 이러한 구체적인 비전에 도달했던 것 같다.
 
 # 1945년에 뇌-컴퓨터 인터페이스?
 
@@ -52,15 +52,15 @@ Bush는 구체적인 예시 상황을 들어 사람들이 memex라는 기계를 
 
 > "By bone conduction we already introduce sounds into the nerve channels of the deaf in order that they may hear. It is not possible that we may learn to introduce them without the present cumbersomeness of first transforming electrical vibrations to mechanical ones, which the human mechanism promptly transforms back to the electrical form? With a couple of electrodes on the skull the encephalograph now produces pen-and-ink traces which bear some relation to the electrical phenomena going on in the brain itself. ... Must we always transform to mechanical movements in order to proceed from one electrical phenomenon to another?" *[8]*
 
-에세이의 마지막 부분에서 Bush는 인간과 컴퓨터 사이의 직접적인 신경 통신 (direct neural communication)의 가능성을 갑자기 언급한다. 전자 기기와 인간의 신경계가 모두 결국 electrical system이라면, 왜 굳이 그 사이에서 신호를 기계적 형태로 변환하는 과정을 거쳐야 하는가를 묻는 것이다. 이것은 단순히 현대 컴퓨터를 예측하는 단계를 넘어서서 뇌-컴퓨터 인터페이스 (brain-computer interface)라는, 2026년 현재도 여전히 초기 단계에 머물러있는 연구 분야에까지 Bush의 생각이 닿았음을 보여준다. 읽으며 감탄하였는데, 이런 생각이 들기도 했다. 오늘날 우리 중에도 (Bush가 80년 전에 우리의 시대를 내다보았던 것처럼) 2100년의 세상을 이 정도로 그려낼 수 있는 사람이 있을까?
+에세이의 마지막 부분에서 Bush는 갑자기 인간과 컴퓨터 사이의 직접적인 신경 통신 (direct neural communication)의 가능성을  언급한다. 전자 기기와 인간의 신경계가 모두 결국 electrical system이라면, 왜 굳이 그 사이에서 신호를 기계적 형태로 변환하는 과정을 거쳐야 하는가를 묻는 것이다. 이것은 단순히 현대 컴퓨터를 예측하는 단계를 넘어서 뇌-컴퓨터 인터페이스 (brain-computer interface)라는, 2026년 현재도 여전히 초기 단계에 머물러있는 연구에까지 Bush의 생각이 닿았음을 보여준다. 감탄하며 읽었고, 동시에 이런 생각이 들기도 했다. 오늘날 우리 중에도 (Bush가 80년 전에 우리의 시대를 내다보았던 것처럼) 2100년의 세상을 이 정도로 그려낼 수 있는 사람이 있을까?
 
 # 맺음말
 
 > "The applications of science have built man a well-supplied house, and are teaching him to live healthily therein. They have enabled him to throw masses of people against another with cruel weapons. They may yet allow him truly to encompass the great record and to grow in the wisdom of race experience. He may perish in conflict before he learns to wield that record for his true good." *[8]*
 
-Bush는 에세이를 마치며 경고한다. 인류는 자신들이 축적한 지식을 "진정한 선"을 위해 사용하는 방법을 배우기도 전에 전쟁으로 스스로를 파멸시킬 수도 있다고. 2차 세계대전의 그림자 속에서 쓰인 이 문장은 오늘날에도 여전히 현재진행형으로 느껴진다.
+Bush는 에세이를 마치며 경고한다. 인류는 자신들이 축적한 지식을 "진정한 선"을 위해 사용하는 방법을 배우기도 전에 전쟁으로 스스로를 파멸시킬 수도 있다고. 2차 세계대전 중에 쓰인 이 문장은 오늘날에도 꽤나 현재진행형이다.
 
-동시에, 오늘날의 AI revolution은 우리가 배우고 생각하는 방식 자체를 바꿔내고 있다. ChatGPT와 Claude 같은 AI 도구들은 인류의 모든 지식을 그 어느 때보다도 접근하기 쉽게 만들었고, 이는 기술을 통해 인간의 능력을 확장하려는 Bush의 비전과 맞닿아 있다고 할 것이다. 하지만 동시에 우리는 더 근본적인 질문 앞에 놓여 있다. 우리는 정말 인간의 사고를 증강하고 있는 것일까, 아니면 이를 단순히 자동화 해버리고 있는 것일까? AI가 이미 우리를 대신해 상당한 양의 인지적 작업 (cognitive task)을 수행하고 있다는 사실은 부인하기 어렵다. Bush는 과학이 인간이 흡수할 수 있는 속도보다 훨씬 빠르게 지식을 만들어내는 시대를 우려했지만, 오늘날에는 검색 엔진과 AI assistant 덕분에 정보를 찾아내는 일에 거의 노력이 들지 않을 정도로 쉬워졌다. 그래서 나는 이제 문제의 본질 자체가 옮겨 왔다고 본다. 더 이상 우리가 얼마나 빨리 지식을 찾을 수 있느냐가 아니라, 우리가 여전히 그것을 이해하고 소화하기 위한 지적 작업을 하고 있느냐 라는 것이다. 인간의 사고를 증강하는 것 (cognitive augmentation)과 인간의 사고를 대체하는 것 (cognitive replacement)의 경계는 언뜻 모호해 보일지 모르겠지만, 나는 그것이 AI 시대를 관통하는 가장 중요한 질문이 될 것이라고 생각한다.
+동시에, 오늘날의 AI revolution은 우리가 배우고 생각하는 방식 자체를 바꿔내고 있다. ChatGPT와 Claude 같은 AI 도구들은 인류의 모든 지식을 그 어느 때보다도 접근하기 쉽게 만들었고, 이는 기술을 통해 인간의 능력을 확장하려는 Bush의 비전과 맞닿아 있다. 하지만 동시에 우리는 더 근본적인 질문 앞에 놓여 있다. 우리는 정말 인간의 사고를 증강하고 있는 것일까, 아니면 이를 단순히 자동화 해버리고 있는 것일까? AI가 이미 우리를 대신해 상당한 양의 인지적 작업 (cognitive task)을 수행하고 있다는 사실은 부인하기 어렵다. Bush는 과학이 인간이 흡수할 수 있는 속도보다 훨씬 빠르게 지식을 만들어내는 시대를 우려했지만, 오늘날에는 검색 엔진과 AI assistant 덕분에 정보를 찾아내는 일에 거의 노력이 들지 않을 정도로 쉬워졌다. 그래서 나는 이제 문제의 본질 자체가 옮겨 왔다고 본다. 더 이상 우리가 얼마나 빨리 지식을 찾을 수 있느냐가 아니라, 우리가 여전히 그것을 이해하고 소화하기 위한 지적 작업을 하고 있느냐 라는 것이다. 인간의 사고를 증강하는 것 (cognitive augmentation)과 인간의 사고를 대체하는 것 (cognitive replacement)의 경계는 언뜻 모호해 보일지 모르지만, 나는 그것이 AI 시대를 관통하는 가장 중요한 질문이 될 것이라고 생각한다.
 
 # 참고
 

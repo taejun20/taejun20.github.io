@@ -24,7 +24,7 @@ WoZ inverts this order. It carefully observes first how users would behave, what
 
 # The Broader Viewpoint: Proof-of-Concept Simulation
 
-I view WoZ study as a case of a more general concept: Proof-of-Concept (PoC) simulation. WoZ studies refer only to methods where human operators simulate autonomous system (like conversational agents or voice interfaces), but modern HCI research actively employs simulation across a much broader spectrum. Through various approximation methods to simulate future systems, we can answer questions like:
+I view WoZ study as a case of a more general concept: Proof-of-Concept (PoC) simulation. WoZ studies refer only to methods where human operators simulate autonomous system (like conversational agents or voice interfaces), but modern HCI research actively employs simulation across a much broader spectrum to explore questions like:
 
 * **What level of performance and task load will future systems deliver?**
 * **Do users actually want this capability?**

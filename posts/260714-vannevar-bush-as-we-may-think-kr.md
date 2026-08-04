@@ -58,7 +58,7 @@ Bush는 구체적인 예시 상황을 들어 사람들이 memex라는 기계를 
 
 > "The applications of science have built man a well-supplied house, and are teaching him to live healthily therein. They have enabled him to throw masses of people against another with cruel weapons. They may yet allow him truly to encompass the great record and to grow in the wisdom of race experience. He may perish in conflict before he learns to wield that record for his true good." *[8]*
 
-Bush는 에세이를 마치며 경고한다. 인류는 자신들이 축적한 지식을 "진정한 선"을 위해 사용하는 방법을 배우기도 전에 전쟁으로 스스로를 파멸시킬 수도 있다고. 2차 세계대전 중에 쓰인 이 문장은 오늘날에도 꽤나 현재진행형이다.
+Bush는 에세이를 마치며 경고한다. 인류는 자신들이 축적한 지식을 "진정한 선"을 위해 사용하는 방법을 배우기도 전에 전쟁으로 스스로를 파멸시킬 수도 있다고. 2차 세계대전 중에 쓰인 이 문장은 오늘날에도  현재진행형이다.
 
 동시에, 오늘날의 AI revolution은 우리가 배우고 생각하는 방식 자체를 바꿔내고 있다. ChatGPT와 Claude 같은 AI 도구들은 인류의 모든 지식을 그 어느 때보다도 접근하기 쉽게 만들었고, 이는 기술을 통해 인간의 능력을 확장하려는 Bush의 비전과 맞닿아 있다. 하지만 동시에 우리는 더 근본적인 질문 앞에 놓여 있다. 우리는 정말 인간의 사고를 증강하고 있는 것일까, 아니면 이를 단순히 자동화 해버리고 있는 것일까? AI가 이미 우리를 대신해 상당한 양의 인지적 작업 (cognitive task)을 수행하고 있다는 사실은 부인하기 어렵다. Bush는 과학이 인간이 흡수할 수 있는 속도보다 훨씬 빠르게 지식을 만들어내는 시대를 우려했지만, 오늘날에는 검색 엔진과 AI assistant 덕분에 정보를 찾아내는 일에 거의 노력이 들지 않을 정도로 쉬워졌다. 그래서 나는 이제 문제의 본질 자체가 옮겨 왔다고 본다. 더 이상 우리가 얼마나 빨리 지식을 찾을 수 있느냐가 아니라, 우리가 여전히 그것을 이해하고 소화하기 위한 지적 작업을 하고 있느냐 라는 것이다. 인간의 사고를 증강하는 것 (cognitive augmentation)과 인간의 사고를 대체하는 것 (cognitive replacement)의 경계는 언뜻 모호해 보일지 모르지만, 나는 그것이 AI 시대를 관통하는 가장 중요한 질문이 될 것이라고 생각한다.
 

@@ -179,7 +179,7 @@ Post-hoc pairwise comparisons with Bonferroni correction showed significant diff
 **Writing for report:** A Friedman test revealed a significant effect of condition (χ²(2) = 18.17, p < .001). Post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction showed significant differences between Condition A and Condition B (Z = -3.06, p < .01), and between Condition A and Condition C (Z = -3.06, p < .01).
 ```
 
-*Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*
+*Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures-en) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*
 
 # References
 

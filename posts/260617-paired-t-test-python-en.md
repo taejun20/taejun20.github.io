@@ -110,7 +110,7 @@ The paired t-test revealed no significant difference between conditions, t(11) =
 **Writing for report:** A paired t-test revealed no significant difference between Condition A and Condition B (t(11) = -2.08, p = .061).
 ```
 
-*Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*
+*Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures-en) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*
 
 # References
 

@@ -236,7 +236,7 @@ Post-hoc pairwise comparisons with Bonferroni correction showed a significant di
 **Writing for report:** A one-way repeated-measures ANOVA revealed a significant main effect of condition (F(2, 22) = 4.66, p < .05). Post-hoc pairwise comparisons with Bonferroni correction showed a significant difference between Condition A and Condition C (t = -2.88, p < .05).
 ```
 
-*Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*
+*Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures-en) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*
 
 # References
 

@@ -4,7 +4,7 @@ date: 2026-06-15
 tag: Statistics
 ---
 
-One-way Repeated-Measures (Within-Subject) ANOVA를 돌리는 파이썬 코드를 공유한다. 실험 조건 중 하나라도 정규성 가정 (normality assumption)이 만족되지 않으면 [Friedman Test](/posts?post=260616-friedman-test-python)를 사용한다 (아래 2-2 참고).
+One-way Repeated-Measures (Within-Subject) ANOVA를 돌리는 파이썬 코드를 공유한다. 실험 조건 중 하나라도 정규성 가정 (normality assumption)이 만족되지 않으면 [Friedman Test](/posts?post=260616-friedman-test-python-kr)를 사용한다 (아래 2-2 참고).
 
 # 1. 데이터 정리
 
@@ -133,7 +133,7 @@ Statistic: 0.9427, P-value: 0.5339
 Data is normally distributed (fail to reject H0).
 ```
 
-세 조건 모두 정규성이 만족됐으므로 RM ANOVA 테스트를 돌릴 수 있다. 조건 중 하나라도 정규성이 만족되지 않으면 [Friedman's test](/posts?post=260616-friedman-test-python)을 사용하는 것이 보수적인 선택이다.
+세 조건 모두 정규성이 만족됐으므로 RM ANOVA 테스트를 돌릴 수 있다. 조건 중 하나라도 정규성이 만족되지 않으면 [Friedman's test](/posts?post=260616-friedman-test-python-kr)을 사용하는 것이 보수적인 선택이다.
 
 ### 3) 구형성 검정 (Sphericity Check)
 
@@ -236,7 +236,7 @@ Bonferroni correction을 적용한 pairwise 비교 결과, Condition A와 Condit
 **Writing for report:** A one-way repeated-measures ANOVA revealed a significant main effect of condition (F(2, 22) = 4.66, p < .05). Post-hoc pairwise comparisons with Bonferroni correction showed a significant difference between Condition A and Condition C (t = -2.88, p < .05).
 ```
 
-*Side Note: 몇 년전까지는 [SPSS](/posts?post=200203-spss-repeated-measures)로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*
+*Side Note: 몇 년전까지는 [SPSS](/posts?post=200203-spss-repeated-measures-kr)로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*
 
 # 참고
 

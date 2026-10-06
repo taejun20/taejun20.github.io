@@ -4,7 +4,7 @@ date: 2026-06-16
 tag: Statistics
 ---
 
-Two-way Repeated-Measures (Within-Subject) ANOVA를 돌리는 파이썬 코드를 공유한다. 두 개의 within-subject factor (= 2개의 독립 변수)이 있을 때 사용한다. 정규성 가정이 만족되지 않는 경우 [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform)을 사용한다 (정규성 검정은 아래 2-2 참고).
+Two-way Repeated-Measures (Within-Subject) ANOVA를 돌리는 파이썬 코드를 공유한다. 두 개의 within-subject factor (= 2개의 독립 변수)이 있을 때 사용한다. 정규성 가정이 만족되지 않는 경우 [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform-kr)을 사용한다 (정규성 검정은 아래 2-2 참고).
 
 ```note
 **라이브러리 한계점:** 이 튜토리얼에서 사용하는 `pingouin` 라이브러리는 within-subject factor를 최대 두 개까지만 지원한다. Three-way 이상의 RM ANOVA가 필요한 경우 R (`afex` 또는 `ez` 패키지)을 사용하거나, [Linear Mixed Model](https://taejunkim.com/posts?post=260618-lmm-lrt-python)을 사용하는 것도 고려해볼 수 있다.
@@ -200,7 +200,7 @@ Statistic: 0.9347, P-value: 0.4327
 Data is normally distributed (fail to reject H0).
 ```
 
-모든 조건이 정규성 가정을 만족하므로 Two-way RM ANOVA를 진행한다. 조건 중 하나라도 정규성이 만족되지 않으면 [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform)을 사용하는 것이 보수적인 선택이다.
+모든 조건이 정규성 가정을 만족하므로 Two-way RM ANOVA를 진행한다. 조건 중 하나라도 정규성이 만족되지 않으면 [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform-kr)을 사용하는 것이 보수적인 선택이다.
 
 ### 3) 구형성 검정 (Sphericity Check)
 
@@ -287,7 +287,7 @@ FactorA * FactorB      2     22   3.019793 6.936843e-02 7.019957e-02 6.936843e-0
   [FactorA * FactorB] 0.069368 (p_unc)
 ```
 
-두 factor의 main effect 모두 유의하다. 인터랙션 효과 (FactorA * FactorB)는 유의하지 않다 (p = .069). 인터랙션 효과에 대해서는 [이 포스트](/posts?post=200903-interaction-effects-anova) 참고.
+두 factor의 main effect 모두 유의하다. 인터랙션 효과 (FactorA * FactorB)는 유의하지 않다 (p = .069). 인터랙션 효과에 대해서는 [이 포스트](/posts?post=200903-interaction-effects-anova-kr) 참고.
 
 ### 5) 사후 분석
 

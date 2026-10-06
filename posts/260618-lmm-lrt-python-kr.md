@@ -11,7 +11,7 @@ Component Contribution Analysis를 위해 Linear Mixed Model (LMM)을 fitting하
 구체적으로, linear mixed model을 fitting하고 Likelihood Ratio Test (LRT)를 실행해 이 질문들을 검정한다.
 
 ```note
-**Note:** modular component들의 조합을 통해 최종적으로 만들어진 final system들 간의 paired 비교는 이 포스트에서 다루는 케이스가 아니며, 해당 경우에는 [대응 표본 t검정 (paired t-test)](http://localhost:3000/posts?post=260617-paired-t-test-python) 또는 [Wilcoxon signed-rank test](http://localhost:3000/posts?post=260617-wilcoxon-signed-rank-python)를 통해 쉽게 대답할 수 있다.
+**Note:** modular component들의 조합을 통해 최종적으로 만들어진 final system들 간의 paired 비교는 이 포스트에서 다루는 케이스가 아니며, 해당 경우에는 [대응 표본 t검정 (paired t-test)](http://localhost:3000/posts?post=260617-paired-t-test-python-kr) 또는 [Wilcoxon signed-rank test](http://localhost:3000/posts?post=260617-wilcoxon-signed-rank-python-kr)를 통해 쉽게 대답할 수 있다.
 ```
 # 1. 데이터 정리
 
@@ -139,7 +139,7 @@ Component D: χ²(1) = 8.79, p = 0.0030
 
 LMM은 paired t-test와 RM-ANOVA가 처리하지 못하는 두 가지 상황을 커버한다. **(1) LMM은 missing/unbalanced data를 처리할 수 있다** (즉, 특정 참가자에서 특정 조건의 데이터가 없는 경우). paired t-test와 RM-ANOVA는 이 경우를 처리할 수 없다. **(2) LMM은 나이와 같은 continuous covariates을 control variable로 설정할 수 있다** (예: 나이가 많은 참가자가 조건과 무관하게 더 높은 점수를 내는 경향이 있다면, 나이를 포함시켜 모델이 이를 보정하게 함으로써 조건 효과를 더 정확하게 추정할 수 있다). 반대로 말하면, 원래 보고자 했던 main effect / pairwise comparison을 체크하면서 동시에 나이라는 factor의 significant effect까지도 함께 확인할 수 있다는 뜻이 된다. 즉, 상당히 유용한 분석을 가능하게 해준다는 점.
 
-다만, HCI 연구에서 repeated-measures 유저 스터디로 데이터를 수집하게 되면 데이터 누락이 없는 balanced data를 확보하는 경우가 대부분이기 때문에, [paired t-test](https://taejunkim.com/posts?post=260617-paired-t-test-python)나 [one-way RM-ANOVA](https://taejunkim.com/posts?post=260615-one-way-rm-anova-python)로도 충분하다. Unbalanced data를 처리하거나 나이와 같은 continuous covariate를 통제해야 한다면 LMM + LRT를 사용해야 한다.
+다만, HCI 연구에서 repeated-measures 유저 스터디로 데이터를 수집하게 되면 데이터 누락이 없는 balanced data를 확보하는 경우가 대부분이기 때문에, [paired t-test](https://taejunkim.com/posts?post=260617-paired-t-test-python-kr)나 [one-way RM-ANOVA](https://taejunkim.com/posts?post=260615-one-way-rm-anova-python-kr)로도 충분하다. Unbalanced data를 처리하거나 나이와 같은 continuous covariate를 통제해야 한다면 LMM + LRT를 사용해야 한다.
 
 # 참고
 

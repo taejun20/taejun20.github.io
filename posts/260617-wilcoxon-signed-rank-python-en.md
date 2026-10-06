@@ -108,7 +108,7 @@ The Wilcoxon signed-rank test revealed a significant difference between conditio
 **Writing for report:** A Wilcoxon signed-rank test revealed a significant difference between Condition A and Condition B (Z = -3.06, p < .01).
 ```
 
-*Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*
+*Side Note: I previously used [SPSS](/posts?post=200203-spss-repeated-measures-en) for the test but switched entirely to using Python, which I feel is more simpler and transparent (and it's even free!).*
 
 # References
 

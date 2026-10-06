@@ -4,7 +4,7 @@ date: 2022-03-09
 tag: Electronics
 ---
 
-In the [previous post](/posts?post=191112-transistor-basics), I went over the role and operating principles of transistors. This post covers when and why you need a transistor when building circuits with a microcontroller like Arduino.
+In the [previous post](/posts?post=191112-transistor-basics-en), I went over the role and operating principles of transistors. This post covers when and why you need a transistor when building circuits with a microcontroller like Arduino.
 
 # Why Use a Transistor with a Microcontroller
 

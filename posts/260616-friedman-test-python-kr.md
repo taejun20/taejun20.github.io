@@ -4,7 +4,7 @@ date: 2026-06-16
 tag: Statistics
 ---
 
-Friedman test를 돌리는 파이썬 코드를 공유한다. Friedman test는 하나 이상의 실험 조건의 데이터가 정규성 가정을 만족하지 못할 때 사용한다. 모든 실험 조건에서 정규성을 만족한다면 [RM ANOVA](/posts?post=260615-one-way-rm-anova-python)를 사용한다 (아래 2-2 참고).
+Friedman test를 돌리는 파이썬 코드를 공유한다. Friedman test는 하나 이상의 실험 조건의 데이터가 정규성 가정을 만족하지 못할 때 사용한다. 모든 실험 조건에서 정규성을 만족한다면 [RM ANOVA](/posts?post=260615-one-way-rm-anova-python-kr)를 사용한다 (아래 2-2 참고).
 
 # 1. 데이터 정리
 
@@ -178,7 +178,7 @@ Bonferroni correction을 적용한 pairwise 비교 결과, Condition A와 Condit
 **Writing for report:** A Friedman test revealed a significant effect of condition (χ²(2) = 18.17, p < .001). Post-hoc pairwise Wilcoxon signed-rank tests with Bonferroni correction showed significant differences between Condition A and Condition B (Z = -3.06, p < .01), and between Condition A and Condition C (Z = -3.06, p < .01).
 ```
 
-*Side Note: 몇 년전까지는 [SPSS](/posts?post=200203-spss-repeated-measures)로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*
+*Side Note: 몇 년전까지는 [SPSS](/posts?post=200203-spss-repeated-measures-kr)로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*
 
 # 참고
 

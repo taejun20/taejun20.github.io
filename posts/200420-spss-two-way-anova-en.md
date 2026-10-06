@@ -4,7 +4,7 @@ date: 2020-04-20
 tag: Statistics
 ---
 
-In the [previous post](/posts?post=200203-spss-repeated-measures), I covered One-way RM ANOVA and Friedman's test for experiments with a single independent variable. This post covers Two-way RM ANOVA. (Sorry, all screenshots are based on the Korean language settings)
+In the [previous post](/posts?post=200203-spss-repeated-measures-en), I covered One-way RM ANOVA and Friedman's test for experiments with a single independent variable. This post covers Two-way RM ANOVA. (Sorry, all screenshots are based on the Korean language settings)
 
 # Which Test?
 
@@ -28,7 +28,7 @@ What we'll do:
   - Check significant effect between conditions (p-value)
   - Post-hoc analysis
 
-If normality is not satisfied, use [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform) followed by Two-way RM ANOVA.
+If normality is not satisfied, use [Aligned Rank Transform](/posts?post=210903-aligned-rank-transform-en) followed by Two-way RM ANOVA.
 
 # 1. Normality Test
 
@@ -123,7 +123,7 @@ Check the following three things in order:
 2. Main effect of armpose
 3. Interaction effect of orientation x armpose
 
-Only armpose shows p < 0.05, confirming a significant effect. Since the interaction effect is not significant, the main effects of each factor can be interpreted independently. (If the interaction were significant, main effects alone would not be sufficient; pairwise comparisons across condition combinations would be needed in post-hoc. See [this post](/posts?post=200903-interaction-effects-anova) for more on interaction effects.)
+Only armpose shows p < 0.05, confirming a significant effect. Since the interaction effect is not significant, the main effects of each factor can be interpreted independently. (If the interaction were significant, main effects alone would not be sufficient; pairwise comparisons across condition combinations would be needed in post-hoc. See [this post](/posts?post=200903-interaction-effects-anova-en) for more on interaction effects.)
 
 "There was a significant main effect of armpose on accuracy (F(2,22)=20.482, p < .001).
 The main effect of orientation was not significant.

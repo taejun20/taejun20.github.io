@@ -38,7 +38,7 @@ Pure silicon (Si) is an insulator. Adding boron (B) creates P-type semiconductor
 
 In the diagram, the right-side reverse bias (N→P) blocks current. The left-side forward bias (N connected to (−), P to (+)) pushes holes in the P-type toward the junction and electrons in the N-type toward the junction: current flows. Most electrons from the Emitter (N) pass straight through the thin Base layer (P) into the Collector: that's I_C. A small fraction recombine with holes in the Base: that's I_B. Slightly increasing I_B proportionally increases I_C. This ratio is the Current Gain (β = I_C / I_B), and it's how a small change at the Base produces a large change at the Collector.
 
-Continued: [Transistor (2): Transistor with Arduino](/posts?post=220309-transistor-arduino)
+Continued: [Transistor (2): Transistor with Arduino](/posts?post=220309-transistor-arduino-en)
 
 # References
 

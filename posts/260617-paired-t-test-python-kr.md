@@ -4,7 +4,7 @@ date: 2026-06-17
 tag: Statistics
 ---
 
-대응 표본 t검정 (Paired T-Test)을 돌리는 파이썬 코드를 공유한다. 같은 피험자로부터 두 조건을 측정하는 경우 (within-subject 디자인, 2개 조건)에 사용한다. 하나라도 정규성 가정이 만족되지 않으면 [Wilcoxon signed-rank test](/posts?post=260617-wilcoxon-signed-rank-python)를 사용한다 (아래 2-2 참고).
+대응 표본 t검정 (Paired T-Test)을 돌리는 파이썬 코드를 공유한다. 같은 피험자로부터 두 조건을 측정하는 경우 (within-subject 디자인, 2개 조건)에 사용한다. 하나라도 정규성 가정이 만족되지 않으면 [Wilcoxon signed-rank test](/posts?post=260617-wilcoxon-signed-rank-python-kr)를 사용한다 (아래 2-2 참고).
 
 # 1. 데이터 정리
 
@@ -83,7 +83,7 @@ Statistic: 0.9177, P-value: 0.2676
 Data is normally distributed (fail to reject H0).
 ```
 
-두 조건 모두 정규성이 만족됐으므로 paired t-test를 진행한다. 조건 중 하나라도 정규성이 만족되지 않으면 [Wilcoxon signed-rank test](/posts?post=260617-wilcoxon-signed-rank-python)를 사용하는 것이 보수적인 선택이다.
+두 조건 모두 정규성이 만족됐으므로 paired t-test를 진행한다. 조건 중 하나라도 정규성이 만족되지 않으면 [Wilcoxon signed-rank test](/posts?post=260617-wilcoxon-signed-rank-python-kr)를 사용하는 것이 보수적인 선택이다.
 
 ### 3) 대응 표본 t검정 (Paired T-Test)
 
@@ -110,7 +110,7 @@ Output:
 **Writing for report:** A paired t-test revealed no significant difference between Condition A and Condition B (t(11) = -2.08, p = .061).
 ```
 
-*Side Note: 몇 년전까지는 [SPSS](/posts?post=200203-spss-repeated-measures)로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*
+*Side Note: 몇 년전까지는 [SPSS](/posts?post=200203-spss-repeated-measures-kr)로 통계 분석을 진행했는데, 언제부턴가 Python으로 완전히 넘어왔다. GUI 기반 프로그램들보다 각 스탭들이 더 투명하게 보이고, 가볍고, 확실히 전반적으로 더 편하다. 그리고 무엇보다 무료다.*
 
 # 참고
 
